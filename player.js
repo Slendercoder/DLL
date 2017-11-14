@@ -75,7 +75,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                     // Para mi botón
                     button1.onclick = function(){
-                      W.setInnerHTML('texto', 'Soy Miguel y soy un genio');
+                      W.setInnerHTML('Rotulo', 'Soy Miguel y soy un genio');
                     }
 
 
