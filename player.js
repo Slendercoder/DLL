@@ -71,7 +71,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     div = W.getElementById('dictator').style.display = '';
                     button = W.getElementById('submitOffer');
                     offer =  W.getElementById('offer');
-                    button1 = W.getElementById('hola');
+                    button1 = W.getElementById('Prueba');
 
                     // Para mi botón
                     button1.onclick = function(){
