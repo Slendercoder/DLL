@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Experimento</title>
+        <script src="PruebaBoton.js">
+            window.onload = todasFunciones(); 
+            
+            var m;
+            function suma2(){
+                m = m+1;
+                return m;
+            }
+        </script>
+        
+        
+    </head>
+    <body>
+        
+        <h1><p align="center"><big><font size=10 face="arial">Main view</font></big></p></h1>
+        <div>
+            <p>
+                <DIV STYLE="position:absolute; top:150px; left:870px; visibility:visible z-index:1">
+                    <h1>
+                        <b>
+                            <font size=7, face="arial">
+                                <small> 
+                                    <form name="variable" id="variableNumero">
+                                    Your Points:<input type="number" id="variable" name="cambiante" disabled>
+                                    <h6>El valor de n es: <script>n</script></h6>
+                                    </form>
+                                    <script>
+                                        while(n!=k){
+                                            n=k;
+                                            alert("El valor de n es "+n);
+                                            document.variable.cambiante.value=n;
+                                        }
+                                    </script>
+                                </small>
+                            </font>
+                        </b>
+                    </h1>
+                </DIV>
+            </p>
+        </div>
+        
+
+        <div>
+            <p>
+                <DIV STYLE="position:absolute; top:130px; left:180px; visibility:visible z-index:1">
+                    <img src="window.png" width="300px" height="160px" alt=""/> <!--imagen de la ventana-->
+                </DIV>
+
+                <DIV STYLE="position:absolute; top:160px; left:330px; visibility:visible z-index:1">
+                    <img src="player.png" width="130" height="133" onclick="validar().prueba"> <!--imagen del hombre-->
+                </DIV>
+
+                <DIV STYLE="position:absolute; top:295px; left:220px; visibility:visible z-index:1"> <!--imagen del boton Talk to...-->
+                    <a href = "TalkTo.html"><img src="BotonTalkTo.png" width="222.22" height="80" alt=""/></a>
+                </DIV>
+            </p>
+        </div>
+
+        <p>&nbsp;</p>
+        
+        <div>
+            <p>
+                <DIV STYLE="position:absolute; top:315px; left:620px; visibility:visible z-index:1">
+                    <h2>
+                        <font face="arial">Select objects for the pair:</font>
+                    </h2>
+                </DIV>
+
+                <DIV STYLE="position:absolute; top:400px; left:640px; visibility:visible z-index:1"><!--SELECTOR DE OPCIONES 'select'-->
+                    <select id=select_Jar1>
+                        <option value = "opciones">Opciones:</option>
+                        <option value="circulo">CIRCULO</option>
+                        <option value="cuadrado">CUADRADO</option>
+                    </select> 
+                </DIV>
+
+                <DIV STYLE="position:absolute; top:400px; left:760px; visibility:visible z-index:1"><!--SELECTOR DE OPCIONES 'select'-->
+                    <select id=select_Jar2>
+                        <option value = "opciones">Opciones:</option>
+                        <option value="circulo">CIRCULO</option>
+                        <option value="cuadrado">CUADRADO</option>
+                    </select>
+                </DIV>
+
+                <DIV STYLE="position:absolute; top:330px; left:980px; visibility:visible z-index:1">
+                    <img src="a_canasta.png" align="right" width="280" height="258" alt=""/> <!--imagen de la canasta-->
+                </DIV>
+
+                <DIV STYLE="position:absolute; top:500px; left:740px; visibility:visible z-index:1">
+                    <img src="BotonToBasket.png" width="295" height="158" onclick="suma()" id="botonVerde" alt=""/> <!--imagen boton verde grande -->
+                </DIV>
+            </p>
+        </div>
+
+
+        <div>
+            <p>
+                <DIV STYLE="position:absolute; top:400px; left:170px; visibility:visible z-index:1">
+                    <img src="circle.png" alt="" width="90" height="79"/> <!--imagen del circulo-->
+                </DIV>
+
+                <DIV STYLE="position:absolute; top:400px; left:370px; visibility:visible z-index:1">
+                    <img src="square.png" width="90" height="79" alt=""/> <!--imagen del cuadrado-->
+                </DIV>
+            </p>
+            <p>
+                <DIV STYLE="position:absolute; top:467px; left:150px; visibility:visible z-index:1">
+                    <img src="jar.png" width="145" height="145" alt=""/> <!--imagen del tarro #1-->
+                </DIV>
+
+                <DIV STYLE="position:absolute; top:495px; left:208px; visibility:visible z-index:1">
+                    <h1>
+                        <font size=7>2</font>
+                    </h1>
+                </DIV>
+
+                <DIV STYLE="position:absolute; top:467px; left:348px; visibility:visible z-index:1">
+                    <img src="jar.png" width="140" height="140" alt=""/> <!--imagen del tarro #2-->
+                </DIV>
+
+                <DIV STYLE="position:absolute; top:495px; left:402px; visibility:visible z-index:1">
+                    <h1>
+                        <font size=7>8</font>
+                    </h1>
+                </DIV>
+            </p>
+        </div>
+</body>
+</html>
