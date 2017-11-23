@@ -177,3 +177,38 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     game.plot = stager.getState();
     return game;
 };
+/*
+                      PSEUDOCODIGO FUNCION CAMBIO DE CANTIDADES
+  function cambioCantidades() {
+    if click on obj1 do:
+      if cantObj1 == 0 do:
+        return alert "no puede enviar objetos de este tipo";
+      else:
+        obj1(sender) - 1;
+        obj1(requester) + 1;
+    else if click on obj2 do:
+      if cantObj2 == 0 do:
+        return alert "no puede enviar objetos de este tipo";
+      else:
+        obj2(sender) - 1;
+        obj2(requester) + 1;
+
+(¿node.on.say?)
+(¿cambiar el valor de los rótulos?)
+
+
+  }
+
+
+HACE FALTA CREAR AQUÍ UN LISTENER PARA EL BOTÓN "ENVIAR OBJETO"EN EL CUADRO DE
+INTERACCIÓN, EL CUAL DEBERÁ CERRAR DICHO CUADRO Y DESPLEGAR EL CUADRO DE ENVIAR
+OBJETO
+ESCRIBIR BIEN cambioCantidades
+AGREGAR LISTENERS A LOS BOTONES DE ENVIAR 1 PARA LLAMAR A cambioCantidades
+AGREGAR LISTENERS A LOS BOTONES DE ENVIAR 1 PARA CERRAR EL CUADRO UNA VEZ SE
+PULSE ALGÚN BOTÓN
+AGREGAR ALERTA PARA EL RECEPTOR DE QUE SU CANTIDAD DE OBJETOS HA AUMENTADO
+(¿node.on.data?)
+CERRAR EL CUADRO DE DIÁLOGO PARA ENVIAR OBJETOS
+
+*/
