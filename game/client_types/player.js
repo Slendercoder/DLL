@@ -101,66 +101,112 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         node.on.data('Settings', function(msg) {
 
           var MESSAGE = msg.data; //Message from logic with quantity of each type
-          var categorized1 = false;
-          var categorized2 = false;
-          var ready_categorized = false;
+          var otroJugador = MESSAGE[0];
+          var cantidadJarra1 = MESSAGE[1];
+          var cantidadJarra2 = MESSAGE[2];
+          W.setInnerHTML('jarra1', cantidadJarra1);
+          W.setInnerHTML('jarra2', cantidadJarra2);
 
-          // Defines names for types of objects
-          var opciones = node.game.shuffle(node.game.settings.opciones);
+          // node.game.other_player = otroJugador;
 
-          // Initializing the environment
-          var other_player = MESSAGE[0].toString();
-          var num_type1 = MESSAGE[1];
-          var num_type2 = MESSAGE[2];
-          W.setInnerHTML('Type1', num_type1);
-          W.setInnerHTML('Type2', num_type2);
-          console.log('Aqui vamos')
-          var combo_Jar1 = W.getElementById('select_Jar1');
-          console.log(combo_Jar1.id)
-          var combo_Jar2 = W.getElementById('select_Jar2');
-          node.game.anadirOpciones(combo_Jar1, opciones);
-          node.game.anadirOpciones(combo_Jar2, opciones);
+          // Initialize the window for the game
+          W.getElementById('myModal').style.display = '';
 
-          combo_Jar1.onchange=function() {
-            if (combo_Jar1.value == combo_Jar2.value){
-              combo_Jar1.value = NaN;
-              alert('No puedes seleccionar la misma categoría para los dos tipos de objeto');
-            }
-            else {
-              categorized1 = true;
-              if (ready_categorized === false) {
-                if (categorized2 === true) {
-                  ready_categorized = true;
-                  var combo_Senal = W.getElementById('select_Senal');
-                  var combo_Pareja1 = W.getElementById('select_Pareja1');
-                  var combo_Pareja2 = W.getElementById('select_Pareja2');
-                  node.game.anadirOpciones(combo_Senal, opciones);
-                  node.game.anadirOpciones(combo_Pareja1, opciones);
-                  node.game.anadirOpciones(combo_Pareja2, opciones);
-                }
-              }
-            }
-          };
-          combo_Jar2.onchange=function() {
-            if (combo_Jar1.value == combo_Jar2.value){
-              combo_Jar2.value = NaN;
-              alert('No puedes seleccionar la misma categoría para los dos tipos de objeto');
-            }
-            else {
-              categorized2 = true;
-              if (ready_categorized === false) {
-                if (categorized1 === true) {
-                  ready_categorized = true;
-                  var combo_Senal = W.getElementById('select_Senal');
-                  var combo_Pareja1 = W.getElementById('select_Pareja1');
-                  var combo_Pareja2 = W.getElementById('select_Pareja2');
-                  node.game.anadirOpciones(combo_Senal, opciones);
-                  node.game.anadirOpciones(combo_Pareja1, opciones);
-                  node.game.anadirOpciones(combo_Pareja2, opciones);
-                }
-              }
-            }
-          };
+          // Get the button that opens the modal
+          var btn = W.getElementById("myBtn");
+          // When the user clicks the button, open the modal
+          btn.onclick = function() {
+              W.getElementById('myModal').style.display = "block";
+          }
+          // Get the <span> element that closes the modal
+          var span1 = W.getElementById('botCirc');
+          // When the user clicks on <span> (x), close the modal
+          span1.onclick = function() {
+            alert ("¡El objeto fue enviado satisfactoriamente! ");
+            node.say('Dar', otroJugador, 'Circulo');
+            W.getElementById('myModal').style.display = "none";
+          }
+          // Get the <span> element that closes the modal
+          var span2 = W.getElementById('botCuad');
+          // When the user clicks on <span> (x), close the modal
+          span2.onclick = function() {
+            alert ("¡El objeto fue enviado satisfactoriamente! ");
+            node.say('Dar', otroJugador, 'Cuadrado');
+            W.getElementById('myModal').style.display = "none";
+          }
+
+          node.on.data('Dar', function(msg) {
+// MODIFICAR ESTA PARTE!!!!!!!!!
+            // cantidadJarra1 = cantidadJarra1 + 1;
+            // W.setInnerHTML('jarra1', cantidadJarra1);
+            W.setInnerHTML('jarra1', msg.data);
+          });
+
+          node.on.data('Prueba', function(msg) {
+            // console.log('Intento', msg.data);
+            W.setInnerHTML('jarra1', 'Whaaat!');
+          });
+
+        //   var categorized1 = false;
+        //   var categorized2 = false;
+        //   var ready_categorized = false;
+        //
+        //   // Defines names for types of objects
+        //   var opciones = node.game.shuffle(node.game.settings.opciones);
+        //
+        //   // Initializing the environment
+        //   var other_player = MESSAGE[0].toString();
+        //   var num_type1 = MESSAGE[1];
+        //   var num_type2 = MESSAGE[2];
+        //   W.setInnerHTML('Type1', num_type1);
+        //   W.setInnerHTML('Type2', num_type2);
+        //   console.log('Aqui vamos')
+        //   var combo_Jar1 = W.getElementById('select_Jar1');
+        //   console.log(combo_Jar1.id)
+        //   var combo_Jar2 = W.getElementById('select_Jar2');
+        //   node.game.anadirOpciones(combo_Jar1, opciones);
+        //   node.game.anadirOpciones(combo_Jar2, opciones);
+        //
+        //   combo_Jar1.onchange=function() {
+        //     if (combo_Jar1.value == combo_Jar2.value){
+        //       combo_Jar1.value = NaN;
+        //       alert('No puedes seleccionar la misma categoría para los dos tipos de objeto');
+        //     }
+        //     else {
+        //       categorized1 = true;
+        //       if (ready_categorized === false) {
+        //         if (categorized2 === true) {
+        //           ready_categorized = true;
+        //           var combo_Senal = W.getElementById('select_Senal');
+        //           var combo_Pareja1 = W.getElementById('select_Pareja1');
+        //           var combo_Pareja2 = W.getElementById('select_Pareja2');
+        //           node.game.anadirOpciones(combo_Senal, opciones);
+        //           node.game.anadirOpciones(combo_Pareja1, opciones);
+        //           node.game.anadirOpciones(combo_Pareja2, opciones);
+        //         }
+        //       }
+        //     }
+        //   };
+        //   combo_Jar2.onchange=function() {
+        //     if (combo_Jar1.value == combo_Jar2.value){
+        //       combo_Jar2.value = NaN;
+        //       alert('No puedes seleccionar la misma categoría para los dos tipos de objeto');
+        //     }
+        //     else {
+        //       categorized2 = true;
+        //       if (ready_categorized === false) {
+        //         if (categorized1 === true) {
+        //           ready_categorized = true;
+        //           var combo_Senal = W.getElementById('select_Senal');
+        //           var combo_Pareja1 = W.getElementById('select_Pareja1');
+        //           var combo_Pareja2 = W.getElementById('select_Pareja2');
+        //           node.game.anadirOpciones(combo_Senal, opciones);
+        //           node.game.anadirOpciones(combo_Pareja1, opciones);
+        //           node.game.anadirOpciones(combo_Pareja2, opciones);
+        //         }
+        //       }
+        //     }
+        //   };
         }); // End on.data "settings"
       }, // End cb function
     });// End extendstep "game"

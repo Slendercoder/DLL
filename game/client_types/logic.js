@@ -82,10 +82,19 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         players = node.game.pl.id.getAllKeys();
 
+        console.log('Jugadores: ' + players)
+
+        var cantidadTipo1= Math.floor(Math.random()*10);
+        var cantidadTipo2 = Math.floor(Math.random()*10);
+
+        while (cantidadTipo1 == cantidadTipo2){
+          cantidadTipo1= Math.floor(Math.random()*10);
+        }
+
         node.say('Settings', players[0],
-                 [players[1], 2, 8]);
+                 [players[1], cantidadTipo1, cantidadTipo2]);
         node.say('Settings', players[1],
-                 [players[0], 8, 2]);
+                 [players[0], cantidadTipo2, cantidadTipo1]);
     }
 
 };
