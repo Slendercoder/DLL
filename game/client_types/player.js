@@ -107,12 +107,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           var otroJugador = MESSAGE[0];
           var cantidadJarra1 = MESSAGE[1];
           var cantidadJarra2 = MESSAGE[2];
-          var puntaje, pareja[] // Variables de armado de parejas
+          var puntaje; // Variable para el puntaje
+          var derPareja; // Argumento derecho de la pareja
+          var IzqPareja; // Argumento izquierdo de la pareja
           var btn = W.getElementById("myBtn"); // Boton que abre modal
           var span1 = W.getElementById('botCirc'); // Boton en modal de enviar círculo
           var span2 = W.getElementById('botCuad'); // Boton en modal de enviar cuadrado
-          var btnArmarPareja = W.getElementById('aCanasta');
-
+          var btnArmarPareja = W.getElementById('botonVerde');
+          var span3 = W.getElementById('ZABbutton'); // Boton en modal2 de decir ZAB
+          var span4 = W.getElementById('XOLbutton'); // Boton en modal2 de decir XOL
 
           // node.game.other_player = otroJugador;
 
@@ -123,10 +126,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           W.setInnerHTML('jarra2', cantidadJarra2);
 
 
-          // When the user clicks the button, open the modal
+          // When the user clicks the button, open the modal de TALK TO
           btn.onclick = function() {
               W.getElementById('myModal2').style.display = "block";
           }
+
+          span3.onclick = function() {
+              alert('¡Mensaje enviado!');
+              W.getElementById('myModal2').style.display = "";
+              node.say('Comunicacion', otroJugador, 'ZAB');
+          }
+
           // When the user clicks the button, envía un CIRCULO al otro jugador
           span1.onclick = function() {
             if (cantidadJarra1 > 0){
@@ -141,43 +151,60 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               W.getElementById('myModal').style.display = "none";
             }
           }
+
           // When the user clicks the button, envía un CUADRADO al otro jugador
           span2.onclick = function() {
-            alert ("¡El objeto fue enviado satisfactoriamente! ");
-            node.say('Dar', otroJugador, 'Cuadrado');
-            W.getElementById('myModal').style.display = "none";
+            if (cantidadJarra2 > 0){
+              alert ("¡El objeto fue enviado satisfactoriamente! ");
+              node.say('Dar', otroJugador, 'Cuadrado');
+              W.getElementById('myModal').style.display = "none";
+              cantidadJarra2 = cantidadJarra2 - 1;
+              W.setInnerHTML('jarra2', cantidadJarra2);
+            }
+            else {
+              alert ("¡No hay objetos de este tipo! ");
+              W.getElementById('myModal').style.display = "none";
+            }
           }
 
-          // var drag1 = W.getElementById('drag1');
-          // drag1.ondragstart = function () {
-          //   drag1.dataTransfer.setData('Tipo', 0);
-          //   var datos = drag1.dataTransfer.getData('Tipo');
-          //   W.setInnerHTML('prueb', datos);
-          // }
-          //
-          // var drag2 = W.getElementById('drag2');
-          // drag2.ondragstart = function () {
-          //   W.setInnerHTML('prueb', 'Cuadrado');
-          // }
+          // Cuando el usuario da click, calcula los puntos
+          puntaje = 0;
+          IzqPareja = 'Circulo';
+          derPareja = 'Cuadrado';
+          btnArmarPareja.onclick = function() {
+            if (izqPareja != derPareja) {
+              puntaje = puntaje + 5;
+              cantidadJarra1 = cantidadJarra1 - 1;
+              cantidadJarra2 = cantidadJarra2 - 1;
+              w.setInnerHTML('jarra1', cantidadJarra1);
+              w.setInnerHTML('jarra2', cantidadJarra2);
+              w.setInnerHTML('Puntaje', puntaje);
+            }
+            else {
+              if (izqPareja == derPareja) {
+              puntaje = puntaje + 1;
+              // debe haber una instrucción "w.setInnerHTML('Puntaje', puntaje);"
+              }
+            }
+            if (izqPareja || derPareja == null) {
+              alert ("Debe seleccionar otro objeto");
+            }
+          }
 
-          // W.addEventListener("dragover", function(event) {
-          //     event.preventDefault();
-          // });
 
-          // var izqPareja = W.getElementById('Par1');
-          // izqPareja.ondrop = function () {
-          //   izqPareja.preventDefault();
-          //   W.setInnerHTML('prueb', 'Izquierdo');
-          // }
-
-          node.on.data('Prueba', function() {
-            W.setInnerHTML('prueb', 'Andando');
+          node.on.data('Comunicacion', function(msg) {
+            W.getElementById('myModal').style.display = 'block';
+            W.setInnerHTML('Mensaje', msg.data);
           });
 
           node.on.data('Dar', function(msg) {
             if (msg.data == 'Circulo') {
               cantidadJarra1 = cantidadJarra1 + 1;
               W.setInnerHTML('jarra1', cantidadJarra1);
+            }
+            else if (msg.data == 'Cuadrado') {
+              cantidadJarra2 = cantidadJarra2 + 1;
+              W.setInnerHTML('jarra2', cantidadJarra2);
             }
           });
 
@@ -186,66 +213,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.setInnerHTML('jarra1', 'Whaaat!');
           });
 
-        //   var categorized1 = false;
-        //   var categorized2 = false;
-        //   var ready_categorized = false;
-        //
-        //   // Defines names for types of objects
-        //   var opciones = node.game.shuffle(node.game.settings.opciones);
-        //
-        //   // Initializing the environment
-        //   var other_player = MESSAGE[0].toString();
-        //   var num_type1 = MESSAGE[1];
-        //   var num_type2 = MESSAGE[2];
-        //   W.setInnerHTML('Type1', num_type1);
-        //   W.setInnerHTML('Type2', num_type2);
-        //   console.log('Aqui vamos')
-        //   var combo_Jar1 = W.getElementById('select_Jar1');
-        //   console.log(combo_Jar1.id)
-        //   var combo_Jar2 = W.getElementById('select_Jar2');
-        //   node.game.anadirOpciones(combo_Jar1, opciones);
-        //   node.game.anadirOpciones(combo_Jar2, opciones);
-        //
-        //   combo_Jar1.onchange=function() {
-        //     if (combo_Jar1.value == combo_Jar2.value){
-        //       combo_Jar1.value = NaN;
-        //       alert('No puedes seleccionar la misma categoría para los dos tipos de objeto');
-        //     }
-        //     else {
-        //       categorized1 = true;
-        //       if (ready_categorized === false) {
-        //         if (categorized2 === true) {
-        //           ready_categorized = true;
-        //           var combo_Senal = W.getElementById('select_Senal');
-        //           var combo_Pareja1 = W.getElementById('select_Pareja1');
-        //           var combo_Pareja2 = W.getElementById('select_Pareja2');
-        //           node.game.anadirOpciones(combo_Senal, opciones);
-        //           node.game.anadirOpciones(combo_Pareja1, opciones);
-        //           node.game.anadirOpciones(combo_Pareja2, opciones);
-        //         }
-        //       }
-        //     }
-        //   };
-        //   combo_Jar2.onchange=function() {
-        //     if (combo_Jar1.value == combo_Jar2.value){
-        //       combo_Jar2.value = NaN;
-        //       alert('No puedes seleccionar la misma categoría para los dos tipos de objeto');
-        //     }
-        //     else {
-        //       categorized2 = true;
-        //       if (ready_categorized === false) {
-        //         if (categorized1 === true) {
-        //           ready_categorized = true;
-        //           var combo_Senal = W.getElementById('select_Senal');
-        //           var combo_Pareja1 = W.getElementById('select_Pareja1');
-        //           var combo_Pareja2 = W.getElementById('select_Pareja2');
-        //           node.game.anadirOpciones(combo_Senal, opciones);
-        //           node.game.anadirOpciones(combo_Pareja1, opciones);
-        //           node.game.anadirOpciones(combo_Pareja2, opciones);
-        //         }
-        //       }
-        //     }
-        //   };
         }); // End on.data "settings"
       }, // End cb function
     });// End extendstep "game"
