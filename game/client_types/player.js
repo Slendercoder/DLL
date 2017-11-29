@@ -168,9 +168,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           }
 
           // Cuando el usuario da click, calcula los puntos
-          puntaje = 0;
-          IzqPareja = 'Circulo';
-          derPareja = 'Cuadrado';
+          var puntaje = 0;
+          var izqPareja = 'Circulo';
+          var derPareja = 'Cuadrado';
           btnArmarPareja.onclick = function() {
             if (izqPareja != derPareja) {
               puntaje = puntaje + 5;
