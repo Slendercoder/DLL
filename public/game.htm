@@ -1,5 +1,16 @@
 <!doctype html>
 <html>
+<style>
+.droptarget {
+    float: left;
+    width: 100px;
+    height: 35px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+</style>
+
     <style>
         /* The Modal (background) */
         .modal {
@@ -22,7 +33,7 @@
             margin: auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
+            width: 50%;
         }
         .close {
             color: #aaaaaa;
@@ -38,68 +49,34 @@
             cursor: pointer;
         }
     </style>
-    <head>
-        <meta charset="utf-8">
-        <title>Experimento</title>
-        <script src="PruebaBoton.js">
-            window.onload = todasFunciones(); 
-            
-            var m;
-            function suma2(){
-                m = m+1;
-                return m;
-            }
-        </script>
-        
-        
-    </head>
     <body>
-        
+
         <h1><p align="center"><big><font size=10 face="arial">Main view</font></big></p></h1>
+<!--
         <div>
             <p>
                 <DIV STYLE="position:absolute; top:150px; left:870px; visibility:visible z-index:1">
-<!--                    <h1>
-                        <b>
-                            <font size=7, face="arial">
-                                <small> 
-                                    <form name="variable" id="variableNumero">
-                                    Your Points:<input type="number" id="variable" name="cambiante" disabled>
-                                    <h6>El valor de n es: <script>n</script></h6>
-                                    </form>
-                                    <script>
-                                        while(n!=k){
-                                            n=k;
-                                            alert("El valor de n es "+n);
-                                            document.variable.cambiante.value=n;
-                                        }
-                                    </script>
-                                </small>
-                            </font>
-                        </b>
-                    </h1>
--->                </DIV>
+                </DIV>
             </p>
         </div>
-        
-
+-->
         <div>
             <p>
                 <DIV STYLE="position:absolute; top:155px; left:300px; visibility:visible z-index:1">
-                    <img src="player.png" width="130" height="133" onclick="validar().prueba"> <!--imagen del hombre-->
+                    <img src="player.png" draggable="false" width="130" height="133" onclick="validar().prueba"> <!--imagen del hombre-->
                 </DIV>
                 <DIV STYLE="position:absolute; top:130px; left:180px; visibility:visible z-index:1">
-                    <img src="window.png" width="300px" height="160px" alt=""/> <!--imagen de la ventana-->
+                    <img src="window.png" draggable="false" width="300px" height="160px" alt=""/> <!--imagen de la ventana-->
                 </DIV>
                 <DIV STYLE="position:absolute; top:295px; left:220px; visibility:visible z-index:1"> <!--imagen del boton Talk to...-->
-                    <img type="button" src="BotonTalkTo.png" id='myBtn'
+                    <img type="button" draggable="false" src="BotonTalkTo.png" id='myBtn'
                            width="222.22" height="80" alt=""/></a>
                 </DIV>
             </p>
         </div>
 
         <p>&nbsp;</p>
-        
+
         <div>
             <p>
                 <DIV STYLE="position:absolute; top:315px; left:620px; visibility:visible z-index:1">
@@ -109,37 +86,30 @@
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:400px; left:640px; visibility:visible z-index:1"><!--SELECTOR DE OPCIONES 'select'-->
-                    <img src='ParentesisIz.png'
-                        width="100" height="70">
+                    <img id='Par1' draggable="false" src='ParentesisIz.png' width="100" height="70">
 <!--                    <select id=select_Jar1>
-                        <option value = "opciones">Opciones:</option>
-                        <option value="circulo">CIRCULO</option>
-                        <option value="cuadrado">CUADRADO</option>
-                    </select> 
--->
-                </DIV>
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-  <img src="jar.png" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
-</div>
-
-<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><span id='prueb'>AQUI</span></div>
-                <DIV STYLE="position:absolute; top:400px; left:760px; visibility:visible z-index:1"><!--SELECTOR DE OPCIONES 'select'-->
-                    <img src='Paren_der.png'
-                         width="100" height="70">
-<!--                    <select id=select_Jar2>
                         <option value = "opciones">Opciones:</option>
                         <option value="circulo">CIRCULO</option>
                         <option value="cuadrado">CUADRADO</option>
                     </select>
 -->
                 </DIV>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+</div>
+
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><span id='prueb'>AQUI</span></div>
+
+                <DIV STYLE="position:absolute; top:400px; left:760px; visibility:visible z-index:1"><!--SELECTOR DE OPCIONES 'select'-->
+                    <img src='Paren_der.png' draggable="false"
+                         width="100" height="70">
+                </DIV>
 
                 <DIV STYLE="position:absolute; top:330px; left:980px; visibility:visible z-index:1">
-                    <img src="a_canasta.png" align="right" width="280" height="258" alt=""/> <!--imagen de la canasta-->
+                    <img id='aCanasta' src="a_canasta.png" draggable="false" align="right" width="280" height="258" alt=""/> <!--imagen de la canasta-->
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:500px; left:740px; visibility:visible z-index:1">
-                    <img src="BotonToBasket.png" width="295" height="158" onclick="suma()" id="botonVerde" alt=""/> <!--imagen boton verde grande -->
+                    <img src="BotonToBasket.png" draggable="false" width="295" height="158" onclick="suma()" id="botonVerde" alt=""/> <!--imagen boton verde grande -->
                 </DIV>
             </p>
         </div>
@@ -148,16 +118,16 @@
         <div>
             <p>
                 <DIV STYLE="position:absolute; top:400px; left:170px; visibility:visible z-index:1">
-                    <img draggable="true" src="circle.png" alt="" width="90" height="79"/> <!--imagen del circulo-->
+                    <img id="drag1" draggable="true" src="circle.png" alt="" width="90" height="79"/> <!--imagen del circulo-->
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:400px; left:370px; visibility:visible z-index:1">
-                    <img draggable="true" src="square.png" width="90" height="79" alt=""/> <!--imagen del cuadrado-->
+                    <img id="drag2" draggable="true" src="square.png" width="90" height="79" alt=""/> <!--imagen del cuadrado-->
                 </DIV>
             </p>
             <p>
                 <DIV STYLE="position:absolute; top:467px; left:150px; visibility:visible z-index:1">
-                    <img src="jar.png" width="145" height="145" alt=""/> <!--imagen del tarro #1-->
+                    <img src="jar.png" draggable="false" width="145" height="145" alt=""/> <!--imagen del tarro #1-->
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:495px; left:208px; visibility:visible z-index:1">
@@ -167,7 +137,7 @@
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:467px; left:348px; visibility:visible z-index:1">
-                    <img src="jar.png" width="140" height="140" alt=""/> <!--imagen del tarro #2-->
+                    <img src="jar.png" draggable="false" width="140" height="140" alt=""/> <!--imagen del tarro #2-->
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:495px; left:402px; visibility:visible z-index:1">
@@ -177,15 +147,15 @@
                 </DIV>
             </p>
         </div>
-    
+
     <!-- The Modal -->
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span id="close">&times;</span>
+    <p>Le han enviado el mensaje <span id='Mensaje'></span></p>
+    <HR>
     <p>Seleccione el objeto que desea enviar:</p>
-     <HR>
         <img type="button" src="circle.png" id="botCirc" alt="">
         <img type="button" src="square.png" id="botCuad" alt="">
   </div>
@@ -197,76 +167,125 @@
         <h1><p align="center">
             <big>TALK TO...</big>
         </p></h1>
-            
+
         <p>
             <DIV STYLE="position:absolute; top:80px; left:190px; visibility:visible z-index:1"> <!--imagen del la ventana-->
                 <img src="window.png" width="630" height="368.54">
             </DIV>
-        
+
             <DIV STYLE="position:absolute; top:160px; left:490px; visibility:visible z-index:1">
                 <img src="player.png" width="233.33" height="294.53" onclick="validar().prueba"/> <!--imagen del hombre-->
             </DIV>
-        
+
             <DIV STYLE="position:absolute; top:440px; left:270px; visibility:visible z-index:1">
                 <b><h1><font face="arial" color="black">YOU WANT TO SAY:</font></h1></b>
             </DIV>
-            
-<!--            <DIV STYLE="position:absolute; top:520px; left:580px; visibility:visible z-                         index:1"> 
+
+<!--            <DIV STYLE="position:absolute; top:520px; left:580px; visibility:visible z-                         index:1">
                 <a href="game.htm"><img src="BotonOK.png" width="130" height="130" alt=""/></a>
             </DIV>
--->            
+-->
             <DIV STYLE="position:absolute; top:290px; left:900px; visibility:visible z-index:1">
                 <b><h1><font face="arial" color="black">Press the word <br /> you want to say</font></h1></b>
             </DIV>
-            
+
             <DIV STYLE="position:absolute; top:410px; left:900px; visibility:visible z-index:1"> <!--imagen del boton ZAB-->
                 <img src="ZABbutton.png" width="222.22" height="80" alt=""/>
             </DIV>
-            
+
             <DIV STYLE="position:absolute; top:410px; left:980px; visibility:visible z-index:1">
             </DIV>
-            
+
             <DIV STYLE="position:absolute; top:510px; left:900px; visibility:visible z-index:1"> <!--imagen del boton XOL-->
                 <img src="XOLbutton.png" width="222.22" height="80" alt=""/>
             </DIV>
-            
+
             <DIV STYLE="position:absolute; top:510px; left:980px; visibility:visible z-index:1">
             </DIV>
         </p>
     </div>
 </div>
 
+<p>Drag the p element back and forth between the two rectangles:</p>
+
+<div class="droptarget">
+  <p draggable="true" id="dragtarget">Drag me!</p>
+</div>
+
+<div class="droptarget"></div>
+
+<p style="clear:both;"><strong>Note:</strong> drag events are not supported in Internet Explorer 8 and earlier versions or Safari 5.1 and earlier versions.</p>
+
+<p id="demo"></p>
+
 </body>
 </html>
 
 <script>
+/* Events fired on the drag target */
 
-    window.onload = function() {
+document.addEventListener("dragstart", function(event) {
+    // The dataTransfer.setData() method sets the data type and the value of the dragged data
+    event.dataTransfer.setData("Text", event.target.id);
 
-//        if ('undefined' !== typeof window.paper) return;
+    // Output some text when starting to drag the p element
+    document.getElementById("demo").innerHTML = "Started to drag the p element.";
 
-        var node = parent.node;
-        var other_player = node.game.other_player
-        var me = node.player.id; // My id.
-//
-//        console.log('LOADING PAGE SCRIPT');
+    // Change the opacity of the draggable element
+    event.target.style.opacity = "0.4";
+});
 
-            function allowDrop(ev) {
-                ev.preventDefault();
-            }
+// While dragging the p element, change the color of the output text
+document.addEventListener("drag", function(event) {
+    document.getElementById("demo").style.color = "red";
+});
 
-            function drag(ev) {
-                ev.dataTransfer.setData("text", ev.target.id);
-            }
+// Output some text when finished dragging the p element and reset the opacity
+document.addEventListener("dragend", function(event) {
+    document.getElementById("demo").innerHTML = "Finished dragging the p element.";
+    event.target.style.opacity = "1";
+});
 
-            function drop(ev) {
-                ev.preventDefault();
-                var data = ev.dataTransfer.getData("text");
-                node.say('Prueba', me, 'Miguel es ...');
-//                alert(document.getElementById(data));
-//                document.setInnerHTML('prueb', data);
-//                ev.target.appendChild(document.getElementById(data));
-            }
-        
-    } // end window.onload
+
+/* Events fired on the drop target */
+
+// When the draggable p element enters the droptarget, change the DIVS's border style
+document.addEventListener("dragenter", function(event) {
+    if ( event.target.className == "droptarget" ) {
+        event.target.style.border = "3px dotted red";
+    }
+});
+
+// By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
+document.addEventListener("dragover", function(event) {
+    event.preventDefault();
+});
+
+// When the draggable p element leaves the droptarget, reset the DIVS's border style
+document.addEventListener("dragleave", function(event) {
+    if ( event.target.className == "droptarget" ) {
+        event.target.style.border = "";
+    }
+});
+
+/* On drop - Prevent the browser default handling of the data (default is open as link on drop)
+   Reset the color of the output text and DIV's border color
+   Get the dragged data with the dataTransfer.getData() method
+   The dragged data is the id of the dragged element ("drag1")
+   Append the dragged element into the drop element
+*/
+document.addEventListener("drop", function(event) {
+    event.preventDefault();
+    if ( event.target.className == "droptarget" ) {
+        document.getElementById("demo").style.color = "";
+        event.target.style.border = "";
+        // var data = event.dataTransfer.getData("Text");
+        // event.target.appendChild(document.getElementById(data));
+    }
+    var data = event.dataTransfer.getData("Text");
+    var node = parent.node;
+    node.emit('Prueba', data);
+    console.log('Se enviaron datos', data);
+});
+
 </script>
