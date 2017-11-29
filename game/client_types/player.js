@@ -98,48 +98,87 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
       frame: 'game.htm',
       cb: function() {
 
+//////////////////////////////////////////////////////////////////////////
+// AQUI COMIENZA LA ACCION
+/////////////////////////////////////////////////////////////////////////
         node.on.data('Settings', function(msg) {
 
           var MESSAGE = msg.data; //Message from logic with quantity of each type
           var otroJugador = MESSAGE[0];
           var cantidadJarra1 = MESSAGE[1];
           var cantidadJarra2 = MESSAGE[2];
-          W.setInnerHTML('jarra1', cantidadJarra1);
-          W.setInnerHTML('jarra2', cantidadJarra2);
+          var puntaje, pareja[] // Variables de armado de parejas
+          var btn = W.getElementById("myBtn"); // Boton que abre modal
+          var span1 = W.getElementById('botCirc'); // Boton en modal de enviar círculo
+          var span2 = W.getElementById('botCuad'); // Boton en modal de enviar cuadrado
+          var btnArmarPareja = W.getElementById('aCanasta');
+
 
           // node.game.other_player = otroJugador;
 
           // Initialize the window for the game
           W.getElementById('myModal').style.display = '';
+          W.getElementById('myModal2').style.display = '';
+          W.setInnerHTML('jarra1', cantidadJarra1);
+          W.setInnerHTML('jarra2', cantidadJarra2);
 
-          // Get the button that opens the modal
-          var btn = W.getElementById("myBtn");
+
           // When the user clicks the button, open the modal
           btn.onclick = function() {
-              W.getElementById('myModal').style.display = "block";
+              W.getElementById('myModal2').style.display = "block";
           }
-          // Get the <span> element that closes the modal
-          var span1 = W.getElementById('botCirc');
-          // When the user clicks on <span> (x), close the modal
+          // When the user clicks the button, envía un CIRCULO al otro jugador
           span1.onclick = function() {
-            alert ("¡El objeto fue enviado satisfactoriamente! ");
-            node.say('Dar', otroJugador, 'Circulo');
-            W.getElementById('myModal').style.display = "none";
+            if (cantidadJarra1 > 0){
+              alert ("¡El objeto fue enviado satisfactoriamente! ");
+              node.say('Dar', otroJugador, 'Circulo');
+              W.getElementById('myModal').style.display = "none";
+              cantidadJarra1 = cantidadJarra1 - 1;
+              W.setInnerHTML('jarra1', cantidadJarra1);
+            }
+            else {
+              alert ("¡No hay objetos de este tipo! ");
+              W.getElementById('myModal').style.display = "none";
+            }
           }
-          // Get the <span> element that closes the modal
-          var span2 = W.getElementById('botCuad');
-          // When the user clicks on <span> (x), close the modal
+          // When the user clicks the button, envía un CUADRADO al otro jugador
           span2.onclick = function() {
             alert ("¡El objeto fue enviado satisfactoriamente! ");
             node.say('Dar', otroJugador, 'Cuadrado');
             W.getElementById('myModal').style.display = "none";
           }
 
+          // var drag1 = W.getElementById('drag1');
+          // drag1.ondragstart = function () {
+          //   drag1.dataTransfer.setData('Tipo', 0);
+          //   var datos = drag1.dataTransfer.getData('Tipo');
+          //   W.setInnerHTML('prueb', datos);
+          // }
+          //
+          // var drag2 = W.getElementById('drag2');
+          // drag2.ondragstart = function () {
+          //   W.setInnerHTML('prueb', 'Cuadrado');
+          // }
+
+          // W.addEventListener("dragover", function(event) {
+          //     event.preventDefault();
+          // });
+
+          // var izqPareja = W.getElementById('Par1');
+          // izqPareja.ondrop = function () {
+          //   izqPareja.preventDefault();
+          //   W.setInnerHTML('prueb', 'Izquierdo');
+          // }
+
+          node.on.data('Prueba', function() {
+            W.setInnerHTML('prueb', 'Andando');
+          });
+
           node.on.data('Dar', function(msg) {
-// MODIFICAR ESTA PARTE!!!!!!!!!
-            // cantidadJarra1 = cantidadJarra1 + 1;
-            // W.setInnerHTML('jarra1', cantidadJarra1);
-            W.setInnerHTML('jarra1', msg.data);
+            if (msg.data == 'Circulo') {
+              cantidadJarra1 = cantidadJarra1 + 1;
+              W.setInnerHTML('jarra1', cantidadJarra1);
+            }
           });
 
           node.on.data('Prueba', function(msg) {
