@@ -97,7 +97,7 @@
 <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
 </div>
 
-<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><span id='prueb'>AQUI</span></div>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><span id='Puntaje'>AQUI PUNTAJE</span></div>
 
                 <DIV STYLE="position:absolute; top:400px; left:760px; visibility:visible z-index:1"><!--SELECTOR DE OPCIONES 'select'-->
                     <img src='Paren_der.png' draggable="false"
@@ -105,11 +105,11 @@
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:330px; left:980px; visibility:visible z-index:1">
-                    <img id='aCanasta' src="a_canasta.png" draggable="false" align="right" width="280" height="258" alt=""/> <!--imagen de la canasta-->
+                    <img src="a_canasta.png" draggable="false" align="right" width="280" height="258" alt=""/> <!--imagen de la canasta-->
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:500px; left:740px; visibility:visible z-index:1">
-                    <img src="BotonToBasket.png" draggable="false" width="295" height="158" onclick="suma()" id="botonVerde" alt=""/> <!--imagen boton verde grande -->
+                    <img src="BotonToBasket.png" draggable="false" width="295" height="158" id="botonVerde" alt=""/> <!--imagen boton verde grande -->
                 </DIV>
             </p>
         </div>
@@ -165,44 +165,30 @@
 <div id="myModal2" class="modal">
   <div class="modal-content">
         <h1><p align="center">
-            <big>TALK TO...</big>
+            TALK TO PARTNER
         </p></h1>
+        <div> <img src="bubble.png" width="300" height="150"> </div>
 
-        <p>
-            <DIV STYLE="position:absolute; top:80px; left:190px; visibility:visible z-index:1"> <!--imagen del la ventana-->
-                <img src="window.png" width="630" height="368.54">
-            </DIV>
-
-            <DIV STYLE="position:absolute; top:160px; left:490px; visibility:visible z-index:1">
-                <img src="player.png" width="233.33" height="294.53" onclick="validar().prueba"/> <!--imagen del hombre-->
-            </DIV>
-
-            <DIV STYLE="position:absolute; top:440px; left:270px; visibility:visible z-index:1">
-                <b><h1><font face="arial" color="black">YOU WANT TO SAY:</font></h1></b>
-            </DIV>
-
-<!--            <DIV STYLE="position:absolute; top:520px; left:580px; visibility:visible z-                         index:1">
-                <a href="game.htm"><img src="BotonOK.png" width="130" height="130" alt=""/></a>
-            </DIV>
--->
+        <div>
+          <b><h1><font face="arial" color="black">YOU WANT TO SAY:</font></h1></b>
+        </div>
             <DIV STYLE="position:absolute; top:290px; left:900px; visibility:visible z-index:1">
-                <b><h1><font face="arial" color="black">Press the word <br /> you want to say</font></h1></b>
+                <b><h5><font face="arial" color="black">Press the word <br /> you want to say</font></h5></b>
             </DIV>
 
             <DIV STYLE="position:absolute; top:410px; left:900px; visibility:visible z-index:1"> <!--imagen del boton ZAB-->
-                <img src="ZABbutton.png" width="222.22" height="80" alt=""/>
+                <img id='ZABbutton' src="ZABbutton.png" width="222.22" height="80" alt=""/>
             </DIV>
 
             <DIV STYLE="position:absolute; top:410px; left:980px; visibility:visible z-index:1">
             </DIV>
 
             <DIV STYLE="position:absolute; top:510px; left:900px; visibility:visible z-index:1"> <!--imagen del boton XOL-->
-                <img src="XOLbutton.png" width="222.22" height="80" alt=""/>
+                <img id='XOLbutton' src="XOLbutton.png" width="222.22" height="80" alt=""/>
             </DIV>
 
             <DIV STYLE="position:absolute; top:510px; left:980px; visibility:visible z-index:1">
             </DIV>
-        </p>
     </div>
 </div>
 
