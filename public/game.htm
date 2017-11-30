@@ -118,12 +118,12 @@
 
         <div>
             <p>
-                <DIV STYLE="position:absolute; top:400px; left:170px; visibility:visible z-index:1">
-                    <img id="drag1" draggable="true" src="circle.png" alt="" width="90" height="79"/> <!--imagen del circulo-->
+                <DIV STYLE="position:absolute; top:395px; left:175px; visibility:visible z-index:1">
+                    <img id="drag1" draggable="true" src="circle.png" alt="" width="80" height="80"/> <!--imagen del circulo-->
                 </DIV>
 
-                <DIV STYLE="position:absolute; top:400px; left:370px; visibility:visible z-index:1">
-                    <img id="drag2" draggable="true" src="square.png" width="90" height="79" alt=""/> <!--imagen del cuadrado-->
+                <DIV STYLE="position:absolute; top:400px; left:368px; visibility:visible z-index:1">
+                    <img id="drag2" draggable="true" src="square.png" width="80" height="80" alt=""/> <!--imagen del cuadrado-->
                 </DIV>
             </p>
             <p>
@@ -257,7 +257,7 @@
               document.getElementById("Puntaje").innerHTML = data;
               console.log('Se enviaron datos', data);
               node.emit('Arrastrar', data);
-              // event.target.appendChild(document.getElementById(data));
+              event.target.appendChild(document.getElementById(data));
 
           }
       });
