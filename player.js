@@ -116,7 +116,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           var btnArmarPareja = W.getElementById('botonVerde');
           var span3 = W.getElementById('ZABbutton'); // Boton en modal2 de decir ZAB
           var span4 = W.getElementById('XOLbutton'); // Boton en modal2 de decir XOL
-          var span5 = W.getElementById('botIgn'); //Boton en modal que ignora llamado
 
           // node.game.other_player = otroJugador;
 
@@ -131,7 +130,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           btn.onclick = function() {
               W.getElementById('myModal2').style.display = "block";
           }
-
+          //When the user clicks the button, envía "XOL" al otro jugador
+          span4.onclick=function(){
+            alert('¡Mensaje enviado!');
+            W.getElementById('myModal2').style.display="";
+            node.say('Comunicacion', otroJugador, 'XOL');
+          }
+          //When the user clicks the button, envía "ZAB" al otro jugador
           span3.onclick = function() {
               alert('¡Mensaje enviado!');
               W.getElementById('myModal2').style.display = "";
@@ -139,7 +144,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           }
 
           // When the user clicks the button, envía un CIRCULO al otro jugador
-          span1.onclick = function() {
+           span1.onclick = function() {
             if (cantidadJarra1 > 0){
               alert ("¡El objeto fue enviado satisfactoriamente! ");
               node.say('Dar', otroJugador, 'Circulo');
@@ -166,10 +171,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               alert ("¡No hay objetos de este tipo! ");
               W.getElementById('myModal').style.display = "none";
             }
-          }
-
-          span5.onclick = function(){
-            W.getElementById('myModal').style.display = "";
           }
 
           // Cuando el usuario da click, calcula los puntos
