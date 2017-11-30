@@ -52,14 +52,6 @@
     <body>
 
         <h1><p align="center"><big><font size=10 face="arial">Main view</font></big></p></h1>
-<!--
-        <div>
-            <p>
-                <DIV STYLE="position:absolute; top:150px; left:870px; visibility:visible z-index:1">
-                </DIV>
-            </p>
-        </div>
--->
         <div>
             <p>
                 <DIV STYLE="position:absolute; top:155px; left:300px; visibility:visible z-index:1">
@@ -80,29 +72,25 @@
         <div>
             <p>
                 <DIV STYLE="position:absolute; top:315px; left:620px; visibility:visible z-index:1">
+                  <h1>
+                      <font face="arial">Your points:</font> <span id = "Puntaje"></span>
+                  </h1>
+
                     <h2>
                         <font face="arial">Select objects for the pair:</font>
                     </h2>
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:400px; left:640px; visibility:visible z-index:1"><!--SELECTOR DE OPCIONES 'select'-->
-                    <img id='Par1' draggable="false"
-                        src='par_iz.jpg' width="100" height="70">
-<!--                    <select id=select_Jar1>
-                        <option value = "opciones">Opciones:</option>
-                        <option value="circulo">CIRCULO</option>
-                        <option value="cuadrado">CUADRADO</option>
-                    </select>
--->
-                </DIV>
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-</div>
+                        <div class="droptarget" id = "Izquierdo">
+                          <img id="parIzCir" style="display: none;" draggable="false" src="circle.png" width="40" height="40"/>
+                          <img id="parIzCuad" style="display: none;" draggable="false" src="square.png" width="40" height="40"/>
+                        </div>
 
-<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><span id='Puntaje'>AQUI PUNTAJE</span></div>
-
-                <DIV STYLE="position:absolute; top:400px; left:760px; visibility:visible z-index:1"><!--SELECTOR DE OPCIONES 'select'-->
-                    <img src='par_der.jpg' draggable="false"
-                         width="30" height="50">
+                        <div class="droptarget" id = "Derecho">
+                          <img id="parDerCir" style="display: none;" draggable="false" src="circle.png" width="40" height="40"/>
+                          <img id="parDerCuad" style="display: none;" draggable="false" src="square.png" width="40" height="40"/>
+                        </div>
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:330px; left:980px; visibility:visible z-index:1">
@@ -130,7 +118,7 @@
                 <DIV STYLE="position:absolute; top:467px; left:150px; visibility:visible z-index:1">
                     <img src="jar.png" draggable="false" width="145" height="145" alt=""/> <!--imagen del tarro #1-->
 
-                    <p id="demo"></p>
+                    <p id="demo" style="display: none;"></p>
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:495px; left:208px; visibility:visible z-index:1">
@@ -191,12 +179,6 @@
     </div>
 </div>
 
-<p>Drag the p element back and forth between the two rectangles:</p>
-
-<div class="droptarget"></div>
-
-<div class="droptarget"></div>
-
 </body>
 </html>
 
@@ -256,8 +238,9 @@
               var data = event.dataTransfer.getData("Text");
               document.getElementById("Puntaje").innerHTML = data;
               console.log('Se enviaron datos', data);
-              node.emit('Arrastrar', data);
-              event.target.appendChild(document.getElementById(data));
+              console.log('Se arrastro en el', event.target.id)
+              node.emit('Arrastrar', [data, event.target.id]);
+              // event.target.appendChild(document.getElementById(data));
 
           }
       });

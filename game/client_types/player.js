@@ -109,9 +109,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           var otroJugador = MESSAGE[0];
           var cantidadJarra1 = MESSAGE[1];
           var cantidadJarra2 = MESSAGE[2];
-          var puntaje; // Variable para el puntaje
+          var puntaje = 0; // Variable para el puntaje
           var derPareja; // Argumento derecho de la pareja
-          var IzqPareja; // Argumento izquierdo de la pareja
+          var izqPareja; // Argumento izquierdo de la pareja
           var btn = W.getElementById("myBtn"); // Boton que abre modal
           var span1 = W.getElementById('botCirc'); // Boton en modal de enviar círculo
           var span2 = W.getElementById('botCuad'); // Boton en modal de enviar cuadrado
@@ -137,6 +137,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               W.getElementById('myModal2').style.display = "block";
           }
 
+          //When the user clicks the button, envía "ZAB" al otro jugador
           span3.onclick = function() {
               alert('¡Mensaje enviado!');
               W.getElementById('myModal2').style.display = "";
@@ -180,14 +181,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
           }
 
+          //When the user clicks the button, ignora al otro jugador
           span5.onclick = function(){
             W.getElementById('myModal').style.display = "";
           }
 
           // Cuando el usuario da click, calcula los puntos
-          var puntaje = 0;
-          var izqPareja = 'Circulo';
-          var derPareja = 'Cuadrado';
+          izqPareja = 'Circulo';
+          // derPareja = 'Cuadrado';
+          derPareja = 'Circulo';
           btnArmarPareja.onclick = function() {
             if (izqPareja != derPareja) {
               puntaje = puntaje + 5;
@@ -196,11 +198,23 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               W.setInnerHTML('jarra1', cantidadJarra1);
               W.setInnerHTML('jarra2', cantidadJarra2);
               W.setInnerHTML('Puntaje', puntaje);
+              // AQUI ORDEN DE BORRAR LAS IMAGENES DE LA PAREJA
+              // AQUI ORDEN DE izqPareja y derPareja son ""
             }
             else {
-              if (izqPareja == derPareja) {
               puntaje = puntaje + 1;
-              // debe haber una instrucción "w.setInnerHTML('Puntaje', puntaje);"
+              W.setInnerHTML('Puntaje', puntaje);
+              if (izqPareja == 'Circulo') {
+                cantidadJarra1 = cantidadJarra1 - 2;
+                W.setInnerHTML('jarra1', cantidadJarra1);
+                // AQUI ORDEN DE BORRAR LAS IMAGENES DE LA PAREJA
+                // AQUI ORDEN DE izqPareja y derPareja son ""
+              }
+              if (izqPareja == 'Cuadrado') {
+                cantidadJarra2 = cantidadJarra2 - 2;
+                W.setInnerHTML('jarra2', cantidadJarra2);
+                // AQUI ORDEN DE BORRAR LAS IMAGENES DE LA PAREJA
+                // AQUI ORDEN DE izqPareja y derPareja son ""
               }
             }
             if ((izqPareja == null) || (derPareja == null)) {
@@ -229,6 +243,35 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
           node.on('Arrastrar', function(msg) {
             console.log('Arrastrar', msg);
+            if (msg[0] == 'drag1') {
+              if (cantidadJarra1 > 0) {
+                if (msg[1] == 'Izquierdo') {
+                  W.getElementById("parIzCir").style.display = "";
+                  W.getElementById("parIzCuad").style.display = "none";
+                  izqPareja = 'Circulo';
+                }
+                if (msg[1] == 'Derecho') {
+                  W.getElementById("parDerCir").style.display = "";
+                  W.getElementById("parDerCuad").style.display = "none";
+                  derPareja = 'Circulo';
+                }
+              }
+            }
+            if (msg[0] == 'drag2') {
+              if (cantidadJarra2 > 0) {
+                if (msg[1] == 'Izquierdo') {
+                  W.getElementById("parIzCir").style.display = "none";
+                  W.getElementById("parIzCuad").style.display = "";
+                  izqPareja = 'Cuadrado';
+                }
+                if (msg[1] == 'Derecho') {
+                  console.log('EEEEEE')
+                  W.getElementById("parDerCir").style.display = "none";
+                  W.getElementById("parDerCuad").style.display = "";
+                  derPareja = 'Cuadrado';
+                }
+              }
+            }
           });
 
         }); // End on.data "settings"
