@@ -99,7 +99,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
       cb: function() {
 
 //////////////////////////////////////////////////////////////////////////
-// AQUI COMIENZA LA ACCION
+//////////////////////////////////////////////////////////////////////////
+//                     AQUI COMIENZA LA ACCION                          //
+/////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
         node.on.data('Settings', function(msg) {
 
@@ -116,6 +118,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           var btnArmarPareja = W.getElementById('botonVerde');
           var span3 = W.getElementById('ZABbutton'); // Boton en modal2 de decir ZAB
           var span4 = W.getElementById('XOLbutton'); // Boton en modal2 de decir XOL
+          var span5 = W.getElementById('botIgn'); //Boton ignorar llamado
 
           // node.game.other_player = otroJugador;
 
@@ -125,6 +128,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           W.setInnerHTML('jarra1', cantidadJarra1);
           W.setInnerHTML('jarra2', cantidadJarra2);
 
+          //////////////////////////////////////////////////////////////////////////
+          //                     BOTONES                                          //
+          /////////////////////////////////////////////////////////////////////////
 
           // When the user clicks the button, open the modal de TALK TO
           btn.onclick = function() {
@@ -135,6 +141,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               alert('¡Mensaje enviado!');
               W.getElementById('myModal2').style.display = "";
               node.say('Comunicacion', otroJugador, 'ZAB');
+          }
+
+          //When the user clicks the button, envía "XOL" al otro jugador
+          span4.onclick=function(){
+            alert('¡Mensaje enviado!');
+            W.getElementById('myModal2').style.display="";
+            node.say('Comunicacion', otroJugador, 'XOL');
           }
 
           // When the user clicks the button, envía un CIRCULO al otro jugador
@@ -167,6 +180,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
           }
 
+          span5.onclick = function(){
+            W.getElementById('myModal').style.display = "";
+          }
+
           // Cuando el usuario da click, calcula los puntos
           var puntaje = 0;
           var izqPareja = 'Circulo';
@@ -176,9 +193,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               puntaje = puntaje + 5;
               cantidadJarra1 = cantidadJarra1 - 1;
               cantidadJarra2 = cantidadJarra2 - 1;
-              w.setInnerHTML('jarra1', cantidadJarra1);
-              w.setInnerHTML('jarra2', cantidadJarra2);
-              w.setInnerHTML('Puntaje', puntaje);
+              W.setInnerHTML('jarra1', cantidadJarra1);
+              W.setInnerHTML('jarra2', cantidadJarra2);
+              W.setInnerHTML('Puntaje', puntaje);
             }
             else {
               if (izqPareja == derPareja) {
@@ -186,12 +203,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               // debe haber una instrucción "w.setInnerHTML('Puntaje', puntaje);"
               }
             }
-            if (izqPareja || derPareja == null) {
+            if ((izqPareja == null) || (derPareja == null)) {
               alert ("Debe seleccionar otro objeto");
             }
           }
 
-
+          //////////////////////////////////////////////////////////////////////////
+          //                     INTERACCIONES                                   //
+          /////////////////////////////////////////////////////////////////////////
           node.on.data('Comunicacion', function(msg) {
             W.getElementById('myModal').style.display = 'block';
             W.setInnerHTML('Mensaje', msg.data);
@@ -208,9 +227,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             }
           });
 
-          node.on.data('Prueba', function(msg) {
-            // console.log('Intento', msg.data);
-            W.setInnerHTML('jarra1', 'Whaaat!');
+          node.on('Arrastrar', function(msg) {
+            console.log('Arrastrar', msg);
           });
 
         }); // End on.data "settings"
