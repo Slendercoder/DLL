@@ -204,8 +204,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               W.setInnerHTML('jarra1', cantidadJarra1);
               W.setInnerHTML('jarra2', cantidadJarra2);
               W.setInnerHTML('Puntaje', puntaje);
-              // AQUI ORDEN DE BORRAR LAS IMAGENES DE LA PAREJA
-              // AQUI ORDEN DE izqPareja y derPareja son ""
+              W.getElementById('parIzCir').style.display = "none";
+              W.getElementById('parIzCuad').style.display = "none";
+              W.getElementById('parDerCir').style.display = "none";
+              W.getElementById('parDerCuad').style.display = "none";
             }
             else {
               puntaje ++;
@@ -213,14 +215,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               if (izqPareja == 'Circulo') {
                 cantidadJarra1 -=2;
                 W.setInnerHTML('jarra1', cantidadJarra1);
-                // AQUI ORDEN DE BORRAR LAS IMAGENES DE LA PAREJA
-                // AQUI ORDEN DE izqPareja y derPareja son ""
+                W.getElementById('parIzCir').style.display = "none";
+                W.getElementById('parDerCir').style.display = "none";
               }
               if (izqPareja == 'Cuadrado') {
                 cantidadJarra2 -=2;
                 W.setInnerHTML('jarra2', cantidadJarra2);
-                // AQUI ORDEN DE BORRAR LAS IMAGENES DE LA PAREJA
-                // AQUI ORDEN DE izqPareja y derPareja son ""
+                W.getElementById('parIzCuad').style.display = "none";
+                W.getElementById('parDerCuad').style.display = "none";
               }
             }
             if ((izqPareja == null) || (derPareja == null)) {
