@@ -243,28 +243,28 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
           node.on('Arrastrar', function(msg) {
             console.log('Arrastrar', msg);
-            if (msg[0] == 'drag1') {
+            if (msg[0] == 'drag1') {    // Se está arrastrando un círculo
               if (cantidadJarra1 > 0) {
-                if (msg[1] == 'Izquierdo') {
+                if (msg[1] == 'Izquierdo') { // Se arrastra al lado izquierdo
                   W.getElementById("parIzCir").style.display = "";
                   W.getElementById("parIzCuad").style.display = "none";
                   izqPareja = 'Circulo';
                 }
-                if (msg[1] == 'Derecho') {
+                if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
                   W.getElementById("parDerCir").style.display = "";
                   W.getElementById("parDerCuad").style.display = "none";
                   derPareja = 'Circulo';
                 }
               }
             }
-            if (msg[0] == 'drag2') {
+            if (msg[0] == 'drag2') {    // Se está arrastrando un cuadrado
               if (cantidadJarra2 > 0) {
-                if (msg[1] == 'Izquierdo') {
+                if (msg[1] == 'Izquierdo') {    // Se arrastra al lado izquierdo
                   W.getElementById("parIzCir").style.display = "none";
                   W.getElementById("parIzCuad").style.display = "";
                   izqPareja = 'Cuadrado';
                 }
-                if (msg[1] == 'Derecho') {
+                if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
                   console.log('EEEEEE')
                   W.getElementById("parDerCir").style.display = "none";
                   W.getElementById("parDerCuad").style.display = "";
