@@ -119,7 +119,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           var span3 = W.getElementById('ZABbutton'); // Boton en modal2 de decir ZAB
           var span4 = W.getElementById('XOLbutton'); // Boton en modal2 de decir XOL
           var span5 = W.getElementById('botIgn'); //Boton ignorar llamado
-
+          var span6 = W.getElementById('exitButton'); //Boton de exit
           // node.game.other_player = otroJugador;
 
           // Initialize the window for the game
@@ -136,32 +136,37 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           btn.onclick = function() {
               W.getElementById('myModal2').style.display = "block";
           }
+          //When the user clicks the button, close the modal de TALK TO
+          span6.onclick=function(){
+            W.getElementById('myModal2').style.display="";
+          }
 
           //When the user clicks the button, envía "ZAB" al otro jugador
           span3.onclick = function() {
-              alert('¡Mensaje enviado!');
+              alert('Message sent succesfully!');
               W.getElementById('myModal2').style.display = "";
-              node.say('Comunicacion', otroJugador, 'ZAB');
+              node.say('Comunicacion', otroJugador, '"ZAB"');
+
           }
 
           //When the user clicks the button, envía "XOL" al otro jugador
           span4.onclick=function(){
-            alert('¡Mensaje enviado!');
+            alert('Message sent succesfully!');
             W.getElementById('myModal2').style.display="";
-            node.say('Comunicacion', otroJugador, 'XOL');
+            node.say('Comunicacion', otroJugador, '"XOL"');
           }
 
           // When the user clicks the button, envía un CIRCULO al otro jugador
           span1.onclick = function() {
             if (cantidadJarra1 > 0){
-              alert ("¡El objeto fue enviado satisfactoriamente! ");
+              alert ("The item has been sent succesfully! ");
               node.say('Dar', otroJugador, 'Circulo');
               W.getElementById('myModal').style.display = "none";
-              cantidadJarra1 = cantidadJarra1 - 1;
+              cantidadJarra1 --;
               W.setInnerHTML('jarra1', cantidadJarra1);
             }
             else {
-              alert ("¡No hay objetos de este tipo! ");
+              alert ("There are no such items! ");
               W.getElementById('myModal').style.display = "none";
             }
           }
@@ -169,14 +174,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           // When the user clicks the button, envía un CUADRADO al otro jugador
           span2.onclick = function() {
             if (cantidadJarra2 > 0){
-              alert ("¡El objeto fue enviado satisfactoriamente! ");
+              alert ("The item has been sent succesfully! ");
+
               node.say('Dar', otroJugador, 'Cuadrado');
               W.getElementById('myModal').style.display = "none";
-              cantidadJarra2 = cantidadJarra2 - 1;
+              cantidadJarra2 --;
               W.setInnerHTML('jarra2', cantidadJarra2);
             }
             else {
-              alert ("¡No hay objetos de este tipo! ");
+              alert ("There are no such items! ");
               W.getElementById('myModal').style.display = "none";
             }
           }
@@ -192,9 +198,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           derPareja = 'Circulo';
           btnArmarPareja.onclick = function() {
             if (izqPareja != derPareja) {
-              puntaje = puntaje + 5;
-              cantidadJarra1 = cantidadJarra1 - 1;
-              cantidadJarra2 = cantidadJarra2 - 1;
+              puntaje +=5;
+              cantidadJarra1 --;
+              cantidadJarra2 --;
               W.setInnerHTML('jarra1', cantidadJarra1);
               W.setInnerHTML('jarra2', cantidadJarra2);
               W.setInnerHTML('Puntaje', puntaje);
@@ -202,23 +208,23 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               // AQUI ORDEN DE izqPareja y derPareja son ""
             }
             else {
-              puntaje = puntaje + 1;
+              puntaje ++;
               W.setInnerHTML('Puntaje', puntaje);
               if (izqPareja == 'Circulo') {
-                cantidadJarra1 = cantidadJarra1 - 2;
+                cantidadJarra1 -=2;
                 W.setInnerHTML('jarra1', cantidadJarra1);
                 // AQUI ORDEN DE BORRAR LAS IMAGENES DE LA PAREJA
                 // AQUI ORDEN DE izqPareja y derPareja son ""
               }
               if (izqPareja == 'Cuadrado') {
-                cantidadJarra2 = cantidadJarra2 - 2;
+                cantidadJarra2 -=2;
                 W.setInnerHTML('jarra2', cantidadJarra2);
                 // AQUI ORDEN DE BORRAR LAS IMAGENES DE LA PAREJA
                 // AQUI ORDEN DE izqPareja y derPareja son ""
               }
             }
             if ((izqPareja == null) || (derPareja == null)) {
-              alert ("Debe seleccionar otro objeto");
+              alert ("You must select a different item");
             }
           }
 
@@ -232,13 +238,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
           node.on.data('Dar', function(msg) {
             if (msg.data == 'Circulo') {
-              cantidadJarra1 = cantidadJarra1 + 1;
+              cantidadJarra1 ++;
               W.setInnerHTML('jarra1', cantidadJarra1);
             }
+
             else if (msg.data == 'Cuadrado') {
-              cantidadJarra2 = cantidadJarra2 + 1;
+              cantidadJarra2 ++;
               W.setInnerHTML('jarra2', cantidadJarra2);
             }
+            alert("You have received an item!");
           });
 
           node.on('Arrastrar', function(msg) {
@@ -249,11 +257,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                   W.getElementById("parIzCir").style.display = "";
                   W.getElementById("parIzCuad").style.display = "none";
                   izqPareja = 'Circulo';
+                  if(cantidadJarra1==1&&derPareja=='Circulo'){ //Si el UNICO circulo disponible está del lado derecho y se intenta poner otro en el lado izqaierdo, lo reemplaza
+                    W.getElementById("parDerCir").style.display="none";
+                  }
                 }
                 if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
                   W.getElementById("parDerCir").style.display = "";
                   W.getElementById("parDerCuad").style.display = "none";
                   derPareja = 'Circulo';
+                  if(cantidadJarra1==1&&izqPareja=='Circulo'){ //Si el UNICO circulo disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
+                    W.getElementById("parIzCir").style.display="none";
+                  }
                 }
               }
             }
@@ -263,12 +277,18 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                   W.getElementById("parIzCir").style.display = "none";
                   W.getElementById("parIzCuad").style.display = "";
                   izqPareja = 'Cuadrado';
+                  if(cantidadJarra2==1&&derPareja=='Cuadrado'){ //Si el UNICO cuadrado disponible está del lado derecho y se intenta poner otro en el lado izqaierdo, lo reemplaza
+                    W.getElementById("parDerCuad").style.display="none";
+                  }
                 }
                 if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
                   console.log('EEEEEE')
                   W.getElementById("parDerCir").style.display = "none";
                   W.getElementById("parDerCuad").style.display = "";
                   derPareja = 'Cuadrado';
+                  if(cantidadJarra2==1&&izqPareja=='Cuadrado'){ //Si el UNICO cuadrado disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
+                    W.getElementById("parIzCuad").style.display="none";
+                  }
                 }
               }
             }

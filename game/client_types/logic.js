@@ -84,12 +84,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         console.log('Jugadores: ' + players)
 
-        var cantidadTipo1= Math.floor(Math.random()*10);
-        var cantidadTipo2 = Math.floor(Math.random()*10);
+        var cantidadTipo1= 16;
+        var cantidadTipo2 = 4;
 
-        while (cantidadTipo1 == cantidadTipo2){
-          cantidadTipo1= Math.floor(Math.random()*10);
-        }
+        //while (cantidadTipo1 == cantidadTipo2){
+          //cantidadTipo1= Math.floor(Math.random()*10);
+        //}
 
         node.say('Settings', players[0],
                  [players[1], cantidadTipo1, cantidadTipo2]);
