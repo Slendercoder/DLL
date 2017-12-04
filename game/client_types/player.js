@@ -193,14 +193,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           }
 
           // Cuando el usuario da click, calcula los puntos
-          izqPareja = 'Circulo';
+          izqPareja = 'Cuadrado';
           // derPareja = 'Cuadrado';
           derPareja = 'Circulo';
           btnArmarPareja.onclick = function() {
-            if (cantidadJarra1 <= 0 || cantidadJarra2 <= 0) {
-              alert("You don't have enough elements for this pair!");
-            }
-            else if (izqPareja != derPareja) {
+            if (izqPareja != derPareja) {
+              if (cantidadJarra1 == 0 || cantidadJarra2 == 0) {
+                alert("You don't have enough elements for this pair!");
+              }
+              else {
               puntaje +=5;
               cantidadJarra1 --;
               cantidadJarra2 --;
@@ -212,21 +213,31 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               W.getElementById('parDerCir').style.display = "none";
               W.getElementById('parDerCuad').style.display = "none";
             }
+            }
             else {
               puntaje ++;
               W.setInnerHTML('Puntaje', puntaje);
               if (izqPareja == 'Circulo') {
+                if (cantidadJarra1 == 0) {
+                alert("You don't have enough elements for this pair!");
+                }
+                else {
                 cantidadJarra1 -=2;
                 W.setInnerHTML('jarra1', cantidadJarra1);
                 W.getElementById('parIzCir').style.display = "none";
                 W.getElementById('parDerCir').style.display = "none";
-              }
+                }
+                }
               if (izqPareja == 'Cuadrado') {
-                cantidadJarra2 -=2;
+                if (cantidadJarra2 == 0) {
+                alert("You don't have enough elements for this pair!");
+                }
+                else {cantidadJarra2 -=2;
                 W.setInnerHTML('jarra2', cantidadJarra2);
                 W.getElementById('parIzCuad').style.display = "none";
                 W.getElementById('parDerCuad').style.display = "none";
               }
+            }
             }
             if ((izqPareja == null) || (derPareja == null)) {
               alert ("You must select a different item");
