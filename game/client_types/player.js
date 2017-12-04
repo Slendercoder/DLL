@@ -197,7 +197,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           // derPareja = 'Cuadrado';
           derPareja = 'Circulo';
           btnArmarPareja.onclick = function() {
-            if (izqPareja != derPareja) {
+            if (cantidadJarra1 <= 0 || cantidadJarra2 <= 0) {
+              alert("You don't have enough elements for this pair!");
+            }
+            else if (izqPareja != derPareja) {
               puntaje +=5;
               cantidadJarra1 --;
               cantidadJarra2 --;
