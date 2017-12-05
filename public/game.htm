@@ -234,7 +234,7 @@
               document.getElementById("demo").style.color = "";
               event.target.style.border = "";
               var data = event.dataTransfer.getData("Text");
-              document.getElementById("Puntaje").innerHTML = data;
+              //document.getElementById("Puntaje").innerHTML = data;
               console.log('Se enviaron datos', data);
               console.log('Se arrastro en el', event.target.id)
               node.emit('Arrastrar', [data, event.target.id]);

@@ -41,13 +41,14 @@ module.exports = {
      * used to initialize the game timer for the step.
      */
     TIMER: {
-        instructions: 60000
+        instructions: 60000,
+        game: 120000,
     },
 
     // # Game specific properties
 
     // Number of game rounds repetitions.
-    REPEAT: 4,
+    REPEAT: 2,
 
     // Defines names for types of objects
     opciones: ['Xib', 'Zap', 'Nep', 'Cax'],
