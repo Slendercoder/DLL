@@ -107,19 +107,19 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         var MESSAGE = msg.data; //Message from logic with quantity of each type
         var otroJugador = MESSAGE[0];
-        var cantidadJarra1 = MESSAGE[1];
-        var cantidadJarra2 = MESSAGE[2];
+        var cantidadJarra1 = MESSAGE[1]; //Variable para la cantidad de círculos
+        var cantidadJarra2 = MESSAGE[2]; //Variable para la cantidad de cuadrados
         var puntaje = 0; // Variable para el puntaje
         var derPareja; // Argumento derecho de la pareja
         var izqPareja; // Argumento izquierdo de la pareja
         var btn = W.getElementById("myBtn"); // Boton que abre modal
         var span1 = W.getElementById('botCirc'); // Boton en modal de enviar círculo
         var span2 = W.getElementById('botCuad'); // Boton en modal de enviar cuadrado
-        var btnArmarPareja = W.getElementById('botonVerde');
+        var btnArmarPareja = W.getElementById('botonVerde'); //Boton "ToBasket"
         var span3 = W.getElementById('ZABbutton'); // Boton en modal2 de decir ZAB
         var span4 = W.getElementById('XOLbutton'); // Boton en modal2 de decir XOL
         var span5 = W.getElementById('botIgn'); //Boton ignorar llamado
-        var span6 = W.getElementById('exitButton'); //Boton de exit
+        var span6 = W.getElementById('exitButton'); //Boton de exit del modal
         // node.game.other_player = otroJugador;
 
         // Initialize the window for the game
@@ -195,8 +195,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
 
         // Cuando el usuario da click, calcula los puntos
-
-        // derPareja = 'Cuadrado';
         btnArmarPareja.onclick = function() {
           if((izqPareja=='')||(derPareja=='')){
             alert("You must drag an item");
@@ -264,12 +262,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         });
 
         node.on.data('Dar', function(msg) {
-          if (msg.data == 'Circulo') {
+          if (msg.data == 'Circulo') {    //Si el jugador recibe un circulo del otro jugador,
             cantidadJarra1 ++;
             W.setInnerHTML('jarra1', cantidadJarra1);
           }
 
-          else if (msg.data == 'Cuadrado') {
+          else if (msg.data == 'Cuadrado') { // Si el jugador recibe un cuadrado del otro jugador,
             cantidadJarra2 ++;
             W.setInnerHTML('jarra2', cantidadJarra2);
           }
@@ -279,7 +277,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         node.on('Arrastrar', function(msg) {
           console.log('Arrastrar', msg);
           if (msg[0] == 'drag1') {    // Se está arrastrando un círculo
-            //console.log('Arrastrar', msg);
             if (cantidadJarra1 > 0) {
               if (msg[1] == 'Izquierdo') { // Se arrastra al lado izquierdo
                 W.getElementById("parIzCir").style.display = "";
@@ -292,10 +289,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                   derPareja='';
                   izqPareja = 'Circulo';
 
-                //if((izqPareja=='')||(derPareja=='')){
-                  //alert("You must drag an item");
-
-                //}
+                
               }
 
               }

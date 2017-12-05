@@ -84,14 +84,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         console.log('Jugadores: ' + players)
 
-        var cantidadTipo1= 16;
+        var cantidadTipo1= 16; //Establece las cantidades iniciales de objetos por jugador
         var cantidadTipo2 = 4;
 
-        //while (cantidadTipo1 == cantidadTipo2){
-          //cantidadTipo1= Math.floor(Math.random()*10);
-        //}
 
-        node.say('Settings', players[0],
+        node.say('Settings', players[0], //Si un jugador tiene 16 círculos y 4 cuadrados, el otro tiene 16 cuadrados y 4 círculos
                  [players[1], cantidadTipo1, cantidadTipo2]);
         node.say('Settings', players[1],
                  [players[0], cantidadTipo2, cantidadTipo1]);
