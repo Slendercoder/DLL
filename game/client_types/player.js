@@ -242,9 +242,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 }
               }
             }
-            if ((izqPareja == null) || (derPareja == null)) {
-              alert ("You must select a different item");
-            }
+           
             W.getElementById('parIzCir').style.display = "none";
             W.getElementById('parIzCuad').style.display = "none";
             W.getElementById('parDerCir').style.display = "none";
