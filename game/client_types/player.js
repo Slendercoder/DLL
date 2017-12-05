@@ -19,15 +19,15 @@ var constants = ngc.constants;
 var publishLevels = constants.publishLevels;
 
 module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
-  
+
   var game;
-  
+
   stager.setOnInit(function() {
-    
+
     // Initialize the client.
-    
+
     var header, frame;
-    
+
     // // Bid is valid if it is a number between 0 and 100.
     // this.isValidBid = function(n) {
     //     return node.JSUS.isInt(n, -1, 101);
@@ -39,7 +39,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     //     offer.value = n;
     //     submitOffer.click();
     // };
-    
+
     // Function to add options to selections in HTML
     // seleccion es un W.getElementById tipo selection
     // optiones es una lista
@@ -55,56 +55,56 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         seleccion.appendChild(opt);
       }
     };
-    
+
     this.shuffle = function(array) {
       var currentIndex = array.length, temporaryValue, randomIndex;
-      
+
       // While there remain elements to shuffle...
       while (0 !== currentIndex) {
-        
+
         // Pick a remaining element...
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-        
+
         // And swap it with the current element.
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
       }
-      
+
       return array;
     };
-    
+
     // Setup page: header + frame.
     header = W.generateHeader();
     frame = W.generateFrame();
-    
+
     // Add widgets.
     this.visualRound = node.widgets.append('VisualRound', header);
     this.visualTimer = node.widgets.append('VisualTimer', header);
-    
+
     this.doneButton = node.widgets.append('DoneButton', header);
-    
+
     // Additional debug information while developing the game.
     // this.debugInfo = node.widgets.append('DebugInfo', header)
   });
-  
+
   stager.extendStep('instructions', {
     frame: 'instructions.htm'
   });
-  
+
   stager.extendStep('game', {
     donebutton: true,
     frame: 'game.htm',
     cb: function() {
-      
+
       //////////////////////////////////////////////////////////////////////////
       //////////////////////////////////////////////////////////////////////////
       //                     AQUI COMIENZA LA ACCION                          //
       /////////////////////////////////////////////////////////////////////////
       /////////////////////////////////////////////////////////////////////////
       node.on.data('Settings', function(msg) {
-        
+
         var MESSAGE = msg.data; //Message from logic with quantity of each type
         var otroJugador = MESSAGE[0];
         var cantidadJarra1 = MESSAGE[1];
@@ -121,7 +121,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         var span5 = W.getElementById('botIgn'); //Boton ignorar llamado
         var span6 = W.getElementById('exitButton'); //Boton de exit
         // node.game.other_player = otroJugador;
-        
+
         // Initialize the window for the game
         W.getElementById('myModal').style.display = '';
         W.getElementById('myModal2').style.display = '';
@@ -129,11 +129,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         W.setInnerHTML('jarra2', cantidadJarra2);
         izqPareja='';
         derPareja='';
-        
+
         //////////////////////////////////////////////////////////////////////////
         //                     BOTONES                                          //
         /////////////////////////////////////////////////////////////////////////
-        
+
         // When the user clicks the button, open the modal de TALK TO
         btn.onclick = function() {
           W.getElementById('myModal2').style.display = "block";
@@ -142,22 +142,22 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         span6.onclick=function(){
           W.getElementById('myModal2').style.display="";
         }
-        
+
         //When the user clicks the button, envía "ZAB" al otro jugador
         span3.onclick = function() {
           alert('Message sent succesfully!');
           W.getElementById('myModal2').style.display = "";
           node.say('Comunicacion', otroJugador, '"ZAB"');
-          
+
         }
-        
+
         //When the user clicks the button, envía "XOL" al otro jugador
         span4.onclick=function(){
           alert('Message sent succesfully!');
           W.getElementById('myModal2').style.display="";
           node.say('Comunicacion', otroJugador, '"XOL"');
         }
-        
+
         // When the user clicks the button, envía un CIRCULO al otro jugador
         span1.onclick = function() {
           if (cantidadJarra1 > 0){
@@ -172,12 +172,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.getElementById('myModal').style.display = "none";
           }
         }
-        
+
         // When the user clicks the button, envía un CUADRADO al otro jugador
         span2.onclick = function() {
           if (cantidadJarra2 > 0){
             alert ("The item has been sent succesfully! ");
-            
+
             node.say('Dar', otroJugador, 'Cuadrado');
             W.getElementById('myModal').style.display = "none";
             cantidadJarra2 --;
@@ -188,21 +188,21 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.getElementById('myModal').style.display = "none";
           }
         }
-        
+
         //When the user clicks the button, ignora al otro jugador
         span5.onclick = function(){
           W.getElementById('myModal').style.display = "";
         }
-        
+
         // Cuando el usuario da click, calcula los puntos
-        
+
         // derPareja = 'Cuadrado';
         btnArmarPareja.onclick = function() {
           if((izqPareja=='')||(derPareja=='')){
             alert("You must drag an item");
           }
           else{
-            
+
             if (izqPareja != derPareja) {
               if (cantidadJarra1 == 0 || cantidadJarra2 == 0) {
                 alert("You don't have enough elements for this pair!");
@@ -214,7 +214,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 W.setInnerHTML('jarra1', cantidadJarra1);
                 W.setInnerHTML('jarra2', cantidadJarra2);
                 W.setInnerHTML('Puntaje', puntaje);
-                
+
               }
             }
             else {
@@ -242,19 +242,19 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 }
               }
             }
-           
+
             W.getElementById('parIzCir').style.display = "none";
             W.getElementById('parIzCuad').style.display = "none";
             W.getElementById('parDerCir').style.display = "none";
             W.getElementById('parDerCuad').style.display = "none";
             izqPareja='';
             derPareja='';
-            
+
           }
-          
-          
+
+
         }
-        
+
         //////////////////////////////////////////////////////////////////////////
         //                     INTERACCIONES                                   //
         /////////////////////////////////////////////////////////////////////////
@@ -262,31 +262,42 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           W.getElementById('myModal').style.display = 'block';
           W.setInnerHTML('Mensaje', msg.data);
         });
-        
+
         node.on.data('Dar', function(msg) {
           if (msg.data == 'Circulo') {
             cantidadJarra1 ++;
             W.setInnerHTML('jarra1', cantidadJarra1);
           }
-          
+
           else if (msg.data == 'Cuadrado') {
             cantidadJarra2 ++;
             W.setInnerHTML('jarra2', cantidadJarra2);
           }
           alert("You have received an item!");
         });
-        
+
         node.on('Arrastrar', function(msg) {
           console.log('Arrastrar', msg);
           if (msg[0] == 'drag1') {    // Se está arrastrando un círculo
+            //console.log('Arrastrar', msg);
             if (cantidadJarra1 > 0) {
               if (msg[1] == 'Izquierdo') { // Se arrastra al lado izquierdo
                 W.getElementById("parIzCir").style.display = "";
                 W.getElementById("parIzCuad").style.display = "none";
                 izqPareja = 'Circulo';
+
                 if(cantidadJarra1==1&&derPareja=='Circulo'){ //Si el UNICO circulo disponible está del lado derecho y se intenta poner otro en el lado izqaierdo, lo reemplaza
                   W.getElementById("parDerCir").style.display="none";
-                }
+                  izqPareja='';
+                  derPareja='';
+                  izqPareja = 'Circulo';
+
+                //if((izqPareja=='')||(derPareja=='')){
+                  //alert("You must drag an item");
+
+                //}
+              }
+
               }
               if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
                 W.getElementById("parDerCir").style.display = "";
@@ -294,6 +305,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 derPareja = 'Circulo';
                 if(cantidadJarra1==1&&izqPareja=='Circulo'){ //Si el UNICO circulo disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
                   W.getElementById("parIzCir").style.display="none";
+                  izqPareja='';
+                  derPareja='';
+                  derPareja = 'Circulo';
                 }
               }
             }
@@ -306,6 +320,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 izqPareja = 'Cuadrado';
                 if(cantidadJarra2==1&&derPareja=='Cuadrado'){ //Si el UNICO cuadrado disponible está del lado derecho y se intenta poner otro en el lado izqaierdo, lo reemplaza
                   W.getElementById("parDerCuad").style.display="none";
+                  izqPareja='';
+                  derPareja='';
+                  izqPareja = 'Cuadrado';
                 }
               }
               if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
@@ -315,16 +332,19 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 derPareja = 'Cuadrado';
                 if(cantidadJarra2==1&&izqPareja=='Cuadrado'){ //Si el UNICO cuadrado disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
                   W.getElementById("parIzCuad").style.display="none";
+                  izqPareja='';
+                  derPareja='';
+                  derPareja = 'Cuadrado';
                 }
               }
             }
           }
         });
-        
+
       }); // End on.data "settings"
     }, // End cb function
   });// End extendstep "game"
-  
+
   stager.extendStep('end', {
     donebutton: false,
     frame: 'end.htm',
@@ -332,9 +352,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
       node.game.visualTimer.setToZero();
     }
   });
-  
+
   game = setup;
   game.plot = stager.getState();
   return game;
 };
-
