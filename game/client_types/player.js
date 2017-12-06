@@ -196,15 +196,18 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         // Cuando el usuario da click, calcula los puntos
         btnArmarPareja.onclick = function() {
+          //Evalua si alguna de las casillas esta vacía al hacer una pareja
           if((izqPareja=='')||(derPareja=='')){
             alert("You must drag an item");
           }
           else{
 
             if (izqPareja != derPareja) {
+              //Evalua si alguna de las cantiades de los elementos de las jarras es cero
               if (cantidadJarra1 == 0 || cantidadJarra2 == 0) {
                 alert("You don't have enough elements for this pair!");
               }
+              //Si hay dos elemento diferentes suma 5 puntos y resta en uno a los elementos
               else {
                 puntaje +=5;
                 cantidadJarra1 --;
@@ -215,6 +218,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
               }
             }
+            //Si los elementos de la pareja son iguales suma 1 punto y resta dos a la cantidad del elementos usado
             else {
               puntaje ++;
               W.setInnerHTML('Puntaje', puntaje);
@@ -240,7 +244,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 }
               }
             }
-
+            //Oculta los elementos de las casillas al oprimir "To basket"
             W.getElementById('parIzCir').style.display = "none";
             W.getElementById('parIzCuad').style.display = "none";
             W.getElementById('parDerCir').style.display = "none";
@@ -289,7 +293,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                   derPareja='';
                   izqPareja = 'Circulo';
 
-                
+
               }
 
               }
