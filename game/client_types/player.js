@@ -244,7 +244,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 }
               }
             }
-            //Oculta los elementos de las casillas al oprimir "To basket"
+            //Elimina los elementos de las casillas al oprimir "To basket"
             W.getElementById('parIzCir').style.display = "none";
             W.getElementById('parIzCuad').style.display = "none";
             W.getElementById('parDerCir').style.display = "none";
