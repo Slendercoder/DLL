@@ -343,6 +343,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     }, // End cb function
   });// End extendstep "game"
 
+  stager.extendStep('debrief', {
+    frame: 'debrief.htm'
+  });
+
   stager.extendStep('end', {
     donebutton: false,
     frame: 'end.htm',

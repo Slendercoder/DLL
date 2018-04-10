@@ -14,11 +14,12 @@ module.exports = function(stager, settings) {
      stager
         .next('instructions')
         .repeat('game', settings.REPEAT)
+        .next('debrief')
         .next('end')
         .gameover();
 
     // Modify the stager to skip one stage.
-    //stager.skip('instructions');
+    stager.skip('instructions');
 
     return stager.getState();
 };

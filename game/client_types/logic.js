@@ -32,7 +32,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     stager.extendStep('instructions', {
         cb: function() {
-            console.log('Instructions.');
+            console.log('Instructions...');
         }
     });
 
@@ -49,6 +49,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             console.log('\n%%%%%%%%%%%%%%%');
             console.log('Game round: ' + node.player.stage.round);
             doMatch();
+        }
+    });
+
+    stager.extendStep('debrief', {
+        cb: function() {
+          console.log('Debrief...');
         }
     });
 
@@ -86,7 +92,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         var cantidadTipo1= 16; //Establece las cantidades iniciales de objetos por jugador
         var cantidadTipo2 = 4;
-
 
         node.say('Settings', players[0], //Si un jugador tiene 16 círculos y 4 cuadrados, el otro tiene 16 cuadrados y 4 círculos
                  [players[1], cantidadTipo1, cantidadTipo2]);

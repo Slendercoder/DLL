@@ -50,8 +50,12 @@
         }
     </style>
     <body>
-
+        
+    
         <h1><p align="center"><big><font size=10 face="arial">Main view</font></big></p></h1>
+       <!-- <div align="center">
+          <span  id="Nombre1"></span>
+        </div>-->
         <div>
             <p>
                 <DIV STYLE="position:absolute; top:250px; left:200px; visibility:visible z-index:1">
@@ -72,9 +76,9 @@
                   </h1>
                 </DIV>
                 <DIV STYLE="position:absolute; top:360px; left:620px; visibility:visible z-index:1">
-                    <h2>
+                    <h3>
                         <font face="arial">Drag in here objects to form a pair:</font>
-                    </h2>
+                    </h3>
                 </DIV>
 
                 <DIV STYLE="position:absolute; top:400px; left:640px; visibility:visible z-index:1">
@@ -105,7 +109,7 @@
 
         <div>
             <p>
-                <DIV STYLE="position:absolute; top:395px; left:175px; visibility:visible z-index:1">
+                <DIV STYLE="position:absolute; top:395px; left:252px; visibility:visible z-index:1">
                    <!--imagen del circulo-->
                     <img id="drag1" draggable="true" src="circle.png" alt="" width="80" height="80"/>
                 </DIV>
@@ -114,21 +118,27 @@
                   <!--imagen del cuadrado-->
                     <img id="drag2" draggable="true" src="square.png" width="80" height="80" alt=""/>
                 </DIV>
+                
+                 <DIV STYLE="position:absolute; top:398px; left:130px; visibility:visible z-index:1">
+                  <!--imagen del triangulo-->
+                    <img id="drag2" draggable="true" src="triangle.png" width="80" height="80" alt=""/>
+                </DIV>
             </p>
             <p>
-                <DIV STYLE="position:absolute; top:467px; left:150px; visibility:visible z-index:1">
+                <DIV STYLE="position:absolute; top:467px; left:225px; visibility:visible z-index:1">
                   <!--imagen del tarro #1-->
                     <img src="jar.png" draggable="false" width="145" height="145" alt=""/>
 
                     <p id="demo" style="display: none;"></p>
                 </DIV>
 
-                <DIV STYLE="position:absolute; top:495px; left:208px; visibility:visible z-index:1">
+                <DIV STYLE="position:absolute; top:495px; left:188px; visibility:visible z-index:1">
                     <h1>
-                        <!--Cantidad de elementos de los circulos-->
-                        <font size=6><span id='jarra1'></span></font>
+                        <!--Cantidad de elementos de los triangulos-->
+                        <font size=6><span id='jarra3'></span>TR</font>
                     </h1>
                 </DIV>
+                
 
                 <DIV STYLE="position:absolute; top:467px; left:348px; visibility:visible z-index:1">
                   <!--imagen del tarro #2-->
@@ -138,9 +148,23 @@
                 <DIV STYLE="position:absolute; top:495px; left:402px; visibility:visible z-index:1">
                     <h1>
                         <!--Cantidad de elementos de los cuadrados-->
-                        <font size=6><span id='jarra2'></span></font>
+                        <font size=6><span id='jarra2'>CR</span></font>
                     </h1>
                 </DIV>
+                <DIV STYLE="position:absolute; top:467px; left:100px; visibility:visible z-index:1">
+                  <!--imagen del tarro #3-->
+                    <img src="jar.png" draggable="false" width="145" height="145" alt=""/>
+
+                    <p id="demo" style="display: none;"></p>
+                </DIV>
+
+                <DIV STYLE="position:absolute; top:495px; left:228px; visibility:visible z-index:1">
+                    <h1>
+                        <!--Cantidad de elementos de los circulos-->
+                        <font size=6><span id='jarra1'>CI</span></font>
+                    </h1>
+                </DIV>
+
             </p>
         </div>
 
