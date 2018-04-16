@@ -107,8 +107,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         var MESSAGE = msg.data; //Message from logic with quantity of each type
         var otroJugador = MESSAGE[0];
-        var cantidadJarra1 = MESSAGE[1]; //Variable para la cantidad de círculos
-        var cantidadJarra2 = MESSAGE[2]; //Variable para la cantidad de cuadrados
+        var Cantidades = MESSAGE[1];
+        var cantidadJarra1 = Cantidades[0]; //Variable para la cantidad de círculos
+        var cantidadJarra2 = Cantidades[1]; //Variable para la cantidad de círculos
+        var cantidadJarra3 = Cantidades[2]; //Variable para la cantidad de círculos
         var puntaje = 0; // Variable para el puntaje
         var derPareja; // Argumento derecho de la pareja
         var izqPareja; // Argumento izquierdo de la pareja

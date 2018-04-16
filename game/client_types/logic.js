@@ -90,13 +90,36 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         console.log('Jugadores: ' + players)
 
-        var cantidadTipo1= 16; //Establece las cantidades iniciales de objetos por jugador
-        var cantidadTipo2 = 4;
+        var x = Math.random();
+        if (x < 0.33333){
+          Cantidades1 = [4, 12, 12];
+          if (Math.random() < 0.5) {
+            Cantidades2 = [12, 4, 12];
+          } else {
+            Cantidades2 = [12, 12, 4];
+          }
+        } // Cierra if x < 0.33333
+        else if (x < 0.66666) {
+          Cantidades1 = [12, 4, 12];
+          if(Math.random() < 0.5) {
+            Cantidades2 = [4, 12, 12];
+          } else {
+            Cantidades2 = [12, 12, 4];
+          }
+        } // Cierra else if x < 0.66666
+        else {
+          Cantidades1 = [12, 12, 4];
+          if(Math.random() < 0.5) {
+            Cantidades2 = [4, 12, 12];
+          } else {
+            Cantidades2 = [12, 4, 12];
+          }
+        } // cierra el else
 
         node.say('Settings', players[0], //Si un jugador tiene 16 círculos y 4 cuadrados, el otro tiene 16 cuadrados y 4 círculos
-                 [players[1], cantidadTipo1, cantidadTipo2]);
+                 [players[1], Cantidades1]);
         node.say('Settings', players[1],
-                 [players[0], cantidadTipo2, cantidadTipo1]);
+                 [players[0], Cantidades2]);
     }
 
 };
