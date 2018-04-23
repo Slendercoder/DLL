@@ -91,35 +91,35 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         console.log('Jugadores: ' + players)
 
         var x = Math.random();
+        var Cantidades1, Cantidades2;
+
         if (x < 0.33333){
-          Cantidades1 = [4, 12, 12];
+          Cantidades1 = [4, 12, 12, 'Circulo'];
           if (Math.random() < 0.5) {
-            Cantidades2 = [12, 4, 12];
+            Cantidades2 = [12, 4, 12, 'Cuadrado'];
           } else {
-            Cantidades2 = [12, 12, 4];
+            Cantidades2 = [12, 12, 4, 'Triangulo'];
           }
         } // Cierra if x < 0.33333
         else if (x < 0.66666) {
-          Cantidades1 = [12, 4, 12];
+          Cantidades1 = [12, 4, 12, 'Cuadrado'];
           if(Math.random() < 0.5) {
-            Cantidades2 = [4, 12, 12];
+            Cantidades2 = [4, 12, 12, 'Circulo'];
           } else {
-            Cantidades2 = [12, 12, 4];
+            Cantidades2 = [12, 12, 4, 'Triangulo'];
           }
         } // Cierra else if x < 0.66666
         else {
-          Cantidades1 = [12, 12, 4];
+          Cantidades1 = [12, 12, 4, 'Triangulo'];
           if(Math.random() < 0.5) {
-            Cantidades2 = [4, 12, 12];
+            Cantidades2 = [4, 12, 12, 'Circulo'];
           } else {
-            Cantidades2 = [12, 4, 12];
+            Cantidades2 = [12, 4, 12, 'Cuadrado'];
           }
         } // cierra el else
 
-        node.say('Settings', players[0], //Si un jugador tiene 16 círculos y 4 cuadrados, el otro tiene 16 cuadrados y 4 círculos
-                 [players[1], Cantidades1]);
-        node.say('Settings', players[1],
-                 [players[0], Cantidades2]);
+        node.say('Settings', players[0], [players[1], Cantidades1]);
+        node.say('Settings', players[1], [players[0], Cantidades2]);
     }
 
 };
