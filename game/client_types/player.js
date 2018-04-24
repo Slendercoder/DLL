@@ -105,12 +105,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
       /////////////////////////////////////////////////////////////////////////
       node.on.data('Settings', function(msg) {
 
+        console.log('El jugador arranca');
+
         var MESSAGE = msg.data; //Message from logic with quantity of each type
         var otroJugador = MESSAGE[0];
         var Cantidades = MESSAGE[1];
         var cantidadJarra1 = Cantidades[0]; //Variable para la cantidad de círculos
         var cantidadJarra2 = Cantidades[1]; //Variable para la cantidad de círculos
         var cantidadJarra3 = Cantidades[2]; //Variable para la cantidad de círculos
+        var Elegido = Cantidades[3]; //Variable para saber cual tipo de objeto es el elegido
         var puntaje = 0; // Variable para el puntaje
         var derPareja; // Argumento derecho de la pareja
         var izqPareja; // Argumento izquierdo de la pareja
@@ -202,62 +205,174 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           if((izqPareja=='')||(derPareja=='')){
             alert("You must drag an item");
           }
+          // La pareja esta completa ...
           else{
-
-            if (izqPareja != derPareja) {
               //Evalua si alguna de las cantiades de los elementos de las jarras es cero
-              if (cantidadJarra1 == 0 || cantidadJarra2 == 0) {
-                alert("You don't have enough elements for this pair!");
-              }
-              //Si hay dos elemento diferentes suma 5 puntos y resta en uno a los elementos
-              else {
-                puntaje +=5;
-                cantidadJarra1 --;
-                cantidadJarra2 --;
-                W.setInnerHTML('jarra1', cantidadJarra1);
-                W.setInnerHTML('jarra2', cantidadJarra2);
-                W.setInnerHTML('Puntaje', puntaje);
-
-              }
+            if (cantidadJarra1 == 0 || cantidadJarra2 == 0) {
+              alert("You don't have enough elements for this pair!");
             }
-            //Si los elementos de la pareja son iguales suma 1 punto y resta dos a la cantidad del elementos usado
+              // Revisa si los objetos son del mismo tipo ...
             else {
-              puntaje ++;
-              W.setInnerHTML('Puntaje', puntaje);
-              if (izqPareja == 'Circulo') {
-                if (cantidadJarra1 == 0) {
-                  alert("You don't have enough elements for this pair!");
+              if(izqPareja == derPareja){
+                puntaje ++;
+                if (izqPareja == 'Circulo') {
+                  cantidadJarra1 -= 2;
                 }
-                else {
-                  cantidadJarra1 -=2;
-                  W.setInnerHTML('jarra1', cantidadJarra1);
-                  W.getElementById('parIzCir').style.display = "none";
-                  W.getElementById('parDerCir').style.display = "none";
+                if (izqPareja == 'Cuadrado') {
+                  cantidadJarra2 -= 2;
+                }
+                if (izqPareja == 'Triangulo') {
+                  cantidadJarra3 -= 2;
                 }
               }
-              if (izqPareja == 'Cuadrado') {
-                if (cantidadJarra2 == 0) {
-                  alert("You don't have enough elements for this pair!");
+              // Si los objetos no son del mismo tipo ...
+              else {
+                // Revisa si alguno de los dos objetos es del tipo elegido
+                if (izqPareja == Elegido || derPareja == Elegido) {
+                  puntaje += 5;
                 }
-                else {cantidadJarra2 -=2;
-                  W.setInnerHTML('jarra2', cantidadJarra2);
-                  W.getElementById('parIzCuad').style.display = "none";
-                  W.getElementById('parDerCuad').style.display = "none";
+                // Ninguno de los dos objetos es del tipo elegido
+                else {
+                  puntaje ++;
+                }
+                // Modifica las cantidades
+                if (izqPareja == 'Circulo' || derPareja == 'Circulo') {
+                  cantidadJarra1 --;
+                }
+                if (izqPareja == 'Cuadrado' || derPareja == 'Cuadrado') {
+                  cantidadJarra2 --;
+                }
+                if (izqPareja == 'Triangulo' || derPareja == 'Triangulo') {
+                  cantidadJarra3 --;
                 }
               }
             }
+            // Cambia los rotulos de las jarras y el puntaje
+            W.setInnerHTML('jarra1', cantidadJarra1);
+            W.setInnerHTML('jarra2', cantidadJarra2);
+            W.setInnerHTML('jarra3', cantidadJarra3);
+            W.setInnerHTML('Puntaje', puntaje);
+            }
+            // // Si ninguno de los objetos es el elegido ...
+            // else {
+            //   if (izqPareja == 'Circulo') {
+            //     if (cantidadJarra1 == 0) {
+            //       alert("You don't have enough elements for this pair!");
+            //     }
+            //     else {
+            //       cantidadJarra1 -=2;
+            //       W.setInnerHTML('jarra1', cantidadJarra1);
+            //       W.getElementById('parIzCir').style.display = "none";
+            //       W.getElementById('parDerCir').style.display = "none";
+            //     }
+            //   }
+            //   if (izqPareja == 'Cuadrado') {
+            //     if (cantidadJarra2 == 0) {
+            //       alert("You don't have enough elements for this pair!");
+            //     }
+            //     else {cantidadJarra2 -=2;
+            //       W.setInnerHTML('jarra2', cantidadJarra2);
+            //       W.getElementById('parIzCuad').style.display = "none";
+            //       W.getElementById('parDerCuad').style.display = "none";
+            //     }
+            //   }
+            // }
+            // if ((izqPareja == 'Cuadrado' && derPareja=='Triangulo')||(izqPareja == 'Triangulo' && derPareja=='Cuadrado')) {
+            //   //Evalua si alguna de las cantiades de los elementos de las jarras es cero
+            //   if (cantidadJarra2 == 0 || cantidadJarra3 == 0) {
+            //     alert("You don't have enough elements for this pair!");
+            //   }
+            //   //Si hay dos elemento diferentes suma 5 puntos y resta en uno a los elementos
+            //   else if(Cantidades1[1]==4 || Cantidades1[2]==4){
+            //     puntaje +=5;
+            //     cantidadJarra2 --;
+            //     cantidadJarra3 --;
+            //     W.setInnerHTML('jarra2', cantidadJarra2);
+            //     W.setInnerHTML('jarra3', cantidadJarra3);
+            //     W.setInnerHTML('Puntaje', puntaje);
+            //
+            //   }
+            // }
+            // //Si los elementos de la pareja son iguales suma 1 punto y resta dos a la cantidad del elementos usado
+            // else {
+            //   puntaje ++;
+            //   W.setInnerHTML('Puntaje', puntaje);
+            //   if (izqPareja == 'Cuadrado') {
+            //     if (cantidadJarra2 == 0) {
+            //       alert("You don't have enough elements for this pair!");
+            //     }
+            //     else {
+            //       cantidadJarra2 -=2;
+            //       W.setInnerHTML('jarra2', cantidadJarra2);
+            //       W.getElementById('parIzCuad').style.display = "none";
+            //       W.getElementById('parDerCuad').style.display = "none";
+            //     }
+            //   }
+            //   if (izqPareja == 'Triangulo') {
+            //     if (cantidadJarra3 == 0) {
+            //       alert("You don't have enough elements for this pair!");
+            //     }
+            //     else {cantidadJarra3 -=2;
+            //       W.setInnerHTML('jarra3', cantidadJarra3);
+            //       W.getElementById('parIzTri').style.display = "none";
+            //       W.getElementById('parDerTri').style.display = "none";
+            //     }
+            //   }
+            // }
+            // if ((izqPareja == 'Circulo' && derPareja=='Triangulo')||(izqPareja == 'Triangulo' && derPareja=='Circulo')) {
+            //   //Evalua si alguna de las cantiades de los elementos de las jarras es cero
+            //   if (cantidadJarra1 == 0 || cantidadJarra3 == 0) {
+            //     alert("You don't have enough elements for this pair!");
+            //   }
+            //   //Si hay dos elemento diferentes suma 5 puntos y resta en uno a los elementos
+            //   else if(Cantidades1[0]==4 || Cantidades1[2]==4){
+            //     puntaje +=5;
+            //     cantidadJarra1 --;
+            //     cantidadJarra3 --;
+            //     W.setInnerHTML('jarra1', cantidadJarra1);
+            //     W.setInnerHTML('jarra3', cantidadJarra3);
+            //     W.setInnerHTML('Puntaje', puntaje);
+            //
+            //   }
+            // }
+            // //Si los elementos de la pareja son iguales suma 1 punto y resta dos a la cantidad del elementos usado
+            // else {
+            //   puntaje ++;
+            //   W.setInnerHTML('Puntaje', puntaje);
+            //   if (izqPareja == 'Circulo') {
+            //     if (cantidadJarra1 == 0) {
+            //       alert("You don't have enough elements for this pair!");
+            //     }
+            //     else {
+            //       cantidadJarra1 -=2;
+            //       W.setInnerHTML('jarra1', cantidadJarra1);
+            //       W.getElementById('parIzCir').style.display = "none";
+            //       W.getElementById('parDerCir').style.display = "none";
+            //     }
+            //   }
+            //   if (izqPareja == 'Triangulo') {
+            //     if (cantidadJarra3 == 0) {
+            //       alert("You don't have enough elements for this pair!");
+            //     }
+            //     else {cantidadJarra3 -=2;
+            //       W.setInnerHTML('jarra3', cantidadJarra3);
+            //       W.getElementById('parIzTri').style.display = "none";
+            //       W.getElementById('parDerTri').style.display = "none";
+            //     }
+            //   }
+            // }
+
             //Elimina los elementos de las casillas al oprimir "To basket"
             W.getElementById('parIzCir').style.display = "none";
             W.getElementById('parIzCuad').style.display = "none";
             W.getElementById('parDerCir').style.display = "none";
             W.getElementById('parDerCuad').style.display = "none";
+            W.getElementById('parDerTri').style.display = "none";
+            W.getElementById('parDerTri').style.display = "none";
             izqPareja='';
             derPareja='';
 
-          }
-
-
-        }
+          } // Cierra boton de armar pareja
 
         //////////////////////////////////////////////////////////////////////////
         //                     INTERACCIONES                                   //
@@ -276,6 +391,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           else if (msg.data == 'Cuadrado') { // Si el jugador recibe un cuadrado del otro jugador,
             cantidadJarra2 ++;
             W.setInnerHTML('jarra2', cantidadJarra2);
+          }else{ // Si el jugador recibe un triangulo del otro jugador,
+            cantidadJarra3++;
+            W.setInnerHTML('jarra3', cantidadJarra3);
           }
           alert("You have received an item!");
         });
@@ -287,6 +405,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               if (msg[1] == 'Izquierdo') { // Se arrastra al lado izquierdo
                 W.getElementById("parIzCir").style.display = "";
                 W.getElementById("parIzCuad").style.display = "none";
+                W.getElementById("parIzTri").style.display = "none";
                 izqPareja = 'Circulo';
 
                 if(cantidadJarra1==1&&derPareja=='Circulo'){ //Si el UNICO circulo disponible está del lado derecho y se intenta poner otro en el lado izqaierdo, lo reemplaza
@@ -302,6 +421,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
                 W.getElementById("parDerCir").style.display = "";
                 W.getElementById("parDerCuad").style.display = "none";
+                W.getElementById("parDerTri").style.display = "none";
                 derPareja = 'Circulo';
                 if(cantidadJarra1==1&&izqPareja=='Circulo'){ //Si el UNICO circulo disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
                   W.getElementById("parIzCir").style.display="none";
@@ -316,6 +436,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             if (cantidadJarra2 > 0) {
               if (msg[1] == 'Izquierdo') {    // Se arrastra al lado izquierdo
                 W.getElementById("parIzCir").style.display = "none";
+                W.getElementById("parIzTri").style.display = "none";
                 W.getElementById("parIzCuad").style.display = "";
                 izqPareja = 'Cuadrado';
                 if(cantidadJarra2==1&&derPareja=='Cuadrado'){ //Si el UNICO cuadrado disponible está del lado derecho y se intenta poner otro en el lado izqaierdo, lo reemplaza
@@ -328,6 +449,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
                 console.log('EEEEEE')
                 W.getElementById("parDerCir").style.display = "none";
+                W.getElementById("parDerTri").style.display = "none";
                 W.getElementById("parDerCuad").style.display = "";
                 derPareja = 'Cuadrado';
                 if(cantidadJarra2==1&&izqPareja=='Cuadrado'){ //Si el UNICO cuadrado disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
@@ -339,6 +461,37 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               }
             }
           }
+          if (msg[0] == 'drag3') {    // Se está arrastrando un triangulo
+            if (cantidadJarra3 > 0) {
+              if (msg[1] == 'Izquierdo') {    // Se arrastra al lado izquierdo
+                W.getElementById("parIzCir").style.display = "none";
+                W.getElementById("parIzCuad").style.display = "none";
+                W.getElementById("parIzTri").style.display = "";
+                izqPareja = 'Triangulo';
+                if(cantidadJarra3==1&&derPareja=='Triangulo'){ //Si el UNICO triangulo disponible está del lado derecho y se intenta poner otro en el lado izqaierdo, lo reemplaza
+                  W.getElementById("parDerTri").style.display="none";
+                  izqPareja='';
+                  derPareja='';
+                  izqPareja = 'Triangulo';
+                }
+              }
+              if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
+                console.log('EEEEEE')
+                W.getElementById("parDerCir").style.display = "none";
+                W.getElementById("parDerCuad").style.display = "none";
+                W.getElementById("parDerTri").style.display = "";
+                derPareja = 'Triangulo';
+                if(cantidadJarra2==1&&izqPareja=='Triangulo'){ //Si el UNICO triangulo disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
+                  W.getElementById("parIzTri").style.display="none";
+                  izqPareja='';
+                  derPareja='';
+                  derPareja = 'Triangulo';
+                }
+              }
+            }
+          }
+
+
         });
 
       }); // End on.data "settings"
