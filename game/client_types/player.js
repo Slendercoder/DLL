@@ -132,6 +132,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         W.getElementById('myModal2').style.display = '';
         W.setInnerHTML('jarra1', cantidadJarra1);
         W.setInnerHTML('jarra2', cantidadJarra2);
+        W.setInnerHTML('jarra3', cantidadJarra3);
         izqPareja='';
         derPareja='';
 
@@ -143,9 +144,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         btn.onclick = function() {
           W.getElementById('myModal2').style.display = "block";
         }
+
         //When the user clicks the button, close the modal de TALK TO
-        span6.onclick=function(){
-          W.getElementById('myModal2').style.display="";
+        span6.onclick = function() {
+          W.getElementById('myModal2').style.display = "";
         }
 
         //When the user clicks the button, envía "ZAB" al otro jugador
