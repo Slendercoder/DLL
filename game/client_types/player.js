@@ -125,6 +125,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         var span4 = W.getElementById('XOLbutton'); // Boton en modal2 de decir XOL
         var span5 = W.getElementById('botIgn'); //Boton ignorar llamado
         var span6 = W.getElementById('exitButton'); //Boton de exit del modal
+        var span7 = W.getElementById('botTri'); // Boton en modal de enviar triángulo
         // node.game.other_player = otroJugador;
 
         // Initialize the window for the game
@@ -189,6 +190,21 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.getElementById('myModal').style.display = "none";
             cantidadJarra2 --;
             W.setInnerHTML('jarra2', cantidadJarra2);
+          }
+          else {
+            alert ("There are no such items! ");
+            W.getElementById('myModal').style.display = "none";
+          }
+        }
+        // When the user clicks the button, envía un TRIANGULO al otro jugador
+        span7.onclick = function() {
+          if (cantidadJarra3 > 0){
+            alert ("The item has been sent succesfully! ");
+
+            node.say('Dar', otroJugador, 'Triangulo');
+            W.getElementById('myModal').style.display = "none";
+            cantidadJarra3 --;
+            W.setInnerHTML('jarra3', cantidadJarra3);
           }
           else {
             alert ("There are no such items! ");
@@ -370,7 +386,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.getElementById('parDerCir').style.display = "none";
             W.getElementById('parDerCuad').style.display = "none";
             W.getElementById('parDerTri').style.display = "none";
-            W.getElementById('parDerTri').style.display = "none";
+            W.getElementById('parIzTri').style.display = "none";
             izqPareja='';
             derPareja='';
 
@@ -483,7 +499,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 W.getElementById("parDerCuad").style.display = "none";
                 W.getElementById("parDerTri").style.display = "";
                 derPareja = 'Triangulo';
-                if(cantidadJarra2==1&&izqPareja=='Triangulo'){ //Si el UNICO triangulo disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
+                if(cantidadJarra3==1&&izqPareja=='Triangulo'){ //Si el UNICO triangulo disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
                   W.getElementById("parIzTri").style.display="none";
                   izqPareja='';
                   derPareja='';
