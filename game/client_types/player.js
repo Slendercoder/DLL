@@ -126,6 +126,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         var span5 = W.getElementById('botIgn'); //Boton ignorar llamado
         var span6 = W.getElementById('exitButton'); //Boton de exit del modal
         var span7 = W.getElementById('botTri'); // Boton en modal de enviar triángulo
+        var span8 = W.getElementById('DUPbutton'); // Boton en modal2 de decir DUP
+
         // node.game.other_player = otroJugador;
 
         // Initialize the window for the game
@@ -210,6 +212,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             alert ("There are no such items! ");
             W.getElementById('myModal').style.display = "none";
           }
+        }
+
+        // Nueva function de Comunicacion
+        //When the user clicks the button, envía "DUP" al otro jugador
+        span8.onclick = function() {
+          alert('Message sent succesfully!');
+          W.getElementById('myModal2').style.display = "";
+          node.say('Comunicacion', otroJugador, '"DUP"');
+
         }
 
         //When the user clicks the button, ignora al otro jugador
