@@ -13,7 +13,9 @@ module.exports = function(stager, settings) {
 
      stager
         .next('instructions')
-        .repeat('game', settings.REPEAT)
+        // .repeat('game' settings.REPEAT)
+        .next('game')
+        .next('encuesta')
         .next('debrief')
         .next('end')
         .gameover();
