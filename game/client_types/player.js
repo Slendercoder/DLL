@@ -527,6 +527,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     }, // End cb function
   });// End extendstep "game"
 
+  stager.extendStep('encuesta', {
+    frame: 'Encuesta.htm'
+  });
+
   stager.extendStep('debrief', {
     frame: 'debrief.htm'
   });
