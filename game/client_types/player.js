@@ -236,8 +236,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           }
           // La pareja esta completa ...
           else{
-              //Evalua si alguna de las cantiades de los elementos de las jarras es cero
-            if (cantidadJarra1 == 0 || cantidadJarra2 == 0) {
+              //Evalua si alguna de las cantidades de los elementos de las jarras es cero
+            if (((izqPareja=='Circulo' && derPareja=='Cuadrado') || (izqPareja=='Cuadrado' && derPareja=='Circulo')) && (cantidadJarra1==0 || cantidadJarra2 == 0 )) {
+              alert("You don't have enough elements for this pair!");
+            }
+            if (((izqPareja=='Circulo' && derPareja=='Triangulo') || (izqPareja=='Triangulo' && derPareja=='Circulo')) && (cantidadJarra1==0 || cantidadJarra3 == 0 )) {
+              alert("You don't have enough elements for this pair!");
+            }
+            if (((izqPareja=='Cuadrado' && derPareja=='Triangulo') || (izqPareja=='Triangulo' && derPareja=='Cuadrado')) && (cantidadJarra2==0 || cantidadJarra3 == 0 )) {
               alert("You don't have enough elements for this pair!");
             }
               // Revisa si los objetos son del mismo tipo ...
@@ -527,9 +533,21 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     }, // End cb function
   });// End extendstep "game"
 
+
   stager.extendStep('encuesta', {
-    frame: 'Encuesta.htm'
+    frame: 'Encuesta.htm',
+    cb: function(){
+      if(Math.random() < 0.333333){
+        W.getElementById("imgvar").src="square.png";
+      }else if (Math.random() < 0.666666){
+        W.getElementById("imgvar").src="circle.png";
+      }else{
+        W.getElementById("imgvar").src="triangle.png";
+      }
+    }
   });
+
+
 
   stager.extendStep('debrief', {
     frame: 'debrief.htm'
