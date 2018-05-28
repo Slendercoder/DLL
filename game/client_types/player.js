@@ -75,6 +75,26 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
       return array;
     };
 
+    this.muestraEncuesta = function() {
+      var objeto;
+      var check = [];
+      check[0] = W.getElementById('CheckZab');
+      check[1] = W.getElementById('CheckXol');
+      check[2] = W.getElementById('CheckDup');
+      check[0].checked = check[1].checked = check[2].checked = false;
+      if(Math.random() < 0.333333){
+        W.getElementById("imgvar").src="square.png";
+        objeto = 'Cuadrado';
+      }else if (Math.random() < 0.666666){
+        W.getElementById("imgvar").src="circle.png";
+        objeto = 'Circulo';
+      }else{
+        W.getElementById("imgvar").src="triangle.png";
+        objeto = 'Triangulo';
+      }
+      return objeto;
+    };
+
     // Setup page: header + frame.
     header = W.generateHeader();
     frame = W.generateFrame();
@@ -537,13 +557,44 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
   stager.extendStep('encuesta', {
     frame: 'Encuesta.htm',
     cb: function(){
-      if(Math.random() < 0.333333){
-        W.getElementById("imgvar").src="square.png";
-      }else if (Math.random() < 0.666666){
-        W.getElementById("imgvar").src="circle.png";
-      }else{
-        W.getElementById("imgvar").src="triangle.png";
+      var boton1 = W.getElementById('BotContinuar');
+      var objeto;
+      var datos = [];
+      var contador = 0;
+      var check = [];
+      check[0] = W.getElementById('CheckZab');
+      check[1] = W.getElementById('CheckXol');
+      check[2] = W.getElementById('CheckDup');
+
+      function muestraEncuesta() {
+        var objeto;
+        var check = [];
+        check[0] = W.getElementById('CheckZab');
+        check[1] = W.getElementById('CheckXol');
+        check[2] = W.getElementById('CheckDup');
+        check[0].checked = check[1].checked = check[2].checked = false;
+        if(Math.random() < 0.333333){
+          W.getElementById("imgvar").src="square.png";
+          objeto = 'Cuadrado';
+        }else if (Math.random() < 0.666666){
+          W.getElementById("imgvar").src="circle.png";
+          objeto = 'Circulo';
+        }else{
+          W.getElementById("imgvar").src="triangle.png";
+          objeto = 'Triangulo';
+        }
+        return objeto;
       }
+
+      objeto = muestraEncuesta();
+      boton1.onclick = function() {
+        datos = [objeto, check[0].checked, check[1].checked, check[2].checked];
+        contador ++;
+        if (contador < 9){
+          objeto = muestraEncuesta();
+        }
+      } // fin boton1
+
     }
   });
 
