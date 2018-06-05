@@ -566,7 +566,43 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
       check[1] = W.getElementById('CheckXol');
       check[2] = W.getElementById('CheckDup');
 
-      function muestraEncuesta() {
+
+        W.getElementById('CheckZab').checked=false;
+        W.getElementById('CheckXol').checked=false;
+        W.getElementById('CheckDup').checked=false;
+        if(Math.random() < 0.333333){
+          W.getElementById("imgvar").src="square.png";
+          objeto = 'Cuadrado';
+        }else if (Math.random() < 0.666666){
+          W.getElementById("imgvar").src="circle.png";
+          objeto = 'Circulo';
+        }else{
+          W.getElementById("imgvar").src="triangle.png";
+          objeto = 'Triangulo';
+        }
+        boton1.onclick=function(){
+          W.getElementById('CheckZab').checked=false;
+          W.getElementById('CheckXol').checked=false;
+          W.getElementById('CheckDup').checked=false;
+          //W.getElementById('encuesta').style.display = "";
+          if(Math.random() < 0.333333){
+            W.getElementById("imgvar").src="square.png";
+            objeto = 'Cuadrado';
+          }else if (Math.random() < 0.666666){
+            W.getElementById("imgvar").src="circle.png";
+            objeto = 'Circulo';
+          }else{
+            W.getElementById("imgvar").src="triangle.png";
+            objeto = 'Triangulo';
+          }
+          contador++;
+          if(contador==9) W.getElementById('encuesta').style.display = "none";
+        }
+
+
+
+
+    /*  function muestraEncuesta() {
         var objeto;
         var check = [];
         check[0] = W.getElementById('CheckZab');
@@ -593,7 +629,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         if (contador < 9){
           objeto = muestraEncuesta();
         }
-      } // fin boton1
+      }*/ // fin boton1
 
     }
   });
