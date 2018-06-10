@@ -596,6 +596,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             objeto = 'Triangulo';
           }
           contador++;
+          W.setInnerHTML('cont', contador+1);
           if(contador==9) W.getElementById('encuesta').style.display = "none";
         }
 
