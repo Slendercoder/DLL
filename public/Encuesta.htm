@@ -32,7 +32,7 @@
     </head>
     <body>
                 
-<div>
+<div id="encuesta">
             
             <DIV >
                 <b><h1><font face="arial" color="black"><H6>¿QUÉ PALABRA REPRESENTA ESTE OBJETO?</H6> </font></h1></b>
@@ -57,9 +57,10 @@
         
  <div id="notif" class="modal">
 
-      <!-- Modal content -->
+
       <div class="modal-content">
-        <p>A continuación debe responder una serie de preguntas. Algunas preguntas se repetirán</p>
+        <p>A continuación debe responder <b>nueve</b> preguntas sobre el juego. Algunas preguntas se repetirán.</p>
+        <p>Cuando termine de responder, presione el botón "Done".</p>
         <button id="cierre">OK</span>    
       </div>
 
@@ -71,20 +72,20 @@
 </html>
 
   <script>
-    // Get the modal
+    // Abrir modal
     var modal = document.getElementById('notif');
 
-    // Get the <span> element that closes the modal
+    // Cerrar modal
     var cierre = document.getElementById("cierre");
 
         modal.style.display = 'block';
 
-    // When the user clicks on <span> (x), close the modal
+    // cuando el usuario hace clic en OK, cierra el modal
     cierre.onclick = function() {
         modal.style.display = "none";
     }
 
-    // When the user clicks anywhere outside of the modal, close it
+    // Si el usuario hace clic fuera del modal, lo cierra
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
