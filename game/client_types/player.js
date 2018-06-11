@@ -165,6 +165,36 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         // When the user clicks the button, open the modal de TALK TO
         btn.onclick = function() {
+          var x = Math.random();
+          if( x< 0.33333){
+            W.getElementById('Zab').style.top= '180px';
+            if(Math.random() < 0.5){
+              W.getElementById('Xol').style.top= '280px';
+              W.getElementById('Dup').style.top= '380px';
+            }else{
+              W.getElementById('Xol').style.top= '380px';
+              W.getElementById('Dup').style.top= '280px';}
+          }//fin del primer if x <0.33333
+          else if(x < 0.66666){
+              W.getElementById('Zab').style.top= '280px';
+            if(Math.random() < 0.5){
+              W.getElementById('Xol').style.top= '380px';
+              W.getElementById('Dup').style.top= '180px';
+            }else{
+              W.getElementById('Xol').style.top= '180px';
+              W.getElementById('Dup').style.top= '380px';
+            }
+          }// primer else if x < 0.66666
+          else {
+              W.getElementById('Zab').style.top= '380px';
+              if(Math.random() < 0.5){
+                W.getElementById('Xol').style.top= '180px';
+                W.getElementById('Dup').style.top= '280px';
+              }else{
+                W.getElementById('Xol').style.top= '280px';
+                W.getElementById('Dup').style.top= '180px';
+              }
+          }// fin de el else
           W.getElementById('myModal2').style.display = "block";
         }
 
