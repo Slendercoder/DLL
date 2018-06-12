@@ -205,7 +205,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         //When the user clicks the button, envía "ZAB" al otro jugador
         span3.onclick = function() {
-          alert('Message sent succesfully!');
+          alert('El mensaje se envió exitosamente!');
           W.getElementById('myModal2').style.display = "";
           node.say('Comunicacion', otroJugador, '"ZAB"');
 
@@ -213,7 +213,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         //When the user clicks the button, envía "XOL" al otro jugador
         span4.onclick=function(){
-          alert('Message sent succesfully!');
+          alert('El mensaje se envió exitosamente!');
           W.getElementById('myModal2').style.display="";
           node.say('Comunicacion', otroJugador, '"XOL"');
         }
@@ -221,14 +221,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         // When the user clicks the button, envía un CIRCULO al otro jugador
         span1.onclick = function() {
           if (cantidadJarra1 > 0){
-            alert ("The item has been sent succesfully! ");
+            alert ("El objeto se envió exitosamente!");
             node.say('Dar', otroJugador, 'Circulo');
             W.getElementById('myModal').style.display = "none";
             cantidadJarra1 --;
             W.setInnerHTML('jarra1', cantidadJarra1);
           }
           else {
-            alert ("There are no such items! ");
+            alert ("No tiene objetos suficientes! ");
             W.getElementById('myModal').style.display = "none";
           }
         }
@@ -236,7 +236,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         // When the user clicks the button, envía un CUADRADO al otro jugador
         span2.onclick = function() {
           if (cantidadJarra2 > 0){
-            alert ("The item has been sent succesfully! ");
+            alert ("El objeto se envió exitosamente! ");
 
             node.say('Dar', otroJugador, 'Cuadrado');
             W.getElementById('myModal').style.display = "none";
@@ -244,14 +244,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.setInnerHTML('jarra2', cantidadJarra2);
           }
           else {
-            alert ("There are no such items! ");
+            alert ("No tiene objetos suficientes!  ");
             W.getElementById('myModal').style.display = "none";
           }
         }
         // When the user clicks the button, envía un TRIANGULO al otro jugador
         span7.onclick = function() {
           if (cantidadJarra3 > 0){
-            alert ("The item has been sent succesfully! ");
+            alert ("El objeto se envió exitosamente!  ");
 
             node.say('Dar', otroJugador, 'Triangulo');
             W.getElementById('myModal').style.display = "none";
@@ -259,7 +259,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.setInnerHTML('jarra3', cantidadJarra3);
           }
           else {
-            alert ("There are no such items! ");
+            alert ("No tiene objetos suficientes! ");
             W.getElementById('myModal').style.display = "none";
           }
         }
@@ -267,7 +267,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         // Nueva function de Comunicacion
         //When the user clicks the button, envía "DUP" al otro jugador
         span8.onclick = function() {
-          alert('Message sent succesfully!');
+          alert('Mensaje enviado exitosamente!');
           W.getElementById('myModal2').style.display = "";
           node.say('Comunicacion', otroJugador, '"DUP"');
 
@@ -282,19 +282,19 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         btnArmarPareja.onclick = function() {
           //Evalua si alguna de las casillas esta vacía al hacer una pareja
           if((izqPareja=='')||(derPareja=='')){
-            alert("You must drag an item");
+            alert("Tiene que arrastrar un objeto");
           }
           // La pareja esta completa ...
           else{
               //Evalua si alguna de las cantidades de los elementos de las jarras es cero
             if (((izqPareja=='Circulo' && derPareja=='Cuadrado') || (izqPareja=='Cuadrado' && derPareja=='Circulo')) && (cantidadJarra1==0 || cantidadJarra2 == 0 )) {
-              alert("You don't have enough elements for this pair!");
+              alert("No tiene objetos suficientes para este par!");
             }
             if (((izqPareja=='Circulo' && derPareja=='Triangulo') || (izqPareja=='Triangulo' && derPareja=='Circulo')) && (cantidadJarra1==0 || cantidadJarra3 == 0 )) {
-              alert("You don't have enough elements for this pair!");
+              alert("No tiene objetos suficientes para este par!");
             }
             if (((izqPareja=='Cuadrado' && derPareja=='Triangulo') || (izqPareja=='Triangulo' && derPareja=='Cuadrado')) && (cantidadJarra2==0 || cantidadJarra3 == 0 )) {
-              alert("You don't have enough elements for this pair!");
+              alert("No tiene objetos suficientes para este par!");
             }
               // Revisa si los objetos son del mismo tipo ...
             else {
@@ -480,7 +480,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             cantidadJarra3++;
             W.setInnerHTML('jarra3', cantidadJarra3);
           }
-          alert("You have received an item!");
+          alert("Recibió un objeto!");
         });
 
         node.on('Arrastrar', function(msg) {
@@ -626,7 +626,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             objeto = 'Triangulo';
           }
           contador++;
-          W.setInnerHTML('cont', contador+1);
+          W.setInnerHTML('cont', contador+1+' / 9');
           if(contador==9) W.getElementById('encuesta').style.display = "none";
         }
 
