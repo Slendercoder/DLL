@@ -668,7 +668,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
         return objeto;
       }
-
       objeto = muestraEncuesta();
       boton1.onclick = function() {
         datos = [objeto, check[0].checked, check[1].checked, check[2].checked];
