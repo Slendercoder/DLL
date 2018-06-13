@@ -40,22 +40,22 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     //     submitOffer.click();
     // };
 
-    // Function to add options to selections in HTML
-    // seleccion es un W.getElementById tipo selection
-    // optiones es una lista
-    this.anadirOpciones = function(seleccion, opciones) {
-      var opt = document.createElement('option');
-      opt.value = "NaN";
-      opt.text = "";
-      seleccion.appendChild(opt);
-      for (var i = 0; i<opciones.length; i++){
-        var opt = document.createElement('option');
-        opt.value = opciones[i];
-        opt.text = opciones[i];
-        seleccion.appendChild(opt);
-      }
-    };
-
+    // // Function to add options to selections in HTML
+    // // seleccion es un W.getElementById tipo selection
+    // // optiones es una lista
+    // this.anadirOpciones = function(seleccion, opciones) {
+    //   var opt = document.createElement('option');
+    //   opt.value = "NaN";
+    //   opt.text = "";
+    //   seleccion.appendChild(opt);
+    //   for (var i = 0; i<opciones.length; i++){
+    //     var opt = document.createElement('option');
+    //     opt.value = opciones[i];
+    //     opt.text = opciones[i];
+    //     seleccion.appendChild(opt);
+    //   }
+    // };
+    //
     this.shuffle = function(array) {
       var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -105,11 +105,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     this.doneButton = node.widgets.append('DoneButton', header);
 
+    this.contadorComunicacion = 1;
+
+    // var doneButton = node.widgets.append('DoneButton', header)
+    // doneButton.text = "OK"
+
     // Additional debug information while developing the game.
     // this.debugInfo = node.widgets.append('DebugInfo', header)
   });
 
   stager.extendStep('instructions', {
+    donebutton: true,
     frame: 'instructions.htm'
   });
 
@@ -147,6 +153,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         var span6 = W.getElementById('exitButton'); //Boton de exit del modal
         var span7 = W.getElementById('botTri'); // Boton en modal de enviar triángulo
         var span8 = W.getElementById('DUPbutton'); // Boton en modal2 de decir DUP
+
+        node.game.contadorComunicacion = 1;
 
         // node.game.other_player = otroJugador;
 
@@ -208,7 +216,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           alert('El mensaje se envió exitosamente!');
           W.getElementById('myModal2').style.display = "";
           node.say('Comunicacion', otroJugador, '"ZAB"');
-
+          node.set({Comunicacion: ["zab", node.game.contadorComunicacion]})
         }
 
         //When the user clicks the button, envía "XOL" al otro jugador
@@ -216,6 +224,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           alert('El mensaje se envió exitosamente!');
           W.getElementById('myModal2').style.display="";
           node.say('Comunicacion', otroJugador, '"XOL"');
+          node.set({Comunicacion: ["xol", node.game.contadorComunicacion]})
+        }
+
+        //When the user clicks the button, envía "DUP" al otro jugador
+        span8.onclick = function() {
+          alert('Mensaje enviado exitosamente!');
+          W.getElementById('myModal2').style.display = "";
+          node.say('Comunicacion', otroJugador, '"DUP"');
+          node.set({Comunicacion: ["xol", node.game.contadorComunicacion]})
         }
 
         // When the user clicks the button, envía un CIRCULO al otro jugador
@@ -264,14 +281,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           }
         }
 
-        // Nueva function de Comunicacion
-        //When the user clicks the button, envía "DUP" al otro jugador
-        span8.onclick = function() {
-          alert('Mensaje enviado exitosamente!');
-          W.getElementById('myModal2').style.display = "";
-          node.say('Comunicacion', otroJugador, '"DUP"');
-
-        }
 
         //When the user clicks the button, ignora al otro jugador
         span5.onclick = function(){
@@ -471,14 +480,20 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           if (msg.data == 'Circulo') {    //Si el jugador recibe un circulo del otro jugador,
             cantidadJarra1 ++;
             W.setInnerHTML('jarra1', cantidadJarra1);
+            node.set({Comunicacion: ['Circulo', node.game.contadorComunicacion]})
+            node.game.contadorComunicacion += 1;
           }
 
           else if (msg.data == 'Cuadrado') { // Si el jugador recibe un cuadrado del otro jugador,
             cantidadJarra2 ++;
             W.setInnerHTML('jarra2', cantidadJarra2);
+            node.set({Comunicacion: ['Cuadrado', node.game.contadorComunicacion]})
+            node.game.contadorComunicacion += 1;
           }else{ // Si el jugador recibe un triangulo del otro jugador,
             cantidadJarra3++;
             W.setInnerHTML('jarra3', cantidadJarra3);
+            node.set({Comunicacion: ['Triangulo', node.game.contadorComunicacion]})
+            node.game.contadorComunicacion += 1;
           }
           alert("Recibió un objeto!");
         });
@@ -586,6 +601,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
   stager.extendStep('encuesta', {
     frame: 'Encuesta.htm',
+    donebutton: true,
     cb: function(){
       var boton1 = W.getElementById('BotContinuar');
       var objeto;
