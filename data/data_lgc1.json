@@ -1,89 +1,257 @@
 [{
-    "time": 2483,
+    "time": 1028,
     "timeup": false,
     "done": true,
-    "player": "210088216829567",
+    "player": "203497560902374",
     "stage": {
         "stage": 1,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1526489463938
+    "timestamp": 1528918547264
 }, {
-    "time": 3560,
+    "time": 2903,
     "timeup": false,
     "done": true,
-    "player": "837929706343042",
+    "player": "830511047330063",
     "stage": {
         "stage": 1,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1526489465738
+    "timestamp": 1528918549168
 }, {
-    "time": 69345,
-    "timeup": false,
-    "done": true,
-    "player": "837929706343042",
+    "Comunicacion": [
+        "xol",
+        1
+    ],
+    "player": "830511047330063",
     "stage": {
         "stage": 2,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1526489535380
+    "timestamp": 1528918552803
 }, {
-    "time": 71024,
-    "timeup": false,
-    "done": true,
-    "player": "210088216829567",
+    "Comunicacion": [
+        "Triangulo",
+        1
+    ],
+    "player": "203497560902374",
     "stage": {
         "stage": 2,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1526489537196
+    "timestamp": 1528918555869
 }, {
-    "time": 19379,
+    "time": 8382,
     "timeup": false,
     "done": true,
-    "player": "837929706343042",
+    "player": "203497560902374",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1528918558648
+}, {
+    "time": 14071,
+    "timeup": false,
+    "done": true,
+    "player": "830511047330063",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1528918563484
+}, {
+    "Encuesta": [
+        "Circulo",
+        true,
+        false,
+        false
+    ],
+    "player": "830511047330063",
+    "stage": {
+        "stage": 2,
+        "step": 2,
+        "round": 1
+    },
+    "timestamp": 1528918565880
+}, {
+    "Encuesta": [
+        "Cuadrado",
+        false,
+        true,
+        false
+    ],
+    "player": "830511047330063",
+    "stage": {
+        "stage": 2,
+        "step": 2,
+        "round": 1
+    },
+    "timestamp": 1528918567384
+}, {
+    "time": 5219,
+    "timeup": false,
+    "done": true,
+    "player": "830511047330063",
+    "stage": {
+        "stage": 2,
+        "step": 2,
+        "round": 1
+    },
+    "timestamp": 1528918568886
+}, {
+    "time": 6656,
+    "timeup": false,
+    "done": true,
+    "player": "203497560902374",
+    "stage": {
+        "stage": 2,
+        "step": 2,
+        "round": 1
+    },
+    "timestamp": 1528918570919
+}, {
+    "time": 575,
+    "timeup": false,
+    "done": true,
+    "player": "203497560902374",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 2
+    },
+    "timestamp": 1528918571703
+}, {
+    "time": 2591,
+    "timeup": false,
+    "done": true,
+    "player": "830511047330063",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 2
+    },
+    "timestamp": 1528918573855
+}, {
+    "time": 494,
+    "timeup": false,
+    "done": true,
+    "player": "830511047330063",
+    "stage": {
+        "stage": 2,
+        "step": 2,
+        "round": 2
+    },
+    "timestamp": 1528918574535
+}, {
+    "Encuesta": [
+        "Circulo",
+        true,
+        true,
+        false
+    ],
+    "player": "203497560902374",
+    "stage": {
+        "stage": 2,
+        "step": 2,
+        "round": 2
+    },
+    "timestamp": 1528918579664
+}, {
+    "time": 6071,
+    "timeup": false,
+    "done": true,
+    "player": "203497560902374",
+    "stage": {
+        "stage": 2,
+        "step": 2,
+        "round": 2
+    },
+    "timestamp": 1528918580334
+}, {
+    "time": 1765,
+    "timeup": false,
+    "done": true,
+    "player": "203497560902374",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 3
+    },
+    "timestamp": 1528918582295
+}, {
+    "time": 2775,
+    "timeup": false,
+    "done": true,
+    "player": "830511047330063",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 3
+    },
+    "timestamp": 1528918584039
+}, {
+    "Encuesta": [
+        "Cuadrado",
+        true,
+        false,
+        true
+    ],
+    "player": "830511047330063",
+    "stage": {
+        "stage": 2,
+        "step": 2,
+        "round": 3
+    },
+    "timestamp": 1528918587679
+}, {
+    "time": 4275,
+    "timeup": false,
+    "done": true,
+    "player": "830511047330063",
+    "stage": {
+        "stage": 2,
+        "step": 2,
+        "round": 3
+    },
+    "timestamp": 1528918588462
+}, {
+    "time": 7071,
+    "timeup": false,
+    "done": true,
+    "player": "203497560902374",
+    "stage": {
+        "stage": 2,
+        "step": 2,
+        "round": 3
+    },
+    "timestamp": 1528918591335
+}, {
+    "time": 2874,
+    "timeup": false,
+    "done": true,
+    "player": "203497560902374",
     "stage": {
         "stage": 3,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1526489557540
+    "timestamp": 1528918594384
 }, {
-    "time": 21784,
+    "time": 4104,
     "timeup": false,
     "done": true,
-    "player": "210088216829567",
+    "player": "830511047330063",
     "stage": {
         "stage": 3,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1526489559139
-}, {
-    "time": 5027,
-    "timeup": false,
-    "done": true,
-    "player": "837929706343042",
-    "stage": {
-        "stage": 4,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1526489565187
-}, {
-    "time": 7442,
-    "timeup": false,
-    "done": true,
-    "player": "210088216829567",
-    "stage": {
-        "stage": 4,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1526489566747
+    "timestamp": 1528918596368
 }]

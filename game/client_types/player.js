@@ -167,6 +167,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         izqPareja='';
         derPareja='';
 
+        node.set({ObjetoElegido: Elegido});
+
         //////////////////////////////////////////////////////////////////////////
         //                     BOTONES                                          //
         /////////////////////////////////////////////////////////////////////////
@@ -232,7 +234,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           alert('Mensaje enviado exitosamente!');
           W.getElementById('myModal2').style.display = "";
           node.say('Comunicacion', otroJugador, '"DUP"');
-          node.set({Comunicacion: ["xol", node.game.contadorComunicacion]})
+          node.set({Comunicacion: ["dup", node.game.contadorComunicacion]})
         }
 
         // When the user clicks the button, envía un CIRCULO al otro jugador
@@ -243,6 +245,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.getElementById('myModal').style.display = "none";
             cantidadJarra1 --;
             W.setInnerHTML('jarra1', cantidadJarra1);
+            node.set({Comunicacion: ['Circulo', node.game.contadorComunicacion]});
+            node.game.contadorComunicacion += 1;
           }
           else {
             alert ("No tiene objetos suficientes! ");
@@ -259,6 +263,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.getElementById('myModal').style.display = "none";
             cantidadJarra2 --;
             W.setInnerHTML('jarra2', cantidadJarra2);
+            node.set({Comunicacion: ['Cuadrado', node.game.contadorComunicacion]});
+            node.game.contadorComunicacion += 1;
           }
           else {
             alert ("No tiene objetos suficientes!  ");
@@ -274,6 +280,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.getElementById('myModal').style.display = "none";
             cantidadJarra3 --;
             W.setInnerHTML('jarra3', cantidadJarra3);
+            node.set({Comunicacion: ['Triangulo', node.game.contadorComunicacion]});
+            node.game.contadorComunicacion += 1;
           }
           else {
             alert ("No tiene objetos suficientes! ");
@@ -285,6 +293,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         //When the user clicks the button, ignora al otro jugador
         span5.onclick = function(){
           W.getElementById('myModal').style.display = "";
+          node.set({Comunicacion: ['Ignorar', node.game.contadorComunicacion]});
+          node.game.contadorComunicacion += 1;
         }
 
         // Cuando el usuario da click, calcula los puntos
@@ -309,6 +319,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             else {
               if(izqPareja == derPareja){
                 puntaje ++;
+                node.set({Puntaje: [izqPareja, derPareja, 1]});
                 if (izqPareja == 'Circulo') {
                   cantidadJarra1 -= 2;
                 }
@@ -324,10 +335,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 // Revisa si alguno de los dos objetos es del tipo elegido
                 if (izqPareja == Elegido || derPareja == Elegido) {
                   puntaje += 5;
+                  node.set({Puntaje: [izqPareja, derPareja, 5]});
                 }
                 // Ninguno de los dos objetos es del tipo elegido
                 else {
                   puntaje ++;
+                  node.set({Puntaje: [izqPareja, derPareja, 1]});
                 }
                 // Modifica las cantidades
                 if (izqPareja == 'Circulo' || derPareja == 'Circulo') {
@@ -341,6 +354,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 }
               }
             }
+
+
             // Cambia los rotulos de las jarras y el puntaje
             W.setInnerHTML('jarra1', cantidadJarra1);
             W.setInnerHTML('jarra2', cantidadJarra2);
@@ -480,20 +495,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           if (msg.data == 'Circulo') {    //Si el jugador recibe un circulo del otro jugador,
             cantidadJarra1 ++;
             W.setInnerHTML('jarra1', cantidadJarra1);
-            node.set({Comunicacion: ['Circulo', node.game.contadorComunicacion]})
-            node.game.contadorComunicacion += 1;
           }
 
           else if (msg.data == 'Cuadrado') { // Si el jugador recibe un cuadrado del otro jugador,
             cantidadJarra2 ++;
             W.setInnerHTML('jarra2', cantidadJarra2);
-            node.set({Comunicacion: ['Cuadrado', node.game.contadorComunicacion]})
-            node.game.contadorComunicacion += 1;
           }else{ // Si el jugador recibe un triangulo del otro jugador,
             cantidadJarra3++;
             W.setInnerHTML('jarra3', cantidadJarra3);
-            node.set({Comunicacion: ['Triangulo', node.game.contadorComunicacion]})
-            node.game.contadorComunicacion += 1;
           }
           alert("Recibió un objeto!");
         });
@@ -607,15 +616,31 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
       var objeto;
       var datos = [];
       var contador = 0;
-      var check = [];
-      check[0] = W.getElementById('CheckZab');
-      check[1] = W.getElementById('CheckXol');
-      check[2] = W.getElementById('CheckDup');
 
+      W.getElementById('CheckZab').checked=false;
+      W.getElementById('CheckXol').checked=false;
+      W.getElementById('CheckDup').checked=false;
+      if(Math.random() < 0.333333){
+        W.getElementById("imgvar").src="square.png";
+        objeto = 'Cuadrado';
+      }else if (Math.random() < 0.666666){
+        W.getElementById("imgvar").src="circle.png";
+        objeto = 'Circulo';
+      }else{
+        W.getElementById("imgvar").src="triangle.png";
+        objeto = 'Triangulo';
+      }
+      boton1.onclick=function(){
+        node.set({Encuesta: [objeto,
+                            W.getElementById('CheckZab').checked,
+                            W.getElementById('CheckXol').checked,
+                            W.getElementById('CheckDup').checked
+                          ]});
 
         W.getElementById('CheckZab').checked=false;
         W.getElementById('CheckXol').checked=false;
         W.getElementById('CheckDup').checked=false;
+        //W.getElementById('encuesta').style.display = "";
         if(Math.random() < 0.333333){
           W.getElementById("imgvar").src="square.png";
           objeto = 'Cuadrado';
@@ -626,25 +651,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           W.getElementById("imgvar").src="triangle.png";
           objeto = 'Triangulo';
         }
-        boton1.onclick=function(){
-          W.getElementById('CheckZab').checked=false;
-          W.getElementById('CheckXol').checked=false;
-          W.getElementById('CheckDup').checked=false;
-          //W.getElementById('encuesta').style.display = "";
-          if(Math.random() < 0.333333){
-            W.getElementById("imgvar").src="square.png";
-            objeto = 'Cuadrado';
-          }else if (Math.random() < 0.666666){
-            W.getElementById("imgvar").src="circle.png";
-            objeto = 'Circulo';
-          }else{
-            W.getElementById("imgvar").src="triangle.png";
-            objeto = 'Triangulo';
-          }
-          contador++;
-          W.setInnerHTML('cont', contador+1+' / 9');
-          if(contador==9) W.getElementById('encuesta').style.display = "none";
-        }
+        contador++;
+        W.setInnerHTML('cont', contador+1+' / 9');
+        if(contador==9) W.getElementById('encuesta').style.display = "none";
+      }
 
 
 
