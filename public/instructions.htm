@@ -3,12 +3,12 @@
 <link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css" />
 <body>
   <div id="container" style="margin: 0 auto; max-width: 640px">
-    <h1>Instrucciones para el  DLL. Por favor lea atentamente:</h1>
+    <h1>Instrucciones.</h1><h3> Por favor lea atentamente:</h3>
     <div id="instructions">
       <br>
       Los participantes de este juego son dos jugadores humanos (usted y un compañero remoto).      
         <h3>El juego:</h3>
-       Cuando el juego inicie, verá tres jarras con diferentes tipos de objetos. Una jarra tiene más objetos que las otras: esta será su jarra <b>privilegiada</b>. Su tarea es arrastrar objetos de las jarras hacia los recuadros para formar parejas que debe enviar a la cesta para sumar puntos. Los puntajes  son:
+       Cuando el juego inicie, verá tres jarras con diferentes tipos de objetos. Una jarra tiene menos objetos que las otras: esta será su jarra <b>privilegiada</b>. Su tarea es arrastrar objetos de las jarras hacia los recuadros para formar parejas que debe enviar a la cesta para sumar puntos. Los puntajes  son:
       <br><br>
             - Un objeto <b>no</b> privilegiado + un objeto <b>no</b> privilegiado: <b>1 punto</b>
         <br>
@@ -18,10 +18,12 @@
       <br><br>
       El objetivo es sumar la mayor cantidad posible de puntos.    
       <h3>Interacción con su compañero:</h3>
-      Si se hace click en el botón "Talk to partner", se despleará un cuadro con tres palabras sin sentido. Usted puede escoger qué palabra enviar a su compañero. Su compañero también le puede enviar mensajes.
-      Si su compañero le envía un mensaje, se desplegará un cuadro con la palabra enviada. Usted puede repsonder al mesnaje enviando un objeto de alguna de sus jarras o ignorando el mensaje.
+      Si se hace click en el botón "Hablar con compañero", se desplegará un cuadro con tres palabras sin sentido. Usted puede escoger qué palabra enviar a su compañero. Su compañero también le puede enviar mensajes.
+      Si su compañero le envía un mensaje, se desplegará un cuadro con la palabra enviada. Usted puede repsonder al mensaje enviando un objeto de alguna de sus jarras o ignorando el mensaje.
       <br><br>
-      <b>El juego se repetirá un cierto número de rondas. Si ha entendido las indicaciones, presione el botón "Done" para continuar con el juego.</b>
+      <b>El juego consta de <span id='rondas'></span> rondas. Si ha entendido las indicaciones, presione el botón "Continuar" para continuar con el juego.</b>
     </div>    
+    <br>
+    <input type="button" id="continuar" value="Continuar" class="btn btn-lg btn-primary"/>  
   </div>
 </body>

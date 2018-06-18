@@ -1,0 +1,61 @@
+<!doctype html>
+<title>QUIZ</title>
+<link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<body>
+  <div style="margin: 0 auto; max-width: 800px">
+    <h2>Quiz</h2>
+
+    <div id="quiz">
+      <dl>
+
+        <dt><strong>Q.1</strong></dt>
+        <dd>
+          <span id="rounds_result" class="quiz_result"></span>
+          <form name="rounds" id="rounds">
+	    <p class="question">¿Cuántas rondas tiene este juego?</p>
+	    <p>
+	      <input type="radio" name="rounds" value="5"> 5<br>
+	      <input type="radio" name="rounds" value="1"> 1<br>
+	      <input type="radio" name="rounds" value="3"> 3<br>
+	      <input type="radio" name="rounds" value="not"> No se sabe de antemano
+	    </p>
+	  </form>
+        </dd>
+
+        <dt><strong>Q.2</strong></dt>
+        <dd>
+          <span id="jarra_result" class="quiz_result"></span>
+          <form name="jarra" id="jarra">
+            <p class="question">¿Cuál es la jarra privilegiada?</p>
+            <p>
+              <input type="radio" name="jarra" value="1"> La que tiene más objetos <br>
+              <input type="radio" name="jarra" value="2"> La que tiene menos objetos <br>
+              <input type="radio" name="jarra" value="3"> La que tiene una cantidad intermedia de objetos </br>
+            </p>
+          </form>
+        </dd>
+        <dt><strong>Q.3</strong></dt>
+        <dd>
+          <span id="puntos_result" class="quiz_result"></span>
+          <form name="puntos" id="puntos">
+            <p class="question">¿Cuál de estas parejas da 5 puntos</p>
+            <p>
+              <input type="radio" name="puntos" value="1"> Dos objetos del mismo tipo <br>
+              <input type="radio" name="puntos" value="2"> Dos objetos de la jarra privilegiada<br>
+              <input type="radio" name="puntos" value="3"> Dos objetos de distinto tipo </br>
+              <input type="radio" name="puntos" value="4"> Ninguna de las anteriores<br>
+            </p>
+
+          </form>
+        </dd>
+      </dl>
+      <div id="done_box">
+        <button onclick='javascript:parent.node.emit("check-quiz");' id="submitQuiz"  class="btn btn-lg btn-primary">Presione aquí para enviar sus respuestas y pasar al juego <br>Respuestas correctas <span id="answers_counter">0 / 3</span></button>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+<script src="js/quiz.js"></script>

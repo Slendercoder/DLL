@@ -13,6 +13,7 @@ module.exports = function(stager, settings) {
 
      stager
         .next('instructions')
+        .next('quiz')
         .repeat('trials', settings.REPEAT)
         .next('debrief')
         .next('end')

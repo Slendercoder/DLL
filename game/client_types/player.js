@@ -99,6 +99,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     header = W.generateHeader();
     frame = W.generateFrame();
 
+    /* ////////////// SIN BOTÓN DONE ///////////////////////////
+
+    this.visualRound = node.widgets.append('VisualRound', header, {
+        title: false
+    });
+    this.visualTimer = node.widgets.append('VisualTimer', header);
+    // Copy reference to have timeup stored on `done`. (for the time being).
+    // this.timer = this.visualTimer;
+
+    ////////////////// SIN BOTÓN DONE ////////////////////////// */
+
     // Add widgets.
     this.visualRound = node.widgets.append('VisualRound', header);
     this.visualTimer = node.widgets.append('VisualTimer', header);
@@ -116,8 +127,36 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
   stager.extendStep('instructions', {
     donebutton: true,
-    frame: 'instructions.htm'
+    frame: 'instructions.htm',
+    cb: function(){
+      var s, continuar;
+      s = node.game.settings;
+      W.setInnerHTML('rondas', s.REPEAT);
+      continuar = W.getElementById('continuar');
+      continuar.onclick = function() { node.done(); };
+    }
   });
+
+  stager.extendStep('quiz', {
+  frame: 'quiz.htm',
+  cb: function() {
+      var button, QUIZ;
+
+      QUIZ = W.getFrameWindow().QUIZ;
+      button = W.getElementById('submitQuiz');
+
+      node.on('check-quiz', function() {
+          var answers;
+          answers = QUIZ.checkAnswers(button);
+          if (answers.correct || node.game.visualTimer.isTimeup()) {
+              node.emit('INPUT_DISABLE');
+              // On Timeup there are no answers.
+              node.done(answers);
+          }
+      });
+      console.log('Quiz');
+      }
+});
 
   stager.extendStep('game', {
     donebutton: true,
