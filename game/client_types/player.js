@@ -209,44 +209,43 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         node.set({ObjetoElegido: Elegido});
 
         //////////////////////////////////////////////////////////////////////////
-        //                     BOTONES                                          //
-        /////////////////////////////////////////////////////////////////////////
+          //                     BOTONES                                          //
+          /////////////////////////////////////////////////////////////////////////
 
-        // When the user clicks the button, open the modal de TALK TO
+          // When the user clicks the button, open the modal de TALK TO
         btn.onclick = function() {
-          var x = Math.random();
-          if( x< 0.33333){
-            W.getElementById('Zab').style.top= '180px';
-            if(Math.random() < 0.5){
-              W.getElementById('Xol').style.top= '280px';
-              W.getElementById('Dup').style.top= '380px';
-            }else{
-              W.getElementById('Xol').style.top= '380px';
-              W.getElementById('Dup').style.top= '280px';}
-          }//fin del primer if x <0.33333
-          else if(x < 0.66666){
-              W.getElementById('Zab').style.top= '280px';
-            if(Math.random() < 0.5){
-              W.getElementById('Xol').style.top= '380px';
-              W.getElementById('Dup').style.top= '180px';
-            }else{
-              W.getElementById('Xol').style.top= '180px';
-              W.getElementById('Dup').style.top= '380px';
-            }
-          }// primer else if x < 0.66666
-          else {
-              W.getElementById('Zab').style.top= '380px';
+            var x = Math.random();
+            if( x< 0.33333){
+              W.getElementById('Zab').style.left= '380px';
               if(Math.random() < 0.5){
-                W.getElementById('Xol').style.top= '180px';
-                W.getElementById('Dup').style.top= '280px';
+                W.getElementById('Xol').style.left= '610px';
+                W.getElementById('Dup').style.left= '840px';
               }else{
-                W.getElementById('Xol').style.top= '280px';
-                W.getElementById('Dup').style.top= '180px';
+                W.getElementById('Xol').style.left= '840px';
+                W.getElementById('Dup').style.left= '610px';}
+            }//fin del primer if x <0.33333
+            else if(x < 0.66666){
+                W.getElementById('Zab').style.left= '610px';
+              if(Math.random() < 0.5){
+                W.getElementById('Xol').style.left= '840px';
+                W.getElementById('Dup').style.left= '380px';
+              }else{
+                W.getElementById('Xol').style.left= '380px';
+                W.getElementById('Dup').style.left= '840px';
               }
-          }// fin de el else
-          W.getElementById('myModal2').style.display = "block";
-        }
-
+            }// primer else if x < 0.66666
+            else {
+                W.getElementById('Zab').style.left= '840px';
+                if(Math.random() < 0.5){
+                  W.getElementById('Xol').style.left= '380px';
+                  W.getElementById('Dup').style.left= '610px';
+                }else{
+                  W.getElementById('Xol').style.left= '610px';
+                  W.getElementById('Dup').style.left= '380px';
+                }
+            }// fin de el else
+            W.getElementById('myModal2').style.display = "block";
+          }
         //When the user clicks the button, close the modal de TALK TO
         span6.onclick = function() {
           W.getElementById('myModal2').style.display = "";
