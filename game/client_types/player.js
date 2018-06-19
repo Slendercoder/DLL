@@ -18,9 +18,11 @@ var stepRules = ngc.stepRules;
 var constants = ngc.constants;
 var publishLevels = constants.publishLevels;
 
+
 module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
   var game;
+
 
   stager.setOnInit(function() {
 
@@ -192,6 +194,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         var span6 = W.getElementById('exitButton'); //Boton de exit del modal
         var span7 = W.getElementById('botTri'); // Boton en modal de enviar triángulo
         var span8 = W.getElementById('DUPbutton'); // Boton en modal2 de decir DUP
+        var countRondas = node.player.stage.round; //Lleva el numero de rondas
+        var umbral; //valor del umbral de puntos
+
 
         node.game.contadorComunicacion = 1;
 
@@ -207,6 +212,20 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         derPareja='';
 
         node.set({ObjetoElegido: Elegido});
+        switch(countRondas){
+          case 1:
+          alert("El umbral de esta ronda es de 50 puntos!");
+          umbral = 50;
+          break;
+          case 2:
+          alert("El umbral de esta ronda es de 65 puntos!");
+          umbral = 65;
+          break;
+          case 3:
+          alert("El umbral de esta ronda es de 80 puntos!");
+          umbral = 80;
+        }
+
 
         //////////////////////////////////////////////////////////////////////////
           //                     BOTONES                                          //
@@ -518,7 +537,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.getElementById('parIzTri').style.display = "none";
             izqPareja='';
             derPareja='';
-
+            if (puntaje>=umbral) alert("Ha ganado el bono de esta ronda!!");
           } // Cierra boton de armar pareja
 
         //////////////////////////////////////////////////////////////////////////
@@ -639,11 +658,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           }
 
 
+
         });
 
       }); // End on.data "settings"
     }, // End cb function
   });// End extendstep "game"
+
 
 
   stager.extendStep('encuesta', {
@@ -691,7 +712,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
         contador++;
         W.setInnerHTML('cont', contador+1+' / 9');
-        if(contador==9) W.getElementById('encuesta').style.display = "none";
+        //W.setInnerHTML('Holaaaa');
+        if(contador==9){
+          W.getElementById('encuesta').style.display = "none";
+          alert("Oprima el botón 'I am done' en la parte izquierda de la pantalla para continuar");
+        }
       }
 
 
