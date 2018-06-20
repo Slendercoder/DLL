@@ -19,16 +19,17 @@ module.exports = function(stager, settings) {
         .next('end')
         .gameover();
 
-    // Modify the stager to skip one stage.
-    // stager.skip('instructions');
-    // stager.skip('trials');
-
     stager.extendStage('trials', {
       steps: [
         'game',
         'encuesta'
       ]
     });
+
+    // Modify the stager to skip one stage.
+    // stager.skip('instructions');
+    // stager.skip('quiz');
+    // stager.skip('trials');
 
     return stager.getState();
 };

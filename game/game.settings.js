@@ -42,13 +42,13 @@ module.exports = {
      */
     TIMER: {
         instructions: 120000,
-        game: 120000,
+        game: 240000,
         encuesta: 60000
     },
 
     // # Game specific properties
 
     // Number of game rounds repetitions.
-    REPEAT: 3,
+    REPEAT: 5,
 
 };

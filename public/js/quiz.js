@@ -84,7 +84,7 @@
     };
 
 })({
-    rounds: 3,
+    rounds: 5,
     jarra: 2,
     puntos: 4
 });

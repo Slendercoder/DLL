@@ -140,24 +140,25 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
   });
 
   stager.extendStep('quiz', {
-  frame: 'quiz.htm',
-  cb: function() {
-      var button, QUIZ;
+    donebutton: false,
+    frame: 'quiz.htm',
+    cb: function() {
+        var button, QUIZ;
 
-      QUIZ = W.getFrameWindow().QUIZ;
-      button = W.getElementById('submitQuiz');
+        QUIZ = W.getFrameWindow().QUIZ;
+        button = W.getElementById('submitQuiz');
 
-      node.on('check-quiz', function() {
-          var answers;
-          answers = QUIZ.checkAnswers(button);
-          if (answers.correct || node.game.visualTimer.isTimeup()) {
-              node.emit('INPUT_DISABLE');
-              // On Timeup there are no answers.
-              node.done(answers);
-          }
-      });
-      console.log('Quiz');
-      }
+        node.on('check-quiz', function() {
+            var answers;
+            answers = QUIZ.checkAnswers(button);
+            if (answers.correct || node.game.visualTimer.isTimeup()) {
+                node.emit('INPUT_DISABLE');
+                // On Timeup there are no answers.
+                node.done(answers);
+            }
+        });
+        console.log('Quiz');
+        }
 });
 
   stager.extendStep('game', {
@@ -214,14 +215,22 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         node.set({ObjetoElegido: Elegido});
         switch(countRondas){
           case 1:
-          alert("El umbral de esta ronda es de 50 puntos!");
+          alert("El umbral de esta ronda es de 30 puntos!");
           umbral = 50;
           break;
           case 2:
-          alert("El umbral de esta ronda es de 65 puntos!");
+          alert("El umbral de esta ronda es de 35 puntos!");
           umbral = 65;
           break;
           case 3:
+          alert("El umbral de esta ronda es de 45 puntos!");
+          umbral = 65;
+          break;
+          case 4:
+          alert("El umbral de esta ronda es de 60 puntos!");
+          umbral = 65;
+          break;
+          case 5:
           alert("El umbral de esta ronda es de 80 puntos!");
           umbral = 80;
         }
