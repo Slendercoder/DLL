@@ -1,14 +1,15 @@
 <!doctype html>
 <title>INSTRUCCIONES</title>
 <link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" />
 <body>
-  <div id="container" style="margin: 0 auto; max-width: 640px">
-    <h2>Instrucciones. <span class="subtitle">Por favor lea atentamente</span></h2>
+  <div id="container" style="margin: 0 auto; max-width: 800px">
+      <h2>Instrucciones</h2> <h3>Por favor lea atentamente</h3>
     <div id="instructions">
       <br>
       Los participantes de este juego son dos jugadores humanos (usted y un compañero remoto).      
         <h3>El juego:</h3>
-       Cuando el juego inicie, verá EN QUE LUGAR DE LA PANTALLA  QUE MAS SE EN LA VISTA PRINCIPAL? BOTON "A LA CANASTA" + "SUS PUNTOS" + "RECUADROS". tres jarras con diferentes tipos de objetos. Una jarra tiene menos objetos que las otras: esta será su jarra <b>privilegiada</b>. 
+       Cuando el juego inicie, verá tres jarras on diferentes tipos de objetos a la izquierda de su vista principal. Una de las jarras tiene menos objetos que las otras: esta será su jarra <b>privilegiada</b>. Sobre las jarras también verá un botón rotulado "Hablar con compañero". A la derecha de su vista principal verá dos recuadros vacíos sobre un botón rotulado "A la canasta!", y también verá el contador de sus puntos. 
         
         <h4>Objetivo</h4>
               El objetivo es sumar la mayor cantidad posible de puntos.    
@@ -35,7 +36,7 @@
       Si se hace click en el botón "Hablar con compañero", se desplegará un cuadro con tres palabras sin sentido. Usted puede escoger qué palabra enviar a su compañero. Su compañero también le puede enviar mensajes.
       Si su compañero le envía un mensaje, se desplegará un cuadro con la palabra enviada. Usted puede repsonder al mensaje enviando un objeto de alguna de sus jarras o ignorando el mensaje.
       <br><br>
-      <b>El juego consta de 3 rondas. Cada ronda consta de un umbral de puntos que, si es superado, el jugador obtendrá un bono de 5000 pesos (por ronda). Si ha entendido las indicaciones, presione el botón "Continuar" para continuar con el juego.</b>
+      <b>El juego consta de <span id="rounds"></span> rondas. Cada ronda consta de un umbral de puntos que, si es superado, el jugador obtendrá un bono de 5000 pesos (por ronda). Si ha entendido las indicaciones, presione el botón "Continuar" para continuar con el juego.</b>
     </div>    
     <br>
     <input type="button" id="continuar" value="Continuar" class="btn btn-lg btn-primary"/>  

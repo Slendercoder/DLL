@@ -131,14 +131,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     donebutton: true,
     frame: 'instructions.htm',
     cb: function(){
-      var s, continuar;
-      s = node.game.settings;
-      W.setInnerHTML('rondas', s.REPEAT);
+      var sett, continuar;
+      sett = node.game.settings;
+      W.setInnerHTML('rounds', sett.REPEAT);
       continuar = W.getElementById('continuar');
       continuar.onclick = function() { node.done(); };
     }
   });
-
+  /*
   stager.extendStep('quiz', {
     donebutton: false,
     frame: 'quiz.htm',
@@ -159,7 +159,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         });
         console.log('Quiz');
         }
-});
+});*/
 
   stager.extendStep('game', {
     donebutton: true,
@@ -171,6 +171,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
       //                     AQUI COMIENZA LA ACCION                          //
       /////////////////////////////////////////////////////////////////////////
       /////////////////////////////////////////////////////////////////////////
+
       node.on.data('Settings', function(msg) {
 
         console.log('El jugador arranca');
@@ -216,19 +217,19 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         switch(countRondas){
           case 1:
           alert("El umbral de esta ronda es de 30 puntos!");
-          umbral = 50;
+          umbral = 30;
           break;
           case 2:
           alert("El umbral de esta ronda es de 35 puntos!");
-          umbral = 65;
+          umbral = 35;
           break;
           case 3:
           alert("El umbral de esta ronda es de 45 puntos!");
-          umbral = 65;
+          umbral = 45;
           break;
           case 4:
           alert("El umbral de esta ronda es de 60 puntos!");
-          umbral = 65;
+          umbral = 60;
           break;
           case 5:
           alert("El umbral de esta ronda es de 80 puntos!");
@@ -546,7 +547,24 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             W.getElementById('parIzTri').style.display = "none";
             izqPareja='';
             derPareja='';
-            if (puntaje>=umbral) alert("Ha ganado el bono de esta ronda!!");
+            if(puntaje>=umbral){
+              switch(countRondas){
+                case 1:
+                alert("¡Ha ganado el bono! El código es: " + Math.floor(Math.random()*100*17));
+                break;
+                case 2:
+                alert("¡Ha ganado el bono! El código es: " + Math.floor(Math.random()*100*23));
+                break;
+                case 3:
+                alert("¡Ha ganado el bono! El código es: " + Math.floor(Math.random()*100*37));
+                break;
+                case 4:
+                alert("¡Ha ganado el bono! El código es: " + Math.floor(Math.random()*100*41));
+                break;
+                case 5:
+                alert("¡Ha ganado el bono! El código es: " + Math.floor(Math.random()*100*79));                
+              };
+            }
           } // Cierra boton de armar pareja
 
         //////////////////////////////////////////////////////////////////////////
@@ -665,16 +683,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               }
             }
           }
-
-
-
         });
-
       }); // End on.data "settings"
     }, // End cb function
   });// End extendstep "game"
-
-
 
   stager.extendStep('encuesta', {
     frame: 'Encuesta.htm',
