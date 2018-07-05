@@ -138,9 +138,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
       continuar.onclick = function() { node.done(); };
     }
   });
-  /*
+
   stager.extendStep('quiz', {
-    donebutton: false,
+    // donebutton: false,
     frame: 'quiz.htm',
     cb: function() {
         var button, QUIZ;
@@ -159,7 +159,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         });
         console.log('Quiz');
         }
-});*/
+});
 
   stager.extendStep('game', {
     donebutton: true,
@@ -550,19 +550,19 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             if(puntaje>=umbral){
               switch(countRondas){
                 case 1:
-                alert("¡Ha ganado el bono! El código es: " + Math.floor(Math.random()*100*17));
+                alert("¡Ha ganado el bono! El código es: " + Math.ceil(Math.random()*100)*17);
                 break;
                 case 2:
-                alert("¡Ha ganado el bono! El código es: " + Math.floor(Math.random()*100*23));
+                alert("¡Ha ganado el bono! El código es: " + Math.ceil(Math.random()*100)*23);
                 break;
                 case 3:
-                alert("¡Ha ganado el bono! El código es: " + Math.floor(Math.random()*100*37));
+                alert("¡Ha ganado el bono! El código es: " + Math.ceil(Math.random()*100)*37);
                 break;
                 case 4:
-                alert("¡Ha ganado el bono! El código es: " + Math.floor(Math.random()*100*41));
+                alert("¡Ha ganado el bono! El código es: " + Math.ceil(Math.random()*100)*41);
                 break;
                 case 5:
-                alert("¡Ha ganado el bono! El código es: " + Math.floor(Math.random()*100*79));                
+                alert("¡Ha ganado el bono! El código es: " + Math.ceil(Math.random()*100)*79);
               };
             }
           } // Cierra boton de armar pareja
