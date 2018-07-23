@@ -213,28 +213,28 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         izqPareja='';
         derPareja='';
 
-        node.set({ObjetoElegido: Elegido});
-        switch(countRondas){
-          case 1:
-          alert("El umbral de esta ronda es de 30 puntos!");
-          umbral = 30;
-          break;
-          case 2:
-          alert("El umbral de esta ronda es de 35 puntos!");
-          umbral = 35;
-          break;
-          case 3:
-          alert("El umbral de esta ronda es de 45 puntos!");
-          umbral = 45;
-          break;
-          case 4:
-          alert("El umbral de esta ronda es de 60 puntos!");
-          umbral = 60;
-          break;
-          case 5:
-          alert("El umbral de esta ronda es de 80 puntos!");
-          umbral = 80;
-        }
+        // node.set({ObjetoElegido: Elegido});
+        // switch(countRondas){
+        //   case 1:
+        //   alert("El umbral de esta ronda es de 30 puntos!");
+        //   umbral = 30;
+        //   break;
+        //   case 2:
+        //   alert("El umbral de esta ronda es de 35 puntos!");
+        //   umbral = 35;
+        //   break;
+        //   case 3:
+        //   alert("El umbral de esta ronda es de 45 puntos!");
+        //   umbral = 45;
+        //   break;
+        //   case 4:
+        //   alert("El umbral de esta ronda es de 60 puntos!");
+        //   umbral = 60;
+        //   break;
+        //   case 5:
+        //   alert("El umbral de esta ronda es de 80 puntos!");
+        //   umbral = 80;
+        // }
 
 
         //////////////////////////////////////////////////////////////////////////
@@ -245,34 +245,63 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         btn.onclick = function() {
             var x = Math.random();
             if( x< 0.33333){
-              W.getElementById('Zab').style.left= '380px';
+              W.getElementById('ZABbutton').src= 'ZABbutton.png';
               if(Math.random() < 0.5){
-                W.getElementById('Xol').style.left= '610px';
-                W.getElementById('Dup').style.left= '840px';
+                W.getElementById('XOLbutton').src= 'XOLbutton.png';
+                W.getElementById('DUPbutton').src= 'DUPbutton.png';
               }else{
-                W.getElementById('Xol').style.left= '840px';
-                W.getElementById('Dup').style.left= '610px';}
+                W.getElementById('XOLbutton').src= 'DUPbutton.png';
+                W.getElementById('DUPbutton').src= 'XOLbutton.png';}
             }//fin del primer if x <0.33333
             else if(x < 0.66666){
-                W.getElementById('Zab').style.left= '610px';
+                W.getElementById('ZABbutton').src= 'XOLbutton.png';
               if(Math.random() < 0.5){
-                W.getElementById('Xol').style.left= '840px';
-                W.getElementById('Dup').style.left= '380px';
+                W.getElementById('XOLbutton').src= 'DUPbutton.png';
+                W.getElementById('DUPbutton').src= 'ZABbutton.png';
               }else{
-                W.getElementById('Xol').style.left= '380px';
-                W.getElementById('Dup').style.left= '840px';
+                W.getElementById('XOLbutton').src= 'ZABbutton.png';
+                W.getElementById('DUPbutton').src= 'DUPbutton.png';
               }
             }// primer else if x < 0.66666
             else {
-                W.getElementById('Zab').style.left= '840px';
+                W.getElementById('ZABbutton').src= 'DUPbutton.png';
                 if(Math.random() < 0.5){
-                  W.getElementById('Xol').style.left= '380px';
-                  W.getElementById('Dup').style.left= '610px';
+                  W.getElementById('XOLbutton').src= 'ZABbutton.png';
+                  W.getElementById('DUPbutton').src= 'XOLbutton.png';
                 }else{
-                  W.getElementById('Xol').style.left= '610px';
-                  W.getElementById('Dup').style.left= '380px';
+                  W.getElementById('XOLbutton').src= 'XOLbutton.png';
+                  W.getElementById('DUPbutton').src= 'ZABbutton.png';
                 }
-            }// fin de el else
+            }// fin del else
+            // if( x< 0.33333){
+            //   W.getElementById('Zab').style.left= '380px';
+            //   if(Math.random() < 0.5){
+            //     W.getElementById('Xol').style.left= '610px';
+            //     W.getElementById('Dup').style.left= '840px';
+            //   }else{
+            //     W.getElementById('Xol').style.left= '840px';
+            //     W.getElementById('Dup').style.left= '610px';}
+            // }//fin del primer if x <0.33333
+            // else if(x < 0.66666){
+            //     W.getElementById('Zab').style.left= '610px';
+            //   if(Math.random() < 0.5){
+            //     W.getElementById('Xol').style.left= '840px';
+            //     W.getElementById('Dup').style.left= '380px';
+            //   }else{
+            //     W.getElementById('Xol').style.left= '380px';
+            //     W.getElementById('Dup').style.left= '840px';
+            //   }
+            // }// primer else if x < 0.66666
+            // else {
+            //     W.getElementById('Zab').style.left= '840px';
+            //     if(Math.random() < 0.5){
+            //       W.getElementById('Xol').style.left= '380px';
+            //       W.getElementById('Dup').style.left= '610px';
+            //     }else{
+            //       W.getElementById('Xol').style.left= '610px';
+            //       W.getElementById('Dup').style.left= '380px';
+            //     }
+            // }// fin del else
             W.getElementById('myModal2').style.display = "block";
           }
         //When the user clicks the button, close the modal de TALK TO
