@@ -187,6 +187,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         var derPareja; // Argumento derecho de la pareja
         var izqPareja; // Argumento izquierdo de la pareja
         var btn = W.getElementById("myBtn"); // Boton que abre modal
+        var btnSalir = W.getElementById("finRonda"); // Boton que abre modal
         var span1 = W.getElementById('botCirc'); // Boton en modal de enviar círculo
         var span2 = W.getElementById('botCuad'); // Boton en modal de enviar cuadrado
         var btnArmarPareja = W.getElementById('botonVerde'); //Boton "ToBasket"
@@ -240,6 +241,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         //////////////////////////////////////////////////////////////////////////
           //                     BOTONES                                          //
           /////////////////////////////////////////////////////////////////////////
+
+          // When the user clicks the button, ends the round
+        btnSalir.onclick = function() {
+          var txt;
+          var r = confirm("¿Seguro que desea terminar la ronda?");
+          if (r == true) {
+            node.done()
+          }
+        }
 
           // When the user clicks the button, open the modal de TALK TO
         btn.onclick = function() {
