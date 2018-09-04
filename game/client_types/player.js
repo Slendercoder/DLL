@@ -116,7 +116,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     this.visualRound = node.widgets.append('VisualRound', header);
     this.visualTimer = node.widgets.append('VisualTimer', header);
 
-    this.doneButton = node.widgets.append('DoneButton', header);
+    // this.doneButton = node.widgets.append('DoneButton', header);
 
     this.contadorComunicacion = 1;
 
@@ -128,7 +128,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
   });
 
   stager.extendStep('instructions', {
-    donebutton: true,
+    donebutton: false,
     frame: 'instructions.htm',
     cb: function(){
       var sett, continuar;
@@ -140,7 +140,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
   });
 
   stager.extendStep('quiz', {
-    // donebutton: false,
+    donebutton: false,
     frame: 'quiz.htm',
     cb: function() {
         var button, QUIZ;
@@ -162,8 +162,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 });
 
   stager.extendStep('game', {
-    donebutton: true,
-    frame: 'game.htm',
+    donebutton: false,
+    frame: 'game2.htm',
     cb: function() {
 
       //////////////////////////////////////////////////////////////////////////
