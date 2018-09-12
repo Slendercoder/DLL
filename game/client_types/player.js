@@ -139,7 +139,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     }
   });
 
-  /*stager.extendStep('quiz', {
+  stager.extendStep('quiz', {
     donebutton: false,
     frame: 'quiz.htm',
     cb: function() {
@@ -159,11 +159,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         });
         console.log('Quiz');
         }
-});*/
+    });
 
   stager.extendStep('game', {
     donebutton: false,
-    frame: 'game2.htm',
+    frame: 'game3.htm',
     cb: function() {
 
       //////////////////////////////////////////////////////////////////////////
@@ -191,19 +191,18 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         var span1 = W.getElementById('botCirc'); // Boton en modal de enviar círculo
         var span2 = W.getElementById('botCuad'); // Boton en modal de enviar cuadrado
         var btnArmarPareja = W.getElementById('botonVerde'); //Boton "ToBasket"
-        var span3 = W.getElementById('ZABbutton'); // Boton en modal2 de decir ZAB
-        var span4 = W.getElementById('XOLbutton'); // Boton en modal2 de decir XOL
+        var span3 = W.getElementById('ARRIBAbutton'); // Boton en modal2 de decir ZAB
+        var span4 = W.getElementById('MEDIObutton'); // Boton en modal2 de decir XOL
+        var span8 = W.getElementById('ABAJObutton'); // Boton en modal2 de decir DUP
         var span5 = W.getElementById('botIgn'); //Boton ignorar llamado
         var span6 = W.getElementById('exitButton'); //Boton de exit del modal
         var span7 = W.getElementById('botTri'); // Boton en modal de enviar triángulo
-        var span8 = W.getElementById('DUPbutton'); // Boton en modal2 de decir DUP
         var countRondas = node.player.stage.round; //Lleva el numero de rondas
         var umbral; //valor del umbral de puntos
-        var resp = true; // para saber si ya le respondieron el mensaje skdjkhdajf
-
-
+        var mensajeEnviar = ['ZAB', 'XOL', 'DUP'];
 
         node.game.contadorComunicacion = 1;
+        node.game.resp = true; // para saber si ya le respondieron el mensaje skdjkhdajf
 
         // node.game.other_player = otroJugador;
 
@@ -255,73 +254,44 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
           // When the user clicks the button, open the modal de TALK TO
         btn.onclick = function() {
-            if(resp == false){
+            if(node.game.resp == false){
               var  p = confirm("No le han respondido el anterior mensaje!! ¿Quiere mandar otro?");
             }
-            if (p == true || resp == true){
+            if (p == true || node.game.resp == true){
               var x = Math.random();
               if(x < 0.33333){
-                W.setInnerHTML('zab', 'ZAB');
+                W.setInnerHTML('arriba', 'ZAB');
+                mensajeEnviar[0] = 'ZAB';
                 if(Math.random() < 0.5){
-
-                  W.setInnerHTML('xol', 'XOL');
-
-                  W.setInnerHTML('dup', 'DUP');
+                  W.setInnerHTML('medio', 'XOL');
+                  W.setInnerHTML('abajo', 'DUP');
                 }else{
-
-
-                  W.setInnerHTML('xol', 'DUP');
-
-
-                  W.setInnerHTML('dup', 'XOL');
-
-
-
-
+                  W.setInnerHTML('medio', 'DUP');
+                  W.setInnerHTML('abajo', 'XOL');
                 }
               }//fin del primer if x <0.33333
               else if(x < 0.66666){
-
-
-                  W.setInnerHTML('zab', 'XOL');
-
-
+                  W.setInnerHTML('arriba', 'XOL');
                 if(Math.random() < 0.5){
-
-
-                  W.setInnerHTML('xol', 'DUP');
-
-
-                  W.setInnerHTML('dup', 'ZAB');
-
-
-
+                  W.setInnerHTML('medio', 'DUP');
+                  W.setInnerHTML('abajo', 'ZAB');
+                  mensajeEnviar[2] = 'ZAB';
                 }else{
-
-
-                  W.setInnerHTML('xol', 'ZAB');
-
-                  W.setInnerHTML('dup', 'DUP');
+                  W.setInnerHTML('medio', 'ZAB');
+                  mensajeEnviar[1] = 'ZAB';
+                  W.setInnerHTML('abajo', 'DUP');
                 }
               }// primer else if x < 0.66666
               else {
-
-                W.setInnerHTML('zab', 'DUP');
-
+                W.setInnerHTML('arriba', 'DUP');
                   if(Math.random() < 0.5){
-
-                    W.setInnerHTML('xol', 'ZAB');
-
-                    W.setInnerHTML('dup', 'XOL');
-
-
+                    W.setInnerHTML('medio', 'ZAB');
+                    mensajeEnviar[1] = 'ZAB';
+                    W.setInnerHTML('abajo', 'XOL');
                   }else{
-
-                    W.setInnerHTML('xol', 'XOL');
-
-                    W.setInnerHTML('dup', 'ZAB');
-
-
+                    W.setInnerHTML('medio', 'XOL');
+                    W.setInnerHTML('abajo', 'ZAB');
+                    mensajeEnviar[2] = 'ZAB';
                   }
               }// fin del else
               // if( x< 0.33333){
@@ -355,7 +325,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
               // }// fin del else
               W.getElementById('myModal2').style.display = "block";
             }
-              resp = false;
+              node.game.resp = false;
           }
 
         //When the user clicks the button, close the modal de TALK TO
@@ -363,11 +333,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           W.getElementById('myModal2').style.display = "";
         }
 
-        //When the user clicks the button, envía "ZAB" al otro jugador
+        //When the user clicks the button, envía al otro jugador
         span3.onclick = function() {
           alert('El mensaje se envió exitosamente!');
           W.getElementById('myModal2').style.display = "";
-          node.say('Comunicacion', otroJugador, 'zab'); //Hay que cambiar esto!!!!
+          node.say('Comunicacion', otroJugador, mensajeEnviar[0]);
           node.set({Comunicacion: ["zab", node.game.contadorComunicacion]})
         }
 
@@ -375,7 +345,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         span4.onclick=function(){
           alert('El mensaje se envió exitosamente!');
           W.getElementById('myModal2').style.display="";
-          node.say('Comunicacion', otroJugador, 'xol'); // hay que cambiar esto !!!!
+          node.say('Comunicacion', otroJugador, mensajeEnviar[1]); // hay que cambiar esto !!!!
           node.set({Comunicacion: ["xol", node.game.contadorComunicacion]})
         }
 
@@ -383,13 +353,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         span8.onclick = function() {
           alert('Mensaje enviado exitosamente!');
           W.getElementById('myModal2').style.display = "";
-          node.say('Comunicacion', otroJugador,'dup');  // hay que cambiar esto !!!!
+          node.say('Comunicacion', otroJugador, mensajeEnviar[2]);  // hay que cambiar esto !!!!
           node.set({Comunicacion: ["dup", node.game.contadorComunicacion]})
         }
 
         // When the user clicks the button, envía un CIRCULO al otro jugador
         span1.onclick = function() {
-          resp = true;
+          node.game.resp = true;
           if (cantidadJarra1 > 0){
             alert ("El objeto se envió exitosamente!");
             node.say('Dar', otroJugador, 'Circulo');
@@ -407,7 +377,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         // When the user clicks the button, envía un CUADRADO al otro jugador
         span2.onclick = function() {
-          resp = true;
+          node.game.resp = true;
           if (cantidadJarra2 > 0){
             alert ("El objeto se envió exitosamente! ");
 
@@ -425,7 +395,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
         // When the user clicks the button, envía un TRIANGULO al otro jugador
         span7.onclick = function() {
-          resp = true;
+          node.game.resp = true;
           if (cantidadJarra3 > 0){
             alert ("El objeto se envió exitosamente!  ");
 
@@ -657,8 +627,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         //                     INTERACCIONES                                   //
         /////////////////////////////////////////////////////////////////////////
         node.on.data('Comunicacion', function(msg) {
-          W.getElementById('myModal').style.display = 'block';
-          W.setInnerHTML('Mensaje', msg.data); // Hay que cambiarlo???
+          // AQUI POPUP DE LE ENVIARON UN MENSAJE
+
+          // ESTO DE AQUI VA CUANDO EL JUGADOR REVISE EL MENSAJE EN LA LISTA
+          // W.getElementById('myModal').style.display = 'block';
+          // W.setInnerHTML('Mensaje', msg.data); // Hay que cambiarlo???
 
         });
 
