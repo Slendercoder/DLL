@@ -139,7 +139,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     }
   });
 
-  stager.extendStep('quiz', {
+  /*stager.extendStep('quiz', {
     donebutton: false,
     frame: 'quiz.htm',
     cb: function() {
@@ -159,7 +159,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         });
         console.log('Quiz');
         }
-});
+});*/
 
   stager.extendStep('game', {
     donebutton: false,
@@ -199,6 +199,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         var span8 = W.getElementById('DUPbutton'); // Boton en modal2 de decir DUP
         var countRondas = node.player.stage.round; //Lleva el numero de rondas
         var umbral; //valor del umbral de puntos
+        var resp = true; // para saber si ya le respondieron el mensaje skdjkhdajf
+
 
 
         node.game.contadorComunicacion = 1;
@@ -253,67 +255,109 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
           // When the user clicks the button, open the modal de TALK TO
         btn.onclick = function() {
-            var x = Math.random();
-            if( x< 0.33333){
-              W.getElementById('ZABbutton').src= 'ZABbutton.png';
-              if(Math.random() < 0.5){
-                W.getElementById('XOLbutton').src= 'XOLbutton.png';
-                W.getElementById('DUPbutton').src= 'DUPbutton.png';
-              }else{
-                W.getElementById('XOLbutton').src= 'DUPbutton.png';
-                W.getElementById('DUPbutton').src= 'XOLbutton.png';}
-            }//fin del primer if x <0.33333
-            else if(x < 0.66666){
-                W.getElementById('ZABbutton').src= 'XOLbutton.png';
-              if(Math.random() < 0.5){
-                W.getElementById('XOLbutton').src= 'DUPbutton.png';
-                W.getElementById('DUPbutton').src= 'ZABbutton.png';
-              }else{
-                W.getElementById('XOLbutton').src= 'ZABbutton.png';
-                W.getElementById('DUPbutton').src= 'DUPbutton.png';
-              }
-            }// primer else if x < 0.66666
-            else {
-                W.getElementById('ZABbutton').src= 'DUPbutton.png';
+            if(resp == false){
+              var  p = confirm("No le han respondido el anterior mensaje!! ¿Quiere mandar otro?");
+            }
+            if (p == true || resp == true){
+              var x = Math.random();
+              if(x < 0.33333){
+                W.setInnerHTML('zab', 'ZAB');
                 if(Math.random() < 0.5){
-                  W.getElementById('XOLbutton').src= 'ZABbutton.png';
-                  W.getElementById('DUPbutton').src= 'XOLbutton.png';
+
+                  W.setInnerHTML('xol', 'XOL');
+
+                  W.setInnerHTML('dup', 'DUP');
                 }else{
-                  W.getElementById('XOLbutton').src= 'XOLbutton.png';
-                  W.getElementById('DUPbutton').src= 'ZABbutton.png';
+
+
+                  W.setInnerHTML('xol', 'DUP');
+
+
+                  W.setInnerHTML('dup', 'XOL');
+
+
+
+
                 }
-            }// fin del else
-            // if( x< 0.33333){
-            //   W.getElementById('Zab').style.left= '380px';
-            //   if(Math.random() < 0.5){
-            //     W.getElementById('Xol').style.left= '610px';
-            //     W.getElementById('Dup').style.left= '840px';
-            //   }else{
-            //     W.getElementById('Xol').style.left= '840px';
-            //     W.getElementById('Dup').style.left= '610px';}
-            // }//fin del primer if x <0.33333
-            // else if(x < 0.66666){
-            //     W.getElementById('Zab').style.left= '610px';
-            //   if(Math.random() < 0.5){
-            //     W.getElementById('Xol').style.left= '840px';
-            //     W.getElementById('Dup').style.left= '380px';
-            //   }else{
-            //     W.getElementById('Xol').style.left= '380px';
-            //     W.getElementById('Dup').style.left= '840px';
-            //   }
-            // }// primer else if x < 0.66666
-            // else {
-            //     W.getElementById('Zab').style.left= '840px';
-            //     if(Math.random() < 0.5){
-            //       W.getElementById('Xol').style.left= '380px';
-            //       W.getElementById('Dup').style.left= '610px';
-            //     }else{
-            //       W.getElementById('Xol').style.left= '610px';
-            //       W.getElementById('Dup').style.left= '380px';
-            //     }
-            // }// fin del else
-            W.getElementById('myModal2').style.display = "block";
+              }//fin del primer if x <0.33333
+              else if(x < 0.66666){
+
+
+                  W.setInnerHTML('zab', 'XOL');
+
+
+                if(Math.random() < 0.5){
+
+
+                  W.setInnerHTML('xol', 'DUP');
+
+
+                  W.setInnerHTML('dup', 'ZAB');
+
+
+
+                }else{
+
+
+                  W.setInnerHTML('xol', 'ZAB');
+
+                  W.setInnerHTML('dup', 'DUP');
+                }
+              }// primer else if x < 0.66666
+              else {
+
+                W.setInnerHTML('zab', 'DUP');
+
+                  if(Math.random() < 0.5){
+
+                    W.setInnerHTML('xol', 'ZAB');
+
+                    W.setInnerHTML('dup', 'XOL');
+
+
+                  }else{
+
+                    W.setInnerHTML('xol', 'XOL');
+
+                    W.setInnerHTML('dup', 'ZAB');
+
+
+                  }
+              }// fin del else
+              // if( x< 0.33333){
+              //   W.getElementById('Zab').style.left= '380px';
+              //   if(Math.random() < 0.5){
+              //     W.getElementById('Xol').style.left= '610px';
+              //     W.getElementById('Dup').style.left= '840px';
+              //   }else{
+              //     W.getElementById('Xol').style.left= '840px';
+              //     W.getElementById('Dup').style.left= '610px';}
+              // }//fin del primer if x <0.33333
+              // else if(x < 0.66666){
+              //     W.getElementById('Zab').style.left= '610px';
+              //   if(Math.random() < 0.5){
+              //     W.getElementById('Xol').style.left= '840px';
+              //     W.getElementById('Dup').style.left= '380px';
+              //   }else{
+              //     W.getElementById('Xol').style.left= '380px';
+              //     W.getElementById('Dup').style.left= '840px';
+              //   }
+              // }// primer else if x < 0.66666
+              // else {
+              //     W.getElementById('Zab').style.left= '840px';
+              //     if(Math.random() < 0.5){
+              //       W.getElementById('Xol').style.left= '380px';
+              //       W.getElementById('Dup').style.left= '610px';
+              //     }else{
+              //       W.getElementById('Xol').style.left= '610px';
+              //       W.getElementById('Dup').style.left= '380px';
+              //     }
+              // }// fin del else
+              W.getElementById('myModal2').style.display = "block";
+            }
+              resp = false;
           }
+
         //When the user clicks the button, close the modal de TALK TO
         span6.onclick = function() {
           W.getElementById('myModal2').style.display = "";
@@ -323,7 +367,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         span3.onclick = function() {
           alert('El mensaje se envió exitosamente!');
           W.getElementById('myModal2').style.display = "";
-          node.say('Comunicacion', otroJugador, '"ZAB"');
+          node.say('Comunicacion', otroJugador, 'zab'); //Hay que cambiar esto!!!!
           node.set({Comunicacion: ["zab", node.game.contadorComunicacion]})
         }
 
@@ -331,7 +375,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         span4.onclick=function(){
           alert('El mensaje se envió exitosamente!');
           W.getElementById('myModal2').style.display="";
-          node.say('Comunicacion', otroJugador, '"XOL"');
+          node.say('Comunicacion', otroJugador, 'xol'); // hay que cambiar esto !!!!
           node.set({Comunicacion: ["xol", node.game.contadorComunicacion]})
         }
 
@@ -339,12 +383,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         span8.onclick = function() {
           alert('Mensaje enviado exitosamente!');
           W.getElementById('myModal2').style.display = "";
-          node.say('Comunicacion', otroJugador, '"DUP"');
+          node.say('Comunicacion', otroJugador,'dup');  // hay que cambiar esto !!!!
           node.set({Comunicacion: ["dup", node.game.contadorComunicacion]})
         }
 
         // When the user clicks the button, envía un CIRCULO al otro jugador
         span1.onclick = function() {
+          resp = true;
           if (cantidadJarra1 > 0){
             alert ("El objeto se envió exitosamente!");
             node.say('Dar', otroJugador, 'Circulo');
@@ -362,6 +407,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         // When the user clicks the button, envía un CUADRADO al otro jugador
         span2.onclick = function() {
+          resp = true;
           if (cantidadJarra2 > 0){
             alert ("El objeto se envió exitosamente! ");
 
@@ -379,6 +425,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
         // When the user clicks the button, envía un TRIANGULO al otro jugador
         span7.onclick = function() {
+          resp = true;
           if (cantidadJarra3 > 0){
             alert ("El objeto se envió exitosamente!  ");
 
@@ -611,7 +658,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         /////////////////////////////////////////////////////////////////////////
         node.on.data('Comunicacion', function(msg) {
           W.getElementById('myModal').style.display = 'block';
-          W.setInnerHTML('Mensaje', msg.data);
+          W.setInnerHTML('Mensaje', msg.data); // Hay que cambiarlo???
+
         });
 
         node.on.data('Dar', function(msg) {
@@ -775,7 +823,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         //W.setInnerHTML('Holaaaa');
         if(contador==9){
           W.getElementById('encuesta').style.display = "none";
-          alert("Oprima el botón 'I am done' en la parte izquierda de la pantalla para continuar");
+          alert("Oprima el botón 'I am done' en la parte de arriba de la pantalla para continuar");
         }
       }
 
