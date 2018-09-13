@@ -18,7 +18,7 @@
 }
 
 .middle {
-  width: 38%;
+  width: 48%;
 }
 
 /* Clear floats after the columns */
@@ -98,6 +98,22 @@ button:active {
     border: 1px solid #aaaaaa;
 }
 
+/* Propiedades de la ventana para seleccionar objetos del toolbox */
+.objetos {
+    display: none; /* Hidden by default */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    position: fixed; /* Stay in place */
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    overflow: hidden;
+}
+
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -112,7 +128,6 @@ button:active {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
@@ -127,14 +142,12 @@ button:active {
     font-size: 28px;
     font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
-
 .centered {
     position: relative;
     top: 50%;
@@ -175,214 +188,139 @@ select#soflow-color {
    padding-left: 15px;
 }
 
+div.gallery{
+  float: left;
+}
+
 div.gallery:hover {
     border: 1px solid #777;
 }
 
+div.gallery1:hover {
+    border: 1px solid #777;
+}
+
+img.ovalar{
+    border-radius: 10%;
+}
 </style>
 </head>
 <body>
 
+<!--
 <h1 align="center">Vista Principal</h1>
+-->
 
 <div class="row">
   <div class="column left" style="">
 
-    <h2>Estos son sus objetos para armar parejas:</h2>
+    <h3>Click sobre toolbock para ver sus objetos:</h3>
 
-    <table style="width:100%">
-        <tr>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del circulo-->
-                    <img id="drag1" draggable="true" src="circle.png" alt="" width="70" height="70"/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del cuadrado-->
-                    <img id="drag2" draggable="true" src="square.png" width="65" height="65" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-        </tr>
-        <tr>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del circulo-->
-                    <img id="drag1" draggable="true" src="circle.png" alt="" width="70" height="70"/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del cuadrado-->
-                    <img id="drag2" draggable="true" src="square.png" width="65" height="65" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-        </tr>
-        <tr>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del circulo-->
-                    <img id="drag1" draggable="true" src="circle.png" alt="" width="70" height="70"/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del cuadrado-->
-                    <img id="drag2" draggable="true" src="square.png" width="65" height="65" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-        </tr>
-        <tr>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del circulo-->
-                    <img id="drag1" draggable="true" src="circle.png" alt="" width="70" height="70"/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del cuadrado-->
-                    <img id="drag2" draggable="true" src="square.png" width="65" height="65" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-        </tr>
-        <tr>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del circulo-->
-                    <img id="drag1" draggable="true" src="circle.png" alt="" width="70" height="70"/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del cuadrado-->
-                    <img id="drag2" draggable="true" src="square.png" width="65" height="65" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-        </tr>
-        <tr>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del circulo-->
-                    <img id="drag1" draggable="true" src="circle.png" alt="" width="70" height="70"/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del cuadrado-->
-                    <img id="drag2" draggable="true" src="square.png" width="65" height="65" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-            <th align="center">
-                <div class="gallery">
-                    <!--imagen del triangulo-->
-                    <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-                    <p id="demo" style="display: none;"></p>
-                </div>
-            </th>
-        </tr>
-    </table>
+    <div class="gallery1">
+        <img id="toolbox" draggable="false" src="tool-box.png" alt="" width="200" height=auto/>
+    </div>
 
-  </div>
+    <h3>Click sobre caja para ver objetos recibidos:</h3>
+
+    <div class="gallery1">
+        <img id="caja" draggable="false" src="caja.png" alt="" width="200" height=auto/>
+    </div>
+
+    <div class="objetos" id="objetosPropios">
+
+      <h3 align="center">
+          Objetos Propios
+      </h3>
+
+      <p>
+          En esta ventana puede ver sus objetos.
+          <br>
+          <br>
+      </p>
+
+        <div class="gallery" id='Circ'>
+            <!--imagen del circulo-->
+            <img id="drag1" draggable="true" src="circle.png" alt="" width="70" height="70"/>
+            <p id="demo" style="display: none;"></p>
+        </div>
+        <div class="gallery">
+            <!--imagen del cuadrado-->
+            <img id="drag2" draggable="true" src="square.png" width="65" height="65" alt=""/>
+            <p id="demo" style="display: none;"></p>
+        </div>
+        <div class="gallery">
+            <!--imagen del triangulo-->
+            <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
+            <p id="demo" style="display: none;"></p>
+        </div>
+
+        <DIV style="clear:both;" align="center">
+          <br>
+          Dar dobleclick sobre el objeto para marcarlo
+          (dar click para quitar la marca).
+          <br>
+          <br>
+          <br>
+
+          <!--boton de salida-->
+          <button class="button1" id='exitButton1'>Salir</button>
+        </DIV>
+    </div> <!--Cierra div de los objetos propios-->
+
+    <div class="objetos" id="objetosRecibidos">
+
+      <h3 align="center">
+          Objetos Recibidos
+      </h3>
+
+      <p>
+          En esta ventana puede ver los objetos que le ha enviado
+          su compañero.
+          <br>
+          <br>
+      </p>
+
+        <div class="gallery" id='CircRecibido'>
+            <!--imagen del circulo-->
+            <img id="drag1" draggable="true" src="circle.png" alt="" width="70" height="70"/>
+            <p id="demo" style="display: none;"></p>
+        </div>
+        <div class="gallery" id='CuadRecibido'>
+            <!--imagen del cuadrado-->
+            <img id="drag2" draggable="true" src="square.png" width="65" height="65" alt=""/>
+            <p id="demo" style="display: none;"></p>
+        </div>
+        <div class="gallery" id='TriaRecibido'>
+            <!--imagen del triangulo-->
+            <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
+            <p id="demo" style="display: none;"></p>
+        </div>
+
+        <DIV style="clear:both;" align="center">
+          <br>
+          Dar dobleclick sobre el objeto para marcarlo
+          (dar click para quitar la marca).
+          <br>
+          <br>
+          <br>
+
+          <!--boton de salida-->
+          <button class="button1" id='exitButton2'>Salir</button>
+        </DIV>
+    </div> <!--Cierra div de los objetos recibidos-->
+
+
+  </div> <!--Cierra div de la columna izquierda-->
+
   <div class="column middle" style="">
-    <h2 align="center">Su puntaje es: <span style="font-size:24pt" id="Puntaje">0 </span>puntos</h2>
+    <h2 align="center">Su puntaje es: <span style="font-size:24pt" id="Puntaje">0 </span> puntos</h2>
 
     <table style="width:90%">
       <tr>
-        <th style="width:70%">Arrastre objetos aquí<br> para formar una pareja</th>
         <th rowspan="2" >
-            <img src="a_canasta.png" draggable="false" align="right" width="200" height="170" alt=""/>
+            <img class="ovalar" src="gears.jpg" draggable="false" align="right" width="200" height="170" alt=""/>
         </th>
+        <th style="width:80%">Arrastre objetos aquí<br> para formar una pareja</th>
       </tr>
       <tr>
         <td>
@@ -404,28 +342,28 @@ div.gallery:hover {
       </tr>
       <tr>
         <td colspan="2" align="center">
-            <button type="button" id="botonVerde">¡A la canasta!</button>
+            <br>
+            <br>
+            <br>
+            <button type="button" id="botonVerde">Ingresar pareja a la máquina</button>
         </td>
       </tr>
     </table>
 
-    </div>
+    </div> <!--Cierra div de la columna de en medio-->
+
   <div class="column right" style="">
     <h2>Hablar con el compañero:</h2>
     <p>Presione el botón para enviar un mensaje a su compañero:</p>
           <button type="button" id='myBtn'>Enviar mensaje</button>
 
-      <br>
-      <br>
-      <br>
       <h2>Mensajes recibidos:</h2>
+      <p>Seleccione aquí el mensaje que desea ver:</p>
         <select id=soflow-color>
           <option>Sus mensajes recibidos aquí</option>
-          <option value="Msg1">Mensaje 1</option>
-          <option value="Msg2">Mensaje 2</option>
-          <option value="Msg3">Mensaje 3</option>
-          <option value="Msg4">Mensaje 4</option>
         </select>
+
+      <br>
       <br>
       <br>
       <br>
@@ -435,7 +373,8 @@ div.gallery:hover {
     </div>
 
 
-  </div>
+  </div> <!--Cierra div de la columna derecha-->
+
 </div>
 
 <!-- The Modal -->
@@ -463,21 +402,21 @@ div.gallery:hover {
           <h2>Escoja su mensaje:</font></h2>
         </div>
 
-            <DIV id = 'Zab' visibility:visible z-index:1">
+            <DIV id = 'Zab' visibility:"visible" z-index:"1">
               <!--imagen del boton ZAB-->
               <button type="button" id='ARRIBAbutton'><span id='arriba'></span></button>
               <br>
               <br>
             </DIV>
 
-            <DIV id = 'Xol' visibility:visible z-index:1">
+            <DIV id = 'Xol' visibility:"visible" z-index:"1">
               <!--imagen del boton XOL-->
               <button type="button" id='MEDIObutton'><span id='medio'></span></button>
               <br>
               <br>
             </DIV>
 
-            <DIV id = 'Dup' visibility:visible z-index:1">
+            <DIV id = 'Dup' visibility:"visible" z-index:"1">
               <!--imagen del boton DUP-->
                 <button type="button" id='ABAJObutton'><span id='abajo'></span></button>
             </DIV>
@@ -557,7 +496,6 @@ div.gallery:hover {
               console.log('Se arrastro en el', event.target.id)
               node.emit('Arrastrar', [data, event.target.id]);
               // event.target.appendChild(document.getElementById(data));
-
           }
       });
 
