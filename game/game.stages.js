@@ -22,6 +22,7 @@ module.exports = function(stager, settings) {
     stager.extendStage('trials', {
       steps: [
         'game',
+        'puntaje',
         'encuesta'
       ]
     });

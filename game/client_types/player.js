@@ -116,9 +116,10 @@
       this.visualRound = node.widgets.append('VisualRound', header);
       this.visualTimer = node.widgets.append('VisualTimer', header);
 
-      // this.doneButton = node.widgets.append('DoneButton', header);
+      this.doneButton = node.widgets.append('DoneButton', header);
 
       this.contadorComunicacion = 1;
+      this.puntacum = 0;
 
       // var doneButton = node.widgets.append('DoneButton', header)
       // doneButton.text = "OK"
@@ -162,7 +163,7 @@
       });
 
     stager.extendStep('game', {
-      donebutton: false,
+      donebutton: true,
       frame: 'game3.htm',
       cb: function() {
 
@@ -750,9 +751,18 @@
               }
             }
           });
+          node.game.puntacum += puntaje;
         }); // End on.data "settings"
       }, // End cb function
     });// End extendstep "game"
+
+    stager.extendStep('puntaje', {
+      frame: 'puntaje.htm',
+      donebutton: true,
+      cb: function(){
+        W.setInnerHTML('acumulado', node.game.puntacum);
+      }
+    });
 
     stager.extendStep('encuesta', {
       frame: 'Encuesta.htm',

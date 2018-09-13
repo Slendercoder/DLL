@@ -52,6 +52,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
+    stager.extendStep('puntaje', {
+        cb: function() {
+          console.log('Puntaje...');
+        }
+    });
+
     stager.extendStep('encuesta', {
         cb: function() {
           console.log('Encuesta...');

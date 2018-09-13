@@ -43,6 +43,7 @@ module.exports = {
     TIMER: {
         instructions: 180000,
         game: 240000,
+        puntaje: 30000,
         encuesta: 60000
     },
 
