@@ -478,8 +478,9 @@
           selectMensajes.onchange = function() {
             var indice = this.selectedIndex;
             var correo = this.options[indice].value;
+            this.remove(this.selectedIndex);
             W.getElementById('myModal').style.display = 'block';
-            W.setInnerHTML('Mensaje', correo); // Hay que cambiarlo???
+            W.setInnerHTML('Mensaje', correo);
           };
 
           toolBox.onclick = function() {

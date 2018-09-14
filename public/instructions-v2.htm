@@ -1,0 +1,159 @@
+<!doctype html>
+<title>INSTRUCCIONES</title>
+<link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+
+<style>
+div {
+    font-family: "Times New Roman";
+    font-size: 19px;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+}
+
+.left, .right {
+  width: 30%;
+}
+
+.middle {
+  width: 30%;
+}
+
+</style>
+
+<body>
+
+    
+<div class="row">
+  <div class="column left" style="">
+  </div> <!--Cierra div de la columna izquierda-->
+
+  <div class="column middle" style="">
+    <h2>Instrucciones</h2> <h3>Por favor lea atentamente</h3>
+    <div id="instructions">
+      <br>
+
+        Los participantes de este juego son dos jugadores humanos (usted y un compañero remoto).      
+
+        <h4>Objetivo</h4>
+        El objetivo del juego es obtener la mayor cantidad posible de monedas mediante 
+        la activación de una máquina dispensadora de monedas, la cual se activa 
+        alimentándola con una pareja de objetos.
+        
+        <br>
+
+        <h4>Formación de parejas</h4>
+        En la parte izquierda de la pantalla hay una caja en forma de "toolbox". Al hacer click sobre ella
+        se despliega una ventana que contiene los objetos que usted tiene a su disposición. Desde esta ventana,
+        usted podrá arrastrar objetos hasta los recuadros que están en la parte central de la pantalla,
+        junto a la imagen de los engranajes. 
+        
+        <br>
+        <br>
+        
+        NB: Si arrastra un objeto sobre un recuadro que ya contiene un objeto, reemplazará 
+        el objeto previamente seleccionado. 
+        <br>
+        
+        <h4>Tipos de objetos</h4>
+        Para formar parejas usted tendrá a su disposición tres tipos distintos de objetos: los xol, los dup y los zab.
+
+        <br>
+        
+        <h4>Cantidad de monedas</h4>
+        La cantidad de monedas dispensada por la máquina depende de los tipos de objeto dentro 
+        de la pareja que sea ingresada (sin importar el orden), de acuerdo a las siguientes combinaciones:
+        <br>
+        <br>
+            - Un Xol con un Xol da 1 moneda
+        <br>
+            - Un Dup con un Dup da 1 moneda
+        <br>
+            - Un Dup con un Xol da <b>5 monedas</b>
+        <br>
+        <br>
+        
+        NB: Ninguna otra combinación da monedas.
+      <br>
+
+      <h4>Interacción con su compañero</h4>
+      En la parte derecha de su ventana usted encontrará el botón "Enviar mensaje", mediante el cual 
+      podrá interactuar con su compañero. Al dar click a este botón se despliega una ventana en 
+      la cual puede escoger qué palabra enviar a su compañero. 
+      
+      <br>
+      <br>
+        
+      Su compañero también le puede enviar mensajes. Si su compañero le envía un mensaje, recibirá una
+      notificación mediante un pop-up. Utilice la lista desplegable de mensajes que se encuentra en la
+      parte derecha de su ventana para responder al mensaje. Usted puede repsonder al mensaje enviando 
+      uno de sus objetos.
+
+      <br>
+      <br>
+
+      Los objetos que usted reciba de su compañero podrán accederse dando click sobre la caja de envíos,
+      lo cual activará una ventana emergente que le mostrará los objetos que su compañero le ha enviado. 
+      Desde esta ventana, usted podrá arrastrar objetos hasta los recuadros que están en la parte central 
+      de la pantalla, junto a la imagen de los engranajes. 
+        
+      <br>
+
+        
+        <!--
+      <h3>Rondas y bonificaciones:</h3>
+      El juego consta de <span id="rounds"></span> rondas. Cada ronda tiene un umbral de puntos; si el jugador supera dicho umbral, obtendrá un código con el cual podrá reclamar una bonificación al final del juego. <b>Por favor tome nota de cada código que obtenga.</b> 
+      <br><br>
+imagen del boton Talk to your partner-->
+      <h3>Rondas:</h3>
+        El juego consta de <span id="rounds"></span> rondas. 
+        <br><br>
+        Si ha entendido las indicaciones, presione el botón "Continuar" para continuar con el juego.
+    </div>    
+    <br>
+    <input type="button" id="continuar" value="Continuar" class="btn btn-lg btn-primary"/>  
+    
+    </div> <!--Cierra div de la columna de en medio-->
+
+  <div class="column right" style="">
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <div><img src="Arrastrar.png" height="280"></div>
+
+      <br>
+      <br>
+
+      <div><img src="tool-box.png" height="180"></div>
+
+      <br>
+      <br>
+
+      <div><img src="tiposObjetos.png" height="180"></div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <div><img src="Interaccion.png" height="280"></div>
+
+      <br>
+      <br>
+
+      <div><img src="caja.png" height="180"></div>
+
+  </div> <!--Cierra div de la columna derecha-->
+
+</body>
