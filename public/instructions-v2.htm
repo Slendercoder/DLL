@@ -22,6 +22,66 @@ div {
 .middle {
   width: 30%;
 }
+    
+.button1{
+    background-color: #e7e7e7;
+    color: black;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+button {
+  display: inline-block;
+  position: relative;
+  padding: 20px 38px;
+  top: 0;
+  font-size: 20px;
+  font-family: "Open Sans", Helvetica;
+  border-radius: 4px;
+  border-bottom: 1px solid rgba( 28, 227, 125, 0.5 );
+  background: rgba( 22, 230, 137, 1 );
+  color: #fff;
+  box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.1 );
+
+  -webkit-transform: translateZ(0);
+     -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+          transform: translateZ(0);
+
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+      -ms-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+}
+
+button:hover {
+  top: -10px;
+  box-shadow: 0px 10px 10px rgba( 15, 165, 60, 0.2 );
+
+  -webkit-transform: rotateX(20deg);
+     -moz-transform: rotateX(20deg);
+      -ms-transform: rotateX(20deg);
+          transform: rotateX(20deg);
+}
+
+button:active {
+  top: 0px;
+  box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.0 );
+  background: rgba( 20, 224, 133, 1 );
+}
+
+.droptarget {
+    float: left;
+    width: 100px;
+    height: 80px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
 
 </style>
 
@@ -39,11 +99,15 @@ div {
 
         Los participantes de este juego son dos jugadores humanos (usted y un compañero remoto).      
 
+        <br>
+        <br>
+
         <h4>Objetivo</h4>
         El objetivo del juego es obtener la mayor cantidad posible de monedas mediante 
         la activación de una máquina dispensadora de monedas, la cual se activa 
         alimentándola con una pareja de objetos.
         
+        <br>
         <br>
 
         <h4>Formación de parejas</h4>
@@ -57,11 +121,14 @@ div {
         
         NB: Si arrastra un objeto sobre un recuadro que ya contiene un objeto, reemplazará 
         el objeto previamente seleccionado. 
+
         <br>
-        
+        <br>
+
         <h4>Tipos de objetos</h4>
         Para formar parejas usted tendrá a su disposición tres tipos distintos de objetos: los xol, los dup y los zab.
 
+        <br>
         <br>
         
         <h4>Cantidad de monedas</h4>
@@ -78,29 +145,33 @@ div {
         <br>
         
         NB: Ninguna otra combinación da monedas.
-      <br>
+
+        <br>
+        <br>
 
       <h4>Interacción con su compañero</h4>
       En la parte derecha de su ventana usted encontrará el botón "Enviar mensaje", mediante el cual 
-      podrá interactuar con su compañero. Al dar click a este botón se despliega una ventana en 
-      la cual puede escoger qué palabra enviar a su compañero. 
+      podrá interactuar con su compañero. Al dar click a este botón, se desplegará una ventana en 
+      la cual podrá escoger una palabra para enviar a su compañero. 
       
       <br>
       <br>
         
+      Cuando su compañero lea su mensaje, tendrá la oportunidad de enviarle un objeto. Los objetos que 
+      usted reciba de su compañero podrán accederse dando click sobre la caja de envíos, lo cual activará 
+      una ventana emergente que le mostrará los objetos que su compañero le ha enviado. Desde esta ventana, 
+      usted podrá arrastrar objetos hasta los recuadros que están en la parte central de la pantalla, 
+      junto a la imagen de los engranajes. 
+
+      <br>
+      <br>
+
       Su compañero también le puede enviar mensajes. Si su compañero le envía un mensaje, recibirá una
       notificación mediante un pop-up. Utilice la lista desplegable de mensajes que se encuentra en la
       parte derecha de su ventana para responder al mensaje. Usted puede repsonder al mensaje enviando 
       uno de sus objetos.
-
-      <br>
-      <br>
-
-      Los objetos que usted reciba de su compañero podrán accederse dando click sobre la caja de envíos,
-      lo cual activará una ventana emergente que le mostrará los objetos que su compañero le ha enviado. 
-      Desde esta ventana, usted podrá arrastrar objetos hasta los recuadros que están en la parte central 
-      de la pantalla, junto a la imagen de los engranajes. 
         
+      <br>
       <br>
 
         
@@ -109,13 +180,13 @@ div {
       El juego consta de <span id="rounds"></span> rondas. Cada ronda tiene un umbral de puntos; si el jugador supera dicho umbral, obtendrá un código con el cual podrá reclamar una bonificación al final del juego. <b>Por favor tome nota de cada código que obtenga.</b> 
       <br><br>
 imagen del boton Talk to your partner-->
-      <h3>Rondas:</h3>
+      <h4>Rondas</h4>
         El juego consta de <span id="rounds"></span> rondas. 
         <br><br>
-        Si ha entendido las indicaciones, presione el botón "Continuar" para continuar con el juego.
+        Si ha entendido las indicaciones, presione el botón "Continuar" para comenzar el juego.
     </div>    
     <br>
-    <input type="button" id="continuar" value="Continuar" class="btn btn-lg btn-primary"/>  
+    <button class="button1" id='continuar'>Continuar</button>
     
     </div> <!--Cierra div de la columna de en medio-->
 

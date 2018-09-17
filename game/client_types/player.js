@@ -102,7 +102,7 @@
 
     stager.extendStep('instructions', {
       donebutton: false,
-      frame: 'instructions.htm',
+      frame: 'instructions-v2.htm',
       cb: function(){
         var sett, continuar;
         sett = node.game.settings;
