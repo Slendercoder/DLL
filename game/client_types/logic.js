@@ -102,6 +102,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         console.log('Jugadores: ' + players)
 
+        // Xol = tipoPoligono: Blanco;
+        //       paridadHorizontales: Impar;
+        //       paridadVerticales: Par;
+        //       colorRayas = Rojo;
+        //
+        // Dup = tipoPoligono: Gris;
+        //       paridadHorizontales: Par;
+        //       paridadVerticales: Impar;
+        //       colorRayas = Rojo;
+
         var x = Math.random();
         var Cantidades1, Cantidades2;
 

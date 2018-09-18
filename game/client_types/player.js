@@ -157,20 +157,21 @@
           var cantidadJarra3 = Cantidades[2]; //Variable para la cantidad de círculos
           var Elegido = Cantidades[3]; //Variable para saber cual tipo de objeto es el elegido
           var puntaje = 0; // Variable para el puntaje
-          var derPareja; // Argumento derecho de la pareja
-          var izqPareja; // Argumento izquierdo de la pareja
+          var derPareja = ''; // Argumento derecho de la pareja
+          var izqPareja = ''; // Argumento izquierdo de la pareja
           var btn = W.getElementById("myBtn"); // Boton que abre modal
           var btnSalir = W.getElementById("finRonda"); // Boton que abre modal
-          var span1 = W.getElementById('botCirc'); // Boton en modal de enviar círculo
-          var span2 = W.getElementById('botCuad'); // Boton en modal de enviar cuadrado
-          var span7 = W.getElementById('botTri'); // Boton en modal de enviar triángulo
+          // var span1 = W.getElementsByClassName("Enviar"); // Boton en modal de cada objeto para enviar
+          var obj1Enviar = W.getElementById('drag1-Enviar'); // Boton en modal de enviar círculo
+          // var span2 = W.getElementById('botCuad'); // Boton en modal de enviar cuadrado
+          // var span7 = W.getElementById('botTri'); // Boton en modal de enviar triángulo
           var span5 = W.getElementById('botIgn'); //Boton ignorar llamado
           var btnArmarPareja = W.getElementById('botonVerde'); //Boton "ToBasket"
           var span3 = W.getElementById('ARRIBAbutton'); // Boton en modal2 de decir ZAB
           var span4 = W.getElementById('MEDIObutton'); // Boton en modal2 de decir XOL
           var span8 = W.getElementById('ABAJObutton'); // Boton en modal2 de decir DUP
           var span6 = W.getElementById('exitButton'); //Boton de exit del modal
-          var obj1 = W.getElementById('Circ'); // Objeto1 del toolbox
+          var obj1 = W.getElementById('Obj1'); // Objeto1 del toolbox
           var countRondas = node.player.stage.round; //Lleva el numero de rondas
           var umbral; //valor del umbral de puntos
           var mensajeEnviar = ['ZAB', 'XOL', 'DUP'];
@@ -185,14 +186,6 @@
           // Initialize the window for the game
           W.getElementById('myModal').style.display = '';
           W.getElementById('myModal2').style.display = '';
-          W.setInnerHTML('jarra1', cantidadJarra1);
-          W.setInnerHTML('jarra2', cantidadJarra2);
-          W.setInnerHTML('jarra3', cantidadJarra3);
-          izqPareja='';
-          derPareja='';
-          W.getElementById('CircRecibido').style.display="none";
-          W.getElementById('CuadRecibido').style.display="none";
-          W.getElementById('TriaRecibido').style.display="none";
 
           // node.set({ObjetoElegido: Elegido});
           // switch(countRondas){
@@ -314,62 +307,71 @@
             node.set({Comunicacion: ["dup", node.game.contadorComunicacion]})
           }
 
-          // When the user clicks the button, envía un CIRCULO al otro jugador
-          span1.onclick = function() {
+          var anchors = document.getElementsByClassName("Enviar");
+          for(var i = 0; i < anchors.length; i++) {
+              var anchor = anchors[i];
+              anchor.onclick = function() {
+                  alert('ho ho ho');
+              }
+          }
 
+          // Envía objeto al otro jugador
+          obj1Enviar.onclick = function() {
+
+            console.log('Enviar', 'OK')
             // Hace que el objeto enviado ya no esté disponible
-            obj1.style.display="none";
-            span1.style.display="none";
+            // obj1.style.display="none";
+            // span1.style.display="none";
 
-            node.game.resp = true;
-            if (cantidadJarra1 > 0){
-              alert ("El objeto se envió exitosamente!");
-              node.say('Dar', otroJugador, 'Circulo');
-              W.getElementById('myModal').style.display = "none";
-              cantidadJarra1 --;
-              W.setInnerHTML('jarra1', cantidadJarra1);
-              node.set({Comunicacion: ['Circulo', node.game.contadorComunicacion]});
-            }
-            else {
-              alert ("No tiene objetos suficientes! ");
-              W.getElementById('myModal').style.display = "none";
-            }
-          }
+            // node.game.resp = true;
+            // if (cantidadJarra1 > 0){
+            //   alert ("El objeto se envió exitosamente!");
+            //   node.say('Dar', otroJugador, 'Circulo');
+            //   W.getElementById('myModal').style.display = "none";
+            //   cantidadJarra1 --;
+            //   W.setInnerHTML('jarra1', cantidadJarra1);
+            //   node.set({Comunicacion: ['Circulo', node.game.contadorComunicacion]});
+            // }
+            // else {
+            //   alert ("No tiene objetos suficientes! ");
+            //   W.getElementById('myModal').style.display = "none";
+            // }
+          }; // End span1.onclick
 
-          // When the user clicks the button, envía un CUADRADO al otro jugador
-          span2.onclick = function() {
-            node.game.resp = true;
-            if (cantidadJarra2 > 0){
-              alert ("El objeto se envió exitosamente! ");
-
-              node.say('Dar', otroJugador, 'Cuadrado');
-              W.getElementById('myModal').style.display = "none";
-              cantidadJarra2 --;
-              W.setInnerHTML('jarra2', cantidadJarra2);
-              node.set({Comunicacion: ['Cuadrado', node.game.contadorComunicacion]});
-            }
-            else {
-              alert ("No tiene objetos suficientes!  ");
-              W.getElementById('myModal').style.display = "none";
-            }
-          }
-          // When the user clicks the button, envía un TRIANGULO al otro jugador
-          span7.onclick = function() {
-            node.game.resp = true;
-            if (cantidadJarra3 > 0){
-              alert ("El objeto se envió exitosamente!  ");
-
-              node.say('Dar', otroJugador, 'Triangulo');
-              W.getElementById('myModal').style.display = "none";
-              cantidadJarra3 --;
-              W.setInnerHTML('jarra3', cantidadJarra3);
-              node.set({Comunicacion: ['Triangulo', node.game.contadorComunicacion]});
-            }
-            else {
-              alert ("No tiene objetos suficientes! ");
-              W.getElementById('myModal').style.display = "none";
-            }
-          }
+          // // When the user clicks the button, envía un CUADRADO al otro jugador
+          // span2.onclick = function() {
+          //   node.game.resp = true;
+          //   if (cantidadJarra2 > 0){
+          //     alert ("El objeto se envió exitosamente! ");
+          //
+          //     node.say('Dar', otroJugador, 'Cuadrado');
+          //     W.getElementById('myModal').style.display = "none";
+          //     cantidadJarra2 --;
+          //     W.setInnerHTML('jarra2', cantidadJarra2);
+          //     node.set({Comunicacion: ['Cuadrado', node.game.contadorComunicacion]});
+          //   }
+          //   else {
+          //     alert ("No tiene objetos suficientes!  ");
+          //     W.getElementById('myModal').style.display = "none";
+          //   }
+          // }
+          // // When the user clicks the button, envía un TRIANGULO al otro jugador
+          // span7.onclick = function() {
+          //   node.game.resp = true;
+          //   if (cantidadJarra3 > 0){
+          //     alert ("El objeto se envió exitosamente!  ");
+          //
+          //     node.say('Dar', otroJugador, 'Triangulo');
+          //     W.getElementById('myModal').style.display = "none";
+          //     cantidadJarra3 --;
+          //     W.setInnerHTML('jarra3', cantidadJarra3);
+          //     node.set({Comunicacion: ['Triangulo', node.game.contadorComunicacion]});
+          //   }
+          //   else {
+          //     alert ("No tiene objetos suficientes! ");
+          //     W.getElementById('myModal').style.display = "none";
+          //   }
+          // }
 
           //When the user clicks the button, ignora al otro jugador
           span5.onclick = function(){
@@ -502,10 +504,14 @@
           };
 
           obj1.ondblclick = function() {
-            this.style.border = "2px solid #888"
+            this.style.border = "1px solid red";
+            this.style.width = "113px";
+            this.style.height = "113px";
           };
           obj1.onclick = function() {
             this.style.border = ""
+            this.style.width = "114px";
+            this.style.height = "114px";
           };
 
           //////////////////////////////////////////////////////////////////////////
@@ -544,97 +550,27 @@
 
           node.on('Arrastrar', function(msg) {
             console.log('Arrastrar', msg);
-            if (msg[0] == 'drag1') {    // Se está arrastrando un círculo
-              if (cantidadJarra1 > 0) {
-                if (msg[1] == 'Izquierdo') { // Se arrastra al lado izquierdo
-                  W.getElementById("parIzCir").style.display = "";
-                  W.getElementById("parIzCuad").style.display = "none";
-                  W.getElementById("parIzTri").style.display = "none";
-                  izqPareja = 'Circulo';
-
-                  if(cantidadJarra1==1&&derPareja=='Circulo'){ //Si el UNICO circulo disponible está del lado derecho y se intenta poner otro en el lado izqaierdo, lo reemplaza
-                    W.getElementById("parDerCir").style.display="none";
-                    izqPareja='';
-                    derPareja='';
-                    izqPareja = 'Circulo';
-
-
-                }
-
-                }
-                if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
-                  W.getElementById("parDerCir").style.display = "";
-                  W.getElementById("parDerCuad").style.display = "none";
-                  W.getElementById("parDerTri").style.display = "none";
-                  derPareja = 'Circulo';
-                  if(cantidadJarra1==1&&izqPareja=='Circulo'){ //Si el UNICO circulo disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
-                    W.getElementById("parIzCir").style.display="none";
-                    izqPareja='';
-                    derPareja='';
-                    derPareja = 'Circulo';
-                  }
-                }
+            if (msg[1] == 'Izquierdo') { // Se arrastra al lado izquierdo
+              // Revisa si ya hay un objeto en el lado izquierdo y lo devuelve al toolbox
+              if (izqPareja != '') {
+                W.getElementById(izqPareja).style.display = "";
               }
+              W.getElementById('dropIzq').src = W.getElementById(msg[0]).src;
+              W.getElementById('dropIzq').style.display = "";
+              W.getElementById(msg[0]).style.display = "none";
+              izqPareja = msg[0];
             }
-            if (msg[0] == 'drag2') {    // Se está arrastrando un cuadrado
-              if (cantidadJarra2 > 0) {
-                if (msg[1] == 'Izquierdo') {    // Se arrastra al lado izquierdo
-                  W.getElementById("parIzCir").style.display = "none";
-                  W.getElementById("parIzTri").style.display = "none";
-                  W.getElementById("parIzCuad").style.display = "";
-                  izqPareja = 'Cuadrado';
-                  if(cantidadJarra2==1&&derPareja=='Cuadrado'){ //Si el UNICO cuadrado disponible está del lado derecho y se intenta poner otro en el lado izqaierdo, lo reemplaza
-                    W.getElementById("parDerCuad").style.display="none";
-                    izqPareja='';
-                    derPareja='';
-                    izqPareja = 'Cuadrado';
-                  }
-                }
-                if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
-                  console.log('EEEEEE')
-                  W.getElementById("parDerCir").style.display = "none";
-                  W.getElementById("parDerTri").style.display = "none";
-                  W.getElementById("parDerCuad").style.display = "";
-                  derPareja = 'Cuadrado';
-                  if(cantidadJarra2==1&&izqPareja=='Cuadrado'){ //Si el UNICO cuadrado disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
-                    W.getElementById("parIzCuad").style.display="none";
-                    izqPareja='';
-                    derPareja='';
-                    derPareja = 'Cuadrado';
-                  }
-                }
+            if (msg[1] == 'Derecho') { // Se arrastra al lado derecho y lo devuelve al toolbox
+              // Revisa si ya hay un objeto en el lado izquierdo
+              if (derPareja != '') {
+                W.getElementById(derPareja).style.display = "";
               }
+              W.getElementById('dropDer').src = W.getElementById(msg[0]).src;
+              W.getElementById('dropDer').style.display = "";
+              W.getElementById(msg[0]).style.display = "none";
+              derPareja = msg[0];
             }
-            if (msg[0] == 'drag3') {    // Se está arrastrando un triangulo
-              if (cantidadJarra3 > 0) {
-                if (msg[1] == 'Izquierdo') {    // Se arrastra al lado izquierdo
-                  W.getElementById("parIzCir").style.display = "none";
-                  W.getElementById("parIzCuad").style.display = "none";
-                  W.getElementById("parIzTri").style.display = "";
-                  izqPareja = 'Triangulo';
-                  if(cantidadJarra3==1&&derPareja=='Triangulo'){ //Si el UNICO triangulo disponible está del lado derecho y se intenta poner otro en el lado izqaierdo, lo reemplaza
-                    W.getElementById("parDerTri").style.display="none";
-                    izqPareja='';
-                    derPareja='';
-                    izqPareja = 'Triangulo';
-                  }
-                }
-                if (msg[1] == 'Derecho') { // Se arrastra al lado derecho
-                  console.log('EEEEEE')
-                  W.getElementById("parDerCir").style.display = "none";
-                  W.getElementById("parDerCuad").style.display = "none";
-                  W.getElementById("parDerTri").style.display = "";
-                  derPareja = 'Triangulo';
-                  if(cantidadJarra3==1&&izqPareja=='Triangulo'){ //Si el UNICO triangulo disponible está del lado izquierdo y se intenta poner otro en el lado derecho, lo reemplaza
-                    W.getElementById("parIzTri").style.display="none";
-                    izqPareja='';
-                    derPareja='';
-                    derPareja = 'Triangulo';
-                  }
-                }
-              }
-            }
-          });
+          }); // End node.on('Arrastrar')
           node.game.puntacum += puntaje;
         }); // End on.data "settings"
       }, // End cb function

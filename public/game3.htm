@@ -194,6 +194,8 @@ div.gallery{
 
 div.gallery:hover {
     border: 1px solid #777;
+    width: 114px;
+    height: 114px;
 }
 
 div.gallery1:hover {
@@ -217,13 +219,13 @@ img.ovalar{
     <h3>Click sobre toolbock para ver sus objetos:</h3>
 
     <div class="gallery1">
-        <img id="toolbox" draggable="false" src="tool-box.png" alt="" width="200" height=auto/>
+        <img id="toolbox" draggable="false" src="Images/tool-box.png" alt="" width="200" height=auto/>
     </div>
 
     <h3>Click sobre caja para ver objetos recibidos:</h3>
 
     <div class="gallery1">
-        <img id="caja" draggable="false" src="caja.png" alt="" width="200" height=auto/>
+        <img id="caja" draggable="false" src="Images/caja.png" alt="" width="200" height=auto/>
     </div>
 
     <div class="objetos" id="objetosPropios">
@@ -234,26 +236,74 @@ img.ovalar{
 
       <p>
           En esta ventana puede ver sus objetos. Entre estos objetos están los 
-          <span id="rotuloExperto">"Xol"</span>, que son los <span id="propiedadesExperto">cuadrados con un número impar de
-          rayas verticales y un número par de rayas horizontales</span>.
+          <span id="rotuloExperto">"Xol"</span>, que son los cuadrados 
+          <span id="tipoPoligono">blancos</span>, cuyas rayas son de color
+          <span id="colorRayas">rojo</span>, y tienen
+          un número <span id="paridadHorizontales">par</span> de rayas horizontales 
+          y un número <span id="paridadVerticales">par</span> de rayas verticales.
           <br>
           <br>
       </p>
 
-        <div class="gallery" id='Circ'>
-            <!--imagen del circulo-->
-            <img id="drag1" draggable="true" src="circle.png" alt="" width="70" height="70"/>
-            <p id="demo" style="display: none;"></p>
+        <div class="gallery" id='Obj1'>
+            <img id="drag1" draggable="true" src="Images/objeto1.png" width="110" height="110"/>
         </div>
-        <div class="gallery">
-            <!--imagen del cuadrado-->
-            <img id="drag2" draggable="true" src="square.png" width="65" height="65" alt=""/>
-            <p id="demo" style="display: none;"></p>
+        <div class="gallery" id='Obj2'>
+            <img id="drag2" draggable="true" src="Images/objeto2.png" width="110" height="110"/>
         </div>
-        <div class="gallery">
-            <!--imagen del triangulo-->
-            <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-            <p id="demo" style="display: none;"></p>
+        <div class="gallery" id='Obj3'>
+            <img id="drag3" draggable="true" src="Images/objeto3.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj4'>
+            <img id="drag4" draggable="true" src="Images/objeto4.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj5'>
+            <img id="drag5" draggable="true" src="Images/objeto5.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj6'>
+            <img id="drag6" draggable="true" src="Images/objeto6.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj7'>
+            <img id="drag7" draggable="true" src="Images/objeto7.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj8'>
+            <img id="drag8" draggable="true" src="Images/objeto8.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj9'>
+            <img id="drag9" draggable="true" src="Images/objeto9.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj10'>
+            <img id="drag10" draggable="true" src="Images/objeto10.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj11'>
+            <img id="drag11" draggable="true" src="Images/objeto11.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj12'>
+            <img id="drag12" draggable="true" src="Images/objeto12.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj13'>
+            <img id="drag13" draggable="true" src="Images/objeto13.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj14'>
+            <img id="drag14" draggable="true" src="Images/objeto14.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj15'>
+            <img id="drag15" draggable="true" src="Images/objeto15.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj16'>
+            <img id="drag16" draggable="true" src="Images/objeto16.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj17'>
+            <img id="drag17" draggable="true" src="Images/objeto17.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj18'>
+            <img id="drag18" draggable="true" src="Images/objeto18.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj19'>
+            <img id="drag19" draggable="true" src="Images/objeto19.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj20'>
+            <img id="drag20" draggable="true" src="Images/objeto20.png" width="110" height="110"/>
         </div>
 
         <DIV style="clear:both;" align="center">
@@ -282,22 +332,66 @@ img.ovalar{
           <br>
       </p>
 
-        <div class="gallery" id='CircRecibido'>
-            <!--imagen del circulo-->
-            <img id="drag1" draggable="true" src="circle.png" alt="" width="70" height="70"/>
-            <p id="demo" style="display: none;"></p>
+        <div class="gallery" id='Obj1-Recibido'>
+            <img id="drag1-Recibido" draggable="true" src="Images/objeto1.png" width="110" height="110"/>
         </div>
-        <div class="gallery" id='CuadRecibido'>
-            <!--imagen del cuadrado-->
-            <img id="drag2" draggable="true" src="square.png" width="65" height="65" alt=""/>
-            <p id="demo" style="display: none;"></p>
+        <div class="gallery" id='Obj2-Recibido'>
+            <img id="drag2-Recibido" draggable="true" src="Images/objeto2.png" width="110" height="110"/>
         </div>
-        <div class="gallery" id='TriaRecibido'>
-            <!--imagen del triangulo-->
-            <img id="drag3" draggable="true" src="triangle.png" width="72" height="72" alt=""/>
-            <p id="demo" style="display: none;"></p>
+        <div class="gallery" id='Obj3-Recibido'>
+            <img id="drag3-Recibido" draggable="true" src="Images/objeto3.png" width="110" height="110"/>
         </div>
-
+        <div class="gallery" id='Obj4-Recibido'>
+            <img id="drag4-Recibido" draggable="true" src="Images/objeto4.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj5-Recibido'>
+            <img id="drag5-Recibido" draggable="true" src="Images/objeto5.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj6-Recibido'>
+            <img id="drag6-Recibido" draggable="true" src="Images/objeto6.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj7-Recibido'>
+            <img id="drag7-Recibido" draggable="true" src="Images/objeto7.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj8-Recibido'>
+            <img id="drag8-Recibido" draggable="true" src="Images/objeto8.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj9-Recibido'>
+            <img id="drag9-Recibido" draggable="true" src="Images/objeto9.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj10-Recibido'>
+            <img id="drag10-Recibido" draggable="true" src="Images/objeto10.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj11-Recibido'>
+            <img id="drag11-Recibido" draggable="true" src="Images/objeto11.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj12-Recibido'>
+            <img id="drag12-Recibido" draggable="true" src="Images/objeto12.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj13-Recibido'>
+            <img id="drag13-Recibido" draggable="true" src="Images/objeto13.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj14-Recibido'>
+            <img id="drag14-Recibido" draggable="true" src="Images/objeto14.png" width="110" height="110"/>
+        </div>
+        <div class="gallery-Recibido" id='Obj15-Recibido'>
+            <img id="drag15-Recibido" draggable="true" src="Images/objeto15.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj16-Recibido'>
+            <img id="drag16-Recibido" draggable="true" src="Images/objeto16.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj17-Recibido'>
+            <img id="drag17-Recibido" draggable="true" src="Images/objeto17.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj18-Recibido'>
+            <img id="drag18-Recibido" draggable="true" src="Images/objeto18.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj19-Recibido'>
+            <img id="drag19-Recibido" draggable="true" src="Images/objeto19.png" width="110" height="110"/>
+        </div>
+        <div class="gallery" id='Obj20-Recibido'>
+            <img id="drag20-Recibido" draggable="true" src="Images/objeto20.png" width="110" height="110"/>
+        </div>
         <DIV style="clear:both;" align="center">
           <br>
           Dar dobleclick sobre el objeto para marcarlo
@@ -320,7 +414,7 @@ img.ovalar{
     <table style="width:90%">
       <tr>
         <th rowspan="2" >
-            <img class="ovalar" src="gears.jpg" draggable="false" align="right" width="200" height="170" alt=""/>
+            <img class="ovalar" src="Images/gears.jpg" draggable="false" align="right" width="200" height="170" alt=""/>
         </th>
         <th align="center" style="width:80%">Arrastre objetos aquí<br> para formar una pareja</th>
       </tr>
@@ -329,15 +423,11 @@ img.ovalar{
             <DIV align="center">
               <!--Casillas para arrastrar los objetos-->
                     <div class="droptarget" id = "Izquierdo">
-                      <img id="parIzCir" style="display: none;" draggable="false" src="circle.png" width="40" height="40"/>
-                      <img id="parIzCuad" style="display: none;" draggable="false" src="square.png" width="40" height="40"/>
-                      <img id="parIzTri" style="display: none;" draggable="false" src="triangle.png" width="40" height="40"/>
+                      <img id="dropIzq" style="display: none;" draggable="false" src="" width="60" height="60"/>
                     </div>
 
                     <div class="droptarget" id = "Derecho">
-                      <img id="parDerCir" style="display: none;" draggable="false" src="circle.png" width="40" height="40"/>
-                      <img id="parDerCuad" style="display: none;" draggable="false" src="square.png" width="40" height="40"/>
-                      <img id="parDerTri" style="display: none;" draggable="false" src="triangle.png" width="40" height="40"/>
+                      <img id="dropDer" style="display: none;" draggable="false" src="" width="60" height="60"/>
                     </div>
             </DIV>
           </td>
@@ -387,11 +477,69 @@ img.ovalar{
     <h2>Le han mandado el siguiente mensaje: <span id='Mensaje'></span></h2>
     <HR>
     <h3>Escoja el objeto a enviar:</h3>
-        <img type="button" src="circle.png" id="botCirc" alt="" width="80" height="80">
-        <img type="button" src="square.png" id="botCuad" alt="" width="80" height="80">
-        <img type="button" src="triangle.png" id="botTri" alt="" width="80" height="80">
-        <b style="word-space:2em">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-        <img type="button" src="IgnoreButton.png" id="botIgn" alt="" width="80" height="80">
+        <div >
+            <img type="button" class="Enviar" id="drag1-Enviar" draggable="false" src="Images/objeto1.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag2-Enviar" draggable="false" src="Images/objeto2.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag3-Enviar" draggable="false" src="Images/objeto3.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag4-Enviar" draggable="false" src="Images/objeto4.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag5-Enviar" draggable="false" src="Images/objeto5.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag6-Enviar" draggable="false" src="Images/objeto6.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag7-Enviar" draggable="false" src="Images/objeto7.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag8-Enviar" draggable="false" src="Images/objeto8.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag9-Enviar" draggable="false" src="Images/objeto9.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag10-Enviar" draggable="false" src="Images/objeto10.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag11-Enviar" draggable="false" src="Images/objeto11.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag12-Enviar" draggable="false" src="Images/objeto12.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag13-Enviar" draggable="false" src="Images/objeto13.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag14-Enviar" draggable="false" src="Images/objeto14.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag15-Enviar" draggable="false" src="Images/objeto15.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag16-Enviar" draggable="false" src="Images/objeto16.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag17-Enviar" draggable="false" src="Images/objeto17.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag18-Enviar" draggable="false" src="Images/objeto18.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag19-Enviar" draggable="false" src="Images/objeto19.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="drag20-Enviar" draggable="false" src="Images/objeto20.png" width="110" height="110"/>
+        </div>
+        <div >
+            <img type="button" class="Enviar" id="botIgn" draggable="false" src="Images/IgnoreButton.png" width="80" height="80"/>
+        </div>
   </div>
 
 </div>
@@ -447,24 +595,9 @@ img.ovalar{
           // The dataTransfer.setData() method sets the data type and the value of the dragged data
           event.dataTransfer.setData("Text", event.target.id);
 
-          // Output some text when starting to drag the p element
-          document.getElementById("demo").innerHTML = "Dragging...";
-
           // Change the opacity of the draggable element
           event.target.style.opacity = "0.4";
       });
-
-      // While dragging the p element, change the color of the output text
-      document.addEventListener("drag", function(event) {
-          document.getElementById("demo").style.color = "red";
-      });
-
-      // Output some text when finished dragging the p element and reset the opacity
-      document.addEventListener("dragend", function(event) {
-          document.getElementById("demo").innerHTML = "Finished dragging.";
-          event.target.style.opacity = "1";
-      });
-
 
       /* Events fired on the drop target */
 
@@ -489,8 +622,7 @@ img.ovalar{
 
       document.addEventListener("drop", function(event) {
           event.preventDefault();
-          if ( event.target.className == "droptarget" ) {
-              document.getElementById("demo").style.color = "";
+          if (event.target.className == "droptarget" ) {
               event.target.style.border = "";
               var data = event.dataTransfer.getData("Text");
               //document.getElementById("Puntaje").innerHTML = data;
@@ -501,4 +633,11 @@ img.ovalar{
           }
       });
 
+      document.addEventListener("click", function(event) {
+          event.preventDefault();
+          if (event.target.className == "Enviar" ) {
+              console.log('Se va a enviar el', event.target.id)
+          }
+      });
+    
 </script>
