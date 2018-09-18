@@ -151,11 +151,11 @@
 
           var MESSAGE = msg.data; //Message from logic with quantity of each type
           var otroJugador = MESSAGE[0];
-          var Cantidades = MESSAGE[1];
-          var cantidadJarra1 = Cantidades[0]; //Variable para la cantidad de círculos
-          var cantidadJarra2 = Cantidades[1]; //Variable para la cantidad de círculos
-          var cantidadJarra3 = Cantidades[2]; //Variable para la cantidad de círculos
-          var Elegido = Cantidades[3]; //Variable para saber cual tipo de objeto es el elegido
+          var indicesOrdenados = MESSAGE[1];
+          var tiposObjetos = MESSAGE[2];
+          var srcImagenes = MESSAGE[3];
+          var explicacion = MESSAGE[4];
+          // console.log('datos recibidos', srcImagenes);
           var puntaje = 0; // Variable para el puntaje
           var derPareja = ''; // Argumento derecho de la pareja
           var izqPareja = ''; // Argumento izquierdo de la pareja
@@ -171,7 +171,6 @@
           var span4 = W.getElementById('MEDIObutton'); // Boton en modal2 de decir XOL
           var span8 = W.getElementById('ABAJObutton'); // Boton en modal2 de decir DUP
           var span6 = W.getElementById('exitButton'); //Boton de exit del modal
-          var obj1 = W.getElementById('Obj1'); // Objeto1 del toolbox
           var countRondas = node.player.stage.round; //Lleva el numero de rondas
           var umbral; //valor del umbral de puntos
           var mensajeEnviar = ['ZAB', 'XOL', 'DUP'];
@@ -184,8 +183,27 @@
           // node.game.other_player = otroJugador;
 
           // Initialize the window for the game
-          W.getElementById('myModal').style.display = '';
-          W.getElementById('myModal2').style.display = '';
+          W.getElementById('myModal').style.display = "none";
+          W.getElementById('myModal2').style.display = "none";
+
+          // Limpia la caja de objetos recibidos
+          var appBanners = W.getElementsByClassName('Recibido');
+          for (var i = 0; i < appBanners.length; i ++) {
+              appBanners[i].style.display = "none";
+            }
+
+          // Pone los objetos propios en el toolBox
+          for (var i = 1; i < 21; i ++) {
+              var imagen = 'drag' + i;
+              W.getElementById(imagen).src = srcImagenes[i-1];
+            }
+
+          // Llena la explicación de experto
+          W.setInnerHTML('rotuloExperto', explicacion[0]);
+          W.setInnerHTML('tipoPoligono', explicacion[1]);
+          W.setInnerHTML('colorRayas', explicacion[2]);
+          W.setInnerHTML('paridadHorizontales', explicacion[4]);
+          W.setInnerHTML('paridadVerticales', explicacion[3]);
 
           // node.set({ObjetoElegido: Elegido});
           // switch(countRondas){
@@ -283,7 +301,7 @@
             W.getElementById('myModal2').style.display = "";
           }
 
-          //When the user clicks the button, envía al otro jugador
+          //When the user clicks the button, envía "ZAB" al otro jugador
           span3.onclick = function() {
             alert('El mensaje se envió exitosamente!');
             W.getElementById('myModal2').style.display = "";
@@ -307,71 +325,21 @@
             node.set({Comunicacion: ["dup", node.game.contadorComunicacion]})
           }
 
-          var anchors = document.getElementsByClassName("Enviar");
-          for(var i = 0; i < anchors.length; i++) {
-              var anchor = anchors[i];
-              anchor.onclick = function() {
-                  alert('ho ho ho');
-              }
-          }
-
           // Envía objeto al otro jugador
-          obj1Enviar.onclick = function() {
+          node.on('Respuesta', function(msg) {
+            console.log('Enviar', msg)
 
-            console.log('Enviar', 'OK')
             // Hace que el objeto enviado ya no esté disponible
-            // obj1.style.display="none";
-            // span1.style.display="none";
+            W.getElementById(msg[0]).style.display="none";
+            W.getElementById(msg[1]).style.display="none";
 
-            // node.game.resp = true;
-            // if (cantidadJarra1 > 0){
-            //   alert ("El objeto se envió exitosamente!");
-            //   node.say('Dar', otroJugador, 'Circulo');
-            //   W.getElementById('myModal').style.display = "none";
-            //   cantidadJarra1 --;
-            //   W.setInnerHTML('jarra1', cantidadJarra1);
-            //   node.set({Comunicacion: ['Circulo', node.game.contadorComunicacion]});
-            // }
-            // else {
-            //   alert ("No tiene objetos suficientes! ");
-            //   W.getElementById('myModal').style.display = "none";
-            // }
-          }; // End span1.onclick
+            node.game.resp = true;
+            node.say('Dar', otroJugador, msg[0] + '-Recibido');
+            W.getElementById('myModal').style.display = "none";
+            node.set({Comunicacion: [msg[0], node.game.contadorComunicacion]});
 
-          // // When the user clicks the button, envía un CUADRADO al otro jugador
-          // span2.onclick = function() {
-          //   node.game.resp = true;
-          //   if (cantidadJarra2 > 0){
-          //     alert ("El objeto se envió exitosamente! ");
-          //
-          //     node.say('Dar', otroJugador, 'Cuadrado');
-          //     W.getElementById('myModal').style.display = "none";
-          //     cantidadJarra2 --;
-          //     W.setInnerHTML('jarra2', cantidadJarra2);
-          //     node.set({Comunicacion: ['Cuadrado', node.game.contadorComunicacion]});
-          //   }
-          //   else {
-          //     alert ("No tiene objetos suficientes!  ");
-          //     W.getElementById('myModal').style.display = "none";
-          //   }
-          // }
-          // // When the user clicks the button, envía un TRIANGULO al otro jugador
-          // span7.onclick = function() {
-          //   node.game.resp = true;
-          //   if (cantidadJarra3 > 0){
-          //     alert ("El objeto se envió exitosamente!  ");
-          //
-          //     node.say('Dar', otroJugador, 'Triangulo');
-          //     W.getElementById('myModal').style.display = "none";
-          //     cantidadJarra3 --;
-          //     W.setInnerHTML('jarra3', cantidadJarra3);
-          //     node.set({Comunicacion: ['Triangulo', node.game.contadorComunicacion]});
-          //   }
-          //   else {
-          //     alert ("No tiene objetos suficientes! ");
-          //     W.getElementById('myModal').style.display = "none";
-          //   }
-          // }
+            alert ("El objeto se envió exitosamente! ");
+          }); // End node.on
 
           //When the user clicks the button, ignora al otro jugador
           span5.onclick = function(){
@@ -387,96 +355,49 @@
             }
             // La pareja esta completa ...
             else{
-              if (izqPareja=='Circulo') {
-                obj1.style.display="none";
-              }
-                //Evalua si alguna de las cantidades de los elementos de las jarras es cero
-              if (((izqPareja=='Circulo' && derPareja=='Cuadrado') || (izqPareja=='Cuadrado' && derPareja=='Circulo')) && (cantidadJarra1==0 || cantidadJarra2 == 0 )) {
-                alert("No tiene objetos suficientes para este par!");
-              }
-              if (((izqPareja=='Circulo' && derPareja=='Triangulo') || (izqPareja=='Triangulo' && derPareja=='Circulo')) && (cantidadJarra1==0 || cantidadJarra3 == 0 )) {
-                alert("No tiene objetos suficientes para este par!");
-              }
-              if (((izqPareja=='Cuadrado' && derPareja=='Triangulo') || (izqPareja=='Triangulo' && derPareja=='Cuadrado')) && (cantidadJarra2==0 || cantidadJarra3 == 0 )) {
-                alert("No tiene objetos suficientes para este par!");
-              }
-                // Revisa si los objetos son del mismo tipo ...
-              else {
-                if(izqPareja == derPareja){
-                  puntaje ++;
-                  node.set({Puntaje: [izqPareja, derPareja, 1]});
-                  if (izqPareja == 'Circulo') {
-                    cantidadJarra1 -= 2;
-                  }
-                  if (izqPareja == 'Cuadrado') {
-                    cantidadJarra2 -= 2;
-                  }
-                  if (izqPareja == 'Triangulo') {
-                    cantidadJarra3 -= 2;
-                  }
+              // Borra las imagenes de las parejas
+              W.getElementById('dropIzq').src = "";
+              W.getElementById('dropIzq').style.display = "none";
+              W.getElementById('dropDer').src = "";
+              W.getElementById('dropDer').style.display = "none";
+
+              // Calcula el puntaje
+              indiceIzquierdo = izqPareja.substring(5,6);
+              indiceDerecho = derPareja.substring(5,6);
+              if(tiposObjetos[indiceIzquierdo] == 'Xol'){
+                if (tiposObjetos[indiceDerecho] == 'Xol') {
+                  puntaje += 1;
+                  node.set({Puntaje: [tiposObjetos[indiceIzquierdo], tiposObjetos[indiceDerecho], 1]});
                 }
-                // Si los objetos no son del mismo tipo ...
-                else {
-                  // Revisa si alguno de los dos objetos es del tipo elegido
-                  if (izqPareja == Elegido || derPareja == Elegido) {
-                    puntaje += 5;
-                    node.set({Puntaje: [izqPareja, derPareja, 5]});
-                  }
-                  // Ninguno de los dos objetos es del tipo elegido
-                  else {
-                    puntaje ++;
-                    node.set({Puntaje: [izqPareja, derPareja, 1]});
-                  }
-                  // Modifica las cantidades
-                  if (izqPareja == 'Circulo' || derPareja == 'Circulo') {
-                    cantidadJarra1 --;
-                  }
-                  if (izqPareja == 'Cuadrado' || derPareja == 'Cuadrado') {
-                    cantidadJarra2 --;
-                  }
-                  if (izqPareja == 'Triangulo' || derPareja == 'Triangulo') {
-                    cantidadJarra3 --;
-                  }
+                if (tiposObjetos[indiceDerecho] == 'Dup') {
+                  puntaje += 5;
+                  node.set({Puntaje: [tiposObjetos[indiceIzquierdo], tiposObjetos[indiceDerecho], 5]});
+                }
+              }
+              if(tiposObjetos[indiceIzquierdo] == 'Dup'){
+                if (tiposObjetos[indiceDerecho] == 'Dup') {
+                  puntaje += 1;
+                  node.set({Puntaje: [tiposObjetos[indiceIzquierdo], tiposObjetos[indiceDerecho], 1]});
+                }
+                if (tiposObjetos[indiceDerecho] == 'Xol') {
+                  puntaje += 5;
+                  node.set({Puntaje: [tiposObjetos[indiceIzquierdo], tiposObjetos[indiceDerecho], 5]});
                 }
               }
 
               // Cambia los rotulos de las jarras y el puntaje
-              W.setInnerHTML('jarra1', cantidadJarra1);
-              W.setInnerHTML('jarra2', cantidadJarra2);
-              W.setInnerHTML('jarra3', cantidadJarra3);
               W.setInnerHTML('Puntaje', puntaje);
-              }
 
               //Elimina los elementos de las casillas al oprimir "To basket"
-              W.getElementById('parIzCir').style.display = "none";
-              W.getElementById('parIzCuad').style.display = "none";
-              W.getElementById('parDerCir').style.display = "none";
-              W.getElementById('parDerCuad').style.display = "none";
-              W.getElementById('parDerTri').style.display = "none";
-              W.getElementById('parIzTri').style.display = "none";
               izqPareja='';
               derPareja='';
 
-              // if(puntaje>=umbral){
-              //   switch(countRondas){
-              //     case 1:
-              //     alert("¡Ha ganado el bono! El código es: " + Math.ceil(Math.random()*100)*17);
-              //     break;
-              //     case 2:
-              //     alert("¡Ha ganado el bono! El código es: " + Math.ceil(Math.random()*100)*23);
-              //     break;
-              //     case 3:
-              //     alert("¡Ha ganado el bono! El código es: " + Math.ceil(Math.random()*100)*37);
-              //     break;
-              //     case 4:
-              //     alert("¡Ha ganado el bono! El código es: " + Math.ceil(Math.random()*100)*41);
-              //     break;
-              //     case 5:
-              //     alert("¡Ha ganado el bono! El código es: " + Math.ceil(Math.random()*100)*79);
-              //   };
-              // }
-            } // Cierra boton de armar pareja
+            } // Fin else
 
+          } // Cierra boton de armar pareja
+
+          // Cuando da click en el mensaje de la lista desplegable
+          // muestra el modal de enviar objeto
           selectMensajes.onchange = function() {
             var indice = this.selectedIndex;
             var correo = this.options[indice].value;
@@ -503,17 +424,6 @@
             W.getElementById('objetosPropios').style.display = 'none';
           };
 
-          obj1.ondblclick = function() {
-            this.style.border = "1px solid red";
-            this.style.width = "113px";
-            this.style.height = "113px";
-          };
-          obj1.onclick = function() {
-            this.style.border = ""
-            this.style.width = "114px";
-            this.style.height = "114px";
-          };
-
           //////////////////////////////////////////////////////////////////////////
           //                     INTERACCIONES                                   //
           /////////////////////////////////////////////////////////////////////////
@@ -534,18 +444,9 @@
           });
 
           node.on.data('Dar', function(msg) {
-            if (msg.data == 'Circulo') {    //Si el jugador recibe un circulo del otro jugador,
-              W.getElementById('CircRecibido').style.display = '';
-            }
-
-            else if (msg.data == 'Cuadrado') { // Si el jugador recibe un cuadrado del otro jugador,
-              cantidadJarra2 ++;
-              W.setInnerHTML('jarra2', cantidadJarra2);
-            }else{ // Si el jugador recibe un triangulo del otro jugador,
-              cantidadJarra3++;
-              W.setInnerHTML('jarra3', cantidadJarra3);
-            }
-            alert("Recibió un objeto!");
+            console.log('Recibio', msg.data);
+            W.getElementById(msg.data).style.display = 'block';
+            alert("Recibió un objeto!" + W.getElementById(msg.data).style.display);
           });
 
           node.on('Arrastrar', function(msg) {

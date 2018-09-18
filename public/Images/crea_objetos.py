@@ -1,7 +1,6 @@
 #-*-coding: utf-8-*-
 
 print "loading packages..."
-import pandas as pd
 import numpy as np
 from random import randint, choice
 import matplotlib.pyplot as plt
@@ -75,20 +74,28 @@ def dibuja_objeto(tipoPoligono, \
 
     fig4.savefig("objeto" + str(id) + ".png")
 
-for cont in range(0, 20):
-    # True: Fondo gris; False: Fondo blanco
-    tipoPoligono = choice([False, True])
 
-    # True: Impar; False: Par
-    paridadHorizontales = choice([False, True])
+# True: Fondo gris; False: Fondo blanco
+# tipoPoligono = choice([False, True])
+tipoPoligono = False
 
-    # True: Impar; False: Par
-    paridadVerticales = choice([False, True])
+# True: Azul; False: Rojo
+# colorRayas = choice([False, True])
+colorRayas = True
 
-    # True: Azul; False: Rojo
-    colorRayas = choice([False, True])
+# True: Impar; False: Par
+# paridadVerticales = choice([False, True])
+paridadVerticales = False
 
+# True: Impar; False: Par
+# paridadHorizontales = choice([False, True])
+paridadHorizontales = False
+
+numObjetosInicial = 23
+numObjetosFinal = 24
+
+for cont in range(numObjetosInicial, numObjetosFinal + 1):
     dibuja_objeto(tipoPoligono, \
                   paridadHorizontales, \
                   paridadVerticales, \
-                  colorRayas, cont + 1)
+                  colorRayas, cont)

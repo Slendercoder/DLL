@@ -94,13 +94,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     // Helper functions.
 
     function doMatch() {
-        var players, len;
-        // len = node.game.pl.size();
-        // players = node.game.pl.shuffle().id.getAllKeys();
-
-        players = node.game.pl.id.getAllKeys();
-
-        console.log('Jugadores: ' + players)
+        var players = node.game.pl.id.getAllKeys();
 
         // Xol = tipoPoligono: Blanco;
         //       paridadHorizontales: Impar;
@@ -112,36 +106,102 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         //       paridadVerticales: Impar;
         //       colorRayas = Rojo;
 
-        var x = Math.random();
-        var Cantidades1, Cantidades2;
+        // Creando datos para enviar al jugador XOL (player[0])
+        // Aleatorizo la lista de indices
+        var a = [];
+        for (var i = 0; i < 20; i++) {
+          a.push(i);
+        }
+        // console.log(a);
+        var j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+        }
+        // Creo la lista que identifica el tipo de objeto
+        var tiposObjetos = [];
+        tiposObjetos[a[0]] = 'Xol';
+        tiposObjetos[a[1]] = 'Xol';
+        tiposObjetos[a[2]] = 'Xol';
+        tiposObjetos[a[3]] = 'Xol';
+        tiposObjetos[a[4]] = 'Xol';
+        tiposObjetos[a[5]] = 'Dup';
+        for (var i=6; i < 20; i++) {
+          tiposObjetos[a[i]] = 'Otro';
+        }
+        // console.log(tiposObjetos);
 
-        if (x < 0.33333){
-          Cantidades1 = [4, 12, 12, 'Circulo'];
-          if (Math.random() < 0.5) {
-            Cantidades2 = [12, 4, 12, 'Cuadrado'];
-          } else {
-            Cantidades2 = [12, 12, 4, 'Triangulo'];
-          }
-        } // Cierra if x < 0.33333
-        else if (x < 0.66666) {
-          Cantidades1 = [12, 4, 12, 'Cuadrado'];
-          if(Math.random() < 0.5) {
-            Cantidades2 = [4, 12, 12, 'Circulo'];
-          } else {
-            Cantidades2 = [12, 12, 4, 'Triangulo'];
-          }
-        } // Cierra else if x < 0.66666
-        else {
-          Cantidades1 = [12, 12, 4, 'Triangulo'];
-          if(Math.random() < 0.5) {
-            Cantidades2 = [4, 12, 12, 'Circulo'];
-          } else {
-            Cantidades2 = [12, 4, 12, 'Cuadrado'];
-          }
-        } // cierra el else
+        // Creo la lista de source para las imagenes de los XOL...
+        var srcImagenes = [];
+        srcImagenes[a[0]] = 'Images/objeto' + 1 + '.png';
+        srcImagenes[a[1]] = 'Images/objeto' + 2 + '.png';
+        srcImagenes[a[2]] = 'Images/objeto' + 3 + '.png';
+        srcImagenes[a[3]] = 'Images/objeto' + 4 + '.png';
+        srcImagenes[a[4]] = 'Images/objeto' + 5 + '.png';
+        srcImagenes[a[5]] = 'Images/objeto' + 5 + '.png'; // Este es un DUP
 
-        node.say('Settings', players[0], [players[1], Cantidades1]);
-        node.say('Settings', players[1], [players[0], Cantidades2]);
-    }
+        // ... y de los demás objetos
+        for (var i=11; i < 25; i++) {
+          srcImagenes[a[i-5]] = 'Images/objeto' + i + '.png';
+        }
+
+        // Crea los datos para la explicacion experto
+        var explicacion = [];
+        explicacion[0] = 'Xol';
+        explicacion[1] = 'blancos';
+        explicacion[2] = 'rojo';
+        explicacion[3] = 'par';
+        explicacion[4] = 'impar';
+
+        // Envio los datos al primer jugador
+        node.say('Settings', players[0], [players[1], a, tiposObjetos, srcImagenes, explicacion]);
+
+        // Aleatorizo de nuevo la lista de indices
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+        }
+        // Creo la lista que identifica el tipo de objeto
+        var tiposObjetos = [];
+        tiposObjetos[a[0]] = 'Dup';
+        tiposObjetos[a[1]] = 'Dup';
+        tiposObjetos[a[2]] = 'Dup';
+        tiposObjetos[a[3]] = 'Dup';
+        tiposObjetos[a[4]] = 'Dup';
+        tiposObjetos[a[5]] = 'Xol';
+        for (var i=6; i < 20; i++) {
+          tiposObjetos[a[i]] = 'Otro';
+        }
+
+        // Creo la lista de source para las imagenes de los DUP...
+        var srcImagenes = [];
+        srcImagenes[a[0]] = 'Images/objeto' + 6 + '.png';
+        srcImagenes[a[1]] = 'Images/objeto' + 7 + '.png';
+        srcImagenes[a[2]] = 'Images/objeto' + 8 + '.png';
+        srcImagenes[a[3]] = 'Images/objeto' + 9 + '.png';
+        srcImagenes[a[4]] = 'Images/objeto' + 10 + '.png';
+        srcImagenes[a[5]] = 'Images/objeto' + 1 + '.png'; // Este es un XOL
+
+        // ... y de los demás objetos
+        for (var i=11; i < 25; i++) {
+          srcImagenes[a[i-5]] = 'Images/objeto' + i + '.png';
+        }
+
+        // Crea los datos para la explicacion experto
+        var explicacion = [];
+        explicacion[0] = 'Dup';
+        explicacion[1] = 'grises';
+        explicacion[2] = 'rojo';
+        explicacion[3] = 'impar';
+        explicacion[4] = 'par';
+
+        // Envio los datos al segundo jugador
+        node.say('Settings', players[1], [players[0], a, tiposObjetos, srcImagenes, explicacion]);
+
+    } // End function doMatch
 
 };
