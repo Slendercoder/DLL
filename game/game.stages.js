@@ -28,7 +28,7 @@ module.exports = function(stager, settings) {
     });
 
     // Modify the stager to skip one stage.
-    stager.skip('instructions');
+    // stager.skip('instructions');
     stager.skip('quiz');
     // stager.skip('trials');
 
