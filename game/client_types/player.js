@@ -466,6 +466,7 @@
             opt.text = "Mensaje " + node.game.contadorComunicacion;
             node.game.contadorComunicacion += 1;
             selectMensajes.appendChild(opt);
+            W.setInnerHTML('numMensajes', 1); // Arreglar el contador
           }); // End node.on.data('Comunicacion'
 
           node.on.data('Dar', function(msg) {
