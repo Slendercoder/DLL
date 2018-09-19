@@ -18,7 +18,7 @@
 }
 
 .middle {
-  width: 48%;
+  width: 45%;
 }
 
 /* Clear floats after the columns */
@@ -101,15 +101,15 @@ button:active {
 /* Propiedades de la ventana para seleccionar objetos del toolbox */
 .objetos {
     display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    position: fixed; /* Stay in place */
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 35%;
+    width: 40%;
     overflow: auto;
 }
 
@@ -135,6 +135,7 @@ button:active {
     padding: 20px;
     border: 1px solid #888;
     width: 40%;
+    overflow: auto;
 }
 .close {
     color: #aaaaaa;
@@ -193,9 +194,10 @@ div.gallery{
 }
 
 div.gallery:hover {
-    border: 1px solid #777;
-    width: 114px;
-    height: 114px;
+/*    border: 1px solid #777;
+    width: 110px;
+    height: 110px;*/
+    background-color: aqua;
 }
 
 div.gallery1:hover {
@@ -348,8 +350,8 @@ img.ovalar{
       </h3>
 
       <p>
-          En esta ventana puede ver los objetos que le ha enviado
-          su compañero.
+          En esta ventana puede ver los objetos que su compañero
+          le ha enviado.
           <br>
           <br>
       </p>
@@ -431,7 +433,7 @@ img.ovalar{
   </div> <!--Cierra div de la columna izquierda-->
 
   <div class="column middle" style="">
-    <h2 align="center">Su puntaje es: <span style="font-size:24pt" id="Puntaje">0 </span> puntos</h2>
+    <h2 align="center">Sus monedas son: <span style="font-size:24pt" id="Puntaje">0 </span> monedas</h2>
 
     <table style="width:90%">
       <tr>
@@ -495,71 +497,71 @@ img.ovalar{
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class = "modal-content"> 
     <h2>Le han mandado el siguiente mensaje: <span id='Mensaje'></span></h2>
     <HR>
     <h3>Escoja el objeto a enviar:</h3>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag1-Enviar" src="Images/objeto1.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag2-Enviar" src="Images/objeto2.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag3-Enviar" src="Images/objeto3.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag4-Enviar" src="Images/objeto4.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag5-Enviar" src="Images/objeto5.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag6-Enviar" src="Images/objeto6.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag7-Enviar" src="Images/objeto7.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag8-Enviar" src="Images/objeto8.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag9-Enviar" src="Images/objeto9.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag10-Enviar" src="Images/objeto10.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag11-Enviar" src="Images/objeto11.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag12-Enviar" src="Images/objeto12.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag13-Enviar" src="Images/objeto13.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag14-Enviar" src="Images/objeto14.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag15-Enviar" src="Images/objeto5.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag16-Enviar" src="Images/objeto16.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag17-Enviar" src="Images/objeto17.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag18-Enviar" src="Images/objeto18.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag19-Enviar" src="Images/objeto19.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="Enviar" id="drag20-Enviar" src="Images/objeto20.png"/>
         </div>
-        <div >
+        <div class="gallery">
             <img type="button" class="" id="botIgn" draggable="false" src="Images/IgnoreButton.png" width="80" height="80"/>
         </div>
   </div>
@@ -664,8 +666,6 @@ img.ovalar{
 
           if (event.target.className == "Recibido" || event.target.className == "Propio") {
               event.target.style.border = "";
-              event.target.style.width = "114px";
-              event.target.style.height = "114px";
           }
 });
 
@@ -673,8 +673,6 @@ img.ovalar{
           event.preventDefault();
           if (event.target.className == "Recibido" || event.target.className == "Propio") {
               event.target.style.border = "1px solid red";
-              event.target.style.width = "112px";
-              event.target.style.height = "112px";
           }
       });
     

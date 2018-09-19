@@ -122,29 +122,29 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
         // Creo la lista que identifica el tipo de objeto
         var tiposObjetos = [];
-        tiposObjetos[a[0]] = 'Xol';
-        tiposObjetos[a[1]] = 'Xol';
-        tiposObjetos[a[2]] = 'Xol';
-        tiposObjetos[a[3]] = 'Xol';
-        tiposObjetos[a[4]] = 'Xol';
-        tiposObjetos[a[5]] = 'Dup';
+        tiposObjetos[0] = 'Xol';
+        tiposObjetos[1] = 'Xol';
+        tiposObjetos[2] = 'Xol';
+        tiposObjetos[3] = 'Xol';
+        tiposObjetos[4] = 'Xol';
+        tiposObjetos[5] = 'Dup';
         for (var i=6; i < 20; i++) {
-          tiposObjetos[a[i]] = 'Otro';
+          tiposObjetos[i] = 'Otro';
         }
         // console.log(tiposObjetos);
 
         // Creo la lista de source para las imagenes de los XOL...
         var srcImagenes = [];
-        srcImagenes[a[0]] = 'Images/objeto' + 1 + '.png';
-        srcImagenes[a[1]] = 'Images/objeto' + 2 + '.png';
-        srcImagenes[a[2]] = 'Images/objeto' + 3 + '.png';
-        srcImagenes[a[3]] = 'Images/objeto' + 4 + '.png';
-        srcImagenes[a[4]] = 'Images/objeto' + 5 + '.png';
-        srcImagenes[a[5]] = 'Images/objeto' + 5 + '.png'; // Este es un DUP
+        srcImagenes[0] = 'Images/objeto' + 1 + '.png';
+        srcImagenes[1] = 'Images/objeto' + 2 + '.png';
+        srcImagenes[2] = 'Images/objeto' + 3 + '.png';
+        srcImagenes[3] = 'Images/objeto' + 4 + '.png';
+        srcImagenes[4] = 'Images/objeto' + 5 + '.png';
+        srcImagenes[5] = 'Images/objeto' + 6 + '.png'; // Este es un DUP
 
         // ... y de los demás objetos
         for (var i=11; i < 25; i++) {
-          srcImagenes[a[i-5]] = 'Images/objeto' + i + '.png';
+          srcImagenes[i-5] = 'Images/objeto' + i + '.png';
         }
 
         // Crea los datos para la explicacion experto
@@ -167,28 +167,28 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
         // Creo la lista que identifica el tipo de objeto
         var tiposObjetos = [];
-        tiposObjetos[a[0]] = 'Dup';
-        tiposObjetos[a[1]] = 'Dup';
-        tiposObjetos[a[2]] = 'Dup';
-        tiposObjetos[a[3]] = 'Dup';
-        tiposObjetos[a[4]] = 'Dup';
-        tiposObjetos[a[5]] = 'Xol';
+        tiposObjetos[0] = 'Dup';
+        tiposObjetos[1] = 'Dup';
+        tiposObjetos[2] = 'Dup';
+        tiposObjetos[3] = 'Dup';
+        tiposObjetos[4] = 'Dup';
+        tiposObjetos[5] = 'Xol';
         for (var i=6; i < 20; i++) {
-          tiposObjetos[a[i]] = 'Otro';
+          tiposObjetos[i] = 'Otro';
         }
 
         // Creo la lista de source para las imagenes de los DUP...
         var srcImagenes = [];
-        srcImagenes[a[0]] = 'Images/objeto' + 6 + '.png';
-        srcImagenes[a[1]] = 'Images/objeto' + 7 + '.png';
-        srcImagenes[a[2]] = 'Images/objeto' + 8 + '.png';
-        srcImagenes[a[3]] = 'Images/objeto' + 9 + '.png';
-        srcImagenes[a[4]] = 'Images/objeto' + 10 + '.png';
-        srcImagenes[a[5]] = 'Images/objeto' + 1 + '.png'; // Este es un XOL
+        srcImagenes[0] = 'Images/objeto' + 6 + '.png';
+        srcImagenes[1] = 'Images/objeto' + 7 + '.png';
+        srcImagenes[2] = 'Images/objeto' + 8 + '.png';
+        srcImagenes[3] = 'Images/objeto' + 9 + '.png';
+        srcImagenes[4] = 'Images/objeto' + 10 + '.png';
+        srcImagenes[5] = 'Images/objeto' + 1 + '.png'; // Este es un XOL
 
         // ... y de los demás objetos
         for (var i=11; i < 25; i++) {
-          srcImagenes[a[i-5]] = 'Images/objeto' + i + '.png';
+          srcImagenes[i-5] = 'Images/objeto' + i + '.png';
         }
 
         // Crea los datos para la explicacion experto

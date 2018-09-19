@@ -151,9 +151,21 @@
 
           var MESSAGE = msg.data; //Message from logic with quantity of each type
           var otroJugador = MESSAGE[0];
-          var indicesOrdenados = MESSAGE[1];
+          var indicesDesordenados = MESSAGE[1];
+          var indicesObjetos = [];
+          // for (var i=0; i<indicesDesordenados.length; i++) {
+          //   // console.log('indicesDesordenados', i, indicesDesordenados[i]);
+          //   indicesObjetos[indicesDesordenados[i]] = i;
+          // }
+          // for (var i=0; i<indicesDesordenados.length; i++) {
+          //   console.log('indicesOrdenados', i, indicesObjetos[i]);
+          // }
           var tiposObjetos = MESSAGE[2];
           var srcImagenes = MESSAGE[3];
+          // for (var i=0; i<indicesDesordenados.length; i++) {
+          //   console.log('srcImagenes', i, srcImagenes[i]);
+          // }
+
           var explicacion = MESSAGE[4];
           // console.log('datos recibidos', srcImagenes);
           var puntaje = 0; // Variable para el puntaje
@@ -192,10 +204,12 @@
               appBanners[i].style.display = "none";
             }
 
-          // Pone los objetos propios en el toolBox
+          // Pone los objetos propios en el toolBox y en la ventana de responder mensaje
           for (var i = 1; i < 21; i ++) {
               var imagen = 'drag' + i;
-              W.getElementById(imagen).src = srcImagenes[i-1];
+              var imagenEnviar = 'drag' + i + '-Enviar';
+              W.getElementById(imagen).src = srcImagenes[indicesDesordenados[i-1]];
+              W.getElementById(imagenEnviar).src = srcImagenes[indicesDesordenados[i-1]];
             }
 
           // Llena la explicación de experto
@@ -336,7 +350,8 @@
             node.game.resp = true;
             node.say('Dar', otroJugador, msg[0] + '-Recibido');
             W.getElementById('myModal').style.display = "none";
-            node.set({Comunicacion: [msg[0], node.game.contadorComunicacion]});
+            var objetoEnviado = tiposObjetos[msg[0].substring(5,6)];
+            node.set({Comunicacion: [objetoEnviado, node.game.contadorComunicacion]});
 
             alert ("El objeto se envió exitosamente! ");
           }); // End node.on
@@ -355,6 +370,7 @@
             }
             // La pareja esta completa ...
             else{
+
               // Borra las imagenes de las parejas
               W.getElementById('dropIzq').src = "";
               W.getElementById('dropIzq').style.display = "none";
@@ -362,26 +378,34 @@
               W.getElementById('dropDer').style.display = "none";
 
               // Calcula el puntaje
-              indiceIzquierdo = izqPareja.substring(5,6);
-              indiceDerecho = derPareja.substring(5,6);
-              if(tiposObjetos[indiceIzquierdo] == 'Xol'){
-                if (tiposObjetos[indiceDerecho] == 'Xol') {
+              var indiceIzquierdo = Number(izqPareja.substr(4,2)) - 1;
+              var indiceDerecho = Number(derPareja.substr(4,2)) - 1;
+              var tipoObjetoIzquierdo = tiposObjetos[indicesDesordenados[indiceIzquierdo]];
+              var tipoObjetoDerecho = tiposObjetos[indicesDesordenados[indiceDerecho]];
+              console.log('Puntaje: ',
+                          W.getElementById(izqPareja).src,
+                          W.getElementById(derPareja).src);
+                          console.log('Puntaje: ',
+                                      tipoObjetoIzquierdo,
+                                      tipoObjetoDerecho);
+              if(tipoObjetoIzquierdo == 'Xol'){
+                if (tipoObjetoDerecho == 'Xol') {
                   puntaje += 1;
-                  node.set({Puntaje: [tiposObjetos[indiceIzquierdo], tiposObjetos[indiceDerecho], 1]});
+                  node.set({Puntaje: [tipoObjetoIzquierdo, tipoObjetoDerecho, 1]});
                 }
                 if (tiposObjetos[indiceDerecho] == 'Dup') {
                   puntaje += 5;
-                  node.set({Puntaje: [tiposObjetos[indiceIzquierdo], tiposObjetos[indiceDerecho], 5]});
+                  node.set({Puntaje: [tipoObjetoIzquierdo, tipoObjetoDerecho, 5]});
                 }
               }
-              if(tiposObjetos[indiceIzquierdo] == 'Dup'){
-                if (tiposObjetos[indiceDerecho] == 'Dup') {
+              if(tipoObjetoIzquierdo == 'Dup'){
+                if (tipoObjetoDerecho == 'Dup') {
                   puntaje += 1;
-                  node.set({Puntaje: [tiposObjetos[indiceIzquierdo], tiposObjetos[indiceDerecho], 1]});
+                  node.set({Puntaje: [tipoObjetoIzquierdo, tipoObjetoDerecho, 1]});
                 }
-                if (tiposObjetos[indiceDerecho] == 'Xol') {
+                if (tipoObjetoDerecho == 'Xol') {
                   puntaje += 5;
-                  node.set({Puntaje: [tiposObjetos[indiceIzquierdo], tiposObjetos[indiceDerecho], 5]});
+                  node.set({Puntaje: [tipoObjetoIzquierdo, tipoObjetoDerecho, 5]});
                 }
               }
 
@@ -402,26 +426,32 @@
             var indice = this.selectedIndex;
             var correo = this.options[indice].value;
             this.remove(this.selectedIndex);
+            W.getElementById('objetosPropios').style.display = 'none';
+            W.getElementById('objetosRecibidos').style.display = 'none';
             W.getElementById('myModal').style.display = 'block';
             W.setInnerHTML('Mensaje', correo);
           };
 
+          // Abre la ventana de los objetos propios
           toolBox.onclick = function() {
             W.getElementById('objetosPropios').style.display = 'block';
             W.getElementById('objetosRecibidos').style.display = 'none';
           };
 
+          // Boton de salir de la ventana de objetos propios
           salirBoton1.onclick = function() {
             W.getElementById('objetosPropios').style.display = "none";
           };
 
-          salirBoton2.onclick = function() {
-            W.getElementById('objetosRecibidos').style.display = "none";
-          };
-
+          // Abre la ventana de los objetos recibidos
           caja.onclick = function() {
             W.getElementById('objetosRecibidos').style.display = 'block';
             W.getElementById('objetosPropios').style.display = 'none';
+          };
+
+          // Boton de salir de la ventana de objetos recibidos
+          salirBoton2.onclick = function() {
+            W.getElementById('objetosRecibidos').style.display = "none";
           };
 
           //////////////////////////////////////////////////////////////////////////
@@ -436,18 +466,13 @@
             opt.text = "Mensaje " + node.game.contadorComunicacion;
             node.game.contadorComunicacion += 1;
             selectMensajes.appendChild(opt);
-
-            // ESTO DE AQUI VA CUANDO EL JUGADOR REVISE EL MENSAJE EN LA LISTA
-            // W.getElementById('myModal').style.display = 'block';
-            // W.setInnerHTML('Mensaje', msg.data); // Hay que cambiarlo???
-
-          });
+          }); // End node.on.data('Comunicacion'
 
           node.on.data('Dar', function(msg) {
             console.log('Recibio', msg.data);
             W.getElementById(msg.data).style.display = 'block';
             alert("Recibió un objeto!" + W.getElementById(msg.data).style.display);
-          });
+          }); // End node.on.data('Dar'
 
           node.on('Arrastrar', function(msg) {
             console.log('Arrastrar', msg);
