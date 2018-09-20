@@ -84,7 +84,7 @@
     };
 
 })({
-    rounds: 5,
-    jarra: 2,
-    puntos: 4
+    rounds: 10,
+    objetos: 4,
+    puntos: 2
 });

@@ -507,6 +507,9 @@
       frame: 'puntaje.htm',
       donebutton: true,
       cb: function(){
+        var continuar;
+        continuar = W.getElementById('continuar');
+        continuar.onclick = function() { node.done(); };
         W.setInnerHTML('acumulado', node.game.puntacum);
       }
     });
