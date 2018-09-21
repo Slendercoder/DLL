@@ -15,6 +15,7 @@ module.exports = function(stager, settings) {
         .next('instructions')
         .next('quiz')
         .repeat('trials', settings.REPEAT)
+        .next('encuesta')
         .next('debrief')
         .next('end')
         .gameover();
@@ -22,15 +23,14 @@ module.exports = function(stager, settings) {
     stager.extendStage('trials', {
       steps: [
         'game',
-        'puntaje',
-        'encuesta'
+        'puntaje'
       ]
     });
 
     // Modify the stager to skip one stage.
     stager.skip('instructions');
     stager.skip('quiz');
-    // stager.skip('trials');
+    stager.skip('trials');
 
     return stager.getState();
 };

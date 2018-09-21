@@ -1,377 +1,45 @@
 [{
-    "time": 519,
+    "time": 4243,
     "timeup": false,
     "done": true,
-    "player": "993394477927478",
+    "player": "234401877107534",
     "stage": {
         "stage": 1,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1531765106632
+    "timestamp": 1537568414613
 }, {
-    "time": 2357,
+    "time": 6092,
     "timeup": false,
     "done": true,
-    "player": "211793963061507",
+    "player": "703759601912414",
     "stage": {
         "stage": 1,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1531765108152
+    "timestamp": 1537568416677
 }, {
-    "time": 369,
+    "time": 33012,
     "timeup": false,
     "done": true,
-    "player": "211793963061507",
+    "player": "703759601912414",
     "stage": {
         "stage": 2,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1531765109081
+    "timestamp": 1537568449861
 }, {
-    "time": 2214,
+    "time": 34064,
     "timeup": false,
     "done": true,
-    "player": "993394477927478",
+    "player": "234401877107534",
     "stage": {
         "stage": 2,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1531765110776
-}, {
-    "ObjetoElegido": "Triangulo",
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1531765111779
-}, {
-    "ObjetoElegido": "Circulo",
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1531765111948
-}, {
-    "time": 1734,
-    "timeup": false,
-    "done": true,
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1531765117784
-}, {
-    "time": 7400,
-    "timeup": false,
-    "done": true,
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1531765120500
-}, {
-    "time": 1999,
-    "timeup": false,
-    "done": true,
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 2,
-        "round": 1
-    },
-    "timestamp": 1531765122908
-}, {
-    "time": 2816,
-    "timeup": false,
-    "done": true,
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 2,
-        "round": 1
-    },
-    "timestamp": 1531765124382
-}, {
-    "ObjetoElegido": "Circulo",
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 2
-    },
-    "timestamp": 1531765125173
-}, {
-    "ObjetoElegido": "Triangulo",
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 2
-    },
-    "timestamp": 1531765125470
-}, {
-    "time": 937,
-    "timeup": false,
-    "done": true,
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 2
-    },
-    "timestamp": 1531765127451
-}, {
-    "time": 817,
-    "timeup": false,
-    "done": true,
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 2
-    },
-    "timestamp": 1531765130747
-}, {
-    "time": 1229,
-    "timeup": false,
-    "done": true,
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 2,
-        "round": 2
-    },
-    "timestamp": 1531765132557
-}, {
-    "time": 3081,
-    "timeup": false,
-    "done": true,
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 2,
-        "round": 2
-    },
-    "timestamp": 1531765134888
-}, {
-    "ObjetoElegido": "Circulo",
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 3
-    },
-    "timestamp": 1531765135619
-}, {
-    "ObjetoElegido": "Triangulo",
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 3
-    },
-    "timestamp": 1531765135967
-}, {
-    "time": 618,
-    "timeup": false,
-    "done": true,
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 3
-    },
-    "timestamp": 1531765138139
-}, {
-    "time": 726,
-    "timeup": false,
-    "done": true,
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 3
-    },
-    "timestamp": 1531765141113
-}, {
-    "time": 637,
-    "timeup": false,
-    "done": true,
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 2,
-        "round": 3
-    },
-    "timestamp": 1531765142292
-}, {
-    "time": 1955,
-    "timeup": false,
-    "done": true,
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 2,
-        "round": 3
-    },
-    "timestamp": 1531765144125
-}, {
-    "ObjetoElegido": "Triangulo",
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 4
-    },
-    "timestamp": 1531765145115
-}, {
-    "ObjetoElegido": "Circulo",
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 4
-    },
-    "timestamp": 1531765145267
-}, {
-    "time": 917,
-    "timeup": false,
-    "done": true,
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 4
-    },
-    "timestamp": 1531765147509
-}, {
-    "time": 714,
-    "timeup": false,
-    "done": true,
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 4
-    },
-    "timestamp": 1531765150925
-}, {
-    "time": 960,
-    "timeup": false,
-    "done": true,
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 2,
-        "round": 4
-    },
-    "timestamp": 1531765152293
-}, {
-    "time": 3128,
-    "timeup": false,
-    "done": true,
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 2,
-        "round": 4
-    },
-    "timestamp": 1531765155113
-}, {
-    "ObjetoElegido": "Cuadrado",
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 5
-    },
-    "timestamp": 1531765156130
-}, {
-    "ObjetoElegido": "Circulo",
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 5
-    },
-    "timestamp": 1531765156579
-}, {
-    "time": 972,
-    "timeup": false,
-    "done": true,
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 5
-    },
-    "timestamp": 1531765158446
-}, {
-    "time": 665,
-    "timeup": false,
-    "done": true,
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 1,
-        "round": 5
-    },
-    "timestamp": 1531765161563
-}, {
-    "time": 2252,
-    "timeup": false,
-    "done": true,
-    "player": "993394477927478",
-    "stage": {
-        "stage": 3,
-        "step": 2,
-        "round": 5
-    },
-    "timestamp": 1531765164259
-}, {
-    "time": 3631,
-    "timeup": false,
-    "done": true,
-    "player": "211793963061507",
-    "stage": {
-        "stage": 3,
-        "step": 2,
-        "round": 5
-    },
-    "timestamp": 1531765166236
-}, {
-    "time": 95218,
-    "timeup": false,
-    "done": true,
-    "player": "211793963061507",
-    "stage": {
-        "stage": 4,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1531765261879
-}, {
-    "time": 95983,
-    "timeup": false,
-    "done": true,
-    "player": "993394477927478",
-    "stage": {
-        "stage": 4,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1531765263502
+    "timestamp": 1537568451653
 }]
