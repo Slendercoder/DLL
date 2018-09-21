@@ -15,9 +15,9 @@
           <form name="rounds" id="rounds">
 	    <p class="question">¿Cuántas rondas tiene este juego?</p>
 	    <p>
-	      <input type="radio" name="rounds" value="3"> 3<br>
-	      <input type="radio" name="rounds" value="1"> 1<br>
 	      <input type="radio" name="rounds" value="5"> 5<br>
+	      <input type="radio" name="rounds" value="3"> 3<br>
+	      <input type="radio" name="rounds" value="10"> 10<br>
 	      <input type="radio" name="rounds" value="not"> No se sabe de antemano
 	    </p>
 	  </form>
@@ -25,13 +25,14 @@
 
         <dt><strong>Q.2</strong></dt>
         <dd>
-          <span id="jarra_result" class="quiz_result"></span>
-          <form name="jarra" id="jarra">
-            <p class="question">¿Cuál es la jarra privilegiada?</p>
+          <span id="objetos_result" class="quiz_result"></span>
+          <form name="objetos" id="objetos">
+            <p class="question">¿Qué objetos le puede enviar a su compañero?</p>
             <p>
-              <input type="radio" name="jarra" value="1"> La que tiene más objetos <br>
-              <input type="radio" name="jarra" value="2"> La que tiene menos objetos <br>
-              <input type="radio" name="jarra" value="3"> La que tiene una cantidad intermedia de objetos </br>
+              <input type="radio" name="objetos" value="1"> Solo Dup <br>
+              <input type="radio" name="objetos" value="2"> Solo Xol <br>
+              <input type="radio" name="objetos" value="3"> Solo Zab </br>
+              <input type="radio" name="objetos" value="4"> Cualquier objeto </br>
             </p>
           </form>
         </dd>
@@ -39,16 +40,17 @@
         <dd>
           <span id="puntos_result" class="quiz_result"></span>
           <form name="puntos" id="puntos">
-            <p class="question">¿Cuál de estas parejas da 5 puntos?</p>
+            <p class="question">¿Cuál de estas combinaciones da 5 monedas?</p>
             <p>
-              <input type="radio" name="puntos" value="1"> Dos objetos del mismo tipo <br>
-              <input type="radio" name="puntos" value="2"> Dos objetos de la jarra privilegiada<br>
-              <input type="radio" name="puntos" value="3"> Dos objetos de distinto tipo </br>
-              <input type="radio" name="puntos" value="4"> Un objeto de la jarra privilegiada con un objeto de otro tipo<br>
+              <input type="radio" name="puntos" value="1"> Xol + Xol <br>
+              <input type="radio" name="puntos" value="2"> Dup + Zab<br>
+              <input type="radio" name="puntos" value="3"> Dup + Dup<br>
+              <input type="radio" name="puntos" value="4"> Ninguna de las anteriores<br>
             </p>
 
           </form>
         </dd>
+
       </dl>
       <div id="done_box">
         <button onclick='javascript:parent.node.emit("check-quiz");' id="submitQuiz"  class="btn btn-lg btn-primary">Presione aquí para enviar sus respuestas y pasar al juego <br>Respuestas correctas <span id="answers_counter">0 / 3</span></button>

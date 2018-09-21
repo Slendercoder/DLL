@@ -1,6 +1,7 @@
 div {
     font-family: "Times New Roman";
     font-size: 19px;
+    overflow: scroll;
 }
 
 /* Create three unequal columns that floats next to each other */
@@ -9,12 +10,14 @@ div {
     padding: 10px;
 }
 
-.left, .right {
-  width: 30%;
+.left{
+  width: 0%;
 }
-
+.right {
+  width: 40%;
+}
 .middle {
-  width: 30%;
+  width: 50%;
 }
     
 .button1{
