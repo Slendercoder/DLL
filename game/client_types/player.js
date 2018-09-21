@@ -91,17 +91,16 @@
       this.doneButton = node.widgets.append('DoneButton', header);
 
       this.contadorComunicacion = 1;
-      this.puntacum = 0;
-
-      // var doneButton = node.widgets.append('DoneButton', header)
-      // doneButton.text = "OK"
+      this.contadorMensajes = 0;
+      var dict = {};
+      this.puntajeAcumulado = dict;
 
       // Additional debug information while developing the game.
       // this.debugInfo = node.widgets.append('DebugInfo', header)
     });
 
     stager.extendStep('instructions', {
-      donebutton: false,
+      donebutton: true,
       frame: 'instructions-v2.htm',
       cb: function(){
         var sett, continuar;
@@ -153,21 +152,9 @@
           var otroJugador = MESSAGE[0];
           var indicesDesordenados = MESSAGE[1];
           var indicesObjetos = [];
-          // for (var i=0; i<indicesDesordenados.length; i++) {
-          //   // console.log('indicesDesordenados', i, indicesDesordenados[i]);
-          //   indicesObjetos[indicesDesordenados[i]] = i;
-          // }
-          // for (var i=0; i<indicesDesordenados.length; i++) {
-          //   console.log('indicesOrdenados', i, indicesObjetos[i]);
-          // }
           var tiposObjetos = MESSAGE[2];
           var srcImagenes = MESSAGE[3];
-          // for (var i=0; i<indicesDesordenados.length; i++) {
-          //   console.log('srcImagenes', i, srcImagenes[i]);
-          // }
-
           var explicacion = MESSAGE[4];
-          // console.log('datos recibidos', srcImagenes);
           var puntaje = 0; // Variable para el puntaje
           var derPareja = ''; // Argumento derecho de la pareja
           var izqPareja = ''; // Argumento izquierdo de la pareja
@@ -191,12 +178,15 @@
           var caja = W.getElementById('caja'); // Imagen del toolbox
           var salirBoton1 = W.getElementById('exitButton1'); //Boton de exit del modal
           var salirBoton2 = W.getElementById('exitButton2'); //Boton de exit del modal
-
-          // node.game.other_player = otroJugador;
+          var ronda = node.player.stage.round;
+          node.game.puntajeAcumulado[ronda] = 0;
 
           // Initialize the window for the game
           W.getElementById('myModal').style.display = "none";
           W.getElementById('myModal2').style.display = "none";
+          node.game.contadorComunicacion = 1;
+          node.game.contadorMensajes = 0;
+          W.setInnerHTML('numMensajes', node.game.contadorMensajes);
 
           // Limpia la caja de objetos recibidos
           var appBanners = W.getElementsByClassName('Recibido');
@@ -382,12 +372,12 @@
               var indiceDerecho = Number(derPareja.substr(4,2)) - 1;
               var tipoObjetoIzquierdo = tiposObjetos[indicesDesordenados[indiceIzquierdo]];
               var tipoObjetoDerecho = tiposObjetos[indicesDesordenados[indiceDerecho]];
-              console.log('Puntaje: ',
-                          W.getElementById(izqPareja).src,
-                          W.getElementById(derPareja).src);
-                          console.log('Puntaje: ',
-                                      tipoObjetoIzquierdo,
-                                      tipoObjetoDerecho);
+              // console.log('Puntaje: ',
+              //             W.getElementById(izqPareja).src,
+              //             W.getElementById(derPareja).src);
+              // console.log('Puntaje: ',
+              //             tipoObjetoIzquierdo,
+              //             tipoObjetoDerecho);
               if(tipoObjetoIzquierdo == 'Xol'){
                 if (tipoObjetoDerecho == 'Xol') {
                   puntaje += 1;
@@ -411,6 +401,9 @@
 
               // Cambia los rotulos de las jarras y el puntaje
               W.setInnerHTML('Puntaje', puntaje);
+              node.game.puntajeAcumulado[ronda] = puntaje;
+              console.log('Ronda: ', ronda, puntaje);
+              console.log('Por rondas', node.game.puntajeAcumulado);
 
               //Elimina los elementos de las casillas al oprimir "To basket"
               izqPareja='';
@@ -426,6 +419,8 @@
             var indice = this.selectedIndex;
             var correo = this.options[indice].value;
             this.remove(this.selectedIndex);
+            node.game.contadorMensajes -= 1;
+            W.setInnerHTML('numMensajes', node.game.contadorMensajes);
             W.getElementById('objetosPropios').style.display = 'none';
             W.getElementById('objetosRecibidos').style.display = 'none';
             W.getElementById('myModal').style.display = 'block';
@@ -465,6 +460,8 @@
             opt.value = msg.data;
             opt.text = "Mensaje " + node.game.contadorComunicacion;
             node.game.contadorComunicacion += 1;
+            node.game.contadorMensajes += 1;
+            W.setInnerHTML('numMensajes', node.game.contadorMensajes);
             selectMensajes.appendChild(opt);
             W.setInnerHTML('numMensajes', 1); // Arreglar el contador
           }); // End node.on.data('Comunicacion'
@@ -498,7 +495,6 @@
               derPareja = msg[0];
             }
           }); // End node.on('Arrastrar')
-          node.game.puntacum += puntaje;
         }); // End on.data "settings"
       }, // End cb function
     });// End extendstep "game"
@@ -507,10 +503,10 @@
       frame: 'puntaje.htm',
       donebutton: true,
       cb: function(){
+
         var continuar;
         continuar = W.getElementById('continuar');
         continuar.onclick = function() { node.done(); };
-        W.setInnerHTML('acumulado', node.game.puntacum);
       }
     });
 

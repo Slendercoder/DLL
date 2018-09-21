@@ -1,7 +1,7 @@
 div {
     font-family: "Times New Roman";
     font-size: 19px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 /* Create three unequal columns that floats next to each other */
