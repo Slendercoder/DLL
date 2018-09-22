@@ -56,7 +56,7 @@
         check[1] = W.getElementById('CheckXol');
         check[2] = W.getElementById('CheckDup');
         check[0].checked = check[1].checked = check[2].checked = false;
-        if(Math.random() < 0.333333){
+        /*if(Math.random() < 0.333333){
           W.getElementById("imgvar").src="square.png";
           objeto = 'Cuadrado';
         }else if (Math.random() < 0.666666){
@@ -66,7 +66,7 @@
           W.getElementById("imgvar").src="triangle.png";
           objeto = 'Triangulo';
         }
-        return objeto;
+        return objeto;*/
       };
 
       // Setup page: header + frame.
@@ -522,16 +522,7 @@
         W.getElementById('CheckZab').checked=false;
         W.getElementById('CheckXol').checked=false;
         W.getElementById('CheckDup').checked=false;
-        if(Math.random() < 0.333333){
-          W.getElementById("imgvar").src="square.png";
-          objeto = 'Cuadrado';
-        }else if (Math.random() < 0.666666){
-          W.getElementById("imgvar").src="circle.png";
-          objeto = 'Circulo';
-        }else{
-          W.getElementById("imgvar").src="triangle.png";
-          objeto = 'Triangulo';
-        }
+
         boton1.onclick=function(){
           node.set({Encuesta: [objeto,
                               W.getElementById('CheckZab').checked,
@@ -543,16 +534,10 @@
           W.getElementById('CheckXol').checked=false;
           W.getElementById('CheckDup').checked=false;
           //W.getElementById('encuesta').style.display = "";
-          if(Math.random() < 0.333333){
-            W.getElementById("imgvar").src="square.png";
-            objeto = 'Cuadrado';
-          }else if (Math.random() < 0.666666){
-            W.getElementById("imgvar").src="circle.png";
-            objeto = 'Circulo';
-          }else{
-            W.getElementById("imgvar").src="triangle.png";
-            objeto = 'Triangulo';
-          }
+
+          var x = Math.floor(Math.random()*24)+1;
+          W.getElementById("imgvar").src="Images/objeto"+x+".png";
+
           contador++;
           W.setInnerHTML('cont', contador+1+' / 9');
           //W.setInnerHTML('Holaaaa');
