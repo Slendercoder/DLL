@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/estilosGame.css" />
 </head>
@@ -247,6 +248,7 @@
           <button type="button" id='myBtn'>Enviar mensaje</button>
 
       <h2>Mensajes recibidos:</h2>
+      <div class="popup" style="display: none" id="notif">Tiene un mensaje nuevo</div>
       <h4>Tiene <span id="numMensajes">0</span> mensajes</h4>
         <select id=soflow-color>
           <option>Sus mensajes recibidos aquí</option>
@@ -449,4 +451,13 @@
           }
       });
     
+</script>
+
+<!--Función que despliega la notificación de mensaje recibido. Debe ir en player.js -->
+
+<script>
+$(document).ready(function(){
+              $(".popup").slideDown(1000);
+              $(".popup").fadeOut(7000);
+});
 </script>
