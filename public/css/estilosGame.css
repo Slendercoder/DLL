@@ -225,7 +225,7 @@ img.ovalar{
 }
 
 .Recibido{
-    display: none;
+    display: "";
     draggable: true;
     width: 110px; 
     height: 110px;    

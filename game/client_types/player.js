@@ -188,7 +188,8 @@
           W.getElementById('myModal2').style.display = "none";
           node.game.contadorComunicacion = 1;
           node.game.contadorMensajes = 0;
-          W.setInnerHTML('numMensajes', node.game.contadorMensajes);
+          selectMensajes.options[0].text = "Tiene " + node.game.contadorMensajes + " mensajes";
+          // W.setInnerHTML('numMensajes', node.game.contadorMensajes);
 
           // Limpia la caja de objetos recibidos y asigna objetos a recibir
           var appBanners = W.getElementsByClassName('Recibido');
@@ -251,6 +252,11 @@
 
           // When the user clicks the button, opens TALK TO
           btn.onclick = function() {
+              // Cierra las demás ventanas
+              W.getElementById('objetosPropios').style.display = 'none'; // Cierra ventana objetos propios
+              W.getElementById('objetosRecibidos').style.display = 'none'; // Cierra ventana objetos recibidos
+              W.getElementById('myModal').style.display = 'none'; // Cierra ventana de responder
+
                 var x = Math.random();
                 if(x < 0.33333){
                   W.setInnerHTML('arriba', 'ZAB');
@@ -340,6 +346,7 @@
 
           // Cuando el usuario da click, calcula los puntos
           btnArmarPareja.onclick = function() {
+            console.log('izqPareja, derPareja', izqPareja, derPareja);
             //Evalua si alguna de las casillas esta vacía al hacer una pareja
             if((izqPareja=='')||(derPareja=='')){
               alert("Tiene que arrastrar un objeto");
@@ -353,17 +360,38 @@
               W.getElementById('dropDer').src = "";
               W.getElementById('dropDer').style.display = "none";
 
+              // Obtiene los indices de los objetos
+              console.log('string', izqPareja.substr(4,2).replace('-',''));
+              var indiceIzquierdo = Number(izqPareja.substr(4,2).replace('-','')) - 1;
+              console.log('indiceIzquierdo', indiceIzquierdo);
+              var indiceDerecho = Number(derPareja.substr(4,2).replace('-','')) - 1;
+              console.log('indiceDerecho', indiceDerecho);
+
+              // Determina si izqPareja viene de objetosRecibidos
+              if (izqPareja.indexOf('Recibido') >= 0) {
+                console.log('izqPareja viene de objetosRecibidos');
+                var tipoObjetoIzquierdo = tiposObjetos[indicesDesordenadosOtroJugador[indiceIzquierdo]];
+              } else {
+                console.log('izqPareja viene de objetosPropios');
+                var tipoObjetoIzquierdo = tiposObjetos[indicesDesordenados[indiceIzquierdo]];
+              }
+              if (derPareja.indexOf('Recibido') >= 0) {
+                console.log('derPareja viene de objetosRecibidos');
+                var tipoObjetoDerecho = tiposObjetos[indicesDesordenadosOtroJugador[indiceDerecho]];
+              } else {
+                console.log('derPareja viene de objetosPropios');
+                var tipoObjetoDerecho = tiposObjetos[indicesDesordenados[indiceDerecho]];
+              }
+              console.log('tipoObjetoIzquierdo', tipoObjetoIzquierdo);
+              console.log('tipoObjetoDerecho', tipoObjetoDerecho);
+
               // Calcula el puntaje
-              var indiceIzquierdo = Number(izqPareja.substr(4,2)) - 1;
-              var indiceDerecho = Number(derPareja.substr(4,2)) - 1;
-              var tipoObjetoIzquierdo = tiposObjetos[indicesDesordenados[indiceIzquierdo]];
-              var tipoObjetoDerecho = tiposObjetos[indicesDesordenados[indiceDerecho]];
-              // console.log('Puntaje: ',
-              //             W.getElementById(izqPareja).src,
-              //             W.getElementById(derPareja).src);
-              // console.log('Puntaje: ',
-              //             tipoObjetoIzquierdo,
-              //             tipoObjetoDerecho);
+              console.log('Puntaje: ',
+                          W.getElementById(izqPareja).src,
+                          W.getElementById(derPareja).src);
+              console.log('Puntaje: ',
+                          tipoObjetoIzquierdo,
+                          tipoObjetoDerecho);
               if(tipoObjetoIzquierdo == 'Xol'){
                 if (tipoObjetoDerecho == 'Xol') {
                   puntaje += 1;
@@ -406,7 +434,8 @@
             var correo = this.options[indice].value; // Lo que dice el mensaje
             this.remove(this.selectedIndex); // Elimina item de la lista desplegable
             node.game.contadorMensajes -= 1;
-            W.setInnerHTML('numMensajes', node.game.contadorMensajes); // Actualiza numero de mensajes
+            selectMensajes.options[0].text = "Tiene " + node.game.contadorMensajes + " mensajes";
+            // W.setInnerHTML('numMensajes', node.game.contadorMensajes); // Actualiza numero de mensajes
             W.getElementById('objetosPropios').style.display = 'none'; // Cierra ventana objetos propios
             W.getElementById('objetosRecibidos').style.display = 'none'; // Cierra ventana objetos recibidos
             W.getElementById('myModal').style.display = 'block'; // Abre ventana de responder
@@ -450,7 +479,8 @@
             selectMensajes.appendChild(opt); // Introduce nuevo item en la lista desplegable
             node.game.contadorComunicacion += 1;
             node.game.contadorMensajes += 1;
-            W.setInnerHTML('numMensajes', node.game.contadorMensajes); // Muestra el número de mensajes
+            selectMensajes.options[0].text = "Tiene " + node.game.contadorMensajes + " mensajes";
+            // W.setInnerHTML('numMensajes', node.game.contadorMensajes); // Muestra el número de mensajes
             // W.setInnerHTML('numMensajes', 1); // Arreglar el contador
           }); // End node.on.data('Comunicacion'
 
@@ -492,9 +522,10 @@
           node.on('Arrastrar', function(msg) {
             console.log('Arrastrar', msg);
             if (msg[1] == 'Izquierdo') { // Se arrastra al lado izquierdo
-              // Revisa si ya hay un objeto en el lado izquierdo y lo devuelve al toolbox
+              // Revisa si ya hay un objeto en el lado izquierdo y lo devuelve
               if (izqPareja != '') {
                 W.getElementById(izqPareja).style.display = "";
+                console.log('Devolviendo el objeto', izqPareja);
               }
               W.getElementById('dropIzq').src = W.getElementById(msg[0]).src;
               W.getElementById('dropIzq').style.display = "";
