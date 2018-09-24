@@ -108,99 +108,121 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         // Creando datos para enviar al jugador XOL (player[0])
         // Aleatorizo la lista de indices
-        var a = [];
+        var aPL1 = [];
         for (var i = 0; i < 20; i++) {
-          a.push(i);
+          aPL1.push(i);
         }
         // console.log(a);
         var j, x, i;
-        for (i = a.length - 1; i > 0; i--) {
+        for (i = aPL1.length - 1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1));
-            x = a[i];
-            a[i] = a[j];
-            a[j] = x;
+            x = aPL1[i];
+            aPL1[i] = aPL1[j];
+            aPL1[j] = x;
         }
         // Creo la lista que identifica el tipo de objeto
-        var tiposObjetos = [];
-        tiposObjetos[0] = 'Xol';
-        tiposObjetos[1] = 'Xol';
-        tiposObjetos[2] = 'Xol';
-        tiposObjetos[3] = 'Xol';
-        tiposObjetos[4] = 'Xol';
-        tiposObjetos[5] = 'Dup';
+        var tiposObjetosPL1 = [];
+        tiposObjetosPL1[0] = 'Xol';
+        tiposObjetosPL1[1] = 'Xol';
+        tiposObjetosPL1[2] = 'Xol';
+        tiposObjetosPL1[3] = 'Xol';
+        tiposObjetosPL1[4] = 'Xol';
+        tiposObjetosPL1[5] = 'Dup';
         for (var i=6; i < 20; i++) {
-          tiposObjetos[i] = 'Otro';
+          tiposObjetosPL1[i] = 'Otro';
         }
         // console.log(tiposObjetos);
-
         // Creo la lista de source para las imagenes de los XOL...
-        var srcImagenes = [];
-        srcImagenes[0] = 'Images/objeto' + 1 + '.png';
-        srcImagenes[1] = 'Images/objeto' + 2 + '.png';
-        srcImagenes[2] = 'Images/objeto' + 3 + '.png';
-        srcImagenes[3] = 'Images/objeto' + 4 + '.png';
-        srcImagenes[4] = 'Images/objeto' + 5 + '.png';
-        srcImagenes[5] = 'Images/objeto' + 6 + '.png'; // Este es un DUP
-
+        var srcImagenesPL1 = [];
+        srcImagenesPL1[0] = 'Images/objeto' + 1 + '.png';
+        srcImagenesPL1[1] = 'Images/objeto' + 2 + '.png';
+        srcImagenesPL1[2] = 'Images/objeto' + 3 + '.png';
+        srcImagenesPL1[3] = 'Images/objeto' + 4 + '.png';
+        srcImagenesPL1[4] = 'Images/objeto' + 5 + '.png';
+        srcImagenesPL1[5] = 'Images/objeto' + 6 + '.png'; // Este es un DUP
         // ... y de los demás objetos
         for (var i=11; i < 25; i++) {
-          srcImagenes[i-5] = 'Images/objeto' + i + '.png';
+          srcImagenesPL1[i-5] = 'Images/objeto' + i + '.png';
         }
-
         // Crea los datos para la explicacion experto
-        var explicacion = [];
-        explicacion[0] = 'Xol';
-        explicacion[1] = 'blancos';
-        explicacion[2] = 'rojo';
-        explicacion[3] = 'par';
-        explicacion[4] = 'impar';
+        var explicacionPL1 = [];
+        explicacionPL1[0] = 'Xol';
+        explicacionPL1[1] = 'blancos';
+        explicacionPL1[2] = 'rojo';
+        explicacionPL1[3] = 'par';
+        explicacionPL1[4] = 'impar';
 
-        // Envio los datos al primer jugador
-        node.say('Settings', players[0], [players[1], a, tiposObjetos, srcImagenes, explicacion]);
-
-        // Aleatorizo de nuevo la lista de indices
-        for (i = a.length - 1; i > 0; i--) {
+        // Creando datos para enviar al jugador DUP (player[1])
+        // Aleatorizo la lista de indices
+        var aPL2 = [];
+        for (var i = 0; i < 20; i++) {
+          aPL2.push(i);
+        }
+        // console.log(a);
+        var j, x, i;
+        for (i = aPL2.length - 1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1));
-            x = a[i];
-            a[i] = a[j];
-            a[j] = x;
+            x = aPL2[i];
+            aPL2[i] = aPL2[j];
+            aPL2[j] = x;
         }
         // Creo la lista que identifica el tipo de objeto
-        var tiposObjetos = [];
-        tiposObjetos[0] = 'Dup';
-        tiposObjetos[1] = 'Dup';
-        tiposObjetos[2] = 'Dup';
-        tiposObjetos[3] = 'Dup';
-        tiposObjetos[4] = 'Dup';
-        tiposObjetos[5] = 'Xol';
+        var tiposObjetosPL2 = [];
+        tiposObjetosPL2[0] = 'Dup';
+        tiposObjetosPL2[1] = 'Dup';
+        tiposObjetosPL2[2] = 'Dup';
+        tiposObjetosPL2[3] = 'Dup';
+        tiposObjetosPL2[4] = 'Dup';
+        tiposObjetosPL2[5] = 'Xol';
         for (var i=6; i < 20; i++) {
-          tiposObjetos[i] = 'Otro';
+          tiposObjetosPL2[i] = 'Otro';
         }
-
         // Creo la lista de source para las imagenes de los DUP...
-        var srcImagenes = [];
-        srcImagenes[0] = 'Images/objeto' + 6 + '.png';
-        srcImagenes[1] = 'Images/objeto' + 7 + '.png';
-        srcImagenes[2] = 'Images/objeto' + 8 + '.png';
-        srcImagenes[3] = 'Images/objeto' + 9 + '.png';
-        srcImagenes[4] = 'Images/objeto' + 10 + '.png';
-        srcImagenes[5] = 'Images/objeto' + 1 + '.png'; // Este es un XOL
-
+        var srcImagenesPL2 = [];
+        srcImagenesPL2[0] = 'Images/objeto' + 6 + '.png';
+        srcImagenesPL2[1] = 'Images/objeto' + 7 + '.png';
+        srcImagenesPL2[2] = 'Images/objeto' + 8 + '.png';
+        srcImagenesPL2[3] = 'Images/objeto' + 9 + '.png';
+        srcImagenesPL2[4] = 'Images/objeto' + 10 + '.png';
+        srcImagenesPL2[5] = 'Images/objeto' + 1 + '.png'; // Este es un XOL
         // ... y de los demás objetos
         for (var i=11; i < 25; i++) {
-          srcImagenes[i-5] = 'Images/objeto' + i + '.png';
+          srcImagenesPL2[i-5] = 'Images/objeto' + i + '.png';
         }
-
         // Crea los datos para la explicacion experto
-        var explicacion = [];
-        explicacion[0] = 'Dup';
-        explicacion[1] = 'grises';
-        explicacion[2] = 'rojo';
-        explicacion[3] = 'impar';
-        explicacion[4] = 'par';
+        var explicacionPL2 = [];
+        explicacionPL2[0] = 'Dup';
+        explicacionPL2[1] = 'grises';
+        explicacionPL2[2] = 'rojo';
+        explicacionPL2[3] = 'impar';
+        explicacionPL2[4] = 'par';
+
+        // Envio los datos al primer jugador
+        node.say('Settings',
+                  players[0],
+                  [players[1],
+                      aPL1,
+                      tiposObjetosPL1,
+                      srcImagenesPL1,
+                      explicacionPL1,
+                      aPL2,
+                      tiposObjetosPL2,
+                      srcImagenesPL2,
+                  ]);
 
         // Envio los datos al segundo jugador
-        node.say('Settings', players[1], [players[0], a, tiposObjetos, srcImagenes, explicacion]);
+        node.say('Settings',
+                  players[1],
+                  [players[0],
+                      aPL2,
+                      tiposObjetosPL2,
+                      srcImagenesPL2,
+                      explicacionPL2,
+                      aPL1,
+                      tiposObjetosPL1,
+                      srcImagenesPL1,
+                  ]);
+
 
     } // End function doMatch
 

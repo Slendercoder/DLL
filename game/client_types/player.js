@@ -148,13 +148,15 @@
 
           console.log('El jugador arranca');
 
-          var MESSAGE = msg.data; //Message from logic with quantity of each type
-          var otroJugador = MESSAGE[0];
-          var indicesDesordenados = MESSAGE[1];
-          var indicesObjetos = [];
-          var tiposObjetos = MESSAGE[2];
-          var srcImagenes = MESSAGE[3];
-          var explicacion = MESSAGE[4];
+          var MESSAGE = msg.data; //Datos enviados desde logic con informacion para la ronda
+          var otroJugador = MESSAGE[0]; //Direccion del otro jugador
+          var indicesDesordenados = MESSAGE[1]; //Lista para relacionar nombre de imagen con tipo de objeto
+          var tiposObjetos = MESSAGE[2]; //Tipos de objetos de acuerdo al indice
+          var srcImagenes = MESSAGE[3]; //Nombres de archivos imagenes a llenar de acuerdo a indice
+          var explicacion = MESSAGE[4]; //Datos de la explicacion de experto
+          var indicesDesordenadosOtroJugador = MESSAGE[5]; //Lista para relacionar nombre de imagen con tipo de objeto OTRO JUGADOR
+          var tiposObjetosOtroJugador = MESSAGE[6]; //Tipos de objetos de acuerdo al indice OTRO JUGADOR
+          var srcImagenesOtroJugador = MESSAGE[7]; //Nombres de archivos imagenes a llenar de acuerdo a indice OTRO JUGADOR
           var puntaje = 0; // Variable para el puntaje
           var derPareja = ''; // Argumento derecho de la pareja
           var izqPareja = ''; // Argumento izquierdo de la pareja
@@ -172,13 +174,13 @@
           var span6 = W.getElementById('exitButton'); //Boton de exit del modal
           var countRondas = node.player.stage.round; //Lleva el numero de rondas
           var umbral; //valor del umbral de puntos
-          var mensajeEnviar = ['ZAB', 'XOL', 'DUP'];
+          var mensajeEnviar = ['ZAB', 'XOL', 'DUP']; //Lista de posibles mensajes a enviar
           var selectMensajes = W.getElementById('soflow-color'); // La lista de mensajes recibidos
           var toolBox = W.getElementById('toolbox'); // Imagen del toolbox
           var caja = W.getElementById('caja'); // Imagen del toolbox
           var salirBoton1 = W.getElementById('exitButton1'); //Boton de exit del modal
           var salirBoton2 = W.getElementById('exitButton2'); //Boton de exit del modal
-          var ronda = node.player.stage.round;
+          var ronda = node.player.stage.round; //Ronda en curso
           node.game.puntajeAcumulado[ronda] = 0;
 
           // Initialize the window for the game
@@ -188,7 +190,7 @@
           node.game.contadorMensajes = 0;
           W.setInnerHTML('numMensajes', node.game.contadorMensajes);
 
-          // Limpia la caja de objetos recibidos
+          // Limpia la caja de objetos recibidos y asigna objetos a recibir
           var appBanners = W.getElementsByClassName('Recibido');
           for (var i = 0; i < appBanners.length; i ++) {
               appBanners[i].style.display = "none";
@@ -198,8 +200,10 @@
           for (var i = 1; i < 21; i ++) {
               var imagen = 'drag' + i;
               var imagenEnviar = 'drag' + i + '-Enviar';
-              W.getElementById(imagen).src = srcImagenes[indicesDesordenados[i-1]];
-              W.getElementById(imagenEnviar).src = srcImagenes[indicesDesordenados[i-1]];
+              var sourceImagen = srcImagenes[indicesDesordenados[i-1]];
+              // console.log('Source', i, sourceImagen);
+              W.getElementById(imagen).src = sourceImagen;
+              W.getElementById(imagenEnviar).src = sourceImagen;
             }
 
           // Llena la explicación de experto
@@ -209,7 +213,6 @@
           W.setInnerHTML('paridadHorizontales', explicacion[4]);
           W.setInnerHTML('paridadVerticales', explicacion[3]);
 
-          // node.set({ObjetoElegido: Elegido});
           // switch(countRondas){
           //   case 1:
           //   alert("El umbral de esta ronda es de 30 puntos!");
@@ -246,7 +249,7 @@
             }
           }
 
-            // When the user clicks the button, open the modal de TALK TO
+          // When the user clicks the button, opens TALK TO
           btn.onclick = function() {
                 var x = Math.random();
                 if(x < 0.33333){
@@ -329,23 +332,6 @@
             node.set({Comunicacion: ["dup", node.game.contadorComunicacion]})
           }
 
-          // Envía objeto al otro jugador
-          node.on('Respuesta', function(msg) {
-            console.log('Enviar', msg)
-
-            // Hace que el objeto enviado ya no esté disponible
-            W.getElementById(msg[0]).style.display="none";
-            W.getElementById(msg[1]).style.display="none";
-
-            node.game.resp = true;
-            node.say('Dar', otroJugador, msg[0] + '-Recibido');
-            W.getElementById('myModal').style.display = "none";
-            var objetoEnviado = tiposObjetos[msg[0].substring(5,6)];
-            node.set({Comunicacion: [objetoEnviado, node.game.contadorComunicacion]});
-
-            alert ("El objeto se envió exitosamente! ");
-          }); // End node.on
-
           //When the user clicks the button, ignora al otro jugador
           span5.onclick = function(){
             W.getElementById('myModal').style.display = "";
@@ -416,15 +402,15 @@
           // Cuando da click en el mensaje de la lista desplegable
           // muestra el modal de enviar objeto
           selectMensajes.onchange = function() {
-            var indice = this.selectedIndex;
-            var correo = this.options[indice].value;
-            this.remove(this.selectedIndex);
+            var indice = this.selectedIndex; // El indice del mensaje seleccionado
+            var correo = this.options[indice].value; // Lo que dice el mensaje
+            this.remove(this.selectedIndex); // Elimina item de la lista desplegable
             node.game.contadorMensajes -= 1;
-            W.setInnerHTML('numMensajes', node.game.contadorMensajes);
-            W.getElementById('objetosPropios').style.display = 'none';
-            W.getElementById('objetosRecibidos').style.display = 'none';
-            W.getElementById('myModal').style.display = 'block';
-            W.setInnerHTML('Mensaje', correo);
+            W.setInnerHTML('numMensajes', node.game.contadorMensajes); // Actualiza numero de mensajes
+            W.getElementById('objetosPropios').style.display = 'none'; // Cierra ventana objetos propios
+            W.getElementById('objetosRecibidos').style.display = 'none'; // Cierra ventana objetos recibidos
+            W.getElementById('myModal').style.display = 'block'; // Abre ventana de responder
+            W.setInnerHTML('Mensaje', correo); // Muestra lo que dice el mensaje
           };
 
           // Abre la ventana de los objetos propios
@@ -454,23 +440,54 @@
           /////////////////////////////////////////////////////////////////////////
           node.on.data('Comunicacion', function(msg) {
             // AQUI POPUP DE LE ENVIARON UN MENSAJE
+            node.emit('Muestra_Popup');
+            W.setInnerHTML('notif', "Tiene un mensaje nuevo!");
 
             // Agrega el mensaje a la lista
-            var opt = document.createElement('option');
-            opt.value = msg.data;
-            opt.text = "Mensaje " + node.game.contadorComunicacion;
+            var opt = document.createElement('option'); // Crea un item nuevo para la lista desplegable
+            opt.value = msg.data; // Objeto enviado
+            opt.text = "Mensaje " + node.game.contadorComunicacion; // Número de mensaje
+            selectMensajes.appendChild(opt); // Introduce nuevo item en la lista desplegable
             node.game.contadorComunicacion += 1;
             node.game.contadorMensajes += 1;
-            W.setInnerHTML('numMensajes', node.game.contadorMensajes);
-            selectMensajes.appendChild(opt);
-            W.setInnerHTML('numMensajes', 1); // Arreglar el contador
+            W.setInnerHTML('numMensajes', node.game.contadorMensajes); // Muestra el número de mensajes
+            // W.setInnerHTML('numMensajes', 1); // Arreglar el contador
           }); // End node.on.data('Comunicacion'
 
           node.on.data('Dar', function(msg) {
             console.log('Recibio', msg.data);
+            var indice = msg.data.substr(4,2).replace('-','');
+            console.log('Indice rótulo', indice);
+            indice = indicesDesordenadosOtroJugador[indice - 1];
+            console.log('Indice imagen', indice);
+            console.log('Indice', srcImagenesOtroJugador[indice]);
+            W.getElementById(msg.data).src = srcImagenesOtroJugador[indice];
             W.getElementById(msg.data).style.display = 'block';
-            alert("Recibió un objeto!" + W.getElementById(msg.data).style.display);
+            node.emit('Muestra_Popup');
+            W.setInnerHTML('notif', "Recibió un objeto!");
+            // alert("Recibió un objeto!" + W.getElementById(msg.data).style.display);
           }); // End node.on.data('Dar'
+
+          // Envía objeto al otro jugador
+          node.on('Respuesta', function(msg) {
+
+            console.log('Enviar', msg);
+            var indice = msg[0].substr(4,2).replace('-','');
+            console.log('Enviar', indice);
+            console.log('Enviar', srcImagenes[indicesDesordenados[indice - 1]]);
+
+            // Hace que el objeto enviado ya no esté disponible
+            W.getElementById(msg[0]).style.display="none";
+            W.getElementById(msg[1]).style.display="none";
+
+            node.game.resp = true;
+            node.say('Dar', otroJugador, msg[0]+ '-Recibido');
+            W.getElementById('myModal').style.display = "none";
+            var objetoEnviado = tiposObjetos[msg[0].substring(5,6)];
+            node.set({Comunicacion: [objetoEnviado, node.game.contadorComunicacion]});
+
+            alert ("El objeto se envió exitosamente! ");
+          }); // End node.on('Respuesta'
 
           node.on('Arrastrar', function(msg) {
             console.log('Arrastrar', msg);
