@@ -460,6 +460,8 @@
 
               if (event.target.className == "Recibido" || event.target.className == "Propio") {
                   event.target.style.border = "";
+                  var enviados = event.target.id + '-Enviar';
+                  document.getElementById(enviados).border = "";
               }
           });
 
@@ -467,6 +469,8 @@
               event.preventDefault();
               if (event.target.className == "Recibido" || event.target.className == "Propio") {
                   event.target.style.border = "1px solid red";
+                  var enviados = event.target.id + '-Enviar';
+                  document.getElementById(enviados).border = "1px solid red";
               }
           });
 

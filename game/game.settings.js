@@ -44,7 +44,8 @@ module.exports = {
         instructions: 180000,
         game: 240000,
         puntaje: 30000,
-        encuesta: 60000
+        encuesta: 180000,
+        debrief: 60000
     },
 
     // # Game specific properties

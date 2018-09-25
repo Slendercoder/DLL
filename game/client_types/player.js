@@ -146,7 +146,7 @@
 
         node.on.data('Settings', function(msg) {
 
-          console.log('El jugador arranca');
+          console.log('El jugador ', node.player.id,' arranca');
 
           var MESSAGE = msg.data; //Datos enviados desde logic con informacion para la ronda
           var otroJugador = MESSAGE[0]; //Direccion del otro jugador
@@ -155,6 +155,9 @@
           var srcImagenes = MESSAGE[3]; //Nombres de archivos imagenes a llenar de acuerdo a indice
           var explicacion = MESSAGE[4]; //Datos de la explicacion de experto
           var indicesDesordenadosOtroJugador = MESSAGE[5]; //Lista para relacionar nombre de imagen con tipo de objeto OTRO JUGADOR
+          // for (var i = 0; i < indicesDesordenadosOtroJugador.length; i++) {
+          //   console.log('Indices desordenados otro jugador', i, indicesDesordenadosOtroJugador[i]);
+          // }
           var tiposObjetosOtroJugador = MESSAGE[6]; //Tipos de objetos de acuerdo al indice OTRO JUGADOR
           var srcImagenesOtroJugador = MESSAGE[7]; //Nombres de archivos imagenes a llenar de acuerdo a indice OTRO JUGADOR
           var puntaje = 0; // Variable para el puntaje
@@ -361,27 +364,33 @@
               W.getElementById('dropDer').style.display = "none";
 
               // Obtiene los indices de los objetos
-              console.log('string', izqPareja.substr(4,2).replace('-',''));
+              // console.log('string', izqPareja.substr(4,2).replace('-',''));
               var indiceIzquierdo = Number(izqPareja.substr(4,2).replace('-','')) - 1;
               console.log('indiceIzquierdo', indiceIzquierdo);
               var indiceDerecho = Number(derPareja.substr(4,2).replace('-','')) - 1;
               console.log('indiceDerecho', indiceDerecho);
 
               // Determina si izqPareja viene de objetosRecibidos
+              var inIzq, inDer, tipoObjetoIzquierdo, tipoObjetoDerecho;
               if (izqPareja.indexOf('Recibido') >= 0) {
                 console.log('izqPareja viene de objetosRecibidos');
-                var tipoObjetoIzquierdo = tiposObjetos[indicesDesordenadosOtroJugador[indiceIzquierdo]];
+                inIzq = indicesDesordenadosOtroJugador[indiceIzquierdo];
+                tipoObjetoIzquierdo = tiposObjetosOtroJugador[inIzq];
               } else {
                 console.log('izqPareja viene de objetosPropios');
-                var tipoObjetoIzquierdo = tiposObjetos[indicesDesordenados[indiceIzquierdo]];
+                inIzq = indicesDesordenados[indiceIzquierdo];
+                tipoObjetoIzquierdo = tiposObjetos[inIzq];
               }
               if (derPareja.indexOf('Recibido') >= 0) {
                 console.log('derPareja viene de objetosRecibidos');
-                var tipoObjetoDerecho = tiposObjetos[indicesDesordenadosOtroJugador[indiceDerecho]];
+                inDer = indicesDesordenadosOtroJugador[indiceDerecho];
+                tipoObjetoDerecho = tiposObjetosOtroJugador[inDer];
               } else {
                 console.log('derPareja viene de objetosPropios');
-                var tipoObjetoDerecho = tiposObjetos[indicesDesordenados[indiceDerecho]];
+                inDer = indicesDesordenados[indiceDerecho];
+                tipoObjetoDerecho = tiposObjetos[inDer];
               }
+
               console.log('tipoObjetoIzquierdo', tipoObjetoIzquierdo);
               console.log('tipoObjetoDerecho', tipoObjetoDerecho);
 
@@ -392,28 +401,28 @@
               console.log('Puntaje: ',
                           tipoObjetoIzquierdo,
                           tipoObjetoDerecho);
+
+              var obtenido=0;
               if(tipoObjetoIzquierdo == 'Xol'){
                 if (tipoObjetoDerecho == 'Xol') {
-                  puntaje += 1;
-                  node.set({Puntaje: [tipoObjetoIzquierdo, tipoObjetoDerecho, 1]});
+                  obtenido = 1;
                 }
-                if (tiposObjetos[indiceDerecho] == 'Dup') {
-                  puntaje += 5;
-                  node.set({Puntaje: [tipoObjetoIzquierdo, tipoObjetoDerecho, 5]});
+                if (tipoObjetoDerecho == 'Dup') {
+                  obtenido = 5;
                 }
               }
               if(tipoObjetoIzquierdo == 'Dup'){
                 if (tipoObjetoDerecho == 'Dup') {
-                  puntaje += 1;
-                  node.set({Puntaje: [tipoObjetoIzquierdo, tipoObjetoDerecho, 1]});
+                  obtenido = 1;
                 }
                 if (tipoObjetoDerecho == 'Xol') {
-                  puntaje += 5;
-                  node.set({Puntaje: [tipoObjetoIzquierdo, tipoObjetoDerecho, 5]});
+                  obtenido = 5;
                 }
               }
+              puntaje += obtenido;
+              node.set({Puntaje: [tipoObjetoIzquierdo, tipoObjetoDerecho, obtenido]});
 
-              // Cambia los rotulos de las jarras y el puntaje
+              // Cambia el puntaje
               W.setInnerHTML('Puntaje', puntaje);
               node.game.puntajeAcumulado[ronda] = puntaje;
               console.log('Ronda: ', ronda, puntaje);
