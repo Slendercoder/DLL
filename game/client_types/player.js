@@ -314,6 +314,9 @@
 
           //When the user clicks the button, close the modal de TALK TO
           span6.onclick = function() {
+            W.getElementById('objetosPropios').style.display = 'none'; // Cierra ventana objetos propios
+            W.getElementById('objetosRecibidos').style.display = 'none'; // Cierra ventana objetos recibidos
+            W.getElementById('myModal').style.display = 'none'; // Abre ventana de responder
             W.getElementById('myModal2').style.display = "";
           }
 
