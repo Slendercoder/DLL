@@ -51,6 +51,6 @@ module.exports = {
     // # Game specific properties
 
     // Number of game rounds repetitions.
-    REPEAT: 10,
+    REPEAT: 1,
 
 };

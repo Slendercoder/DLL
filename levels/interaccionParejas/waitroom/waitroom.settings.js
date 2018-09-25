@@ -33,7 +33,7 @@ module.exports = {
      *
      * The size of each group dispatched by the waiting room
      */
-    GROUP_SIZE: 1,
+    GROUP_SIZE: 2,
 
     /**
      * ## POOL_SIZE (number) Optional
@@ -44,7 +44,7 @@ module.exports = {
      *
      * Default: GROUP_SIZE
      */
-    POOL_SIZE: 1,
+    POOL_SIZE: 2,
 
     /**
      * ## N_GAMES (number) Optional
@@ -65,7 +65,7 @@ module.exports = {
      *
      * After the max waiting time expired clients are disconnected
      */
-    MAX_WAIT_TIME: 90000,
+    MAX_WAIT_TIME: 180000,
 
     /**
      * ## START_DATE (string|object) Optional
