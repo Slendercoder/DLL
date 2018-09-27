@@ -14,8 +14,8 @@ module.exports = function(stager, settings) {
      stager
         .repeat('trials', settings.REPEAT)
         .next('encuesta')
-        .next('debrief')
         .next('demograf')
+        .next('debrief')
         .next('end')
         .gameover();
 
@@ -27,10 +27,10 @@ module.exports = function(stager, settings) {
     });
 
     // Modify the stager to skip one stage.
-    // stager.skip('trials');
-    // stager.skip('debrief');
-    // stager.skip('encuesta');
+    stager.skip('trials');
+    stager.skip('encuesta');
     // stager.skip('demograf');
+    // stager.skip('debrief');
 
     return stager.getState();
 };

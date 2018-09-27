@@ -521,13 +521,6 @@
       }
     }); // End stager encuesta
 
-    stager.extendStep('debrief', {
-      frame: 'debrief.htm',
-      cb: function() {
-        console.log('Debrief');
-      }
-    });
-
     stager.extendStep('demograf', {
         init: function() {
             var w;
@@ -539,9 +532,12 @@
                 forms: [
                     w.get('ChoiceTable', {
                         id: 'gender',
-                        mainText: 'What is your sex?',
+                        mainText: '¿Cuál es su género?',
                         choices: [
-                            'Male', 'Female', 'Other', 'Do not want to say'
+                            'Masculino',
+                            'Femenino',
+                            'Otro',
+                            'Prefiero no decirlo'
                         ],
                         shuffleChoices: true,
                         title: false,
@@ -549,63 +545,76 @@
                     }),
                     w.get('ChoiceTable', {
                         id: 'age',
-                        mainText: 'What is your age group?',
+                        mainText: '¿Cuál es su grupo de edad?',
                         choices: [
-                            '18-20', '21-30', '31-40', '41-50',
-                            '51-60', '61-70', '71+', 'Do not want to say'
+                            '18-20',
+                            '21-30',
+                            '31-40',
+                            '41-50',
+                            '51-60',
+                            '61-70',
+                            '71+',
+                            'Prefiero no decirlo'
                         ],
                         title: false,
                         requiredChoice: true
                     }),
-                    w.get('ChoiceTable', {
-                        id: 'political_party',
-                        mainText: 'What is your political party?',
-                        choices: [
-                            'Democrat', 'Republican', 'Socialist',
-                            'Green','Libertarian', 'Independent', 'Do not want to say'
-                        ],
-                        title: false,
-                        requiredChoice: true
-                    }),
+                    // w.get('ChoiceTable', {
+                    //     id: 'political_party',
+                    //     mainText: 'What is your political party?',
+                    //     choices: [
+                    //         'Democrat', 'Republican', 'Socialist',
+                    //         'Green','Libertarian', 'Independent', 'Do not want to say'
+                    //     ],
+                    //     title: false,
+                    //     requiredChoice: true
+                    // }),
                     w.get('ChoiceTable', {
                         id: 'carreer',
-                        mainText: 'What is the area of your study?',
+                        mainText: '¿Cuál es su área de estudio?',
                         choices: [
-                            'Natural Sciences', 'Social Sciences', 'Arts and Humanities',
-                            'Mathematics and/or Statistics', 'Do not want to say'
+                            'Matemáticas y/o Ciencias de la Computación',
+                            'Ciencias Naturales',
+                            'Ciencias Humanas',
+                            'Ciencias Políticas',
+                            'Gestión Pública',
+                            'Economía y Finanzas',
+                            'Jurisprudencia',
+                            'Prefiero no decirlo'
                         ],
                         title: false,
                         requiredChoice: true
                     }),
-                    w.get('ChoiceTable', {
-                        id: 'location',
-                        mainText: 'What is your location?',
-                        choices: [
-                            'US', 'Colombia', 'Other', 'Do not want to say'
-                        ],
-                        shuffleChoices: true,
-                        title: false,
-                        requiredChoice: true
-                    }),
+                    // w.get('ChoiceTable', {
+                    //     id: 'location',
+                    //     mainText: 'What is your location?',
+                    //     choices: [
+                    //         'US', 'Colombia', 'Other', 'Do not want to say'
+                    //     ],
+                    //     shuffleChoices: true,
+                    //     title: false,
+                    //     requiredChoice: true
+                    // }),
                     w.get('ChoiceTable', {
                         id: 'strategy',
-                        mainText: 'During the game, and specially in regards ' +
-                        'to the work of uncovering the tiles, I',
+                        mainText: 'Durante el juego,',
                         choices: [
-                            'Tried to get my partner to do all or most of the work',
-                            'Tried to do all or most of the work myself',
-                            'Tried to divide the workload', 'Do not want to say'
+                            'me concentré en que mi compañero me pasara objetos',
+                            'me concentré en armar parejas yo solo',
+                            'traté de intercambiar objetos con mi compañero',
+                            'Prefiero no decirlo'
                         ],
                         title: false,
                         requiredChoice: true
                       }),
                       w.get('ChoiceTable', {
                           id: 'orientation',
-                          mainText: 'During the game, I tried to',
+                          mainText: 'Durante el juego intenté',
                           choices: [
-                              'Maximize my points',
-                              'Cooperate with partner',
-                              'Both', 'Do not want to say'
+                              'maximizar mis puntos',
+                              'cooperar con mi compañero',
+                              'ambos',
+                              'Prefiero no decirlo'
                           ],
                           title: false,
                           requiredChoice: true
@@ -636,6 +645,13 @@
                 valores: values
             };
         }
+    });
+
+    stager.extendStep('debrief', {
+      frame: 'debrief.htm',
+      cb: function() {
+        console.log('Debrief');
+      }
     });
 
     stager.extendStep('end', {

@@ -45,6 +45,7 @@ module.exports = {
         game: 240000,
         puntaje: 30000,
         encuesta: 180000,
+        demograf: 90000,
         debrief: 60000
     },
 
