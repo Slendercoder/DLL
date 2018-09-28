@@ -507,8 +507,8 @@
           W.getElementById('CheckDup').checked=false;
           //W.getElementById('encuesta').style.display = "";
 
-          var x = Math.floor(Math.random()*24)+1;
-          W.getElementById("imgvar").src="Images/objeto"+x+".png";
+          var x = Math.floor(Math.random() * 32) + 1;
+          W.getElementById("imgvar").src="Images/objeto" + x + ".png";
 
           contador++;
           W.setInnerHTML('cont', contador+1+' / 9');
