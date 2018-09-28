@@ -77,7 +77,7 @@ def dibuja_objeto(tipoPoligono, \
 
 # True: Fondo gris; False: Fondo blanco
 # tipoPoligono = choice([False, True])
-tipoPoligono = True
+tipoPoligono = False
 
 # True: Azul; False: Rojo
 # colorRayas = choice([False, True])
@@ -89,10 +89,10 @@ paridadVerticales = False
 
 # True: Impar; False: Par
 # paridadHorizontales = choice([False, True])
-paridadHorizontales = False
+paridadHorizontales = True
 
-numObjetosInicial = 9
-numObjetosFinal = 16
+numObjetosInicial = 31
+numObjetosFinal = 32
 
 for cont in range(numObjetosInicial, numObjetosFinal + 1):
     dibuja_objeto(tipoPoligono, \

@@ -129,8 +129,8 @@
           W.setInnerHTML('rotuloExperto', explicacion[0]);
           W.setInnerHTML('tipoPoligono', explicacion[1]);
           W.setInnerHTML('colorRayas', explicacion[2]);
-          W.setInnerHTML('paridadHorizontales', explicacion[4]);
-          W.setInnerHTML('paridadVerticales', explicacion[3]);
+          W.setInnerHTML('paridadHorizontales', explicacion[3]);
+          W.setInnerHTML('paridadVerticales', explicacion[4]);
 
           // switch(countRondas){
           //   case 1:

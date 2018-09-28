@@ -147,8 +147,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         srcImagenesPL1[7] = 'Images/objeto' + 8 + '.png';
         srcImagenesPL1[8] = 'Images/objeto' + 9 + '.png';  // Este es un DUP
         // ... y de los demás objetos
-        for (var i=20; i < 31; i++) {
-          srcImagenesPL1[i-11] = 'Images/objeto' + i + '.png';
+        for (var i=17; i < 28; i++) {
+          srcImagenesPL1[i-8] = 'Images/objeto' + i + '.png';
         }
         // Crea los datos para la explicacion experto
         var explicacionPL1 = [];
@@ -198,8 +198,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         srcImagenesPL2[7] = 'Images/objeto' + 16 + '.png';
         srcImagenesPL2[8] = 'Images/objeto' + 1 + '.png'; // Este es un XOL
         // ... y de los demás objetos
-        for (var i=17; i < 28; i++) {
-          srcImagenesPL2[i-9] = 'Images/objeto' + i + '.png';
+        for (var i=22; i < 33; i++) {
+          srcImagenesPL2[i-13] = 'Images/objeto' + i + '.png';
         }
         // Crea los datos para la explicacion experto
         var explicacionPL2 = [];
