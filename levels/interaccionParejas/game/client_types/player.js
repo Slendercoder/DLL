@@ -513,7 +513,7 @@
           contador++;
           W.setInnerHTML('cont', contador+1+' / 9');
           //W.setInnerHTML('Holaaaa');
-          if(contador==9){
+          if(contador==20){
             W.getElementById('encuesta').style.display = "none";
             node.done();
           }

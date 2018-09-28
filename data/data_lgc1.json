@@ -1,522 +1,428 @@
 [{
+    "Puntaje": [
+        "Otro",
+        "Xol",
+        0
+    ],
+    "player": "610644569324790",
+    "stage": {
+        "stage": 1,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538153941014
+}, {
+    "Comunicacion": [
+        "dup",
+        1
+    ],
+    "player": "610644569324790",
+    "stage": {
+        "stage": 1,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538153969726
+}, {
+    "Comunicacion": [
+        "Ignorar",
+        2
+    ],
+    "player": "588506608836952",
+    "stage": {
+        "stage": 1,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538153982325
+}, {
     "Comunicacion": [
         "xol",
         1
     ],
-    "player": "108432096279000",
+    "player": "610644569324790",
     "stage": {
         "stage": 1,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1537881152355
+    "timestamp": 1538154069968
 }, {
-    "Comunicacion": [
+    "time": 240006,
+    "timeup": true,
+    "done": true,
+    "player": "588506608836952",
+    "stage": {
+        "stage": 1,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154099514
+}, {
+    "time": 249942,
+    "timeup": true,
+    "done": true,
+    "player": "610644569324790",
+    "stage": {
+        "stage": 1,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154109450
+}, {
+    "time": 30002,
+    "timeup": true,
+    "done": true,
+    "player": "610644569324790",
+    "stage": {
+        "stage": 1,
+        "step": 2,
+        "round": 1
+    },
+    "timestamp": 1538154139687
+}, {
+    "time": 30002,
+    "timeup": true,
+    "done": true,
+    "player": "588506608836952",
+    "stage": {
+        "stage": 1,
+        "step": 2,
+        "round": 1
+    },
+    "timestamp": 1538154139709
+}, {
+    "Encuesta": [
         "!?_null",
-        2
+        false,
+        true,
+        false
     ],
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1537881157427
-}, {
-    "Puntaje": [
-        "Xol",
-        "Dup",
-        5
-    ],
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1537881166292
-}, {
-    "time": 95692,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1537881189963
-}, {
-    "time": 98949,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 1
-    },
-    "timestamp": 1537881193234
-}, {
-    "time": 3502,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 1
-    },
-    "timestamp": 1537881196994
-}, {
-    "time": 5970,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 1
-    },
-    "timestamp": 1537881199458
-}, {
-    "time": 9172,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 2
-    },
-    "timestamp": 1537881208962
-}, {
-    "time": 11339,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 2
-    },
-    "timestamp": 1537881211138
-}, {
-    "time": 917,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 2
-    },
-    "timestamp": 1537881212314
-}, {
-    "time": 1843,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 2
-    },
-    "timestamp": 1537881213226
-}, {
-    "time": 1922,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 3
-    },
-    "timestamp": 1537881215482
-}, {
-    "time": 3699,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 3
-    },
-    "timestamp": 1537881217274
-}, {
-    "time": 619,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 3
-    },
-    "timestamp": 1537881218130
-}, {
-    "time": 1624,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 3
-    },
-    "timestamp": 1537881219138
-}, {
-    "time": 1293,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 4
-    },
-    "timestamp": 1537881220730
-}, {
-    "time": 2949,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 4
-    },
-    "timestamp": 1537881222402
-}, {
-    "time": 672,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 4
-    },
-    "timestamp": 1537881223322
-}, {
-    "time": 1737,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 4
-    },
-    "timestamp": 1537881224410
-}, {
-    "time": 1355,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 5
-    },
-    "timestamp": 1537881226074
-}, {
-    "time": 3383,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 5
-    },
-    "timestamp": 1537881228114
-}, {
-    "time": 491,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 5
-    },
-    "timestamp": 1537881228842
-}, {
-    "time": 1275,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 5
-    },
-    "timestamp": 1537881229618
-}, {
-    "time": 1290,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 6
-    },
-    "timestamp": 1537881231211
-}, {
-    "time": 2951,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 6
-    },
-    "timestamp": 1537881232899
-}, {
-    "time": 352,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 6
-    },
-    "timestamp": 1537881233506
-}, {
-    "time": 1320,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 6
-    },
-    "timestamp": 1537881234458
-}, {
-    "time": 1505,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 7
-    },
-    "timestamp": 1537881236274
-}, {
-    "time": 3405,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 7
-    },
-    "timestamp": 1537881238179
-}, {
-    "time": 1124,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 7
-    },
-    "timestamp": 1537881239538
-}, {
-    "time": 2456,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 7
-    },
-    "timestamp": 1537881240866
-}, {
-    "time": 1575,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 8
-    },
-    "timestamp": 1537881242778
-}, {
-    "time": 3865,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 8
-    },
-    "timestamp": 1537881245042
-}, {
-    "time": 582,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 8
-    },
-    "timestamp": 1537881245850
-}, {
-    "time": 1480,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 8
-    },
-    "timestamp": 1537881246762
-}, {
-    "time": 1638,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 9
-    },
-    "timestamp": 1537881248705
-}, {
-    "time": 3893,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 9
-    },
-    "timestamp": 1537881250970
-}, {
-    "time": 780,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 9
-    },
-    "timestamp": 1537881251986
-}, {
-    "time": 1797,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 9
-    },
-    "timestamp": 1537881253002
-}, {
-    "time": 20757,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 10
-    },
-    "timestamp": 1537881274074
-}, {
-    "time": 22790,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 1,
-        "round": 10
-    },
-    "timestamp": 1537881276082
-}, {
-    "time": 1277,
-    "timeup": false,
-    "done": true,
-    "player": "433944146694285",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 10
-    },
-    "timestamp": 1537881277594
-}, {
-    "time": 2548,
-    "timeup": false,
-    "done": true,
-    "player": "108432096279000",
-    "stage": {
-        "stage": 1,
-        "step": 2,
-        "round": 10
-    },
-    "timestamp": 1537881278874
-}, {
-    "time": 59998,
-    "timeup": true,
-    "done": true,
-    "player": "108432096279000",
+    "player": "610644569324790",
     "stage": {
         "stage": 2,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1537881339053
+    "timestamp": 1538154149831
 }, {
-    "time": 60000,
-    "timeup": true,
-    "done": true,
-    "player": "433944146694285",
+    "Encuesta": [
+        "!?_null",
+        false,
+        false,
+        false
+    ],
+    "player": "610644569324790",
     "stage": {
         "stage": 2,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1537881339054
+    "timestamp": 1538154166727
 }, {
-    "time": 43521,
+    "Encuesta": [
+        "!?_null",
+        false,
+        false,
+        false
+    ],
+    "player": "610644569324790",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154195999
+}, {
+    "Encuesta": [
+        "!?_null",
+        false,
+        false,
+        false
+    ],
+    "player": "610644569324790",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154200864
+}, {
+    "Encuesta": [
+        "!?_null",
+        false,
+        false,
+        false
+    ],
+    "player": "610644569324790",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154233384
+}, {
+    "Encuesta": [
+        "!?_null",
+        false,
+        false,
+        false
+    ],
+    "player": "610644569324790",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154237641
+}, {
+    "Encuesta": [
+        "!?_null",
+        false,
+        false,
+        false
+    ],
+    "player": "610644569324790",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154252001
+}, {
+    "Encuesta": [
+        "!?_null",
+        false,
+        false,
+        false
+    ],
+    "player": "610644569324790",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154253240
+}, {
+    "Encuesta": [
+        "!?_null",
+        false,
+        false,
+        false
+    ],
+    "player": "610644569324790",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154265592
+}, {
+    "time": 125686,
     "timeup": false,
     "done": true,
-    "player": "108432096279000",
+    "player": "610644569324790",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154265593
+}, {
+    "time": 180002,
+    "timeup": true,
+    "done": true,
+    "player": "588506608836952",
+    "stage": {
+        "stage": 2,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154319875
+}, {
+    "time": 34935,
+    "timeup": false,
+    "Guesses": [],
+    "Performance": [],
+    "Strategy": [],
+    "valores": {
+        "id": "demo",
+        "order": [
+            0,
+            4,
+            3,
+            1,
+            2
+        ],
+        "forms": {
+            "gender": {
+                "id": "gender",
+                "choice": "0",
+                "time": 8142,
+                "nClicks": 1,
+                "originalOrder": [
+                    0,
+                    1,
+                    3,
+                    2
+                ],
+                "order": [
+                    0,
+                    1,
+                    3,
+                    2
+                ],
+                "isCorrect": true,
+                "attempts": []
+            },
+            "age": {
+                "id": "age",
+                "choice": "1",
+                "time": 25343,
+                "nClicks": 1,
+                "isCorrect": true,
+                "attempts": []
+            },
+            "carreer": {
+                "id": "carreer",
+                "choice": "2",
+                "time": 33759,
+                "nClicks": 1,
+                "isCorrect": true,
+                "attempts": []
+            },
+            "strategy": {
+                "id": "strategy",
+                "choice": "2",
+                "time": 30814,
+                "nClicks": 1,
+                "isCorrect": true,
+                "attempts": []
+            },
+            "orientation": {
+                "id": "orientation",
+                "choice": "3",
+                "time": 13407,
+                "nClicks": 1,
+                "isCorrect": true,
+                "attempts": []
+            }
+        },
+        "missValues": []
+    },
+    "done": true,
+    "player": "610644569324790",
     "stage": {
         "stage": 3,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1537881382778
+    "timestamp": 1538154355001
 }, {
-    "time": 45190,
-    "timeup": false,
+    "time": 90001,
+    "timeup": true,
+    "Guesses": [],
+    "Performance": [],
+    "Strategy": [],
+    "valores": {
+        "id": "demo",
+        "order": [
+            4,
+            0,
+            2,
+            3,
+            1
+        ],
+        "forms": {
+            "gender": {
+                "id": "gender",
+                "choice": "!?_null",
+                "time": "!?_null",
+                "nClicks": 0,
+                "originalOrder": [
+                    3,
+                    1,
+                    0,
+                    2
+                ],
+                "order": [
+                    3,
+                    1,
+                    0,
+                    2
+                ],
+                "isCorrect": false,
+                "attempts": []
+            },
+            "age": {
+                "id": "age",
+                "choice": "!?_null",
+                "time": "!?_null",
+                "nClicks": 0,
+                "isCorrect": false,
+                "attempts": []
+            },
+            "carreer": {
+                "id": "carreer",
+                "choice": "!?_null",
+                "time": "!?_null",
+                "nClicks": 0,
+                "isCorrect": false,
+                "attempts": []
+            },
+            "strategy": {
+                "id": "strategy",
+                "choice": "!?_null",
+                "time": "!?_null",
+                "nClicks": 0,
+                "isCorrect": false,
+                "attempts": []
+            },
+            "orientation": {
+                "id": "orientation",
+                "choice": "!?_null",
+                "time": "!?_null",
+                "nClicks": 0,
+                "isCorrect": false,
+                "attempts": []
+            }
+        },
+        "missValues": [
+            "gender",
+            "age",
+            "carreer",
+            "strategy",
+            "orientation"
+        ]
+    },
     "done": true,
-    "player": "433944146694285",
+    "player": "588506608836952",
     "stage": {
         "stage": 3,
         "step": 1,
         "round": 1
     },
-    "timestamp": 1537881384426
+    "timestamp": 1538154410059
+}, {
+    "time": 60001,
+    "timeup": true,
+    "done": true,
+    "player": "610644569324790",
+    "stage": {
+        "stage": 4,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154470229
+}, {
+    "time": 60001,
+    "timeup": true,
+    "done": true,
+    "player": "588506608836952",
+    "stage": {
+        "stage": 4,
+        "step": 1,
+        "round": 1
+    },
+    "timestamp": 1538154470231
 }]

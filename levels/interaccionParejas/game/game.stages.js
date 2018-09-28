@@ -27,8 +27,8 @@ module.exports = function(stager, settings) {
     });
 
     // Modify the stager to skip one stage.
-    stager.skip('trials');
-    stager.skip('encuesta');
+    // stager.skip('trials');
+    // stager.skip('encuesta');
     // stager.skip('demograf');
     // stager.skip('debrief');
 
