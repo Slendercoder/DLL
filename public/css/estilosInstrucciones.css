@@ -11,13 +11,13 @@ div {
 }
 
 .left{
-  width: 0%;
+  width: 10%;
 }
 .right {
-  width: 40%;
+  width: 45%;
 }
 .middle {
-  width: 50%;
+  width: 35%;
 }
     
 .button1{

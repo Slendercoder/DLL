@@ -84,7 +84,7 @@
     };
 
 })({
-    rounds: 10,
+    rounds: 15,
     objetos: 4,
     puntos: 2,
     umbral: 2
