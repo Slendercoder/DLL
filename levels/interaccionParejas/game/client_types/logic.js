@@ -131,9 +131,20 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         tiposObjetosPL1[6] = 'Xol';
         tiposObjetosPL1[7] = 'Xol';
         tiposObjetosPL1[8] = 'Dup';
-        for (var i=9; i < 20; i++) {
-          tiposObjetosPL1[i] = 'Otro';
-        }
+        tiposObjetosPL1[9] = 'Otro-R-B-Vimp-Himp';
+        tiposObjetosPL1[10] = 'Otro-R-B-Vimp-Himp';
+        tiposObjetosPL1[11] = 'Otro-R-B-Vimp-Himp';
+        tiposObjetosPL1[12] = 'Otro-R-B-Vpar-Hpar';
+        tiposObjetosPL1[13] = 'Otro-R-B-Vpar-Hpar';
+        tiposObjetosPL1[14] = 'Otro-R-B-Vpar-Hpar';
+        tiposObjetosPL1[15] = 'Otro-R-G-Vimp-Hpar';
+        tiposObjetosPL1[16] = 'Otro-R-G-Vimp-Hpar';
+        tiposObjetosPL1[17] = 'Otro-A-G-Vimp-Hpar';
+        tiposObjetosPL1[18] = 'Otro-A-G-Vimp-Hpar';
+        tiposObjetosPL1[19] = 'Otro-A-G-Vimp-Hpar';
+        // for (var i=9; i < 20; i++) {
+        //   tiposObjetosPL1[i] = 'Otro';
+        // }
         // console.log(tiposObjetos);
         // Creo la lista de source para las imagenes de los XOL...
         var srcImagenesPL1 = [];
@@ -183,9 +194,20 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         tiposObjetosPL2[6] = 'Dup';
         tiposObjetosPL2[7] = 'Dup';
         tiposObjetosPL2[8] = 'Xol';
-        for (var i=9; i < 20; i++) {
-          tiposObjetosPL2[i] = 'Otro';
-        }
+        tiposObjetosPL2[9] = 'Otro-R-B-Vpar-Hpar';
+        tiposObjetosPL2[10] = 'Otro-R-G-Vimp-Hpar';
+        tiposObjetosPL2[11] = 'Otro-R-G-Vimp-Hpar';
+        tiposObjetosPL2[12] = 'Otro-A-G-Vimp-Hpar';
+        tiposObjetosPL2[13] = 'Otro-A-G-Vimp-Hpar';
+        tiposObjetosPL2[14] = 'Otro-A-G-Vimp-Hpar';
+        tiposObjetosPL2[15] = 'Otro-A-G-Vpar-Himp';
+        tiposObjetosPL2[16] = 'Otro-A-G-Vpar-Himp';
+        tiposObjetosPL2[17] = 'Otro-A-G-Vpar-Himp';
+        tiposObjetosPL2[18] = 'Otro-A-B-Vpar-Hpar';
+        tiposObjetosPL2[19] = 'Otro-A-B-Vpar-Hpar';
+        // for (var i=9; i < 20; i++) {
+        //   tiposObjetosPL2[i] = 'Otro';
+        // }
         // Creo la lista de source para las imagenes de los DUP...
         var srcImagenesPL2 = [];
         srcImagenesPL2[0] = 'Images/objeto' + 9 + '.png';

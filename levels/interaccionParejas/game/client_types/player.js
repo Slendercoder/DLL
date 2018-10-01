@@ -469,7 +469,38 @@
               W.getElementById(msg[0]).style.display = "none";
               derPareja = msg[0];
             }
-          }); // End node.on('Arrastrar')
+          }); // End node.on('Arrastrar'
+
+          node.on('Marcacion', function(msg) {
+            var idObjeto = W.getElementById(msg[0]).src;
+            var propioRecibido = msg[1];
+            var indice = 0;
+            var tipoObj = '';
+            console.log('Se marcó el objeto', idObjeto);
+            if (propioRecibido == true) {
+              console.log('El objeto es propio');
+              for (var i = 0; i < srcImagenes.length; i++) {
+                if (idObjeto.indexOf(srcImagenes[i]) >= 0) {
+                  indice = i;
+                  break;
+                }
+              }
+              tipoObj = tiposObjetos[indice];
+            } else {
+              console.log('El objeto es recibido');
+              for (var i = 0; i < srcImagenesOtroJugador.length; i++) {
+                if (idObjeto.indexOf(srcImagenesOtroJugador[i]) >= 0) {
+                  indice = i;
+                  break;
+                }
+              }
+              tipoObj = tiposObjetosOtroJugador[indice];
+            }
+            console.log('El indice es', indice);
+            console.log('El objeto es de tipo', tipoObj);
+            node.set({'Marcacion': tipoObj});
+          }); // End node.on('Marcacion'
+
         }); // End on.data "settings"
       }, // End cb function
     });// End extendstep "game"

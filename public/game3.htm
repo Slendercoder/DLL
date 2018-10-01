@@ -457,20 +457,28 @@
                   console.log('Se va a enviar el', mensaje);
                   node.emit('Respuesta', [mensaje, mensaje_enviar]); // Envia el id del objeto
               }
-
-              if (event.target.className == "Recibido" || event.target.className == "Propio") {
+              if (event.target.className == "Propio") {
                   event.target.style.border = "";
                   var enviados = event.target.id + '-Enviar';
                   document.getElementById(enviados).border = "";
+              }
+              if (event.target.className == "Recibido") {
+                  event.target.style.border = "";
               }
           });
 
           document.addEventListener("dblclick", function(event) {
               event.preventDefault();
-              if (event.target.className == "Recibido" || event.target.className == "Propio") {
+              console.log('Se está marcando', event.target.id);
+              if (event.target.className == "Recibido") {
+                  event.target.style.border = "1px solid red";
+                  node.emit('Marcacion', [event.target.id, false]);
+              }
+              if (event.target.className == "Propio") {
                   event.target.style.border = "1px solid red";
                   var enviados = event.target.id + '-Enviar';
                   document.getElementById(enviados).border = "1px solid red";
+                  node.emit('Marcacion', [event.target.id, true]);
               }
           });
 
