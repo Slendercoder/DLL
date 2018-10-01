@@ -507,13 +507,13 @@
           W.getElementById('CheckDup').checked=false;
           //W.getElementById('encuesta').style.display = "";
 
-          var x = Math.floor(Math.random() * 32) + 1;
-          W.getElementById("imgvar").src="Images/objeto" + x + ".png";
+          var x = Math.floor(Math.random() * 24) + 1;
+          W.getElementById("imgvar").src="Images/Encuesta/objeto_encuesta" + x + ".png";
 
           contador++;
-          W.setInnerHTML('cont', contador+1+' / 9');
+          W.setInnerHTML('cont', contador+1+' / 15');
           //W.setInnerHTML('Holaaaa');
-          if(contador==20){
+          if(contador==15){
             W.getElementById('encuesta').style.display = "none";
             node.done();
           }

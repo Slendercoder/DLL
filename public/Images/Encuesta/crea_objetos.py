@@ -1,7 +1,6 @@
 #-*-coding: utf-8-*-
 
 print "loading packages..."
-import pandas as pd
 import numpy as np
 from random import randint, choice
 import matplotlib.pyplot as plt
@@ -14,16 +13,16 @@ def dibuja_objeto(tipoPoligono, \
                   colorRayas, id):
 
     if paridadVerticales:
-        numVerticales = 2 * randint(4,8) + 1
+        numVerticales = 2 * randint(3,6) + 1
     else:
-        numVerticales = 2 * randint(4,8)
+        numVerticales = 2 * randint(3,6)
 
     print u"Número de líneas verticales: ", numVerticales
 
     if paridadHorizontales:
-        numHorizontales = 2 * randint(3,7) + 1
+        numHorizontales = 2 * randint(3,6) + 1
     else:
-        numHorizontales = 2 * randint(3,7)
+        numHorizontales = 2 * randint(3,6)
 
     print u"Número de líneas horizontales: ", numHorizontales
 
@@ -73,22 +72,43 @@ def dibuja_objeto(tipoPoligono, \
     for t in tangulos:
         axes4.add_patch(t)
 
-    fig4.savefig("objeto" + str(id) + ".png")
+    fig4.savefig("objeto_encuesta" + str(id) + ".png")
 
-for cont in range(0, 20):
-    # True: Fondo gris; False: Fondo blanco
-    tipoPoligono = choice([False, True])
 
-    # True: Impar; False: Par
-    paridadHorizontales = choice([False, True])
+# Xol:
+# tipoPoligono = False # Fondo blanco
+# colorRayas = False # Rojo
+# paridadVerticales = True # impar
+# paridadHorizontales = False # par
+#
+# Dup:
+tipoPoligono = True # Fondo gris
+colorRayas = True # Azul
+paridadVerticales = False # par
+paridadHorizontales = False # par
+#
 
-    # True: Impar; False: Par
-    paridadVerticales = choice([False, True])
+# True: Fondo gris; False: Fondo blanco
+# tipoPoligono = choice([False, True])
+# tipoPoligono = False
 
-    # True: Azul; False: Rojo
-    colorRayas = choice([False, True])
+# True: Azul; False: Rojo
+# colorRayas = choice([False, True])
+# colorRayas = True
 
+# True: Impar; False: Par
+# paridadVerticales = choice([False, True])
+# paridadVerticales = False
+
+# True: Impar; False: Par
+# paridadHorizontales = choice([False, True])
+# paridadHorizontales = True
+
+numObjetosInicial = 23
+numObjetosFinal = 24
+
+for cont in range(numObjetosInicial, numObjetosFinal + 1):
     dibuja_objeto(tipoPoligono, \
                   paridadHorizontales, \
                   paridadVerticales, \
-                  colorRayas, cont + 1)
+                  colorRayas, cont)
