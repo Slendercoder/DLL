@@ -42,6 +42,7 @@
 
       this.contadorComunicacion = 1;
       this.contadorMensajes = 0;
+      this.indiceMensaje = 0;
       var dict = {};
       this.puntajeAcumulado = dict;
 
@@ -262,7 +263,7 @@
           //When the user clicks the button, ignora al otro jugador
           span5.onclick = function(){
             W.getElementById('myModal').style.display = "";
-            node.set({Comunicacion: ['Ignorar', node.game.contadorComunicacion]});
+            node.set({Comunicacion: ['Ignorar', node.game.indiceMensaje]});
           }
 
           // Cuando el usuario da click, calcula los puntos
@@ -358,6 +359,7 @@
           // muestra el modal de enviar objeto
           selectMensajes.onchange = function() {
             var indice = this.selectedIndex; // El indice del mensaje seleccionado
+            node.game.indiceMensaje = indice;
             var correo = this.options[indice].value; // Lo que dice el mensaje
             this.remove(this.selectedIndex); // Elimina item de la lista desplegable
             node.game.contadorMensajes -= 1;
@@ -440,7 +442,7 @@
             node.say('Dar', otroJugador, msg[0]+ '-Recibido');
             W.getElementById('myModal').style.display = "none";
             var objetoEnviado = tiposObjetos[indicesDesordenados[indice - 1]];
-            node.set({Comunicacion: [objetoEnviado, node.game.contadorComunicacion]});
+            node.set({Respuesta: [objetoEnviado, node.game.indiceMensaje]});
 
             alert ("El objeto se envió exitosamente! ");
           }); // End node.on('Respuesta'
@@ -523,6 +525,33 @@
         var contador = 0;
 
         tipoObjetoEncuesta[1] = 'xol';
+        tipoObjetoEncuesta[2] = 'xol';
+        tipoObjetoEncuesta[3] = 'xol';
+        tipoObjetoEncuesta[4] = 'xol';
+        tipoObjetoEncuesta[5] = 'xol';
+        tipoObjetoEncuesta[6] = 'xol';
+        tipoObjetoEncuesta[7] = 'xol';
+        tipoObjetoEncuesta[8] = 'xol';
+        tipoObjetoEncuesta[9] = 'Otro-R-B-Vpar-Hpar';
+        tipoObjetoEncuesta[10] = 'Otro-R-B-Vpar-Hpar';
+        tipoObjetoEncuesta[11] = 'Otro-R-B-Vimp-Himp';
+        tipoObjetoEncuesta[12] = 'Otro-R-B-Vimp-Himp';
+        tipoObjetoEncuesta[13] = 'dup';
+        tipoObjetoEncuesta[14] = 'dup';
+        tipoObjetoEncuesta[15] = 'dup';
+        tipoObjetoEncuesta[16] = 'dup';
+        tipoObjetoEncuesta[17] = 'dup';
+        tipoObjetoEncuesta[18] = 'dup';
+        tipoObjetoEncuesta[19] = 'dup';
+        tipoObjetoEncuesta[20] = 'dup';
+        tipoObjetoEncuesta[21] = 'Otro-A-G-Vimp-Hpar';
+        tipoObjetoEncuesta[22] = 'Otro-A-G-Vimp-Hpar';
+        tipoObjetoEncuesta[23] = 'Otro-A-G-Vpar-Himp';
+        tipoObjetoEncuesta[24] = 'Otro-A-G-Vpar-Himp';
+
+        var x = Math.floor(Math.random() * 24) + 1;
+        objeto = tipoObjetoEncuesta[x];
+        W.getElementById("imgvar").src="Images/Encuesta/objeto_encuesta" + x + ".png";
 
         W.getElementById('CheckZab').checked=false;
         W.getElementById('CheckXol').checked=false;
@@ -540,9 +569,9 @@
           W.getElementById('CheckDup').checked=false;
           //W.getElementById('encuesta').style.display = "";
 
-          var x = Math.floor(Math.random() * 24) + 1;
+          x = Math.floor(Math.random() * 24) + 1;
+          objeto = tipoObjetoEncuesta[x];
           W.getElementById("imgvar").src="Images/Encuesta/objeto_encuesta" + x + ".png";
-
 
           contador++;
           W.setInnerHTML('cont', contador+1+' / 15');

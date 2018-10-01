@@ -453,9 +453,10 @@
               // Identifica objeto para enviar al otro jugador
               if (event.target.className == "Enviar" ) {
                   var mensaje_enviar = event.target.id; // Identifica el objeto a enviar
-                  var mensaje = mensaje_enviar.substring(0, mensaje_enviar.length - 7);
+                  var mensaje = mensaje_enviar.substring(0,                                                  mensaje_enviar.length - 7);
                   console.log('Se va a enviar el', mensaje);
-                  node.emit('Respuesta', [mensaje, mensaje_enviar]); // Envia el id del objeto
+                  node.emit('Respuesta', 
+                            [mensaje, mensaje_enviar]); // Envia el id del objeto
               }
               if (event.target.className == "Propio") {
                   event.target.style.border = "";
