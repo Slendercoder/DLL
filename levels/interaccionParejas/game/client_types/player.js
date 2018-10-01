@@ -528,7 +528,7 @@
             this.demo = w.get('ChoiceManager', {
                 id: 'demo',
                 title: false,
-                shuffleForms: true,
+                shuffleForms: false,
                 forms: [
                     w.get('ChoiceTable', {
                         id: 'gender',
@@ -539,7 +539,7 @@
                             'Otro',
                             'Prefiero no decirlo'
                         ],
-                        shuffleChoices: true,
+                        shuffleChoices: false,
                         title: false,
                         requiredChoice: true
                     }),
@@ -556,6 +556,7 @@
                             '71+',
                             'Prefiero no decirlo'
                         ],
+                        shuffleChoices: false,
                         title: false,
                         requiredChoice: true
                     }),
@@ -572,6 +573,7 @@
                             'Jurisprudencia',
                             'Prefiero no decirlo'
                         ],
+                        shuffleChoices: false,
                         title: false,
                         requiredChoice: true
                     }),
@@ -584,6 +586,7 @@
                             'traté de intercambiar objetos con mi compañero',
                             'Prefiero no decirlo'
                         ],
+                        shuffleChoices: false,
                         title: false,
                         requiredChoice: true
                       }),
@@ -591,11 +594,12 @@
                           id: 'orientation',
                           mainText: 'Al finalizar el juego podía reconocer',
                           choices: [
-                              'solo Xols',
-                              'solo Dups',
+                              'solo xols',
+                              'solo dups',
                               'ambos',
                               'Prefiero no decirlo'
                           ],
+                          shuffleChoices: false,
                           title: false,
                           requiredChoice: true
                     })
@@ -604,7 +608,7 @@
         },
         frame: 'demograf.html', // must exist, or remove.
         cb: function() {
-            var buttonSubmit = W.getElementById('GoToEnd');
+            var buttonSubmit = W.getElementById('continuar');
             buttonSubmit.onclick = function() {
                 node.done();
             }
