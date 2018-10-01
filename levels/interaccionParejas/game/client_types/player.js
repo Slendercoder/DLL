@@ -437,10 +437,9 @@
             W.getElementById(msg[0]).style.display="none";
             W.getElementById(msg[1]).style.display="none";
 
-            node.game.resp = true;
             node.say('Dar', otroJugador, msg[0]+ '-Recibido');
             W.getElementById('myModal').style.display = "none";
-            var objetoEnviado = tiposObjetos[msg[0].substring(5,6)];
+            var objetoEnviado = tiposObjetos[indicesDesordenados[indice - 1]];
             node.set({Comunicacion: [objetoEnviado, node.game.contadorComunicacion]});
 
             alert ("El objeto se envió exitosamente! ");
@@ -518,9 +517,12 @@
       frame: 'Encuesta.htm',
       cb: function(){
         var boton1 = W.getElementById('BotContinuar');
+        var tipoObjetoEncuesta = [];
         var objeto;
         var datos = [];
         var contador = 0;
+
+        tipoObjetoEncuesta[1] = 'xol';
 
         W.getElementById('CheckZab').checked=false;
         W.getElementById('CheckXol').checked=false;
@@ -541,11 +543,11 @@
           var x = Math.floor(Math.random() * 24) + 1;
           W.getElementById("imgvar").src="Images/Encuesta/objeto_encuesta" + x + ".png";
 
+
           contador++;
           W.setInnerHTML('cont', contador+1+' / 15');
           //W.setInnerHTML('Holaaaa');
           if(contador==15){
-            W.getElementById('encuesta').style.display = "none";
             node.done();
           }
         }

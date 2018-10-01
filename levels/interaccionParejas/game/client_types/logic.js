@@ -67,13 +67,15 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     stager.extendStep('debrief', {
         cb: function() {
           console.log('Debrief...');
+          console.log('Guardando datos');
+          node.game.memory.save(channel.getGameDir() + 'data/data_' +
+                                node.nodename + '.json');
         }
     });
 
     stager.extendStep('end', {
         cb: function() {
-            node.game.memory.save(channel.getGameDir() + 'data/data_' +
-                                  node.nodename + '.json');
+          console.log('End');
         }
     });
 
