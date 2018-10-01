@@ -559,16 +559,6 @@
                         title: false,
                         requiredChoice: true
                     }),
-                    // w.get('ChoiceTable', {
-                    //     id: 'political_party',
-                    //     mainText: 'What is your political party?',
-                    //     choices: [
-                    //         'Democrat', 'Republican', 'Socialist',
-                    //         'Green','Libertarian', 'Independent', 'Do not want to say'
-                    //     ],
-                    //     title: false,
-                    //     requiredChoice: true
-                    // }),
                     w.get('ChoiceTable', {
                         id: 'carreer',
                         mainText: '¿Cuál es su área de estudio?',
@@ -585,16 +575,6 @@
                         title: false,
                         requiredChoice: true
                     }),
-                    // w.get('ChoiceTable', {
-                    //     id: 'location',
-                    //     mainText: 'What is your location?',
-                    //     choices: [
-                    //         'US', 'Colombia', 'Other', 'Do not want to say'
-                    //     ],
-                    //     shuffleChoices: true,
-                    //     title: false,
-                    //     requiredChoice: true
-                    // }),
                     w.get('ChoiceTable', {
                         id: 'strategy',
                         mainText: 'Durante el juego,',
@@ -609,10 +589,10 @@
                       }),
                       w.get('ChoiceTable', {
                           id: 'orientation',
-                          mainText: 'Durante el juego intenté',
+                          mainText: 'Al finalizar el juego podía reconocer',
                           choices: [
-                              'maximizar mis puntos',
-                              'cooperar con mi compañero',
+                              'solo Xols',
+                              'solo Dups',
                               'ambos',
                               'Prefiero no decirlo'
                           ],
