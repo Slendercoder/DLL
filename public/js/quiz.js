@@ -86,5 +86,6 @@
 })({
     rounds: 10,
     objetos: 4,
-    puntos: 2
+    puntos: 2,
+    umbral: 2
 });

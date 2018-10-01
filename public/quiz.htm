@@ -51,9 +51,25 @@
           </form>
         </dd>
 
+	<dt><strong>Q.4</strong></dt>
+        <dd>
+          <span id="umbral_result" class="quiz_result"></span>
+          <form name="umbral" id="umbral">
+            <p class="question">¿Cuál es el umbral de puntos de la primera ronda?</p>
+            <p>
+              <input type="radio" name="umbral" value="5"> 5 puntos <br>
+              <input type="radio" name="umbral" value="10"> 10 puntos <br>
+              <input type="radio" name="umbral" value="30"> 30 puntos <br>
+              <input type="radio" name="umbral" value="2"> 2 puntos <br>
+            </p>
+
+          </form>
+        </dd>
+
+
       </dl>
       <div id="done_box">
-        <button onclick='javascript:parent.node.emit("check-quiz");' id="submitQuiz"  class="btn btn-lg btn-primary">Presione aquí para enviar sus respuestas y pasar al juego <br>Respuestas correctas <span id="answers_counter">0 / 3</span></button>
+        <button onclick='javascript:parent.node.emit("check-quiz");' id="submitQuiz"  class="btn btn-lg btn-primary">Presione aquí para enviar sus respuestas y pasar al juego <br>Respuestas correctas <span id="answers_counter">0 / 4</span></button>
       </div>
     </div>
   </div>
