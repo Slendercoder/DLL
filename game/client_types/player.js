@@ -23,21 +23,11 @@
 
     var game;
 
-
     stager.setOnInit(function() {
 
       // Initialize the client.
 
       var header, frame;
-
-      this.muestraEncuesta = function() {
-        var objeto;
-        var check = [];
-        check[0] = W.getElementById('CheckZab');
-        check[1] = W.getElementById('CheckXol');
-        check[2] = W.getElementById('CheckDup');
-        check[0].checked = check[1].checked = check[2].checked = false;
-      };
 
       // Setup page: header + frame.
       header = W.generateHeader();
@@ -49,6 +39,17 @@
 
       // Additional debug information while developing the game.
       // this.debugInfo = node.widgets.append('DebugInfo', header)
+    });
+
+    stager.extendStep('bienvenida', {
+      frame: 'Bienvenido.htm',
+      cb: function(){
+        var numUsuario = node.player.id;
+        console.log('Número de usuario: ', numUsuario);
+        W.setInnerHTML('numUsuario', numUsuario);
+        var continuar = W.getElementById('continuar');
+        continuar.onclick = function() { node.done(); };
+      }
     });
 
     stager.extendStep('instructions', {
@@ -79,7 +80,8 @@
               if (answers.correct || node.game.visualTimer.isTimeup()) {
                   node.emit('INPUT_DISABLE');
                   // On Timeup there are no answers.
-                  node.done(answers);
+                  // node.done(answers);
+                  node.done();
               }
           });
           console.log('Quiz');

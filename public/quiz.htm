@@ -1,10 +1,10 @@
 <!doctype html>
 <title>QUIZ</title>
 <link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css" />
-<link rel="stylesheet" href="css/estilosInstrucciones.css" />
+<!--<link rel="stylesheet" href="css/estilosInstrucciones.css" />-->
 <body>
-  <div style="margin: 0 auto; max-width: 800px">
-    <h2>Quiz</h2>
+  <div style="margin: 0 auto; max-width: 800px; overflow: auto">
+<!--    <h3>Quiz</h3>-->
 
     <div id="quiz">
       <dl>
@@ -65,15 +65,12 @@
 
           </form>
         </dd>
-
-
       </dl>
       <div id="done_box">
         <button onclick='javascript:parent.node.emit("check-quiz");' id="submitQuiz"  class="btn btn-lg btn-primary">Presione aquí para enviar sus respuestas y pasar al juego <br>Respuestas correctas <span id="answers_counter">0 / 4</span></button>
       </div>
     </div>
   </div>
-
 </div>
 </body>
 <script src="js/quiz.js"></script>

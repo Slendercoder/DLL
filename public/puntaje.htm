@@ -68,13 +68,21 @@ button:active {
 </style>
   <div id="container" style="margin: 0 auto; max-width: 640px">
     <h1>Puntaje acumulado</h1>
-    <div id="puntAcum">
       <br>
-        <h3> Su desempeño ha sido así:</h3>
+      <h4>Usted <span id="checkUmbral"></span> ha pasado el umbral de esta ronda.</h4>
+
+      <br>
+      
+      <div id="puntAcum">
+        <h3> Su desempeño total ha sido así:</h3>
         <span id="canvas_container1"></span>
-    </div>
-    <br>
-    Usted <span id="checkUmbral"></span> ha pasado el umbral de esta ronda. <span id="nextUmbral"></span>
+      </div>
+      
+      <br>
+      
+    <h3><span id="nextUmbral"></span></h3>
+      <br>
+      <br>
     <button class="button1" id='continuar'>Continuar</button>
   </div>
 </body>

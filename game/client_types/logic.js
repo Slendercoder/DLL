@@ -28,18 +28,22 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     stager.setOnInit(function() {
 
       node.on.data('quiz-over', function(msg) {
-          var db;
-
           // Move client to part2.
           // (async so that it finishes all current step operations).
           setTimeout(function() {
-              console.log('moving to stopgo interactive: ', msg.from);
+              console.log('moving to interaccionParejas: ', msg.from);
               channel.moveClientToGameLevel(msg.from, 'interaccionParejas',
                                             gameRoom.name);
           }, 10);
       });
 
         // Initialize the client.
+    });
+
+    stager.extendStep('bienvenida', {
+        cb: function() {
+            console.log('Welcome...');
+        }
     });
 
     stager.extendStep('instructions', {

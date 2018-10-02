@@ -58,10 +58,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           node.on.data('USER_INPUT', function(msg){
             var recompensa = msg.data;
             var me = msg.from;
-            console.log('**********************');
-            console.log('Jugador ' + me + ' obtiene');
-            console.log(recompensa + ' pesos');
-            console.log('**********************');
+            console.log('*************************************************************');
+            console.log('El jugador ' + me + ' obtiene ' + recompensa + ' UMEs');
+            console.log('*************************************************************');
           });
 
           console.log('Encuesta...');
@@ -76,11 +75,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     stager.extendStep('debrief', {
         cb: function() {
-          console.log('Debrief...');
-          console.log('Guardando datos');
+          console.log('Guardando datos...');
           node.game.memory.save(channel.getGameDir() + 'data/data_' +
                                 node.nodename + '.json');
-        }
+          console.log('Datos guardados!');
+          console.log('Debrief...');
+      }
     });
 
     stager.extendStep('end', {

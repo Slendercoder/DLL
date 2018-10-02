@@ -509,22 +509,18 @@
 
     stager.extendStep('encuesta', {
       frame: 'Encuesta.htm',
-      cb: function(){
+      init: function() {
         // Calcula la recompensa del jugador para enviar datos
-        var recompensa = 10000;
+        var recompensa = 10;
         for (var i = 1; i < 16; i++) {
           if (node.game.puntajeAcumulado[i] >= node.game.umbrales[i]) {
-            recompensa += 1500;
+            recompensa += 1.5;
           }
         }
         node.say('USER_INPUT', 'SERVER', recompensa);
-
-        var boton1 = W.getElementById('BotContinuar');
+      }, // End init
+      cb: function() {
         var tipoObjetoEncuesta = [];
-        var objeto;
-        var datos = [];
-        var contador = 0;
-
         tipoObjetoEncuesta[1] = 'xol';
         tipoObjetoEncuesta[2] = 'xol';
         tipoObjetoEncuesta[3] = 'xol';
@@ -550,15 +546,26 @@
         tipoObjetoEncuesta[23] = 'Otro-A-G-Vpar-Himp';
         tipoObjetoEncuesta[24] = 'Otro-A-G-Vpar-Himp';
 
-        var x = Math.floor(Math.random() * 24) + 1;
+        var modal = W.getElementById('notif');
+        var cierre = W.getElementById("cierre");
+        var boton1 = W.getElementById('BotContinuar');
+        var x, objeto;
+        var contador = 0;
+        console.log(contador + 1 + '/15');
+        x = Math.floor(Math.random() * 24) + 1;
         objeto = tipoObjetoEncuesta[x];
         W.getElementById("imgvar").src="Images/Encuesta/objeto_encuesta" + x + ".png";
-
         W.getElementById('CheckZab').checked=false;
         W.getElementById('CheckXol').checked=false;
         W.getElementById('CheckDup').checked=false;
 
-        boton1.onclick=function(){
+        // cuando el usuario hace clic en OK, cierra el modal
+        cierre.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        boton1.onclick = function() {
+          console.log(contador + 1 + '/15');
           node.set({Encuesta: [objeto,
                               W.getElementById('CheckZab').checked,
                               W.getElementById('CheckXol').checked,
@@ -575,13 +582,13 @@
           W.getElementById("imgvar").src="Images/Encuesta/objeto_encuesta" + x + ".png";
 
           contador++;
-          W.setInnerHTML('cont', contador+1+' / 15');
+          W.setInnerHTML('cont', contador + 1 + ' / 15');
           //W.setInnerHTML('Holaaaa');
           if(contador==15){
             node.done();
           }
-        }
-      }
+        } // End boton1.onclick
+      } // End cb
     }); // End stager encuesta
 
     stager.extendStep('demograf', {
@@ -698,6 +705,8 @@
       frame: 'debrief.htm',
       cb: function() {
         console.log('Debrief');
+        var continuar = W.getElementById('continuar');
+        continuar.onclick = function() { node.done(); };
       }
     });
 
