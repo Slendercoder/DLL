@@ -1,6 +1,7 @@
 
 <html>
     <head>
+        <link rel="stylesheet" href="css/estilosInstrucciones.css" />
         <title>Encuesta</title>
         <style>
         /* The Modal (background) */
@@ -16,8 +17,8 @@
             overflow: auto; /* Enable scroll if needed */
             background-color: rgb(0,0,0); /* Fallback color */
             background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            margin-left: -150px;
-            margin-top: -150px;
+            margin-left: -768px;
+            margin-top: -300px;
         }
 
         /* Modal Content */
@@ -36,7 +37,7 @@
 
 <div id="encuesta">
 
-            <DIV style="width: 330px; margin: 0 auto;">
+            <DIV align = "center">
                 <b><h1><font face="arial" color="black"><H6>¿QUÉ PALABRA REPRESENTA ESTE OBJETO?</H6> </font></h1></b>
 
                 <img id= "imgvar" src="Images/objeto1.png" width="140" height="140">
@@ -44,13 +45,13 @@
 
         <br><br>
         <!--checkbox-->
-            <DIV style="width: 330px; margin: 0 auto;">
+            <DIV align = "center ">
                  <form action="/action_page.php">
                 <input id="CheckZab" type="checkbox" checked="" name="ZAB" value="ZAB"> "ZAB"<br>
                 <input id="CheckXol" type="checkbox" checked="" name="XOL" value="XOL"> "XOL"<br>
                 <input id="CheckDup" type="checkbox" checked="" name="DUP" value="DUP"> "DUP"<br>
                <DIV STYLE= "position:relative; top:18px; left:0px; visibility:visible z-index:1">
-                     <button type="button" id='BotContinuar'>Continuar</button>
+                     <button class="button1" id='BotContinuar'>Continuar</button>
                      </DIV>
             </form>
             <br>
@@ -58,14 +59,15 @@
           </DIV>
 </div>
 
- <div style="width: 330px; margin: 0 auto;" id="notif" class="modal">
+ <div id="notif" class="modal">
+     <div class = "modal-content">
 
-
-      <div style="width: 330px; margin: 0 auto;"  class="modal-content">
+      <div>
         <p>A continuación debe tratar de identificar <b>quince</b> objetos de acuerdo a su tipo.</p>
-        <button type="button" id='cierre'>OK</button>
+        <button class="button1" id='cierre'>OK</button>
       </div>
-
+         
+    </div>
 </div>
 
 
