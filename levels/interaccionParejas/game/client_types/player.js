@@ -495,14 +495,12 @@
       frame: 'puntaje.htm',
       cb: function(){
         var ronda = node.player.stage.round; //Ronda en curso
-        if (node.game.puntajeAcumulado[ronda] >= node.game.umbrales[ronda]) {
-          alert('¡Pasó el umbral!');
+        if (node.game.puntajeAcumulado[ronda] < node.game.umbrales[ronda]) {
+          W.setInnerHTML('checkUmbral', 'no');
         }
         if (ronda < 15) {
-          alert('El umbral de la próxima ronda es:' + node.game.umbrales[ronda + 1]);
-        } else {
-          // ocultar el span del siguiente umbral
-        }
+          W.setInnerHTML('nextUmbral', 'El umbral de la siguiente ronda es de ' + node.game.umbrales[ronda + 1] + ' puntos.');
+            }
         var continuar;
         continuar = W.getElementById('continuar');
         continuar.onclick = function() { node.done(); };
