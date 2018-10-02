@@ -54,6 +54,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     stager.extendStep('encuesta', {
         cb: function() {
+
+          node.on.data('USER_INPUT', function(msg){
+            var recompensa = msg.data;
+            var me = msg.from;
+            console.log('**********************');
+            console.log('Jugador ' + me + ' obtiene');
+            console.log(recompensa + ' pesos');
+            console.log('**********************');
+          });
+
           console.log('Encuesta...');
         }
     });

@@ -45,6 +45,7 @@
       this.indiceMensaje = 0;
       var dict = {};
       this.puntajeAcumulado = dict;
+      this.umbrales = [];
 
       // Additional debug information while developing the game.
       // this.debugInfo = node.widgets.append('DebugInfo', header)
@@ -133,32 +134,18 @@
           W.setInnerHTML('paridadHorizontales', explicacion[3]);
           W.setInnerHTML('paridadVerticales', explicacion[4]);
 
-          // switch(countRondas){
-          //   case 1:
-          //   alert("El umbral de esta ronda es de 30 puntos!");
-          //   umbral = 30;
-          //   break;
-          //   case 2:
-          //   alert("El umbral de esta ronda es de 35 puntos!");
-          //   umbral = 35;
-          //   break;
-          //   case 3:
-          //   alert("El umbral de esta ronda es de 45 puntos!");
-          //   umbral = 45;
-          //   break;
-          //   case 4:
-          //   alert("El umbral de esta ronda es de 60 puntos!");
-          //   umbral = 60;
-          //   break;
-          //   case 5:
-          //   alert("El umbral de esta ronda es de 80 puntos!");
-          //   umbral = 80;
-          // }
-
+          // Define los umbrales
+          node.game.umbrales[1] = 2;
+          node.game.umbrales[2] = 4;
+          node.game.umbrales[3] = 5;
+          node.game.umbrales[4] = 10;
+          for (var i = 5; i < 21; i++) {
+            node.game.umbrales[i] = 20;
+          }
 
           //////////////////////////////////////////////////////////////////////////
-            //                     BOTONES                                          //
-            /////////////////////////////////////////////////////////////////////////
+          //                     BOTONES                                          //
+          /////////////////////////////////////////////////////////////////////////
 
             // When the user clicks the button, ends the round
           btnSalir.onclick = function() {
@@ -224,8 +211,6 @@
                 }// fin del else
 
                 W.getElementById('myModal2').style.display = "block";
-
-                node.game.resp = false;
             }
 
           //When the user clicks the button, close the modal de TALK TO
@@ -509,6 +494,15 @@
     stager.extendStep('puntaje', {
       frame: 'puntaje.htm',
       cb: function(){
+        var ronda = node.player.stage.round; //Ronda en curso
+        if (node.game.puntajeAcumulado[ronda] >= node.game.umbrales[ronda]) {
+          alert('¡Pasó el umbral!');
+        }
+        if (ronda < 15) {
+          alert('El umbral de la próxima ronda es:' + node.game.umbrales[ronda + 1]);
+        } else {
+          // ocultar el span del siguiente umbral
+        }
         var continuar;
         continuar = W.getElementById('continuar');
         continuar.onclick = function() { node.done(); };
@@ -518,6 +512,15 @@
     stager.extendStep('encuesta', {
       frame: 'Encuesta.htm',
       cb: function(){
+        // Calcula la recompensa del jugador para enviar datos
+        var recompensa = 10000;
+        for (var i = 1; i < 16; i++) {
+          if (node.game.puntajeAcumulado[i] >= node.game.umbrales[i]) {
+            recompensa += 1500;
+          }
+        }
+        node.say('USER_INPUT', 'SERVER', recompensa);
+
         var boton1 = W.getElementById('BotContinuar');
         var tipoObjetoEncuesta = [];
         var objeto;
