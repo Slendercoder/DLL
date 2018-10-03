@@ -221,31 +221,30 @@
             W.getElementById('myModal2').style.display = "";
           }
 
-          //When the user clicks the button, envía "ZAB" al otro jugador
+          // Botón de arriba para enviar mensaje
           span3.onclick = function() {
             alert('El mensaje se envió exitosamente!');
             W.getElementById('myModal2').style.display = "";
             node.say('Comunicacion', otroJugador, mensajeEnviar[0]);
-            node.set({Comunicacion: ["zab", node.game.contadorComunicacion]})
+            node.set({Comunicacion: [mensajeEnviar[0], node.game.contadorComunicacion]})
           }
 
-          //When the user clicks the button, envía "XOL" al otro jugador
+          // Botón del medio para enviar mensaje
           span4.onclick=function(){
             alert('El mensaje se envió exitosamente!');
             W.getElementById('myModal2').style.display="";
-            node.say('Comunicacion', otroJugador, mensajeEnviar[1]); // hay que cambiar esto !!!!
-            node.set({Comunicacion: ["xol", node.game.contadorComunicacion]})
+            node.say('Comunicacion', otroJugador, mensajeEnviar[1]);
+            node.set({Comunicacion: [mensajeEnviar[1], node.game.contadorComunicacion]})
           }
 
-          //When the user clicks the button, envía "DUP" al otro jugador
+          // Botón de abajo para enviar mensaje
           span8.onclick = function() {
             alert('Mensaje enviado exitosamente!');
             W.getElementById('myModal2').style.display = "";
-            node.say('Comunicacion', otroJugador, mensajeEnviar[2]);  // hay que cambiar esto !!!!
-            node.set({Comunicacion: ["dup", node.game.contadorComunicacion]})
+            node.say('Comunicacion', otroJugador, mensajeEnviar[2]);
+            node.set({Comunicacion: [mensajeEnviar[2], node.game.contadorComunicacion]})
           }
 
-          //When the user clicks the button, ignora al otro jugador
           span5.onclick = function(){
             W.getElementById('myModal').style.display = "";
             node.set({Comunicacion: ['Ignorar', node.game.indiceMensaje]});
@@ -270,8 +269,11 @@
               // Obtiene los indices de los objetos
               // console.log('string', izqPareja.substr(4,2).replace('-',''));
               var indiceIzquierdo = Number(izqPareja.substr(4,2).replace('-','')) - 1;
-              console.log('indiceIzquierdo', indiceIzquierdo);
               var indiceDerecho = Number(derPareja.substr(4,2).replace('-','')) - 1;
+              var izquierdoRecibido = false;
+              var derechoRecibido = false;
+
+              console.log('indiceIzquierdo', indiceIzquierdo);
               console.log('indiceDerecho', indiceDerecho);
 
               // Determina si izqPareja viene de objetosRecibidos
@@ -280,6 +282,7 @@
                 console.log('izqPareja viene de objetosRecibidos');
                 inIzq = indicesDesordenadosOtroJugador[indiceIzquierdo];
                 tipoObjetoIzquierdo = tiposObjetosOtroJugador[inIzq];
+                izquierdoRecibido = true;
               } else {
                 console.log('izqPareja viene de objetosPropios');
                 inIzq = indicesDesordenados[indiceIzquierdo];
@@ -289,6 +292,7 @@
                 console.log('derPareja viene de objetosRecibidos');
                 inDer = indicesDesordenadosOtroJugador[indiceDerecho];
                 tipoObjetoDerecho = tiposObjetosOtroJugador[inDer];
+                derechoRecibido = true;
               } else {
                 console.log('derPareja viene de objetosPropios');
                 inDer = indicesDesordenados[indiceDerecho];
@@ -324,6 +328,12 @@
                 }
               }
               puntaje += obtenido;
+              if (izquierdoRecibido) {
+                tipoObjetoIzquierdo = tipoObjetoIzquierdo + '-Recibido';
+              }
+              if (derechoRecibido) {
+                tipoObjetoDerecho = tipoObjetoDerecho + '-Recibido';
+              }
               node.set({Puntaje: [tipoObjetoIzquierdo, tipoObjetoDerecho, obtenido]});
 
               // Cambia el puntaje
@@ -661,7 +671,20 @@
                         requiredChoice: true
                       }),
                       w.get('ChoiceTable', {
-                          id: 'orientation',
+                          id: 'messages',
+                          mainText: 'Hacia el final del juego, usé fluídamente los mensajes',
+                          choices: [
+                              '"xol"',
+                              '"dup"',
+                              'ambos',
+                              'Prefiero no decirlo'
+                          ],
+                          shuffleChoices: false,
+                          title: false,
+                          requiredChoice: true
+                        }),
+                      w.get('ChoiceTable', {
+                          id: 'recognition',
                           mainText: 'Al finalizar el juego podía reconocer',
                           choices: [
                               'solo xols',
