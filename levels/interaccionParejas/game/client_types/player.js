@@ -248,7 +248,7 @@
 
           span5.onclick = function(){
             W.getElementById('myModal').style.display = "";
-            node.set({Comunicacion: ['Ignorar', node.game.indiceMensaje]});
+            node.set({Respuesta: ['Ignorar', node.game.indiceMensaje]});
           }
 
           // Cuando el usuario da click, calcula los puntos
