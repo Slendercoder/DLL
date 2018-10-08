@@ -118,7 +118,7 @@
             }
 
           // Pone los objetos propios en el toolBox y en la ventana de responder mensaje
-          for (var i = 1; i < 21; i ++) {
+          for (var i = 1; i < srcImagenes.length; i ++) {
               var imagen = 'drag' + i;
               var imagenEnviar = 'drag' + i + '-Enviar';
               var sourceImagen = srcImagenes[indicesDesordenados[i-1]];
@@ -129,10 +129,11 @@
 
           // Llena la explicación de experto
           W.setInnerHTML('rotuloExperto', explicacion[0]);
-          W.setInnerHTML('tipoPoligono', explicacion[1]);
-          W.setInnerHTML('colorRayas', explicacion[2]);
-          W.setInnerHTML('paridadHorizontales', explicacion[3]);
-          W.setInnerHTML('paridadVerticales', explicacion[4]);
+          W.setInnerHTML('explicacion', explicacion[1]);
+          // W.setInnerHTML('tipoPoligono', explicacion[1]);
+          // W.setInnerHTML('colorRayas', explicacion[2]);
+          // W.setInnerHTML('paridadHorizontales', explicacion[3]);
+          // W.setInnerHTML('paridadVerticales', explicacion[4]);
 
           // Define los umbrales
           node.game.umbrales[1] = 2;
@@ -140,7 +141,7 @@
           node.game.umbrales[3] = 5;
           node.game.umbrales[4] = 10;
           for (var i = 5; i < 21; i++) {
-            node.game.umbrales[i] = 20;
+            node.game.umbrales[i] = 15;
           }
 
           //////////////////////////////////////////////////////////////////////////

@@ -108,23 +108,19 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     function doMatch() {
         var players = node.game.pl.id.getAllKeys();
 
-        // Xol = tipoPoligono: Blanco;
-        //       paridadHorizontales: Impar;
-        //       paridadVerticales: Par;
+        // Xol = paridadVerticales: Par;
         //       colorRayas = Rojo;
         //
         // Dup = tipoPoligono: Gris;
         //       paridadHorizontales: Par;
-        //       paridadVerticales: Impar;
-        //       colorRayas = Azul;
 
         // Creando datos para enviar al jugador XOL (player[0])
         // Aleatorizo la lista de indices
         var aPL1 = [];
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 10; i++) {
           aPL1.push(i);
         }
-        // console.log(a);
+        // Aleatorizo lista aPL1
         var j, x, i;
         for (i = aPL1.length - 1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1));
@@ -140,51 +136,29 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         tiposObjetosPL1[3] = 'Xol';
         tiposObjetosPL1[4] = 'Xol';
         tiposObjetosPL1[5] = 'Xol';
-        tiposObjetosPL1[6] = 'Xol';
-        tiposObjetosPL1[7] = 'Xol';
-        tiposObjetosPL1[8] = 'Dup';
-        tiposObjetosPL1[9] = 'Otro-R-B-Vimp-Himp';
-        tiposObjetosPL1[10] = 'Otro-R-B-Vimp-Himp';
-        tiposObjetosPL1[11] = 'Otro-R-B-Vimp-Himp';
-        tiposObjetosPL1[12] = 'Otro-R-B-Vpar-Hpar';
-        tiposObjetosPL1[13] = 'Otro-R-B-Vpar-Hpar';
-        tiposObjetosPL1[14] = 'Otro-R-B-Vpar-Hpar';
-        tiposObjetosPL1[15] = 'Otro-R-G-Vimp-Hpar';
-        tiposObjetosPL1[16] = 'Otro-R-G-Vimp-Hpar';
-        tiposObjetosPL1[17] = 'Otro-A-G-Vimp-Hpar';
-        tiposObjetosPL1[18] = 'Otro-A-G-Vimp-Hpar';
-        tiposObjetosPL1[19] = 'Otro-A-G-Vimp-Hpar';
-        // for (var i=9; i < 20; i++) {
-        //   tiposObjetosPL1[i] = 'Otro';
-        // }
+        tiposObjetosPL1[6] = 'Otro-R-G-VP-HI';
+        tiposObjetosPL1[7] = 'Otro-R-B-VP-HI';
+        tiposObjetosPL1[8] = 'Otro-A-B-VP-HI';
+        tiposObjetosPL1[9] = 'Otro-A-G-VP-HI';
         // console.log(tiposObjetos);
-        // Creo la lista de source para las imagenes de los XOL...
+        // Creo la lista de source para las imagenes
         var srcImagenesPL1 = [];
-        srcImagenesPL1[0] = 'Images/objeto' + 1 + '.png';
-        srcImagenesPL1[1] = 'Images/objeto' + 2 + '.png';
-        srcImagenesPL1[2] = 'Images/objeto' + 3 + '.png';
-        srcImagenesPL1[3] = 'Images/objeto' + 4 + '.png';
-        srcImagenesPL1[4] = 'Images/objeto' + 5 + '.png';
-        srcImagenesPL1[5] = 'Images/objeto' + 6 + '.png';
-        srcImagenesPL1[6] = 'Images/objeto' + 7 + '.png';
-        srcImagenesPL1[7] = 'Images/objeto' + 8 + '.png';
-        srcImagenesPL1[8] = 'Images/objeto' + 9 + '.png';  // Este es un DUP
-        // ... y de los demás objetos
-        for (var i=17; i < 28; i++) {
-          srcImagenesPL1[i-8] = 'Images/objeto' + i + '.png';
+        for (var i=1; i < 11; i++) {
+          srcImagenesPL1[i - 1] = 'Images/objeto' + i + '.png';
         }
         // Crea los datos para la explicacion experto
         var explicacionPL1 = [];
         explicacionPL1[0] = 'Xol';
-        explicacionPL1[1] = 'blancos';
-        explicacionPL1[2] = 'rojo';
-        explicacionPL1[3] = 'par';
-        explicacionPL1[4] = 'impar';
+        explicacionPL1[1] = 'con un número impar de rayas verticales de color rojo';
+        // explicacionPL1[1] = 'blancos';
+        // explicacionPL1[2] = 'rojo';
+        // explicacionPL1[3] = 'par';
+        // explicacionPL1[4] = 'impar';
 
         // Creando datos para enviar al jugador DUP (player[1])
         // Aleatorizo la lista de indices
         var aPL2 = [];
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 10; i++) {
           aPL2.push(i);
         }
         var j, x, i;
@@ -197,51 +171,30 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         // console.log(a);
         // Creo la lista que identifica el tipo de objeto
         var tiposObjetosPL2 = [];
-        tiposObjetosPL2[0] = 'Dup';
-        tiposObjetosPL2[1] = 'Dup';
-        tiposObjetosPL2[2] = 'Dup';
-        tiposObjetosPL2[3] = 'Dup';
+        tiposObjetosPL2[0] = 'Otro-R-G-VP-HI';
+        tiposObjetosPL2[1] = 'Otro-R-B-VP-HI';
+        tiposObjetosPL2[2] = 'Otro-A-B-VP-HI';
+        tiposObjetosPL2[3] = 'Otro-A-G-VP-HI';
         tiposObjetosPL2[4] = 'Dup';
         tiposObjetosPL2[5] = 'Dup';
         tiposObjetosPL2[6] = 'Dup';
         tiposObjetosPL2[7] = 'Dup';
-        tiposObjetosPL2[8] = 'Xol';
-        tiposObjetosPL2[9] = 'Otro-R-B-Vpar-Hpar';
-        tiposObjetosPL2[10] = 'Otro-R-G-Vimp-Hpar';
-        tiposObjetosPL2[11] = 'Otro-R-G-Vimp-Hpar';
-        tiposObjetosPL2[12] = 'Otro-A-G-Vimp-Hpar';
-        tiposObjetosPL2[13] = 'Otro-A-G-Vimp-Hpar';
-        tiposObjetosPL2[14] = 'Otro-A-G-Vimp-Hpar';
-        tiposObjetosPL2[15] = 'Otro-A-G-Vpar-Himp';
-        tiposObjetosPL2[16] = 'Otro-A-G-Vpar-Himp';
-        tiposObjetosPL2[17] = 'Otro-A-G-Vpar-Himp';
-        tiposObjetosPL2[18] = 'Otro-A-B-Vpar-Hpar';
-        tiposObjetosPL2[19] = 'Otro-A-B-Vpar-Hpar';
-        // for (var i=9; i < 20; i++) {
-        //   tiposObjetosPL2[i] = 'Otro';
-        // }
+        tiposObjetosPL2[8] = 'Dup';
+        tiposObjetosPL2[9] = 'Dup';
+
         // Creo la lista de source para las imagenes de los DUP...
         var srcImagenesPL2 = [];
-        srcImagenesPL2[0] = 'Images/objeto' + 9 + '.png';
-        srcImagenesPL2[1] = 'Images/objeto' + 10 + '.png';
-        srcImagenesPL2[2] = 'Images/objeto' + 11 + '.png';
-        srcImagenesPL2[3] = 'Images/objeto' + 12 + '.png';
-        srcImagenesPL2[4] = 'Images/objeto' + 13 + '.png';
-        srcImagenesPL2[5] = 'Images/objeto' + 14 + '.png';
-        srcImagenesPL2[6] = 'Images/objeto' + 15 + '.png';
-        srcImagenesPL2[7] = 'Images/objeto' + 16 + '.png';
-        srcImagenesPL2[8] = 'Images/objeto' + 1 + '.png'; // Este es un XOL
-        // ... y de los demás objetos
-        for (var i=22; i < 33; i++) {
-          srcImagenesPL2[i-13] = 'Images/objeto' + i + '.png';
+        for (var i=7; i < 17; i++) {
+          srcImagenesPL2[i - 7] = 'Images/objeto' + i + '.png';
         }
         // Crea los datos para la explicacion experto
         var explicacionPL2 = [];
         explicacionPL2[0] = 'Dup';
-        explicacionPL2[1] = 'grises';
-        explicacionPL2[2] = 'azul';
-        explicacionPL2[3] = 'par';
-        explicacionPL2[4] = 'par';
+        explicacionPL2[1] = 'con fondo gris y un número par de rayas horizontales';
+        // explicacionPL2[1] = 'grises';
+        // explicacionPL2[2] = 'azul';
+        // explicacionPL2[3] = 'par';
+        // explicacionPL2[4] = 'par';
 
         // Envio los datos al primer jugador
         node.say('Settings',

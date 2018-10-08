@@ -13,16 +13,16 @@ def dibuja_objeto(tipoPoligono, \
                   colorRayas, id):
 
     if paridadVerticales:
-        numVerticales = 2 * randint(3,6) + 1
+        numVerticales = 2 * randint(2,4) + 1
     else:
-        numVerticales = 2 * randint(3,6)
+        numVerticales = 2 * randint(2,4)
 
     print u"Número de líneas verticales: ", numVerticales
 
     if paridadHorizontales:
-        numHorizontales = 2 * randint(3,6) + 1
+        numHorizontales = 2 * randint(2,4) + 1
     else:
-        numHorizontales = 2 * randint(3,6)
+        numHorizontales = 2 * randint(2,4)
 
     print u"Número de líneas horizontales: ", numHorizontales
 
@@ -77,22 +77,123 @@ def dibuja_objeto(tipoPoligono, \
 
 # True: Fondo gris; False: Fondo blanco
 # tipoPoligono = choice([False, True])
-tipoPoligono = False
-
+#
 # True: Azul; False: Rojo
 # colorRayas = choice([False, True])
-colorRayas = True
-
+#
 # True: Impar; False: Par
 # paridadVerticales = choice([False, True])
-paridadVerticales = False
-
+#
 # True: Impar; False: Par
 # paridadHorizontales = choice([False, True])
-paridadHorizontales = True
 
-numObjetosInicial = 31
-numObjetosFinal = 32
+# Creo los XOL, que tienen rayas rojas y una cantidad impar de rayas verticales
+colorRayas = False # Rayas de color rojo
+tipoPoligono = False # Fondo blanco
+paridadVerticales = True # Impar
+paridadHorizontales = True # Impar
+numObjetosInicial = 1
+numObjetosFinal = 4
+#
+for cont in range(numObjetosInicial, numObjetosFinal + 1):
+    dibuja_objeto(tipoPoligono, \
+                  paridadHorizontales, \
+                  paridadVerticales, \
+                  colorRayas, cont)
+
+tipoPoligono = True # Fondo gris
+numObjetosInicial = 5
+numObjetosFinal = 5
+#
+for cont in range(numObjetosInicial, numObjetosFinal + 1):
+    dibuja_objeto(tipoPoligono, \
+                  paridadHorizontales, \
+                  paridadVerticales, \
+                  colorRayas, cont)
+
+tipoPoligono = False # Fondo blanco
+paridadHorizontales = False # Par
+numObjetosInicial = 6
+numObjetosFinal = 6
+for cont in range(numObjetosInicial, numObjetosFinal + 1):
+    dibuja_objeto(tipoPoligono, \
+                  paridadHorizontales, \
+                  paridadVerticales, \
+                  colorRayas, cont)
+
+# Creo los distractores
+colorRayas = False # Rayas de color rojo
+tipoPoligono = True # Fondo gris
+paridadVerticales = False # Par
+paridadHorizontales = True # Impar
+numObjetosInicial = 7
+numObjetosFinal = 7
+#
+for cont in range(numObjetosInicial, numObjetosFinal + 1):
+    dibuja_objeto(tipoPoligono, \
+                  paridadHorizontales, \
+                  paridadVerticales, \
+                  colorRayas, cont)
+
+colorRayas = False # Rayas de color rojo
+tipoPoligono = False # Fondo blanco
+numObjetosInicial = 8
+numObjetosFinal = 8
+#
+for cont in range(numObjetosInicial, numObjetosFinal + 1):
+    dibuja_objeto(tipoPoligono, \
+                  paridadHorizontales, \
+                  paridadVerticales, \
+                  colorRayas, cont)
+
+colorRayas = True # Rayas de color azul
+tipoPoligono = False # Fondo blanco
+numObjetosInicial = 9
+numObjetosFinal = 9
+#
+for cont in range(numObjetosInicial, numObjetosFinal + 1):
+    dibuja_objeto(tipoPoligono, \
+                  paridadHorizontales, \
+                  paridadVerticales, \
+                  colorRayas, cont)
+
+tipoPoligono = True # Fondo gris
+numObjetosInicial = 10
+numObjetosFinal = 10
+for cont in range(numObjetosInicial, numObjetosFinal + 1):
+    dibuja_objeto(tipoPoligono, \
+                  paridadHorizontales, \
+                  paridadVerticales, \
+                  colorRayas, cont)
+
+# Creo los DUP, que tienen fondo gris y una cantidad par de rayas horizontales
+colorRayas = True # Rayas de color azul
+tipoPoligono = True # Fondo gris
+paridadVerticales = True # Impar
+paridadHorizontales = False # Par
+numObjetosInicial = 11
+numObjetosFinal = 14
+#
+for cont in range(numObjetosInicial, numObjetosFinal + 1):
+    dibuja_objeto(tipoPoligono, \
+                  paridadHorizontales, \
+                  paridadVerticales, \
+                  colorRayas, cont)
+
+paridadVerticales = False # Par
+numObjetosInicial = 15
+numObjetosFinal = 15
+#
+for cont in range(numObjetosInicial, numObjetosFinal + 1):
+    dibuja_objeto(tipoPoligono, \
+                  paridadHorizontales, \
+                  paridadVerticales, \
+                  colorRayas, cont)
+
+colorRayas = False # Rayas de color rojo
+paridadVerticales = True # Impar
+numObjetosInicial = 16
+numObjetosFinal = 16
 
 for cont in range(numObjetosInicial, numObjetosFinal + 1):
     dibuja_objeto(tipoPoligono, \
