@@ -537,25 +537,16 @@
         tipoObjetoEncuesta[3] = 'xol';
         tipoObjetoEncuesta[4] = 'xol';
         tipoObjetoEncuesta[5] = 'xol';
-        tipoObjetoEncuesta[6] = 'xol';
-        tipoObjetoEncuesta[7] = 'xol';
-        tipoObjetoEncuesta[8] = 'xol';
-        tipoObjetoEncuesta[9] = 'Otro-R-B-Vpar-Hpar';
-        tipoObjetoEncuesta[10] = 'Otro-R-B-Vpar-Hpar';
-        tipoObjetoEncuesta[11] = 'Otro-R-B-Vimp-Himp';
-        tipoObjetoEncuesta[12] = 'Otro-R-B-Vimp-Himp';
-        tipoObjetoEncuesta[13] = 'dup';
-        tipoObjetoEncuesta[14] = 'dup';
-        tipoObjetoEncuesta[15] = 'dup';
-        tipoObjetoEncuesta[16] = 'dup';
-        tipoObjetoEncuesta[17] = 'dup';
-        tipoObjetoEncuesta[18] = 'dup';
-        tipoObjetoEncuesta[19] = 'dup';
-        tipoObjetoEncuesta[20] = 'dup';
-        tipoObjetoEncuesta[21] = 'Otro-A-G-Vimp-Hpar';
-        tipoObjetoEncuesta[22] = 'Otro-A-G-Vimp-Hpar';
-        tipoObjetoEncuesta[23] = 'Otro-A-G-Vpar-Himp';
-        tipoObjetoEncuesta[24] = 'Otro-A-G-Vpar-Himp';
+        tipoObjetoEncuesta[6] = 'dup';
+        tipoObjetoEncuesta[7] = 'dup';
+        tipoObjetoEncuesta[8] = 'dup';
+        tipoObjetoEncuesta[9] = 'dup';
+        tipoObjetoEncuesta[10] = 'dup';
+        tipoObjetoEncuesta[11] = 'Otro-R-B-VP-HP';
+        tipoObjetoEncuesta[12] = 'Otro-R-B-VP-HP';
+        tipoObjetoEncuesta[13] = 'Otro-A-B-VP-HP';
+        tipoObjetoEncuesta[14] = 'Otro-A-G-VI-HI';
+        tipoObjetoEncuesta[15] = 'Otro-A-G-VI-HI';
 
         var modal = W.getElementById('notif');
         var cierre = W.getElementById("cierre");
@@ -563,7 +554,7 @@
         var x, objeto;
         var contador = 0;
         console.log(contador + 1 + '/15');
-        x = Math.floor(Math.random() * 24) + 1;
+        x = Math.floor(Math.random() * 14) + 1;
         objeto = tipoObjetoEncuesta[x];
         W.getElementById("imgvar").src="Images/Encuesta/objeto_encuesta" + x + ".png";
         W.getElementById('CheckZab').checked=false;
@@ -588,7 +579,7 @@
           W.getElementById('CheckDup').checked=false;
           //W.getElementById('encuesta').style.display = "";
 
-          x = Math.floor(Math.random() * 24) + 1;
+          x = Math.floor(Math.random() * 14) + 1;
           objeto = tipoObjetoEncuesta[x];
           W.getElementById("imgvar").src="Images/Encuesta/objeto_encuesta" + x + ".png";
 
