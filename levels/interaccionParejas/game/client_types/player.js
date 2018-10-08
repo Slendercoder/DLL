@@ -228,6 +228,7 @@
             W.getElementById('myModal2').style.display = "";
             node.say('Comunicacion', otroJugador, mensajeEnviar[0]);
             node.set({Comunicacion: [mensajeEnviar[0], node.game.contadorComunicacion]})
+            node.game.contadorComunicacion += 1;
           }
 
           // Botón del medio para enviar mensaje
@@ -236,6 +237,7 @@
             W.getElementById('myModal2').style.display="";
             node.say('Comunicacion', otroJugador, mensajeEnviar[1]);
             node.set({Comunicacion: [mensajeEnviar[1], node.game.contadorComunicacion]})
+            node.game.contadorComunicacion += 1;
           }
 
           // Botón de abajo para enviar mensaje
@@ -244,6 +246,7 @@
             W.getElementById('myModal2').style.display = "";
             node.say('Comunicacion', otroJugador, mensajeEnviar[2]);
             node.set({Comunicacion: [mensajeEnviar[2], node.game.contadorComunicacion]})
+            node.game.contadorComunicacion += 1;
           }
 
           span5.onclick = function(){
