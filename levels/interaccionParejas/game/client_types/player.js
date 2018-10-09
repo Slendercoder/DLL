@@ -359,7 +359,10 @@
           // muestra el modal de enviar objeto
           selectMensajes.onchange = function() {
             var indice = this.selectedIndex; // El indice del mensaje seleccionado
-            node.game.indiceMensaje = indice;
+            var indiceMensaje = this.options[indice].text; // El texto con el numero de mensaje
+            indiceMensaje = indiceMensaje.replace('Mensaje ', ''); // Obtengo el número
+            console.log('indiceMensaje', indiceMensaje);
+            node.game.indiceMensaje = indiceMensaje;
             var correo = this.options[indice].value; // Lo que dice el mensaje
             this.remove(this.selectedIndex); // Elimina item de la lista desplegable
             node.game.contadorMensajes -= 1;
