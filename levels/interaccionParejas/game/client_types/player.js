@@ -41,6 +41,7 @@
       // this.doneButton = node.widgets.append('DoneButton', header);
 
       this.contadorComunicacion = 1;
+      this.contadorComunicacionMensajes = 1;
       this.contadorMensajes = 0;
       this.indiceMensaje = 0;
       var dict = {};
@@ -403,9 +404,9 @@
             // Agrega el mensaje a la lista
             var opt = document.createElement('option'); // Crea un item nuevo para la lista desplegable
             opt.value = msg.data; // Objeto enviado
-            opt.text = "Mensaje " + node.game.contadorComunicacion; // Número de mensaje
+            opt.text = "Mensaje " + node.game.contadorComunicacionMensajes; // Número de mensaje
             selectMensajes.appendChild(opt); // Introduce nuevo item en la lista desplegable
-            node.game.contadorComunicacion += 1;
+            node.game.contadorComunicacionMensajes += 1;
             node.game.contadorMensajes += 1;
             selectMensajes.options[0].text = "Tiene " + node.game.contadorMensajes + " mensajes";
             // W.setInnerHTML('numMensajes', node.game.contadorMensajes); // Muestra el número de mensajes
