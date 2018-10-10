@@ -26,9 +26,9 @@
 /* Popup - notificación de mensaje recibido */
 
 .popup{
-    width: 220px;
-    background-color: #555;
-    color: #fff;
+    width: 250px;
+    background-color: Goldenrod;
+    color: white;
     border-radius: 6px;
     padding: 8px 0;
     position: relative;

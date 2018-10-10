@@ -402,7 +402,7 @@
           node.on.data('Comunicacion', function(msg) {
             // AQUI POPUP DE LE ENVIARON UN MENSAJE
             node.emit('Muestra_Popup');
-            W.setInnerHTML('notif', "Tiene un mensaje nuevo!");
+            W.setInnerHTML('notif', "¡TIENE UN MENSAJE NUEVO!");
 
             // Agrega el mensaje a la lista
             var opt = document.createElement('option'); // Crea un item nuevo para la lista desplegable
