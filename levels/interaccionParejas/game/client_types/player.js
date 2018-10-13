@@ -530,7 +530,12 @@
       init: function() {
         // Calcula la recompensa del jugador para enviar datos
         var recompensa = 10;
-        for (var i = 1; i < 16; i++) {
+        for (var i = 1; i < 6; i++) {
+          if (node.game.puntajeAcumulado[i] >= node.game.umbrales[i]) {
+            recompensa += 1;
+          }
+        }
+        for (var i = 6; i < 16; i++) {
           if (node.game.puntajeAcumulado[i] >= node.game.umbrales[i]) {
             recompensa += 1.5;
           }
