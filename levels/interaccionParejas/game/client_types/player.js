@@ -402,7 +402,7 @@
           node.on.data('Comunicacion', function(msg) {
             // AQUI POPUP DE LE ENVIARON UN MENSAJE
             node.emit('Muestra_Popup');
-            W.setInnerHTML('notif', "¡TIENE UN MENSAJE NUEVO!");
+            W.setInnerHTML('notif', "<br> ¡TIENE UN MENSAJE NUEVO!");
 
             // Agrega el mensaje a la lista
             var opt = document.createElement('option'); // Crea un item nuevo para la lista desplegable
@@ -530,7 +530,12 @@
       init: function() {
         // Calcula la recompensa del jugador para enviar datos
         var recompensa = 10;
-        for (var i = 1; i < 16; i++) {
+        for (var i = 1; i < 6; i++) {
+          if (node.game.puntajeAcumulado[i] >= node.game.umbrales[i]) {
+            recompensa += 1;
+          }
+        }
+        for (var i = 6; i < 16; i++) {
           if (node.game.puntajeAcumulado[i] >= node.game.umbrales[i]) {
             recompensa += 1.5;
           }
