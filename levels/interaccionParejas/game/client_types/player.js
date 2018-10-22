@@ -103,13 +103,14 @@
           var salirBoton2 = W.getElementById('exitButton2'); //Boton de exit del modal
           var ronda = node.player.stage.round; //Ronda en curso
           node.game.puntajeAcumulado[ronda] = 0;
+          node.game.indiceMensaje = 0;
+          node.game.contadorComunicacion = 1;
+          node.game.contadorMensajes = 0;
+          selectMensajes.options[0].text = "Tiene " + node.game.contadorMensajes + " mensajes";
 
           // Initialize the window for the game
           W.getElementById('myModal').style.display = "none";
           W.getElementById('myModal2').style.display = "none";
-          node.game.contadorComunicacion = 1;
-          node.game.contadorMensajes = 0;
-          selectMensajes.options[0].text = "Tiene " + node.game.contadorMensajes + " mensajes";
           // W.setInnerHTML('numMensajes', node.game.contadorMensajes);
 
           // Limpia la caja de objetos recibidos y asigna objetos a recibir
@@ -137,8 +138,8 @@
           // W.setInnerHTML('paridadVerticales', explicacion[4]);
 
           // Define los umbrales
-          node.game.umbrales[1] = 2;
-          node.game.umbrales[2] = 4;
+          node.game.umbrales[1] = 1;
+          node.game.umbrales[2] = 3;
           node.game.umbrales[3] = 5;
           node.game.umbrales[4] = 10;
           for (var i = 5; i < 21; i++) {
@@ -215,7 +216,7 @@
                 W.getElementById('myModal2').style.display = "block";
             }
 
-          //When the user clicks the button, close the modal de TALK TO
+          //When the user clicks the button, close the modal of TALK TO
           span6.onclick = function() {
             W.getElementById('objetosPropios').style.display = 'none'; // Cierra ventana objetos propios
             W.getElementById('objetosRecibidos').style.display = 'none'; // Cierra ventana objetos recibidos
@@ -250,9 +251,11 @@
             node.game.contadorComunicacion += 1;
           }
 
+          // Botón de ignorar mensaje
           span5.onclick = function(){
             W.getElementById('myModal').style.display = "";
             node.set({Respuesta: ['Ignorar', node.game.indiceMensaje]});
+            node.say('Ignorado', otroJugador, 'Ignorado');
           }
 
           // Cuando el usuario da click, calcula los puntos
@@ -416,6 +419,11 @@
             // W.setInnerHTML('numMensajes', 1); // Arreglar el contador
           }); // End node.on.data('Comunicacion'
 
+          node.on.data('Ignorado', function(msg) {
+            node.emit('Muestra_Popup');
+            W.setInnerHTML('notif', "Su mensaje ha sido ignorado :(");
+          });
+
           node.on.data('Dar', function(msg) {
             console.log('Recibio', msg.data);
             var indice = msg.data.substr(4,2).replace('-','');
@@ -426,7 +434,7 @@
             W.getElementById(msg.data).src = srcImagenesOtroJugador[indice];
             W.getElementById(msg.data).style.display = 'block';
             node.emit('Muestra_Popup');
-            W.setInnerHTML('notif', "Recibió un objeto!");
+            W.setInnerHTML('notif', "¡Recibió un objeto!");
             // alert("Recibió un objeto!" + W.getElementById(msg.data).style.display);
           }); // End node.on.data('Dar'
 
