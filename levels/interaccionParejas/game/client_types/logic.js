@@ -209,6 +209,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                       srcImagenesPL2,
                   ]);
 
+        // Guarda información de experticia
+        node.set({Experticia: [players[0], 'Xol']});
+        node.set({Experticia: [players[1], 'Dup']});
+
         // Envio los datos al segundo jugador
         node.say('Settings',
                   players[1],
