@@ -521,12 +521,34 @@
       frame: 'puntaje.htm',
       cb: function(){
         var ronda = node.player.stage.round; //Ronda en curso
+        var recompensa = 10;
+        if (ronda > 5) {
+          for (var i = 1; i < 6; i++) {
+            if (node.game.puntajeAcumulado[i] >= node.game.umbrales[i]) {
+              recompensa += 1;
+            }
+          }
+          for (var i = 6; i < ronda + 1; i++) {
+            if (node.game.puntajeAcumulado[i] >= node.game.umbrales[i]) {
+              recompensa += 1.5;
+            }
+          }
+        } else {
+          for (var i = 1; i < ronda + 1; i++) {
+            if (node.game.puntajeAcumulado[i] >= node.game.umbrales[i]) {
+              recompensa += 1;
+            }
+        }
         if (node.game.puntajeAcumulado[ronda] < node.game.umbrales[ronda]) {
           W.setInnerHTML('checkUmbral', 'no');
         }
         if (ronda < 15) {
+          W.setInnerHTML('UMEs', 'Hasta el momento, usted ha ganado ' + recompensa);
           W.setInnerHTML('nextUmbral', 'El umbral de la siguiente ronda es de ' + node.game.umbrales[ronda + 1] + ' puntos.');
-            }
+        } else {
+          W.setInnerHTML('UMEs', 'Usted ganó en total ' + recompensa);
+        }
+
         var continuar;
         continuar = W.getElementById('continuar');
         continuar.onclick = function() { node.done(); };
