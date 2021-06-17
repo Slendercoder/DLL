@@ -1,6 +1,6 @@
 /**
  * # Logic type implementation of the game stages
- * Copyright(c) 2017 Edgar Andrade-Lotero <edgar.andrade@urosario.edu.co>
+ * Copyright(c) 2019 Alejandro Velasco <javier.velasco@urosario.edu.co>
  * MIT Licensed
  *
  * http://www.nodegame.org
@@ -31,30 +31,54 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
           // Move client to part2.
           // (async so that it finishes all current step operations).
           setTimeout(function() {
-              console.log('moving to interaccionParejas: ', msg.from);
-              channel.moveClientToGameLevel(msg.from, 'interaccionParejas',
+              console.log('pasando a interaccion: ', msg.from);
+              channel.moveClientToGameLevel(msg.from, 'interaccion',
                                             gameRoom.name);
           }, 10);
-      });
-
-        // Initialize the client.
     });
+});
 
     stager.extendStep('bienvenida', {
         cb: function() {
-            console.log('Welcome...');
+            console.log('Bienvenida');
         }
     });
 
     stager.extendStep('instructions', {
         cb: function() {
-            console.log('Instructions...');
+            console.log('Instructions.');
+        }
+    });
+
+    stager.extendStep('tutorialTraining', {
+        cb: function() {
+            console.log('tutorialTraining');
+            entrenamiento();
+        }
+    });
+
+    stager.extendStep('tutorialGame', {
+        cb: function() {
+            console.log('tutorialGame');
+            perros();
+        }
+    });
+
+    stager.extendStep('tiempo', {
+    cb: function() {
+        console.log('tiempo');
+        }
+    });
+
+    stager.extendStep('recompensa', {
+    cb: function() {
+        console.log('recompensa');
         }
     });
 
     stager.extendStep('quiz', {
         cb: function() {
-            console.log('Quiz...');
+            console.log('Quiz');
         }
     });
 
@@ -72,6 +96,122 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     };
 
-    // Helper functions.
+    function perros(){
+
+      var players = node.game.pl.id.getAllKeys();
+
+      var as = [];
+      var bs = [];
+      var cs = [];
+      var ds = [];
+      var send = []
+      var dict = {};
+
+      for (var i=1; i < 13; i++) {
+        as[i - 1] = 'A' + i + '.jpg';
+      }
+
+      for (var i=1; i < 13; i++) {
+        bs[i - 1] = 'B' + i + '.jpg';
+      }
+
+      for (var i=1; i < 13; i++) {
+        cs[i - 1] = 'C' + i + '.jpg';
+      }
+
+      for (var i=1; i < 13; i++) {
+        ds[i - 1] = 'D' + i + '.jpg';
+      }
+
+      for(var i = 1; i < 13; i++){
+        dict[as[i - 1]] = "A";
+      }
+
+      for(var i = 1; i < 13; i++){
+        dict[bs[i - 1]] = "B";
+      }
+
+      for(var i = 1; i < 13; i++){
+        dict[cs[i - 1]] = "C";
+      }
+
+      for(var i = 1; i < 13; i++){
+        dict[ds[i - 1]] = "D";
+      }
+
+      var perros = as.concat(bs, cs, ds);
+
+      perros.sort(function(a, b){return 0.5 - Math.random()});
+
+      for(var i = 1; i < 6; i++){
+        send.push(perros[i]);
+      }
+      console.log(send);
+
+      // console.log(perros);
+
+
+      node.say('Settings', players[0], [players[1], send, dict]);
+      node.say('Settings', players[1], [players[0], send, dict]);
+    }
+
+    function entrenamiento() {
+      var players = node.game.pl.id.getAllKeys();
+
+      var as = [];
+      var bs = [];
+      var cs = [];
+      var ds = [];
+      var sendt = []
+      var sendh = []
+      var dict = {};
+
+      for (var i=1; i < 13; i++) {
+        as[i - 1] = 'A' + i + '.jpg';
+      }
+
+      for (var i=1; i < 13; i++) {
+        bs[i - 1] = 'B' + i + '.jpg';
+      }
+
+      for (var i=1; i < 13; i++) {
+        cs[i - 1] = 'C' + i + '.jpg';
+      }
+
+      for (var i=1; i < 13; i++) {
+        ds[i - 1] = 'D' + i + '.jpg';
+      }
+
+      for(var i = 1; i < 13; i++){
+        dict[as[i - 1]] = "A";
+      }
+
+      for(var i = 1; i < 13; i++){
+        dict[bs[i - 1]] = "B";
+      }
+
+      for(var i = 1; i < 13; i++){
+        dict[cs[i - 1]] = "C";
+      }
+
+      for(var i = 1; i < 13; i++){
+        dict[ds[i - 1]] = "D";
+      }
+
+      var terrier = as.concat(cs);
+      var hound = bs.concat(ds);
+
+      terrier.sort(function(a, b){return 0.5 - Math.random()});
+      hound.sort(function(a, b){return 0.5 - Math.random()});
+
+      for(var i = 1; i < 6; i++){
+        sendt.push(terrier[i]);
+        sendh.push(hound[i]);
+      }
+
+      node.say('Settings', players[0], [players[1], sendt, dict, 'terrier']);
+      node.say('Settings', players[1], [players[0], sendh, dict, 'hound']);
+
+    }
 
 };

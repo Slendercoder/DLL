@@ -9,58 +9,58 @@
     <div id="quiz">
       <dl>
 
-        <dt><strong>Preguta 1:</strong></dt>
+        <dt><strong>Pregunta 1:</strong></dt>
         <dd>
           <span id="rounds_result" class="quiz_result"></span>
           <form name="rounds" id="rounds">
-	    <p class="question">¿CuáL es el propósito del juego?</p>
+	    <p class="question">¿Cuál es el propósito del juego?</p>
 	    <p>
-	      <input type="radio" name="rounds" value="5"> Presionar botones hasta que algo pase<br>
-	      <input type="radio" name="rounds" value="10"> Arrastrar monedas para obtener objetos<br>
-	      <input type="radio" name="rounds" value="15"> Armar parejas de objetos para obtener monedas<br>
+	      <input type="radio" name="rounds" value="5"> Descifrar la clasificación del otro jugador <br>
+	      <input type="radio" name="rounds" value="10"> Coincidir con la clasificación del otro jugador <br>
+	      <input type="radio" name="rounds" value="15"> Clasificar correctamente todos los perros <br>
 	      <input type="radio" name="rounds" value="not"> No se sabe de antemano
 	    </p>
 	  </form>
         </dd>
 
-        <dt><strong>Preguta 2:</strong></dt>
+        <dt><strong>Pregunta 2:</strong></dt>
         <dd>
           <span id="objetos_result" class="quiz_result"></span>
           <form name="objetos" id="objetos">
-            <p class="question">¿Qué objetos le puede enviar a su compañero?</p>
+            <p class="question">¿Cuántas rondas de entrenamiento hay?</p>
             <p>
-              <input type="radio" name="objetos" value="1"> Solo Dup <br>
-              <input type="radio" name="objetos" value="2"> Solo Xol <br>
-              <input type="radio" name="objetos" value="3"> Solo Zab </br>
-              <input type="radio" name="objetos" value="4"> Cualquier objeto </br>
+              <input type="radio" name="objetos" value="1"> No se sabe de antemano <br>
+              <input type="radio" name="objetos" value="2"> 5 <br>
+              <input type="radio" name="objetos" value="3"> 10 <br>
+              <input type="radio" name="objetos" value="4"> 25 <br>
             </p>
           </form>
         </dd>
-        <dt><strong>Preguta 3:</strong></dt>
+        <dt><strong>Pregunta 3:</strong></dt>
         <dd>
           <span id="puntos_result" class="quiz_result"></span>
           <form name="puntos" id="puntos">
-            <p class="question">¿Cuál de estas combinaciones da 5 monedas?</p>
+            <p class="question">¿Cuántas categorías de clasificación tienen las rondas de juego?</p>
             <p>
-              <input type="radio" name="puntos" value="1"> Zab + Zab <br>
-              <input type="radio" name="puntos" value="2"> Dup + Xol<br>
-              <input type="radio" name="puntos" value="3"> Dup + Dup<br>
-              <input type="radio" name="puntos" value="4"> Ninguna de las anteriores<br>
+              <input type="radio" name="puntos" value="1"> 8 <br>
+              <input type="radio" name="puntos" value="2"> 4 <br>
+              <input type="radio" name="puntos" value="3"> 3 <br>
+              <input type="radio" name="puntos" value="4"> 2 <br>
             </p>
 
           </form>
         </dd>
 
-	<dt><strong>Preguta 4:</strong></dt>
+	<dt><strong>Pregunta 4:</strong></dt>
         <dd>
           <span id="umbral_result" class="quiz_result"></span>
           <form name="umbral" id="umbral">
-            <p class="question">¿Cuál es el umbral de puntos de la primera ronda?</p>
+            <p class="question">¿Cuánto es el máximo de tiempo de cada tipo de ronda?</p>
             <p>
-              <input type="radio" name="umbral" value="5"> 5 puntos <br>
-              <input type="radio" name="umbral" value="10"> 10 puntos <br>
-              <input type="radio" name="umbral" value="30"> 30 puntos <br>
-              <input type="radio" name="umbral" value="2"> 2 puntos <br>
+              <input type="radio" name="umbral" value="5"> 80 segundos para las rondas de entrenamiento y 60 segundos para las rondas de juego <br>
+              <input type="radio" name="umbral" value="10"> 40 segundos para las rondas de entrenamiento y 40 segundos para las rondas de juego <br>
+              <input type="radio" name="umbral" value="30"> 60 segundos para las rondas de entrenamiento y 20 segunds para las rondas de juego <br>
+              <input type="radio" name="umbral" value="2"> 60 segundos para las rondas de entrenamiento y 80 segundos para las rondas de juego <br>
             </p>
 
           </form>
@@ -71,6 +71,5 @@
       </div>
     </div>
   </div>
-</div>
 </body>
 <script src="js/quiz.js"></script>

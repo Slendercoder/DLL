@@ -1,6 +1,6 @@
 /**
  * # Requirements settings
- * Copyright(c) 2017 Edgar Andrade-Lotero <edgar.andrade@urosario.edu.co>
+ * Copyright(c) 2019 Alejandro Velasco <javier.velasco@urosario.edu.co>
  * MIT Licensed
  *
  * Requirements settings file.
@@ -33,7 +33,7 @@ module.exports = {
      * If set, client must exchange messages with server "quickly enough"
      */
     speedTest: {
-        messages: 10,
+        messages: 1,
         time: 1000
     },
 

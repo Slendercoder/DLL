@@ -1,6 +1,6 @@
 /**
  * # Game settings definition file
- * Copyright(c) 2017 Edgar Andrade-Lotero <edgar.andrade@urosario.edu.co>
+ * Copyright(c) 2019 Alejandro Velasco <javier.velasco@urosario.edu.co>
  * MIT Licensed
  *
  * The variables in this file will be sent to each client and saved under:
@@ -41,17 +41,43 @@ module.exports = {
      * used to initialize the game timer for the step.
      */
     TIMER: {
-        instructions: 180000,
-        game: 150000,
-        puntaje: 30000,
-        encuesta: 240000,
-        demograf: 90000,
-        debrief: 60000
+        training: 60000,
+        game: 90000,
+        puntaje: 20000
+
     },
 
     // # Game specific properties
 
     // Number of game rounds repetitions.
-    REPEAT: 15,
+    REPEAT: 25, // Cantidad rondas de juego
+    TRAINING: 25, // Cantidad rondas de entrenamiento
 
+    // In case an incoming offer does not pass validation, which indicates
+    // cheating, re-set the dictator's offer to this value.
+    // defaultOffer: 100,
+    //
+    // // # Treatments definition.
+    //
+    // // They can contain any number of properties, and also overwrite
+    // // those defined above.
+    //
+    // // If the `treatments` object is missing a treatment named _standard_
+    // // will be created automatically, and will contain all variables.
+    //
+    // treatments: {
+    //
+    //     standard: {
+    //         fullName: "Standard Treatment",
+    //         description: "Longer time",
+    //         bidTime: 30000
+    //     },
+    //
+    //     pressure: {
+    //         fullName: "Time Pressure Treatment",
+    //         description: "Short times to take decisions",
+    //         bidTime: 10000
+    //     }
+    //
+    // }
 };

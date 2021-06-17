@@ -1,6 +1,6 @@
 /**
  * # Channel settings
- * Copyright(c) 2017 Edgar Andrade-Lotero <edgar.andrade@urosario.edu.co>
+ * Copyright(c) 2019 Alejandro Velasco <javier.velasco@urosario.edu.co>
  * MIT Licensed
  *
  * The channel is divided into two internal servers: player and admin.
@@ -28,7 +28,7 @@ module.exports = {
      *
      * Default: the name of the game, as found in the package.json file.
      */
-    // name: 'DLL',
+    // name: 'DLL_2019',
 
     /**
      * ## alias (string|array) Optional
@@ -57,7 +57,7 @@ module.exports = {
      *
      * Default: name-of-the-channel
      */
-    // playerServer: 'DLL',
+    // playerServer: 'DLL_2019',
 
     /**
      * ## adminServer (object|string) Optional
@@ -71,7 +71,7 @@ module.exports = {
      *
      * Default: name-of-the-channel/admin
      */
-    // adminServer: 'DLL/admin',
+    // adminServer: 'DLL_2019/admin',
 
     /**
      * ## getFromAdmins (boolean) Optional
@@ -122,7 +122,7 @@ module.exports = {
      *
      * Default: FALSE
      */
-     // enableReconnections: true,
+    enableReconnections: true,
 
     /**
      * ### sameStepReconnectionOnly (boolean) Optional
@@ -131,7 +131,7 @@ module.exports = {
      *
      * Default: FALSE
      */
-    sameStepReconnectionOnly: true,
+    // sameStepReconnectionOnly: false,
 
     /**
      * ### disposeFailedReconnections (boolean) Optional
@@ -178,14 +178,78 @@ module.exports = {
      */
     // sioQuery: false,
 
-    // If TRUE, it will be the default channel of the server.
-    // All the static files will be served from '/'.
-    // The route `/channelName` will be disabled, while aliases,
-    // if defined, will continue to work.
-    // Important! Socket.io connection must still be established
-    // with the right endpoint (e.g. /channelName).
-    // Important! Other games might not be reachable any more.
-    // Important! Server info query will be disabled.
-    // defaultChannel: false
+    /**
+     * ### defaultChannel (boolean) Optional
+     *
+     * If TRUE, the game is served from / (instead of /gamename/)
+     *
+     * The route `/gamename` will be disabled, while aliases,
+     * if defined, will continue to work if not shadowed by any public path.
+     *
+     * Important! Socket.io connection must still be established
+     * with the right endpoint (e.g. /channelName).
+     *
+     * Important! Other games might not be reachable any more.
+     *
+     * Important! Server info query will be disabled.
+     *
+     * Default: false
+     */
+    // defaultChannel: false,
+
+    /**
+     * ### noAuthCookie (boolean) Optional
+     *
+     * If TRUE, a cookie is set even with authorization disabled
+     *
+     * Opening multiple browser tabs will cause a disconnection in other ones.
+     *
+     * Default: false
+     */
+    // noAuthCookie: false,
+
+    /**
+     * ### roomOwnDataDir (boolean) Optional
+     *
+     * If TRUE, each new room in the channel has an own data dir named after it
+     *
+     * Default: true
+     */
+    // roomOwnDataDir: true,
+
+    /**
+     * ### roomCounter (number) Optional
+     *
+     * If set, room counter is initialized to this value
+     *
+     * If undefined, room counter self-initialize to the next available id,
+     * starting from 1, as found in the data folder of the game.
+     *
+     * Default: undefined
+     */
+    // roomCounter: 100,
+
+    /**
+     * ### roomCounterPadChars (0 <= number <= 12) Optional
+     *
+     * If set, leading 0 are added to the room counter to reach desired length
+     *
+     * For example, if `roomCounterChars` is equal to 6 and
+     * the current roomCounter value is 123, then room name is: '000123'.
+     *
+     * Default: 6
+     */
+    // roomCounterPadChars: 6
+
+    // Reserved for future versions:
+
+    /**
+     * ### roomCounterSeparator (character) Optional
+     *
+     * If set, this char is inserted between the padded room counter and 'room'
+     *
+     * Default: ''
+     */
+    // roomCounterSeparator: '@'
 
 };

@@ -1,4 +1,3 @@
-// ┌───────────────────────────────────────────────────────────────────────────────────────────────────────┐ \\
 // │ Raphaël 2.2.0 - JavaScript Vector Library                                                             │ \\
 // ├───────────────────────────────────────────────────────────────────────────────────────────────────────┤ \\
 // │ Copyright © 2008-2016 Dmitry Baranovskiy (http://raphaeljs.com)                                       │ \\
@@ -5485,13 +5484,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
-	// 
+	//
 	// Licensed under the Apache License, Version 2.0 (the "License");
 	// you may not use this file except in compliance with the License.
 	// You may obtain a copy of the License at
-	// 
+	//
 	// http://www.apache.org/licenses/LICENSE-2.0
-	// 
+	//
 	// Unless required by applicable law or agreed to in writing, software
 	// distributed under the License is distributed on an "AS IS" BASIS,
 	// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -5539,15 +5538,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    /*\
 	     * eve
 	     [ method ]
-
 	     * Fires event with given `name`, given scope and other parameters.
-
 	     > Arguments
-
 	     - name (string) name of the *event*, dot (`.`) or slash (`/`) separated
 	     - scope (object) context for the event handlers
 	     - varargs (...) the rest of arguments will be sent to event handlers
-
 	     = (object) array of returned values from the listeners. Array has two methods `.firstDefined()` and `.lastDefined()` to get first or last not `undefined` value.
 	    \*/
 	        eve = function (name, scope) {
@@ -5617,13 +5612,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    /*\
 	     * eve.listeners
 	     [ method ]
-
 	     * Internal method which gives you array of all event handlers that will be triggered by the given `name`.
-
 	     > Arguments
-
 	     - name (string) name of the event, dot (`.`) or slash (`/`) separated
-
 	     = (array) array of event handlers
 	    \*/
 	    eve.listeners = function (name) {
@@ -5660,11 +5651,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    /*\
 	     * eve.separator
 	     [ method ]
-
 	     * If for some reasons you don’t like default separators (`.` or `/`) you can specify yours
 	     * here. Be aware that if you pass a string longer than one character it will be treated as
 	     * a list of characters.
-
 	     - separator (string) new separator. Empty string resets to default: `.` or `/`.
 	    \*/
 	    eve.separator = function (sep) {
@@ -5691,7 +5680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     - name (array) if you don’t want to use separators, you can use array of strings
 	     - f (function) event handler function
 	     **
-	     = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment. 
+	     = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment.
 	     > Example:
 	     | eve.on("mouse", eatIt)(2);
 	     | eve.on("mouse", scream);

@@ -1,13 +1,16 @@
 /**
  * # Index script for nodeGame
- * Copyright(c) 2017 Edgar Andrade-Lotero <edgar.andrade@urosario.edu.co>
+ * Copyright(c) 2019 Alejandro Velasco <javier.velasco@urosario.edu.co>
  * MIT Licensed
  *
  * http://nodegame.org
  * ---
  */
 window.onload = function() {
-    var node = parent.node;
+    if ('undefined' === typeof node) {
+        throw new Error('node is not loaded. Aborting.');
+    }
+
     // All these properties will be overwritten
     // by remoteSetup from server.
     node.setup('nodegame', {

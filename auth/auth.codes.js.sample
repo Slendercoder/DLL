@@ -83,15 +83,15 @@ module.exports = function(settings, done) {
     if (settings.mode === 'local') {
         // Default paths.
         if ('undefined' === typeof settings.inFile) {
-            settings.inFile = settings.authDir + 'codes.json'; // .json and .js
+            settings.inFile = settings.authDir + 'codes.json';
              if (!fs.existsSync(settings.inFile)) {
                 settings.inFile = settings.authDir + 'codes.js';
                  if (!fs.existsSync(settings.inFile)) {
                      settings.inFile = settings.authDir + 'codes.csv';
                      if (!fs.existsSync(settings.inFile)) {
-
-                    throw new TypeError('auth.settings: mode="local", but ' +
-                                        'codes.json and codes.csv not found.');
+                         throw new TypeError('auth.settings: mode="local", ' +
+                                             'but codes.[json|js|csv] not ' +
+                                             'found.');
                      }
                  }
              }

@@ -1,38 +1,45 @@
 /**
  * # Game setup
- * Copyright(c) 2017 Edgar Andrade-Lotero <edgar.andrade@urosario.edu.co>
+ * Copyright(c) 2019 Alejandro Velasco <javier.velasco@urosario.edu.co>
  * MIT Licensed
  *
- * The file includes settings for the nodeGame client instance
+ * This file includes settings that are shared amongst all client types
  *
- * This settings are then used to call `node.setup('nodegame')` and its
- * remote version.
+ * Setup settings are passed by reference and can be modified globally
+ * by any instance executing on the server (but not by remote instances).
  *
  * http://www.nodegame.org
  * ---
  */
 module.exports = function(settings, stages) {
 
-    var setup = {};
+    var setup;
+    setup = {};
 
-    //auto: true = automatic run, auto: false = user input
-    setup.env = {
-        auto: false
-    };
-
-    setup.debug = true;
+    // setup.debug = true;
+    setup.debug = false;
 
     setup.verbosity = 1;
 
     setup.window = {
         promptOnleave: !setup.debug
-    }
+    };
 
-    // Metadata. Taken from package.json. Can be overwritten.
+    // Metadata.
+    // By default are as in package.json, but can be overwritten.
+    //
     // setup.metadata = {
     //    name: 'another name',
     //    version: 'another version',
     //    description: 'another descr'
+    // };
+
+    // Environment variables. Can be retrieved via `node.env('foo')`,
+    // or be used to conditionally execute a function:
+    // `node.env('foo', function(foo) { ... })`.
+    //
+    // setup.env = {
+    //    foo: false
     // };
 
     return setup;

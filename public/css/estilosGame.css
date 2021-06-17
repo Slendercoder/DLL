@@ -38,6 +38,69 @@
     text-align: center;
 }
 
+/* POPUPS PERROS */
+
+.pop1{
+    width: 240px;
+    height: 60px;
+    background-color: OrangeRed;
+    color: white;
+    border-radius: 6px;
+    padding: 0px 0;
+    position: relative;
+    z-index: 1;
+    margin-left: 0px;
+    text-align: center;
+}
+.pop2{
+    width: 240px;
+    height: 60px;
+    background-color: OrangeRed;
+    color: white;
+    border-radius: 6px;
+    padding: 0px 0;
+    position: relative;
+    z-index: 1;
+    margin-left: 0px;
+    text-align: center;
+}
+.pop3{
+    width: 240px;
+    height: 60px;
+    background-color: OrangeRed;
+    color: white;
+    border-radius: 6px;
+    padding: 0px 0;
+    position: relative;
+    z-index: 1;
+    margin-left: 0px;
+    text-align: center;
+}
+.pop4{
+    width: 240px;
+    height: 60px;
+    background-color: OrangeRed;
+    color: white;
+    border-radius: 6px;
+    padding: 0px 0;
+    position: relative;
+    z-index: 1;
+    margin-left: 0px;
+    text-align: center;
+}
+.pop5{
+    width: 240px;
+    height: 60px;
+    background-color: OrangeRed;
+    color: white;
+    border-radius: 6px;
+    padding: 0px 0;
+    position: relative;
+    z-index: 1;
+    margin-left: 0px;
+    text-align: center;
+}
+
 .button1{
     background-color: #e7e7e7;
     color: black;
@@ -47,6 +110,10 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+
+.table, th, td {
+  border: 1px solid black;
 }
 
 button {
@@ -101,11 +168,11 @@ button:active {
 
 .droptarget {
     float: left;
-    width: 100px;
-    height: 80px;
-    margin: 15px;
+    width: 220px;
+    height: 220px;
+    margin: auto;
     padding: 10px;
-    border: 1px solid #aaaaaa;
+    border: 1px solid #fff;
 }
 
 /* Propiedades de la ventana para seleccionar objetos del toolbox */
@@ -123,28 +190,43 @@ button:active {
     overflow: auto;
 }
 
-
-/* The Modal (background) */
+/* Modal de recibido */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
+    padding-top: 500px; /* Location of the box */
+    padding-bottom: 20px; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+    left: -70px;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0); /* Black w/ opacity */
+}
+.modal1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 250px; /* Location of the box */
+  left: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.3); /* Black w/ opacity */
+
 }
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
+    padding: 15px;
     border: 1px solid #888;
-    width: 40%;
+    width: 30%;
     overflow: auto;
 }
 .close {
@@ -175,7 +257,7 @@ select#soflow, select#soflow-color {
    -webkit-padding-end: 20px;
    -webkit-padding-start: 2px;
    -webkit-user-select: none;
-   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+   background-image: none;
    background-position: 97% center;
    background-repeat: no-repeat;
    border: 1px solid #AAA;
@@ -191,7 +273,7 @@ select#soflow, select#soflow-color {
 
 select#soflow-color {
    color: #fff;
-   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
+   background-image: none;
    background-color: #779126;
    -webkit-border-radius: 20px;
    -moz-border-radius: 20px;
@@ -200,18 +282,29 @@ select#soflow-color {
 }
 
 div.gallery{
+  margin: 5px;
+  border: 1px solid #ccc;
+  width: 242px;
   float: left;
+  height: 320px;
 }
 
-div.gallery:hover {
-/*    border: 1px solid #777;
-    width: 110px;
-    height: 110px;*/
-    background-color: aqua;
+/* div.gallery:hover {
+    border: 5px solid #ccc;
+} */
+
+div.gallery img {
+  width: 240px;
+  height: 240px;
+  padding-left: 0px;
+  padding-top: 0px;
+  draggable: true
+;
 }
 
-div.gallery1:hover {
-    border: 1px solid #777;
+div.desc {
+  padding: 15px;
+  text-align: left;
 }
 
 img.ovalar{

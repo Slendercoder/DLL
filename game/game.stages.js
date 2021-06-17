@@ -1,6 +1,6 @@
 /**
  * # Game stages definition file
- * Copyright(c) 2017 Edgar Andrade-Lotero <edgar.andrade@urosario.edu.co>
+ * Copyright(c) 2019 Alejandro Velasco <javier.velasco@urosario.edu.co>
  * MIT Licensed
  *
  * Stages are defined using the stager API
@@ -9,18 +9,38 @@
  * ---
  */
 
-module.exports = function(stager, settings) {
+ module.exports = function(stager, settings) {
 
-     stager
-        .next('bienvenida')
-        .next('instructions')
-        .next('quiz')
-        .gameover();
+      stager
+         .next('bienvenida')
+         .next('instructions')
+         .next('tutorial_training')
+         .next('tutorial_game')
+         .next('quiz')
+         .gameover();
 
-    // Modify the stager to skip one stage.
-    // stager.skip('bienvenida');
-    // stager.skip('instructions');
-    //  stager.skip('quiz');
+     stager.extendStage('tutorial_training', {
+       steps: [
+         'tutorialTraining',
+         'puntaje_training'
+       ]
+     });
 
-    return stager.getState();
-};
+     stager.extendStage('tutorial_game', {
+       steps: [
+         'tutorialGame',
+         'puntaje_game',
+         'tiempo',
+         'recompensa'
+       ]
+     });
+
+     // Modify the stager to skip one stage.
+     // stager.skip('bienvenida');
+     // stager.skip('instructions');
+     // stager.skip('tutorial_training');
+     // stager.skip('tutorial_game');
+     //stager.skip('quiz');
+
+     return stager.getState();
+ };
